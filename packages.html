@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tour Packages – Sana On The Go | Darjeeling, Sikkim & Dooars</title>
+  <meta name="description" content="Handcrafted tour packages across Darjeeling, Kalimpong, Sikkim and Dooars. View full itineraries and enquire via WhatsApp.">
+  <link rel="canonical" href="https://sanaonthego.github.io/packages.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--forest) 0%, #2d6a4f 100%);
+      color: #fff;
+      text-align: center;
+      padding: 72px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 70%, rgba(82,183,136,0.15) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 20%, rgba(201,168,76,0.1) 0%, transparent 50%);
+    }
+
+    .page-hero .section-label { color: var(--gold-lt); position: relative; }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      font-weight: 700;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .page-hero p {
+      font-size: 0.97rem;
+      color: rgba(255,255,255,0.68);
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    /* ── FILTER TABS ── */
+    .filter-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 64px;
+      z-index: 100;
+    }
+
+    .filter-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .filter-inner::-webkit-scrollbar { display: none; }
+
+    .filter-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 14px 20px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s;
+      margin-bottom: -1px;
+    }
+
+    .filter-tab:hover { color: var(--forest-mid); }
+
+    .filter-tab.active {
+      color: var(--forest-mid);
+      border-bottom-color: var(--forest-mid);
+      font-weight: 600;
+    }
+
+    /* ── PACKAGES MAIN ── */
+    .packages-main {
+      padding: 60px 0 80px;
+    }
+
+    /* ── PACKAGE BLOCK ── */
+    .pkg-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s;
+    }
+
+    .pkg-block:hover { box-shadow: var(--shadow-md); }
+
+    .pkg-header {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: 240px;
+    }
+
+    .pkg-hero-img {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pkg-hero-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .pkg-block:hover .pkg-hero-img img { transform: scale(1.05); }
+
+    .pkg-hero-img .pkg-badge {
+      position: absolute;
+      top: 16px; left: 16px;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 20px;
+    }
+
+    .pkg-meta {
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pkg-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .pkg-duration-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--forest-lt);
+      margin-bottom: 6px;
+    }
+
+    .pkg-meta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      color: var(--forest);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .pkg-price-box {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .pkg-price-box .from {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pkg-price-box .amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1;
+    }
+
+    .pkg-price-box .per {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .pkg-desc {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    /* Highlights chips */
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 20px;
+    }
+
+    .highlight-chip {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: var(--forest-pale);
+      color: var(--forest);
+      border: 1px solid rgba(82,183,136,0.2);
+    }
+
+    .pkg-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    /* ── ACCORDION ITINERARY ── */
+    .itinerary-panel {
+      border-top: 1px solid var(--border);
+      background: #fafaf7;
+    }
+
+    .itinerary-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--forest-mid);
+      transition: background 0.15s;
+    }
+
+    .itinerary-toggle:hover { background: var(--forest-pale); }
+
+    .toggle-icon {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--forest-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+      color: var(--forest-mid);
+      transition: transform 0.3s, background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .itinerary-toggle.open .toggle-icon { transform: rotate(180deg); background: var(--forest-mid); color: #fff; }
+
+    .itinerary-body {
+      display: none;
+      padding: 8px 28px 28px;
+    }
+
+    .itinerary-body.open { display: block; }
+
+    /* Day timeline */
+    .day-list { list-style: none; margin-top: 8px; }
+
+    .day-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0 18px;
+      margin-bottom: 0;
+      position: relative;
+    }
+
+    .day-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 38px;
+      top: 28px;
+      bottom: -4px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .day-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--forest-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding-top: 14px;
+      text-align: right;
+      position: relative;
+    }
+
+    .day-label::after {
+      content: '';
+      position: absolute;
+      right: -27px;
+      top: 18px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--forest-lt);
+      border: 2px solid var(--surface);
+      box-shadow: 0 0 0 2px var(--forest-lt);
+    }
+
+    .day-content {
+      padding: 14px 0 14px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .day-item:last-child .day-content { border-bottom: none; }
+
+    .day-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .day-detail {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Inclusions */
+    .inclusions {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .inc-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+    }
+
+    .inc-box h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .inc-box.included h4 { color: var(--forest-mid); }
+    .inc-box.excluded h4 { color: #c0392b; }
+
+    .inc-list { list-style: none; }
+
+    .inc-list li {
+      font-size: 0.8rem;
+      color: var(--text-mid);
+      padding: 3px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .inc-list li::before {
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .inc-box.included .inc-list li::before { content: '✓'; color: var(--forest-lt); font-weight: 700; }
+    .inc-box.excluded  .inc-list li::before { content: '✗'; color: #e74c3c; font-weight: 700; }
+
+    /* ── CUSTOM TRIP CTA ── */
+    .custom-cta {
+      background: linear-gradient(135deg, var(--forest) 0%, #1a4d38 100%);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      text-align: center;
+      margin-top: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .custom-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12), transparent 60%);
+    }
+
+    .custom-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .custom-cta p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.92rem;
+      margin-bottom: 28px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .pkg-header {
+        grid-template-columns: 1fr;
+      }
+
+      .pkg-hero-img {
+        height: 220px;
+      }
+
+      .pkg-top {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .pkg-price-box { text-align: left; }
+
+      .inclusions { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 540px) {
+      .pkg-meta { padding: 20px; }
+      .itinerary-toggle { padding: 14px 20px; }
+      .itinerary-body { padding: 6px 20px 20px; }
+      .day-item { grid-template-columns: 56px 1fr; }
+      .custom-cta { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a class="logo" href="index.html">Sana <em style="color:var(--gold-lt);font-style:italic;">On The</em> Go</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="packages.html" class="active">Packages</a></li>
+    <li><a href="properties.html">Properties</a></li>
+    <li><a href="index.html#why-us">Why Us</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages" class="nav-cta" target="_blank">💬 WhatsApp</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="packages.html" onclick="closeMenu()">Packages</a>
+  <a href="properties.html" onclick="closeMenu()">Properties</a>
+  <a href="index.html#why-us" onclick="closeMenu()">Why Us</a>
+  <a href="index.html#gallery" onclick="closeMenu()">Gallery</a>
+  <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+  <a href="https://wa.me/919874740763" target="_blank" onclick="closeMenu()" style="color:var(--wa);">💬 WhatsApp Us</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="page-hero">
+  <span class="section-label">✦ Handcrafted Journeys</span>
+  <h1>Our Tour Packages</h1>
+  <p>Every itinerary is designed by local experts who know these hills intimately — no generic tours, ever.</p>
+</div>
+
+<!-- ═══ FILTER TABS ═══ -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-tab active" data-filter="all">🗺️ All Packages</button>
+    <button class="filter-tab" data-filter="hills">🍵 Hill Stations</button>
+    <button class="filter-tab" data-filter="sikkim">🏔️ Sikkim</button>
+    <button class="filter-tab" data-filter="wildlife">🐘 Wildlife</button>
+    <button class="filter-tab" data-filter="offbeat">🌿 Offbeat</button>
+  </div>
+</div>
+
+<!-- ═══ PACKAGES ═══ -->
+<section class="packages-main">
+  <div class="container">
+
+    <!-- ── DARJEELING & KALIMPONG ── -->
+    <div class="pkg-block" id="darjeeling" data-category="hills">
+      <div class="pkg-header">
+        <div class="pkg-hero-img">
+          <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=700&q=80" alt="Darjeeling tea gardens">
+          <span class="pkg-badge">Most Popular</span>
+        </div>
+        <div class="pkg-meta">
+          <div class="pkg-top">
+            <div>
+              <div class="pkg-duration-tag">5 Nights / 6 Days</div>
+              <h2>Darjeeling &amp; Kalimpong</h2>
+            </div>
+            <div class="pkg-price-box">
+              <div class="from">From</div>
+              <div class="amount">₹18,500</div>
+              <div class="per">per person</div>
+            </div>
+          </div>
+          <p class="pkg-desc">A perfect blend of colonial charm, misty tea gardens and mountain sunrises. This circuit covers the best of the Darjeeling hills while weaving in the lesser-visited flower market town of Kalimpong.</p>
+          <div class="highlights">
+            <span class="highlight-chip">🌅 Tiger Hill Sunrise</span>
+            <span class="highlight-chip">🚂 Toy Train Ride</span>
+            <span class="highlight-chip">🍵 Tea Garden Walk</span>
+            <span class="highlight-chip">🛕 Monasteries</span>
+            <span class="highlight-chip">🌸 Kalimpong Market</span>
+          </div>
+          <div class="pkg-actions">
+            <a class="btn btn-wa" href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20interested%20in%20the%20Darjeeling%20%26%20Kalimpong%205N%2F6D%20package" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Enquire on WhatsApp
+            </a>
+            <button class="btn btn-outline itinerary-toggle" onclick="toggleItinerary('darj-body', this)">
+              View Full Itinerary <span class="toggle-icon">▼</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="itinerary-panel">
+        <div class="itinerary-body" id="darj-body">
+          <ul class="day-list">
+            <li class="day-item">
+              <div class="day-label">Day 1</div>
+              <div class="day-content">
+                <div class="day-title">Arrival — NJP / Bagdogra → Darjeeling</div>
+                <div class="day-detail">Transfer from NJP Station or Bagdogra Airport. Scenic mountain drive through tea estates. Check-in, rest and evening stroll on Mall Road.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 2</div>
+              <div class="day-content">
+                <div class="day-title">Tiger Hill Sunrise + Darjeeling Sightseeing</div>
+                <div class="day-detail">Early morning drive to Tiger Hill for Kanchenjunga sunrise. Visit Batasia Loop, Ghoom Monastery, Himalayan Mountaineering Institute and the Japanese Peace Pagoda.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 3</div>
+              <div class="day-content">
+                <div class="day-title">Toy Train Ride + Tea Garden Walk</div>
+                <div class="day-detail">Morning toy train joyride (Darjeeling–Ghoom–Darjeeling). Afternoon guided walk through a working tea garden with tea tasting session. Free evening on Mall Road.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 4</div>
+              <div class="day-content">
+                <div class="day-title">Darjeeling → Kalimpong</div>
+                <div class="day-detail">Morning drive to Kalimpong via Teesta Bridge. Check-in. Visit Deolo Hill viewpoint and the colourful local flower nurseries that supply markets across India.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 5</div>
+              <div class="day-content">
+                <div class="day-title">Kalimpong Local Sightseeing</div>
+                <div class="day-detail">Visit Zong Dog Palri Fo-Brang Monastery, Mangal Dham Temple, and the busy Kalimpong Haat market. Optional cactus garden and Durpin Dara Hill.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 6</div>
+              <div class="day-content">
+                <div class="day-title">Departure</div>
+                <div class="day-detail">After breakfast, transfer to NJP Station or Bagdogra Airport. Safe travels!</div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="inclusions">
+            <div class="inc-box included">
+              <h4>✓ Included</h4>
+              <ul class="inc-list">
+                <li>Accommodation (5 nights)</li>
+                <li>Daily breakfast &amp; dinner</li>
+                <li>All transfers by private cab</li>
+                <li>Sightseeing as per itinerary</li>
+                <li>Toy train joyride ticket</li>
+                <li>Tea garden guided walk</li>
+                <li>All toll, parking &amp; driver charges</li>
+              </ul>
+            </div>
+            <div class="inc-box excluded">
+              <h4>✗ Not Included</h4>
+              <ul class="inc-list">
+                <li>Airfare / train tickets</li>
+                <li>Lunch &amp; personal expenses</li>
+                <li>Camera / monument entry fees</li>
+                <li>Travel insurance</li>
+                <li>Tips &amp; gratuities</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── OFFBEAT SIKKIM ── -->
+    <div class="pkg-block" id="sikkim" data-category="sikkim offbeat">
+      <div class="pkg-header">
+        <div class="pkg-hero-img">
+          <img src="https://images.unsplash.com/photo-1604917877937-3b6a1a4b47f0?w=700&q=80" alt="Yumthang Valley Sikkim">
+          <span class="pkg-badge">Offbeat Pick</span>
+        </div>
+        <div class="pkg-meta">
+          <div class="pkg-top">
+            <div>
+              <div class="pkg-duration-tag">7 Nights / 8 Days</div>
+              <h2>Offbeat Sikkim</h2>
+            </div>
+            <div class="pkg-price-box">
+              <div class="from">From</div>
+              <div class="amount">₹24,900</div>
+              <div class="per">per person</div>
+            </div>
+          </div>
+          <p class="pkg-desc">Sikkim beyond the tourist bubble — village homestays, high-altitude valleys in bloom, and roads where you'll barely see another traveller. Best visited April–June or Sept–November.</p>
+          <div class="highlights">
+            <span class="highlight-chip">❄️ Yumthang Valley</span>
+            <span class="highlight-chip">🏔️ Zero Point</span>
+            <span class="highlight-chip">🏡 Village Homestays</span>
+            <span class="highlight-chip">🌸 Rhododendron Forest</span>
+            <span class="highlight-chip">🛕 Ancient Monasteries</span>
+          </div>
+          <div class="pkg-actions">
+            <a class="btn btn-wa" href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20interested%20in%20the%20Offbeat%20Sikkim%207N%2F8D%20package" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Enquire on WhatsApp
+            </a>
+            <button class="btn btn-outline itinerary-toggle" onclick="toggleItinerary('sikkim-body', this)">
+              View Full Itinerary <span class="toggle-icon">▼</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="itinerary-panel">
+        <div class="itinerary-body" id="sikkim-body">
+          <ul class="day-list">
+            <li class="day-item">
+              <div class="day-label">Day 1</div>
+              <div class="day-content">
+                <div class="day-title">Arrival — NJP → Gangtok</div>
+                <div class="day-detail">Transfer to Gangtok (125 km). Arrive, check-in and explore MG Marg in the evening. Dinner at a local restaurant.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 2</div>
+              <div class="day-content">
+                <div class="day-title">Gangtok Local Sightseeing</div>
+                <div class="day-detail">Rumtek Monastery, Enchey Monastery, Flower Exhibition Centre, Do-Drul Chorten Stupa and Tashi Viewpoint.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 3</div>
+              <div class="day-content">
+                <div class="day-title">Gangtok → Lachung</div>
+                <div class="day-detail">Drive north to Lachung (115 km) through Chungthang. En route see Seven Sisters Waterfall and Naga Falls. Village homestay overnight.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 4</div>
+              <div class="day-content">
+                <div class="day-title">Yumthang Valley + Zero Point</div>
+                <div class="day-detail">Early morning excursion to Yumthang Valley (3,564 m) — the Valley of Flowers. Optional extension to Zero Point (4,800 m, seasonal). Return to Lachung.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 5</div>
+              <div class="day-content">
+                <div class="day-title">Lachung → Offbeat Village Stay</div>
+                <div class="day-detail">Drive back south and branch off to an offbeat village — Dzongu, Hee-Bermiok or Tashiding area (depending on season and availability). Village homestay, local dinner.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 6–7</div>
+              <div class="day-content">
+                <div class="day-title">Village Life + Offbeat Exploration</div>
+                <div class="day-detail">Two full days exploring trails, monasteries and local villages with a local guide. Nature walks, farm experiences, and interactions with Lepcha communities.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 8</div>
+              <div class="day-content">
+                <div class="day-title">Departure — NJP / Bagdogra</div>
+                <div class="day-detail">Morning transfer back to NJP Station or Bagdogra Airport. Tour ends with memories to last a lifetime.</div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="inclusions">
+            <div class="inc-box included">
+              <h4>✓ Included</h4>
+              <ul class="inc-list">
+                <li>Accommodation (7 nights — mix of hotel &amp; homestay)</li>
+                <li>All meals (breakfast, lunch &amp; dinner)</li>
+                <li>All transfers by private cab</li>
+                <li>Sikkim Protected Area Permit (PAP)</li>
+                <li>Yumthang Valley entry &amp; jeep charges</li>
+                <li>Local village guide (2 days)</li>
+                <li>All tolls, parking &amp; driver charges</li>
+              </ul>
+            </div>
+            <div class="inc-box excluded">
+              <h4>✗ Not Included</h4>
+              <ul class="inc-list">
+                <li>Airfare / train tickets to NJP</li>
+                <li>Zero Point charges (seasonal, optional)</li>
+                <li>Personal expenses &amp; tips</li>
+                <li>Travel insurance</li>
+                <li>Monument / camera fees</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DOOARS WILDLIFE ── -->
+    <div class="pkg-block" id="dooars" data-category="wildlife">
+      <div class="pkg-header">
+        <div class="pkg-hero-img">
+          <img src="https://images.unsplash.com/photo-1602512221890-bc3f1fa2a6b4?w=700&q=80" alt="Dooars jungle">
+          <span class="pkg-badge">Nature &amp; Wildlife</span>
+        </div>
+        <div class="pkg-meta">
+          <div class="pkg-top">
+            <div>
+              <div class="pkg-duration-tag">3 Nights / 4 Days</div>
+              <h2>Dooars Jungle Safari</h2>
+            </div>
+            <div class="pkg-price-box">
+              <div class="from">From</div>
+              <div class="amount">₹12,500</div>
+              <div class="per">per person</div>
+            </div>
+          </div>
+          <p class="pkg-desc">Deep inside the Terai forests at the foothills of the Himalayas — one-horned rhinos, wild elephants, leopards and over 300 species of birds. Best October to April.</p>
+          <div class="highlights">
+            <span class="highlight-chip">🦏 Rhino Sighting</span>
+            <span class="highlight-chip">🐘 Elephant Safari</span>
+            <span class="highlight-chip">🌿 Gorumara Forest</span>
+            <span class="highlight-chip">🔥 Bonfire Evenings</span>
+            <span class="highlight-chip">🐦 Birdwatching</span>
+          </div>
+          <div class="pkg-actions">
+            <a class="btn btn-wa" href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20interested%20in%20the%20Dooars%20Jungle%20Safari%203N%2F4D%20package" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Enquire on WhatsApp
+            </a>
+            <button class="btn btn-outline itinerary-toggle" onclick="toggleItinerary('dooars-body', this)">
+              View Full Itinerary <span class="toggle-icon">▼</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="itinerary-panel">
+        <div class="itinerary-body" id="dooars-body">
+          <ul class="day-list">
+            <li class="day-item">
+              <div class="day-label">Day 1</div>
+              <div class="day-content">
+                <div class="day-title">Arrival — NJP → Lataguri / Gorumara</div>
+                <div class="day-detail">Transfer to the forest edge. Check in to eco-lodge. Evening jungle walk and campfire with a forest naturalist.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 2</div>
+              <div class="day-content">
+                <div class="day-title">Gorumara National Park Safari</div>
+                <div class="day-detail">Early morning jeep safari into Gorumara — home to one-horned rhino, gaur, leopard, and abundant birdlife. Afternoon watchtower visit at Rhino Point.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 3</div>
+              <div class="day-content">
+                <div class="day-title">Jaldapara Elephant Safari + Chilapata</div>
+                <div class="day-detail">Drive to Jaldapara Wildlife Sanctuary for an elephant-back safari. Visit the ancient Chilapata Forest fort ruins. Evening bonfire and folk music at camp.</div>
+              </div>
+            </li>
+            <li class="day-item">
+              <div class="day-label">Day 4</div>
+              <div class="day-content">
+                <div class="day-title">Departure</div>
+                <div class="day-detail">After breakfast, transfer back to NJP Station or Bagdogra Airport.</div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="inclusions">
+            <div class="inc-box included">
+              <h4>✓ Included</h4>
+              <ul class="inc-list">
+                <li>Eco-lodge accommodation (3 nights)</li>
+                <li>All meals (breakfast, lunch &amp; dinner)</li>
+                <li>Jeep safari in Gorumara (1 session)</li>
+                <li>Elephant safari in Jaldapara</li>
+                <li>Nature guide for forest walks</li>
+                <li>All transfers by private cab</li>
+              </ul>
+            </div>
+            <div class="inc-box excluded">
+              <h4>✗ Not Included</h4>
+              <ul class="inc-list">
+                <li>Airfare / train tickets</li>
+                <li>Alcohol &amp; personal expenses</li>
+                <li>Extra jeep safari rounds</li>
+                <li>Travel insurance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CUSTOM TRIP CTA ── -->
+    <div class="custom-cta">
+      <h2>Don't See Your Dream Trip?</h2>
+      <p>We build fully custom itineraries from scratch — just tell us your dates, budget and interests.</p>
+      <a class="btn btn-wa" href="https://wa.me/919874740763?text=Hi%2C%20I%20would%20like%20to%20plan%20a%20custom%20trip" target="_blank" style="position:relative;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Plan a Custom Trip
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="index.html">Sana On The Go</a>
+      <p>Curated Himalayan travel experiences — Darjeeling, Kalimpong, Sikkim &amp; beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="packages.html">Tour Packages</a>
+      <a href="properties.html">Hotels &amp; Homestays</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#why-us">Why Choose Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 +91 98747 40763</p>
+      <p>📍 North Bengal, India</p>
+      <a href="https://www.instagram.com/sana.onthe.go" target="_blank">📸 @sana.onthe.go</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://wa.me/919874740763" target="_blank" title="WhatsApp">💬</a>
+      <a href="https://www.instagram.com/sana.onthe.go" target="_blank" title="Instagram">📸</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WA -->
+<a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  /* Itinerary accordion */
+  function toggleItinerary(bodyId, btn) {
+    const body = document.getElementById(bodyId);
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+    btn.querySelector('.toggle-icon').textContent = isOpen ? '▼' : '▲';
+  }
+
+  /* Filter tabs */
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      document.querySelectorAll('.pkg-block').forEach(block => {
+        const cat = block.dataset.category || '';
+        block.style.display = (filter === 'all' || cat.includes(filter)) ? '' : 'none';
+      });
+    });
+  });
+
+  /* Hamburger */
+  const hbg = document.getElementById('hamburger');
+  const mm  = document.getElementById('mobileMenu');
+  hbg.addEventListener('click', () => mm.classList.toggle('open'));
+  function closeMenu() { mm.classList.remove('open'); }
+  document.addEventListener('click', e => {
+    if (!hbg.contains(e.target) && !mm.contains(e.target)) mm.classList.remove('open');
+  });
+</script>
+</body>
+</html>
