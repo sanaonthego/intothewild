@@ -28,19 +28,39 @@
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; overflow-x: hidden; }
 
     /* ── NAV ── */
-    nav { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 14px 40px; background: var(--green-dk); box-shadow: 0 2px 16px rgba(0,0,0,0.2); }
-    .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: #fff; text-decoration: none; }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 13px 40px;
+      background: var(--green-dk);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.22);
+      transition: padding 0.3s;
+    }
+    .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: #fff; text-decoration: none; letter-spacing: 0.3px; }
     .logo span { color: var(--gold-lt); }
     .nav-links { list-style: none; display: flex; gap: 22px; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,0.84); text-decoration: none; font-size: 0.87rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--gold-lt); }
-    .nav-cta { background: var(--wa) !important; color: #fff !important; padding: 8px 16px; border-radius: 50px; font-weight: 600 !important; }
+    .nav-links a { color: rgba(255,255,255,0.84); text-decoration: none; font-size: 0.87rem; font-weight: 500; transition: color 0.2s; letter-spacing: 0.2px; }
+    .nav-links a:hover { color: var(--gold-lt); }
+    .nav-links a.active { color: var(--gold-lt); border-bottom: 2px solid var(--gold-lt); padding-bottom: 2px; }
+    .nav-cta { background: var(--wa) !important; color: #fff !important; padding: 8px 16px !important; border-radius: 50px !important; font-weight: 600 !important; border-bottom: none !important; transition: background 0.2s, transform 0.2s !important; }
+    .nav-cta:hover { background: var(--wa-dk) !important; transform: translateY(-1px); }
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
-    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,35,22,0.98); z-index: 99; padding: 80px 32px 32px; flex-direction: column; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,28,18,0.98); backdrop-filter: blur(16px);
+      z-index: 99; padding: 88px 36px 36px; flex-direction: column;
+    }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { color: rgba(255,255,255,0.88); text-decoration: none; font-size: 1.25rem; font-weight: 500; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.07); font-family: 'Cormorant Garamond', serif; }
-    .mobile-close { position: absolute; top: 22px; right: 26px; background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; }
+    .mobile-menu a { color: rgba(255,255,255,0.88); text-decoration: none; font-size: 1.3rem; font-weight: 600; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.07); font-family: 'Cormorant Garamond', serif; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--gold-lt); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a.m-wa { color: var(--wa) !important; font-family: 'DM Sans', sans-serif; font-size: 1rem; display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+    .mobile-close { position: absolute; top: 22px; right: 24px; background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 1.2rem; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .mobile-close:hover { background: rgba(255,255,255,0.2); }
 
     /* ── PAGE HERO ── */
     .page-hero {
@@ -163,13 +183,46 @@
     ════════════════════════════════════════════════════════════════
     */
 
+    /* ── PDF + ACTION BUTTONS on card ── */
+    .pkg-card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
     .pkg-select-btn {
-      width: 100%; padding: 10px; border: 2px solid var(--green);
-      border-radius: 8px; background: none; color: var(--green);
-      font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600;
-      cursor: pointer; transition: all 0.2s;
+      padding: 10px 8px; border: 2px solid var(--green);
+      border-radius: 9px; background: none; color: var(--green);
+      font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
     }
     .pkg-select-btn:hover, .pkg-card.selected .pkg-select-btn { background: var(--green); color: #fff; }
+    .pkg-pdf-btn {
+      padding: 10px 8px; border: 2px solid var(--gold-dk);
+      border-radius: 9px; background: none; color: var(--gold-dk);
+      font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .pkg-pdf-btn:hover { background: var(--gold-dk); color: #fff; }
+    .pkg-pdf-btn svg, .pkg-select-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* PDF generating spinner overlay */
+    .pdf-spinner-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(26,61,43,0.7); backdrop-filter: blur(6px);
+      z-index: 9999; align-items: center; justify-content: center; flex-direction: column; gap: 16px;
+    }
+    .pdf-spinner-overlay.active { display: flex; }
+    .pdf-spinner { width: 48px; height: 48px; border: 4px solid rgba(255,255,255,0.2); border-top-color: var(--gold-lt); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .pdf-spinner-label { color: #fff; font-size: 0.96rem; font-weight: 600; letter-spacing: 0.5px; }
+
+    /* ── WA FLOAT with pulse ── */
+    .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 200; background: var(--wa); width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.45); text-decoration: none; transition: transform 0.2s; }
+    .wa-float:hover { transform: scale(1.1); }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; position: relative; z-index: 1; }
+    .wa-pulse { position: absolute; width: 56px; height: 56px; border-radius: 50%; background: var(--wa); animation: pulse-ring 2.2s ease infinite; }
+    @keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.65); opacity: 0; } }
+
+    /* ── SCROLL TO TOP ── */
+    .scroll-top { position: fixed; bottom: 98px; right: 28px; z-index: 200; width: 42px; height: 42px; border-radius: 50%; background: var(--green-dk); border: 2px solid rgba(255,255,255,0.15); color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+    .scroll-top.visible { opacity: 1; pointer-events: auto; }
+    .scroll-top:hover { background: var(--green); transform: translateY(-2px); }
 
     /* ── BOOKING MODAL (sheet style) ── */
     .booking-sheet-overlay {
@@ -268,7 +321,7 @@
 <div class="toast" id="toast"><span>✅</span><span id="toastMsg">Sending…</span></div>
 
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
   <a class="logo" href="index.html">Sana <span>On The Go</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -283,12 +336,14 @@
   <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="closeMenu()">✕</button>
+  <button class="mobile-close" onclick="closeMenu()" aria-label="Close menu">✕</button>
   <a href="index.html" onclick="closeMenu()">Home</a>
   <a href="packages.html" onclick="closeMenu()">Packages</a>
   <a href="properties.html" onclick="closeMenu()">Properties</a>
+  <a href="index.html#why-us" onclick="closeMenu()">Why Us</a>
+  <a href="index.html#gallery" onclick="closeMenu()">Gallery</a>
   <a href="index.html#contact" onclick="closeMenu()">Contact</a>
-  <a href="https://wa.me/919874740763" target="_blank" style="color:var(--wa)!important;">💬 WhatsApp Us</a>
+  <a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages" class="m-wa" target="_blank">💬 WhatsApp Us</a>
 </div>
 
 <!-- PAGE HERO -->
@@ -366,7 +421,16 @@
             <span class="pkg-price">₹XX,XXX per person</span>
             <!-- Replace price above e.g. ₹8,500 per person -->
           </div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -382,7 +446,16 @@
           <h3>Package D-2 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this package here. Mention key places, highlights, and what makes it special for offbeat travellers.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -398,7 +471,16 @@
           <h3>Package D-3 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this package here. Mention key places, highlights, and what makes it special for offbeat travellers.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -414,7 +496,16 @@
           <h3>Package D-4 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this package here. Mention key places, highlights, and what makes it special for offbeat travellers.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -430,7 +521,16 @@
           <h3>Package D-5 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this package here. Mention key places, highlights, and what makes it special for offbeat travellers.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -446,7 +546,16 @@
           <h3>Package D-6 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this package here. Mention key places, highlights, and what makes it special for offbeat travellers.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -462,7 +571,16 @@
           <h3>Package D-7 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this package here. Mention key places, highlights, and what makes it special for offbeat travellers.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -478,7 +596,16 @@
           <h3>Package D-8 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this package here. Mention key places, highlights, and what makes it special for offbeat travellers.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -510,7 +637,16 @@
           <h3>Package K-1 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this Kalimpong offbeat package here. Mention key villages, trails, or experiences.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -526,7 +662,16 @@
           <h3>Package K-2 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this Kalimpong offbeat package here.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -542,7 +687,16 @@
           <h3>Package K-3 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this Kalimpong offbeat package here.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -558,7 +712,16 @@
           <h3>Package K-4 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this Kalimpong offbeat package here.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -574,7 +737,16 @@
           <h3>Package K-5 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this Kalimpong offbeat package here.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -590,7 +762,16 @@
           <h3>Package K-6 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this Kalimpong offbeat package here.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -606,7 +787,16 @@
           <h3>Package K-7 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description of this Kalimpong offbeat package here.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
@@ -640,43 +830,115 @@
           <h3>Package DK-1 Name Here</h3>
           <p class="pkg-desc">Add a 2-3 line description. This is a combined Darjeeling + Kalimpong offbeat package.</p>
           <div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div>
-          <button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button>
+          <div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div>
         </div>
       </div>
 
       <div class="pkg-card" data-pkg="DK-2" data-name="D&K Mixed Offbeat Package DK-2" data-cat="Darjeeling & Kalimpong Mixed">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🌿</div><span>Upload image: images/dk-pkg2-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-2 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-2 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DK-3" data-name="D&K Mixed Offbeat Package DK-3" data-cat="Darjeeling & Kalimpong Mixed">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🌄</div><span>Upload image: images/dk-pkg3-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-3 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-3 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DK-4" data-name="D&K Mixed Offbeat Package DK-4" data-cat="Darjeeling & Kalimpong Mixed">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">☁️</div><span>Upload image: images/dk-pkg4-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-4 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-4 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DK-5" data-name="D&K Mixed Offbeat Package DK-5" data-cat="Darjeeling & Kalimpong Mixed">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🌸</div><span>Upload image: images/dk-pkg5-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-5 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-5 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DK-6" data-name="D&K Mixed Offbeat Package DK-6" data-cat="Darjeeling & Kalimpong Mixed">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🏞️</div><span>Upload image: images/dk-pkg6-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-6 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-6 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DK-7" data-name="D&K Mixed Offbeat Package DK-7" data-cat="Darjeeling & Kalimpong Mixed">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🌾</div><span>Upload image: images/dk-pkg7-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-7 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-7 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DK-8" data-name="D&K Mixed Offbeat Package DK-8" data-cat="Darjeeling & Kalimpong Mixed">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🎑</div><span>Upload image: images/dk-pkg8-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-8 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DK-8 Name Here</h3><p class="pkg-desc">Add a 2-3 line description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
     </div>
@@ -697,37 +959,100 @@
 
       <div class="pkg-card" data-pkg="DKT-1" data-name="Mixed + Darjeeling Town Package DKT-1" data-cat="Mixed with Darjeeling Town">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🚂</div><span>Upload image: images/dkt-pkg1-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-1 Name Here</h3><p class="pkg-desc">Add your package description here. This combines offbeat stays with classic Darjeeling town sightseeing.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-1 Name Here</h3><p class="pkg-desc">Add your package description here. This combines offbeat stays with classic Darjeeling town sightseeing.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DKT-2" data-name="Mixed + Darjeeling Town Package DKT-2" data-cat="Mixed with Darjeeling Town">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🌅</div><span>Upload image: images/dkt-pkg2-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-2 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-2 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DKT-3" data-name="Mixed + Darjeeling Town Package DKT-3" data-cat="Mixed with Darjeeling Town">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">⛵</div><span>Upload image: images/dkt-pkg3-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-3 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-3 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DKT-4" data-name="Mixed + Darjeeling Town Package DKT-4" data-cat="Mixed with Darjeeling Town">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🍃</div><span>Upload image: images/dkt-pkg4-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-4 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-4 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DKT-5" data-name="Mixed + Darjeeling Town Package DKT-5" data-cat="Mixed with Darjeeling Town">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🌟</div><span>Upload image: images/dkt-pkg5-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-5 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-5 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DKT-6" data-name="Mixed + Darjeeling Town Package DKT-6" data-cat="Mixed with Darjeeling Town">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🏰</div><span>Upload image: images/dkt-pkg6-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-6 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-6 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="DKT-7" data-name="Mixed + Darjeeling Town Package DKT-7" data-cat="Mixed with Darjeeling Town">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🔭</div><span>Upload image: images/dkt-pkg7-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-7 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package DKT-7 Name Here</h3><p class="pkg-desc">Add your package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
     </div>
@@ -748,42 +1073,114 @@
 
       <div class="pkg-card" data-pkg="JS-1" data-name="Jungle Safari Package JS-1" data-cat="Jungle Safari">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🐘</div><span>Upload image: images/js-pkg1-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-1 Name Here</h3><p class="pkg-desc">Add description. E.g. Gorumara National Park safari, jeep and elephant rides, forest bungalow stay.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-1 Name Here</h3><p class="pkg-desc">Add description. E.g. Gorumara National Park safari, jeep and elephant rides, forest bungalow stay.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="JS-2" data-name="Jungle Safari Package JS-2" data-cat="Jungle Safari">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🦏</div><span>Upload image: images/js-pkg2-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-2 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-2 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="JS-3" data-name="Jungle Safari Package JS-3" data-cat="Jungle Safari">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🦅</div><span>Upload image: images/js-pkg3-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-3 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-3 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="JS-4" data-name="Jungle Safari Package JS-4" data-cat="Jungle Safari">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🌳</div><span>Upload image: images/js-pkg4-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-4 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-4 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="JS-5" data-name="Jungle Safari Package JS-5" data-cat="Jungle Safari">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🦚</div><span>Upload image: images/js-pkg5-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-5 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-5 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="JS-6" data-name="Jungle Safari Package JS-6" data-cat="Jungle Safari">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🐆</div><span>Upload image: images/js-pkg6-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-6 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-6 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="JS-7" data-name="Jungle Safari Package JS-7" data-cat="Jungle Safari">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🦜</div><span>Upload image: images/js-pkg7-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-7 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-7 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
       <div class="pkg-card" data-pkg="JS-8" data-name="Jungle Safari Package JS-8" data-cat="Jungle Safari">
         <div class="pkg-img-wrap"><img src="" alt="" onerror="this.style.display='none'"><div class="pkg-img-placeholder"><div class="ph-emoji">🌿</div><span>Upload image: images/js-pkg8-banner.jpg</span></div><span class="img-instruction">📷 Add image src above</span></div>
-        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-8 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><button class="pkg-select-btn" onclick="openBooking(this)">Select & Enquire via WhatsApp</button></div>
+        <div class="pkg-card-body"><span class="pkg-duration-badge">X Nights / X Days</span><h3>Package JS-8 Name Here</h3><p class="pkg-desc">Add your safari package description here.</p><div class="pkg-card-meta"><span class="pkg-price">₹XX,XXX per person</span></div><div class="pkg-card-actions">
+          <button class="pkg-select-btn" onclick="openBooking(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </button>
+          <button class="pkg-pdf-btn" onclick="downloadItineraryPDF(this)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L12,15H10V10H14V15L12,19H10Z"/></svg>
+            Download PDF
+          </button>
+        </div></div>
       </div>
 
     </div>
@@ -884,7 +1281,7 @@
       <div class="footer-contact">
         <h3>Contact Us</h3>
         <div class="contact-row"><div class="ci phone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><div class="ct"><span class="cl">Call / WhatsApp</span><a href="tel:+919874740763">+91 98747 40763</a></div></div>
-        <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div></div>
+        <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="/cdn-cgi/l/email-protection#71021008101f05181a10181f051e05191406181d1531161c10181d5f121e1c"><span class="__cf_email__" data-cfemail="1e6d7f677f706a77757f77706a716a767b6977727a5e79737f7772307d7173">[email&#160;protected]</span></a></div></div>
         <div class="contact-row"><div class="ci map"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="ct"><span class="cl">Office</span><div class="office-box"><strong>Into The Wild Tour and Travels</strong>100/A/3/L, Rabindra Nagar Main Road<br>P.S: Siliguri, Dist: Darjeeling<br>West Bengal – 734006</div></div></div>
       </div>
     </div>
@@ -898,22 +1295,39 @@
   </div>
 </footer>
 
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button>
+
 <a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages" aria-label="Chat on WhatsApp" target="_blank">
+  <div class="wa-pulse"></div>
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script>
-  // ── Hamburger
+<!-- PDF generating spinner -->
+<div class="pdf-spinner-overlay" id="pdfSpinner">
+  <div class="pdf-spinner"></div>
+  <div class="pdf-spinner-label">Generating your itinerary PDF…</div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── Hamburger toggle
   const hbg = document.getElementById('hamburger'), mm = document.getElementById('mobileMenu');
-  hbg.addEventListener('click', () => mm.classList.toggle('open'));
-  function closeMenu() { mm.classList.remove('open'); }
-  document.addEventListener('click', e => { if (!hbg.contains(e.target) && !mm.contains(e.target)) mm.classList.remove('open'); });
+  hbg.addEventListener('click', () => {
+    mm.classList.toggle('open');
+    hbg.classList.toggle('open');
+  });
+  function closeMenu() { mm.classList.remove('open'); hbg.classList.remove('open'); }
+  document.addEventListener('click', e => { if (!hbg.contains(e.target) && !mm.contains(e.target)) { mm.classList.remove('open'); hbg.classList.remove('open'); } });
+
+  // ── Scroll to top button
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+  });
 
   // ── Category switcher
   function switchCat(catId) {
     document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t.dataset.cat === catId));
     document.querySelectorAll('.cat-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + catId));
-    // Scroll to top of content area
     const wrap = document.querySelector('.cat-selector-wrap');
     if (wrap) { setTimeout(() => wrap.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); }
   }
@@ -947,9 +1361,7 @@
     if (e.target === document.getElementById('bookingOverlay')) closeBookingSheet();
   }
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeBookingSheet();
-  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBookingSheet(); });
 
   // ── Send package enquiry via WhatsApp
   function sendPackageEnquiry() {
@@ -995,6 +1407,277 @@
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), duration);
   }
+
+  // ══════════════════════════════════════════════════════════
+  // ── PDF ITINERARY GENERATOR
+  // Generates a branded, vibrant, professional itinerary PDF
+  // for each package card using jsPDF (canvas-based).
+  // ══════════════════════════════════════════════════════════
+  function downloadItineraryPDF(btn) {
+    const card      = btn.closest('.pkg-card');
+    const pkgId     = card.dataset.pkg   || 'PKG';
+    const pkgName   = card.querySelector('h3')?.textContent?.trim()   || 'Package';
+    const pkgCat    = card.dataset.cat   || 'Sana On The Go';
+    const pkgDur    = card.querySelector('.pkg-duration-badge')?.textContent?.trim() || '';
+    const pkgPrice  = card.querySelector('.pkg-price')?.textContent?.trim() || '';
+    const pkgDesc   = card.querySelector('.pkg-desc')?.textContent?.trim() || '';
+
+    // Show spinner
+    document.getElementById('pdfSpinner').classList.add('active');
+
+    // Small delay so spinner renders before heavy canvas work
+    setTimeout(() => {
+      try {
+        _generatePDF({ pkgId, pkgName, pkgCat, pkgDur, pkgPrice, pkgDesc });
+      } finally {
+        document.getElementById('pdfSpinner').classList.remove('active');
+      }
+    }, 80);
+  }
+
+  function _generatePDF({ pkgId, pkgName, pkgCat, pkgDur, pkgPrice, pkgDesc }) {
+    // ── Colours & fonts
+    const C = {
+      green:   [26,  61, 43],
+      greenLt: [52, 183, 136],
+      gold:    [201, 168, 76],
+      goldLt:  [232, 201, 122],
+      white:   [255, 255, 255],
+      bg:      [246, 243, 238],
+      text:    [28,  28, 28],
+      muted:   [100, 112, 94],
+      accent1: [61, 139, 98],
+    };
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const W = 210, H = 297;
+
+    // ── Helper: setColor
+    const rgb  = (c) => c;   // already arrays
+    const fill = (c) => doc.setFillColor(...c);
+    const text = (c) => doc.setTextColor(...c);
+    const draw = (c) => doc.setDrawColor(...c);
+
+    // ═══════════════════════════════════════════
+    // HEADER BAND — forest green with diagonal accent
+    // ═══════════════════════════════════════════
+    fill(C.green); doc.rect(0, 0, W, 52, 'F');
+
+    // Diagonal accent stripe (gold)
+    fill(C.gold);
+    doc.triangle(0, 38, 0, 52, 48, 52, 'F');
+
+    // Top-right decorative corner
+    fill(C.accent1);
+    doc.rect(W - 28, 0, 28, 52, 'F');
+    fill(C.greenLt);
+    doc.circle(W - 14, 26, 14, 'F');
+
+    // Brand name
+    text(C.white);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(22);
+    doc.text('SANA ON THE GO', 14, 22);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    text([232, 201, 122]);
+    doc.text('Into The Wild Tour and Travels  ·  Siliguri, West Bengal', 14, 30);
+
+    // Contact top-right (small)
+    text(C.white);
+    doc.setFontSize(7.5);
+    doc.text('+91 98747 40763', W - 14, 10, { align: 'right' });
+    doc.text('sayantikaintothewild@gmail.com', W - 14, 16, { align: 'right' });
+    doc.text('sanaonthego.github.io', W - 14, 22, { align: 'right' });
+
+    // ═══════════════════════════════════════════
+    // GOLD CATEGORY STRIP
+    // ═══════════════════════════════════════════
+    fill(C.gold); doc.rect(0, 52, W, 10, 'F');
+    text(C.green);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.text(pkgCat.toUpperCase() + '  ·  PACKAGE ' + pkgId, W / 2, 58.5, { align: 'center' });
+
+    // ═══════════════════════════════════════════
+    // PACKAGE TITLE BLOCK
+    // ═══════════════════════════════════════════
+    let y = 74;
+    fill(C.bg); doc.rect(0, 62, W, 28, 'F');
+
+    // Duration badge
+    if (pkgDur) {
+      fill(C.greenLt);
+      doc.roundedRect(14, 64, pkgDur.length * 2.2 + 10, 8, 2, 2, 'F');
+      text(C.white);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7);
+      doc.text(pkgDur.toUpperCase(), 19, 69.5);
+    }
+
+    // Package name
+    text(C.green);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(18);
+    const nameLines = doc.splitTextToSize(pkgName, 170);
+    doc.text(nameLines, 14, y);
+    y += nameLines.length * 7 + 4;
+
+    // ═══════════════════════════════════════════
+    // DESCRIPTION SECTION
+    // ═══════════════════════════════════════════
+    fill(C.white); doc.rect(0, y - 2, W, 1, 'F');
+    y += 4;
+
+    // Section header
+    fill(C.green);
+    doc.rect(14, y, 3, 10, 'F');
+    text(C.green);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.text('About This Package', 20, y + 7.5);
+    y += 16;
+
+    text(C.muted);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    const descLines = doc.splitTextToSize(pkgDesc, 180);
+    doc.text(descLines, 14, y);
+    y += descLines.length * 5.5 + 12;
+
+    // ═══════════════════════════════════════════
+    // ITINERARY PLACEHOLDER SECTION
+    // ═══════════════════════════════════════════
+    // Decorative divider
+    draw(C.goldLt); doc.setLineWidth(0.5);
+    doc.line(14, y, W - 14, y);
+    y += 10;
+
+    fill(C.green);
+    doc.rect(14, y, 3, 10, 'F');
+    text(C.green);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.text('Day-by-Day Itinerary', 20, y + 7.5);
+    y += 18;
+
+    // Itinerary placeholder rows
+    const days = [
+      'Day 1  ·  Arrival & Check-in',
+      'Day 2  ·  Exploration & Sightseeing',
+      'Day 3  ·  Local Experiences & Activities',
+      'Day 4  ·  Offbeat Village Trail',
+      'Day 5  ·  Leisure & Departure',
+    ];
+
+    days.forEach((day, i) => {
+      const rowY = y + i * 18;
+      if (rowY > H - 60) return;
+
+      fill(i % 2 === 0 ? C.bg : C.white);
+      doc.rect(14, rowY - 5, W - 28, 16, 'F');
+
+      // Day number circle
+      fill(C.greenLt);
+      doc.circle(21, rowY + 3, 5, 'F');
+      text(C.white);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7);
+      doc.text(String(i + 1), 21, rowY + 5.5, { align: 'center' });
+
+      // Day text
+      text(C.text);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(9.5);
+      doc.text(day, 30, rowY + 2.5);
+
+      text(C.muted);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8.5);
+      doc.text('Details to be filled in by Sana On The Go — contact us to receive full itinerary.', 30, rowY + 8.5);
+    });
+    y += days.length * 18 + 10;
+
+    // ═══════════════════════════════════════════
+    // INCLUDES / EXCLUDES BOX
+    // ═══════════════════════════════════════════
+    if (y < H - 90) {
+      doc.line(14, y, W - 14, y); y += 10;
+      fill(C.green);
+      doc.rect(14, y, 3, 10, 'F');
+      text(C.green);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(11);
+      doc.text('What\'s Typically Included', 20, y + 7.5);
+      y += 16;
+
+      const includes = [
+        '✓  Accommodation (hotels / homestays as per itinerary)',
+        '✓  Meals as specified (breakfast + dinner)',
+        '✓  All transfers & sightseeing by private vehicle',
+        '✓  Experienced local guide',
+        '✓  All applicable permits & entry fees',
+        '✗  Airfare / train tickets to/from NJP or Bagdogra',
+        '✗  Personal expenses & tips',
+      ];
+
+      includes.forEach((item, i) => {
+        const iy = y + i * 7;
+        if (iy > H - 58) return;
+        const isInclude = item.startsWith('✓');
+        text(isInclude ? C.green : [180, 60, 60]);
+        doc.setFont('helvetica', isInclude ? 'normal' : 'normal');
+        doc.setFontSize(9);
+        doc.text(item, 18, iy);
+      });
+      y += includes.length * 7 + 8;
+    }
+
+    // ═══════════════════════════════════════════
+    // PRICE & BOOKING FOOTER BAND
+    // ═══════════════════════════════════════════
+    const footerY = H - 44;
+    fill(C.green); doc.rect(0, footerY, W, 44, 'F');
+    fill(C.gold);  doc.rect(0, footerY, W, 2, 'F');
+
+    // Price
+    if (pkgPrice) {
+      text(C.goldLt);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(9);
+      doc.text('STARTING FROM', 14, footerY + 10);
+      text(C.white);
+      doc.setFontSize(20);
+      doc.text(pkgPrice, 14, footerY + 22);
+    }
+
+    // CTA text
+    text(C.white);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.text('Book Your Trip', W - 14, footerY + 12, { align: 'right' });
+    text([200, 230, 200]);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.text('📱 +91 98747 40763  (WhatsApp / Call)', W - 14, footerY + 20, { align: 'right' });
+    doc.text('✉  sayantikaintothewild@gmail.com', W - 14, footerY + 27, { align: 'right' });
+    doc.text('🌐 sanaonthego.github.io', W - 14, footerY + 34, { align: 'right' });
+
+    // ═══════════════════════════════════════════
+    // DIAGONAL WATERMARK
+    // ═══════════════════════════════════════════
+    doc.setGState(new doc.GState({ opacity: 0.07 }));
+    text([26, 61, 43]);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(52);
+    doc.text('SANA ON THE GO', W / 2, H / 2 + 30, { align: 'center', angle: 45 });
+    doc.setGState(new doc.GState({ opacity: 1 }));
+
+    // ── Save
+    const fileName = `Sana-OnTheGo-${pkgId}-Itinerary.pdf`;
+    doc.save(fileName);
+    showToast(`📄 "${pkgName}" itinerary PDF downloaded!`);
+  }
 </script>
-</body>
-</html>
