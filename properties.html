@@ -11,38 +11,61 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"Sana On The Go – Properties","url":"https://sanaonthego.github.io/properties.html","telephone":"+91-98747-40763","address":{"@type":"PostalAddress","addressLocality":"Siliguri","addressRegion":"West Bengal","addressCountry":"IN"}}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --green:#2d6a4f; --green-lt:#52b788; --green-dk:#1a3d2b;
+      --green:#2d6a4f; --green-lt:#52b788; --green-dk:#1a3d2b; --green-mid:#3d8b62;
       --wa:#25D366; --wa-dk:#1aab55;
       --gold:#c9a84c; --gold-lt:#e8c97a; --gold-dk:#a07830;
-      --bg:#f7f4ef; --text:#1e1e1e; --muted:#666; --radius:12px;
+      --bg:#f6f3ee; --text:#1c1c1c; --muted:#64705e; --radius:14px;
+      --shadow: 0 4px 24px rgba(26,61,43,0.10);
     }
     html { scroll-behavior: smooth; }
-    body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
+    body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.65; overflow-x:hidden; }
 
-    /* NAV */
-    nav { position:sticky; top:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:14px 36px; background:var(--green); box-shadow:0 2px 12px rgba(0,0,0,0.18); }
-    .logo { font-family:'Playfair Display',serif; font-size:1.25rem; color:#fff; text-decoration:none; flex-shrink:0; }
+    /* ── NAV (consistent with packages.html) ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 13px 40px;
+      background: var(--green-dk);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.22);
+    }
+    .logo { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:600; color:#fff; text-decoration:none; letter-spacing:0.3px; }
+    .logo span { color:var(--gold-lt); }
     .nav-links { list-style:none; display:flex; gap:22px; align-items:center; }
-    .nav-links a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:0.88rem; font-weight:500; transition:color 0.2s; white-space:nowrap; }
-    .nav-links a:hover,.nav-links a.active { color:var(--green-lt); }
+    .nav-links a { color:rgba(255,255,255,0.84); text-decoration:none; font-size:0.87rem; font-weight:500; transition:color 0.2s; letter-spacing:0.2px; }
+    .nav-links a:hover { color:var(--gold-lt); }
+    .nav-links a.active { color:var(--gold-lt); border-bottom:2px solid var(--gold-lt); padding-bottom:2px; }
+    .nav-cta { background:var(--wa)!important; color:#fff!important; padding:8px 16px!important; border-radius:50px!important; font-weight:600!important; border-bottom:none!important; transition:background 0.2s,transform 0.2s!important; }
+    .nav-cta:hover { background:var(--wa-dk)!important; transform:translateY(-1px); }
     .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
-    .hamburger span { display:block; width:24px; height:2px; background:#fff; border-radius:2px; }
-    .mobile-menu { display:none; position:fixed; top:58px; left:0; right:0; background:rgba(20,40,30,0.98); backdrop-filter:blur(10px); z-index:99; padding:16px 24px 24px; flex-direction:column; }
+    .hamburger span { display:block; width:24px; height:2px; background:#fff; border-radius:2px; transition:all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+    .mobile-menu {
+      display:none; position:fixed; top:0; left:0; right:0; bottom:0;
+      background:rgba(10,28,18,0.98); backdrop-filter:blur(16px);
+      z-index:99; padding:88px 36px 36px; flex-direction:column;
+    }
     .mobile-menu.open { display:flex; }
-    .mobile-menu a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:1rem; font-weight:500; padding:13px 0; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .mobile-menu a { color:rgba(255,255,255,0.88); text-decoration:none; font-size:1.3rem; font-weight:600; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-family:'Cormorant Garamond',serif; transition:color 0.2s; }
+    .mobile-menu a:hover { color:var(--gold-lt); }
     .mobile-menu a:last-child { border-bottom:none; }
-    .mobile-menu a:hover { color:var(--green-lt); }
+    .mobile-menu a.m-wa { color:var(--wa)!important; font-family:'DM Sans',sans-serif; font-size:1rem; display:flex; align-items:center; gap:8px; margin-top:8px; }
+    .mobile-close { position:absolute; top:22px; right:24px; background:rgba(255,255,255,0.1); border:none; color:#fff; font-size:1.2rem; width:38px; height:38px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s; }
+    .mobile-close:hover { background:rgba(255,255,255,0.2); }
 
     /* PAGE HERO */
-    .page-hero { background:linear-gradient(135deg,#1a3d2b,#2d6a4f); color:#fff; text-align:center; padding:60px 24px 52px; }
-    .page-hero .eyebrow { font-size:0.74rem; letter-spacing:3px; text-transform:uppercase; color:var(--green-lt); margin-bottom:12px; font-weight:600; }
-    .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,5vw,3rem); margin-bottom:12px; }
-    .page-hero p { font-size:0.97rem; color:rgba(255,255,255,0.74); max-width:500px; margin:0 auto; }
+    .page-hero { background:linear-gradient(135deg,#1a3d2b,#2d6a4f,#3d8b62); color:#fff; text-align:center; padding:72px 24px 56px; position:relative; overflow:hidden; }
+    .page-hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(to right,transparent,var(--gold),transparent); }
+    .page-hero .eyebrow { position:relative; display:inline-flex; align-items:center; gap:10px; font-size:0.7rem; letter-spacing:3.5px; text-transform:uppercase; color:var(--gold-lt); margin-bottom:14px; font-weight:600; }
+    .page-hero .eyebrow::before, .page-hero .eyebrow::after { content:''; display:block; width:28px; height:1px; background:var(--gold-lt); opacity:0.6; }
+    .page-hero h1 { position:relative; font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,5vw,3.5rem); font-weight:700; margin-bottom:10px; }
+    .page-hero p { position:relative; font-size:0.96rem; color:rgba(255,255,255,0.72); max-width:520px; margin:0 auto; }
 
     /* CONTAINER */
     .container { max-width:1060px; margin:0 auto; padding:0 20px; }
@@ -50,49 +73,39 @@
     /* STEP INDICATOR */
     .steps { display:flex; align-items:center; justify-content:center; gap:0; padding:28px 24px 0; flex-wrap:wrap; }
     .step { display:flex; align-items:center; gap:8px; font-size:0.82rem; color:var(--muted); font-weight:500; }
-    .step .num { width:26px; height:26px; border-radius:50%; border:2px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#ccc; transition:all 0.3s; }
+    .step .num { width:28px; height:28px; border-radius:50%; border:2px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#ccc; transition:all 0.3s; }
     .step.active .num { background:var(--green); border-color:var(--green); color:#fff; }
     .step.active { color:var(--green); }
     .step.done .num { background:var(--green-lt); border-color:var(--green-lt); color:#fff; }
-    .step-line { width:40px; height:2px; background:#ddd; margin:0 4px; }
+    .step-line { width:40px; height:2px; background:#ddd; margin:0 6px; }
     .step-line.done { background:var(--green-lt); }
 
     /* SECTION TITLE */
-    .sec-title { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--green); margin-bottom:6px; }
+    .sec-title { font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--green); margin-bottom:6px; }
     .sec-sub { color:var(--muted); font-size:0.9rem; margin-bottom:28px; }
 
     /* STEP 1: LOCATION GRID */
     #step1 { padding:36px 0 60px; }
     .loc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
-    .loc-card { background:#fff; border:2px solid #e8e2d9; border-radius:var(--radius); padding:18px 14px; text-align:center; cursor:pointer; transition:all 0.2s; user-select:none; }
-    .loc-card:hover { border-color:var(--green); transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,0.1); }
+    .loc-card { background:#fff; border:2px solid #e8e2d9; border-radius:var(--radius); padding:20px 14px; text-align:center; cursor:pointer; transition:all 0.2s; user-select:none; }
+    .loc-card:hover { border-color:var(--green); transform:translateY(-3px); box-shadow:var(--shadow); }
     .loc-card.selected { border-color:var(--green); background:#eaf5ee; }
-    .loc-card .loc-icon { font-size:1.8rem; margin-bottom:8px; display:block; }
-    .loc-card .loc-name { font-weight:600; font-size:0.88rem; color:var(--text); display:block; margin-bottom:3px; }
+    .loc-card .loc-icon { font-size:1.9rem; margin-bottom:8px; display:block; }
+    .loc-card .loc-name { font-weight:700; font-size:0.9rem; color:var(--text); display:block; margin-bottom:2px; }
     .loc-card .loc-region { font-size:0.72rem; color:var(--muted); }
-    /* Property count badge on loc card */
-    .loc-card .loc-count { font-size:0.68rem; color:var(--green); font-weight:700; margin-top:4px; display:block; }
+    .loc-card .loc-count { font-size:0.68rem; color:var(--green); font-weight:700; margin-top:5px; display:block; }
 
     /* STEP 2: PROPERTIES */
     #step2 { display:none; padding:36px 0 60px; }
-    .back-btn { display:inline-flex; align-items:center; gap:6px; color:var(--green); font-weight:600; font-size:0.88rem; cursor:pointer; margin-bottom:20px; background:none; border:none; font-family:'DM Sans',sans-serif; }
+    .back-btn { display:inline-flex; align-items:center; gap:6px; color:var(--green); font-weight:600; font-size:0.88rem; cursor:pointer; margin-bottom:22px; background:none; border:none; font-family:'DM Sans',sans-serif; }
     .back-btn:hover { text-decoration:underline; }
 
-    /* ── FILTER BAR ── */
-    .filter-bar {
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      background:#fff; border:1px solid #e8e2d9; border-radius:var(--radius);
-      padding:14px 18px; margin-bottom:24px;
-    }
-    .filter-label { font-size:0.75rem; font-weight:700; color:var(--green); letter-spacing:0.5px; text-transform:uppercase; flex-shrink:0; }
+    /* FILTER BAR */
+    .filter-bar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:#fff; border:1px solid #e8e2d9; border-radius:var(--radius); padding:14px 18px; margin-bottom:24px; }
+    .filter-label { font-size:0.72rem; font-weight:700; color:var(--green); letter-spacing:0.5px; text-transform:uppercase; flex-shrink:0; }
     .filter-divider { width:1px; height:20px; background:#e0dbd2; flex-shrink:0; }
     .filter-group { display:flex; gap:7px; flex-wrap:wrap; align-items:center; }
-    .filter-chip {
-      display:inline-flex; align-items:center; gap:5px;
-      padding:5px 13px; border-radius:50px; font-size:0.79rem; font-weight:600;
-      border:1.5px solid #d4cfc7; color:var(--muted); background:#fff;
-      cursor:pointer; transition:all 0.18s; user-select:none;
-    }
+    .filter-chip { display:inline-flex; align-items:center; gap:5px; padding:5px 13px; border-radius:50px; font-size:0.79rem; font-weight:600; border:1.5px solid #d4cfc7; color:var(--muted); background:#fff; cursor:pointer; transition:all 0.18s; user-select:none; }
     .filter-chip:hover { border-color:var(--green); color:var(--green); }
     .filter-chip.active { background:var(--green); border-color:var(--green); color:#fff; }
     .filter-chip.price-active { background:var(--gold-dk); border-color:var(--gold-dk); color:#fff; }
@@ -101,27 +114,27 @@
     .filter-results-count { font-size:0.82rem; color:var(--muted); padding:6px 0 0; width:100%; }
 
     .prop-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px; }
-    .prop-card { background:#fff; border-radius:var(--radius); border:1px solid #e8e2d9; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.06); transition:transform 0.2s,box-shadow 0.2s; }
-    .prop-card:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(0,0,0,0.12); }
+    .prop-card { background:#fff; border-radius:var(--radius); border:1px solid #e8e2d9; overflow:hidden; box-shadow:var(--shadow); transition:transform 0.2s,box-shadow 0.2s; }
+    .prop-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,0.13); }
     .prop-imgs { display:grid; grid-template-columns:1fr 1fr; height:160px; gap:2px; overflow:hidden; position:relative; }
     .prop-imgs img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.3s; }
     .prop-imgs:hover img { transform:scale(1.04); }
     .prop-img-ph { background:linear-gradient(135deg,#1a3d2b,#2d6a4f); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:4px; }
     .prop-img-ph span { color:rgba(255,255,255,0.5); font-size:0.7rem; text-align:center; padding:0 6px; }
     .prop-img-ph .ph-i { font-size:1.4rem; }
-    .prop-type-badge { position:absolute; top:10px; left:10px; background:rgba(26,61,43,0.85); color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 9px; border-radius:20px; z-index:1; }
+    .prop-type-badge { position:absolute; top:10px; left:10px; background:rgba(26,61,43,0.88); color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:4px 10px; border-radius:20px; z-index:1; }
     .prop-body { padding:18px; }
-    .prop-name { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--text); margin-bottom:4px; }
+    .prop-name { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--text); margin-bottom:4px; }
     .prop-loc { font-size:0.8rem; color:var(--muted); margin-bottom:10px; display:flex; align-items:center; gap:4px; }
     .prop-loc svg { width:13px; height:13px; fill:var(--green-lt); }
     .prop-amenities { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px; }
     .amenity { font-size:0.7rem; background:#f0f0ea; color:#555; padding:3px 8px; border-radius:20px; }
     .prop-price { font-size:0.95rem; font-weight:700; color:var(--gold-dk); margin-bottom:14px; }
     .prop-price span { font-size:0.78rem; font-weight:400; color:var(--muted); }
-    .btn-book { display:block; width:100%; background:var(--green); color:#fff; border:none; padding:11px; border-radius:8px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:0.9rem; cursor:pointer; transition:background 0.2s; }
+    .btn-book { display:block; width:100%; background:var(--green); color:#fff; border:none; padding:11px; border-radius:9px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:0.9rem; cursor:pointer; transition:background 0.2s; }
     .btn-book:hover { background:var(--green-dk); }
 
-    /* No results state */
+    /* NO RESULTS */
     .no-results { grid-column:1/-1; text-align:center; padding:56px 24px; color:var(--muted); }
     .no-results .nr-icon { font-size:2.5rem; margin-bottom:12px; display:block; }
     .no-results p { font-size:0.9rem; }
@@ -129,11 +142,11 @@
     /* BOOKING MODAL */
     .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:500; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(4px); }
     .modal-overlay.open { display:flex; }
-    .modal { background:#fff; border-radius:16px; max-width:480px; width:100%; max-height:92vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
-    .modal-header { background:var(--green); color:#fff; padding:22px 24px 18px; border-radius:16px 16px 0 0; position:relative; }
-    .modal-header h3 { font-family:'Playfair Display',serif; font-size:1.25rem; margin-bottom:3px; }
-    .modal-header p { font-size:0.83rem; color:rgba(255,255,255,0.75); }
-    .modal-close { position:absolute; top:16px; right:18px; background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:1.2rem; width:30px; height:30px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+    .modal { background:#fff; border-radius:18px; max-width:480px; width:100%; max-height:92vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+    .modal-header { background:var(--green); color:#fff; padding:22px 24px 18px; border-radius:18px 18px 0 0; position:relative; }
+    .modal-header h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; margin-bottom:3px; }
+    .modal-header p { font-size:0.83rem; color:rgba(255,255,255,0.72); }
+    .modal-close { position:absolute; top:16px; right:18px; background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:1.1rem; width:32px; height:32px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s; }
     .modal-close:hover { background:rgba(255,255,255,0.3); }
     .modal-prop-preview { display:grid; grid-template-columns:90px 1fr; gap:14px; align-items:center; background:#f7f4ef; padding:14px 20px; border-bottom:1px solid #e8e2d9; }
     .modal-prop-preview img { width:90px; height:60px; object-fit:cover; border-radius:8px; }
@@ -145,9 +158,9 @@
     .mform-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
     .mform-group { display:flex; flex-direction:column; gap:5px; }
     .mform-group.full { grid-column:1/-1; }
-    .mform-group label { font-size:0.72rem; font-weight:600; color:var(--green); letter-spacing:0.5px; text-transform:uppercase; }
-    .mform-group input,.mform-group select,.mform-group textarea { padding:10px 13px; border:1.5px solid #d4cfc7; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); background:var(--bg); transition:border-color 0.2s; width:100%; }
-    .mform-group input:focus,.mform-group select:focus,.mform-group textarea:focus { outline:none; border-color:var(--green); }
+    .mform-group label { font-size:0.71rem; font-weight:700; color:var(--green); letter-spacing:0.5px; text-transform:uppercase; }
+    .mform-group input,.mform-group select,.mform-group textarea { padding:10px 13px; border:1.5px solid #d4cfc7; border-radius:9px; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); background:var(--bg); transition:border-color 0.2s,box-shadow 0.2s; width:100%; }
+    .mform-group input:focus,.mform-group select:focus,.mform-group textarea:focus { outline:none; border-color:var(--green); box-shadow:0 0 0 3px rgba(45,106,79,0.1); }
     .mform-group input.error { border-color:#e53e3e; }
     .mform-group textarea { resize:vertical; min-height:64px; }
     .field-error { font-size:0.73rem; color:#e53e3e; margin-top:2px; display:none; }
@@ -157,42 +170,51 @@
     .btn-wa-modal svg { width:20px; height:20px; fill:#fff; flex-shrink:0; }
     .modal-note { font-size:0.75rem; color:var(--muted); text-align:center; margin-top:10px; }
 
+    /* TOAST */
+    .toast { position:fixed; bottom:90px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--green-dk); color:#fff; padding:14px 24px; border-radius:50px; font-size:0.9rem; font-weight:600; display:flex; align-items:center; gap:10px; box-shadow:0 8px 32px rgba(0,0,0,0.25); opacity:0; pointer-events:none; transition:opacity 0.3s,transform 0.3s; z-index:1000; white-space:nowrap; }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto; }
+
+    /* FLOATING WA + pulse + scroll-top */
+    .wa-float { position:fixed; bottom:28px; right:28px; z-index:200; background:var(--wa); width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,0.45); text-decoration:none; transition:transform 0.2s; }
+    .wa-float:hover { transform:scale(1.1); }
+    .wa-float svg { width:28px; height:28px; fill:#fff; position:relative; z-index:1; }
+    .wa-pulse { position:absolute; width:56px; height:56px; border-radius:50%; background:var(--wa); animation:pulse-ring 2.2s ease infinite; }
+    @keyframes pulse-ring { 0% { transform:scale(1); opacity:0.6; } 100% { transform:scale(1.65); opacity:0; } }
+    .scroll-top { position:fixed; bottom:98px; right:28px; z-index:200; width:42px; height:42px; border-radius:50%; background:var(--green-dk); border:2px solid rgba(255,255,255,0.15); color:#fff; font-size:1.1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.3s,transform 0.3s; box-shadow:0 4px 16px rgba(0,0,0,0.2); }
+    .scroll-top.visible { opacity:1; pointer-events:auto; }
+    .scroll-top:hover { background:var(--green); transform:translateY(-2px); }
+
     /* FOOTER */
-    footer { background:#111e18; color:rgba(255,255,255,0.85); }
-    .footer-inner { max-width:900px; margin:0 auto; padding:56px 24px 36px; }
-    .footer-top { display:grid; grid-template-columns:1.1fr 1fr; gap:48px; margin-bottom:40px; }
-    .footer-brand h2 { font-family:'Playfair Display',serif; font-size:1.5rem; color:#fff; margin-bottom:8px; }
-    .footer-brand p { font-size:0.88rem; color:rgba(255,255,255,0.5); line-height:1.75; margin-bottom:18px; }
+    footer { background:#0d1a10; color:rgba(255,255,255,0.82); }
+    .footer-inner { max-width:960px; margin:0 auto; padding:56px 24px 32px; }
+    .footer-top { display:grid; grid-template-columns:1.2fr 1fr; gap:52px; margin-bottom:40px; }
+    .footer-brand h2 { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:700; color:#fff; margin-bottom:10px; }
+    .footer-brand h2 span { color:var(--gold-lt); }
+    .footer-brand p { font-size:0.87rem; color:rgba(255,255,255,0.46); line-height:1.8; margin-bottom:20px; }
     .footer-social { display:flex; gap:10px; }
     .f-soc { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; transition:transform 0.2s; }
     .f-soc:hover { transform:translateY(-3px); }
     .f-soc.insta { background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
     .f-soc.fb { background:#1877f2; } .f-soc.wa { background:var(--wa); }
     .f-soc svg { width:17px; height:17px; fill:#fff; }
-    .footer-contact h3 { font-size:0.78rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green-lt); margin-bottom:18px; }
+    .footer-contact h3 { font-size:0.74rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green-lt); margin-bottom:18px; }
     .contact-row { display:flex; align-items:flex-start; gap:11px; margin-bottom:14px; }
-    .ci { width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .ci svg { width:15px; height:15px; }
-    .ci.phone { background:rgba(37,211,102,0.15); } .ci.phone svg { fill:var(--wa); }
-    .ci.email { background:rgba(234,67,53,0.15); } .ci.email svg { fill:#ea4335; }
-    .ci.ci-insta { background:rgba(188,24,136,0.15); } .ci.ci-insta svg { fill:#bc1888; }
-    .ci.ci-fb { background:rgba(24,119,242,0.15); } .ci.ci-fb svg { fill:#1877f2; }
-    .ci.map { background:rgba(82,183,136,0.15); } .ci.map svg { fill:var(--green-lt); }
-    .ct { font-size:0.88rem; color:rgba(255,255,255,0.72); line-height:1.55; }
-    .ct a { color:rgba(255,255,255,0.86); text-decoration:none; }
+    .ci { width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .ci svg { width:14px; height:14px; }
+    .ci.phone { background:rgba(37,211,102,0.14); } .ci.phone svg { fill:var(--wa); }
+    .ci.email { background:rgba(234,67,53,0.14); } .ci.email svg { fill:#ea4335; }
+    .ci.ci-insta { background:rgba(188,24,136,0.14); } .ci.ci-insta svg { fill:#bc1888; }
+    .ci.map { background:rgba(82,183,136,0.14); } .ci.map svg { fill:var(--green-lt); }
+    .ct { font-size:0.87rem; color:rgba(255,255,255,0.67); line-height:1.55; }
+    .ct a { color:rgba(255,255,255,0.84); text-decoration:none; }
     .ct a:hover { color:var(--green-lt); }
-    .ct .cl { font-size:0.68rem; color:rgba(255,255,255,0.38); display:block; margin-bottom:2px; letter-spacing:0.5px; text-transform:uppercase; }
-    .office-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:9px; padding:12px 14px; font-size:0.83rem; color:rgba(255,255,255,0.62); line-height:1.65; }
-    .office-box strong { display:block; color:rgba(255,255,255,0.86); font-size:0.86rem; margin-bottom:4px; }
-    .map-wrap { border-radius:var(--radius); overflow:hidden; margin-bottom:36px; }
-    .map-wrap iframe { width:100%; height:240px; border:0; display:block; }
-    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:22px; display:flex; justify-content:space-between; align-items:center; font-size:0.8rem; color:rgba(255,255,255,0.32); flex-wrap:wrap; gap:10px; }
+    .ct .cl { font-size:0.66rem; color:rgba(255,255,255,0.34); display:block; margin-bottom:2px; text-transform:uppercase; letter-spacing:0.5px; }
+    .office-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.09); border-radius:9px; padding:11px 13px; font-size:0.82rem; color:rgba(255,255,255,0.57); line-height:1.65; }
+    .office-box strong { display:block; color:rgba(255,255,255,0.84); font-size:0.85rem; margin-bottom:4px; }
+    .map-wrap { border-radius:var(--radius); overflow:hidden; margin-bottom:36px; box-shadow:0 4px 20px rgba(0,0,0,0.3); }
+    .map-wrap iframe { width:100%; height:230px; border:0; display:block; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:20px; display:flex; justify-content:space-between; align-items:center; font-size:0.79rem; color:rgba(255,255,255,0.28); flex-wrap:wrap; gap:10px; }
     .footer-bottom a { color:var(--green-lt); text-decoration:none; }
-
-    /* WA FLOAT */
-    .wa-float { position:fixed; bottom:26px; right:26px; z-index:200; background:var(--wa); width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(37,211,102,0.42); text-decoration:none; transition:transform 0.2s; }
-    .wa-float:hover { transform:scale(1.1); }
-    .wa-float svg { width:27px; height:27px; fill:#fff; }
 
     /* RESPONSIVE */
     @media(max-width:768px){
@@ -208,8 +230,11 @@
 </head>
 <body>
 
-<nav>
-  <a class="logo" href="index.html">Sana On The Go</a>
+<div class="toast" id="toast"><span>✅</span><span id="toastMsg">Sent!</span></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="logo" href="index.html">Sana <span>On The Go</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#booking">Quick Enquiry</a></li>
@@ -218,34 +243,38 @@
     <li><a href="index.html#why-us">Why Us</a></li>
     <li><a href="index.html#gallery">Gallery</a></li>
     <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties" class="nav-cta" target="_blank">WhatsApp Us</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMenu()" aria-label="Close menu">✕</button>
   <a href="index.html" onclick="closeMenu()">Home</a>
-  <a href="index.html#booking" onclick="closeMenu()">Quick Enquiry</a>
   <a href="packages.html" onclick="closeMenu()">Packages</a>
   <a href="properties.html" onclick="closeMenu()">Properties</a>
   <a href="index.html#why-us" onclick="closeMenu()">Why Us</a>
   <a href="index.html#gallery" onclick="closeMenu()">Gallery</a>
   <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+  <a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties" class="m-wa" target="_blank">💬 WhatsApp Us</a>
 </div>
 
+<!-- PAGE HERO -->
 <div class="page-hero">
   <p class="eyebrow">Handpicked Stays</p>
   <h1>Browse Properties</h1>
   <p>Hotels, resorts and homestays across North Bengal &amp; Sikkim — curated by local experts.</p>
 </div>
 
+<!-- STEP INDICATOR -->
 <div class="steps" id="stepIndicator">
-  <div class="step active" id="s1ind"><span class="num">1</span> Choose Location</div>
+  <div class="step active" id="s1ind"><span class="num">1</span>&nbsp;Choose Location</div>
   <div class="step-line" id="sl1"></div>
-  <div class="step" id="s2ind"><span class="num">2</span> Filter &amp; View</div>
+  <div class="step" id="s2ind"><span class="num">2</span>&nbsp;Filter &amp; View</div>
   <div class="step-line" id="sl2"></div>
-  <div class="step" id="s3ind"><span class="num">3</span> Send Enquiry</div>
+  <div class="step" id="s3ind"><span class="num">3</span>&nbsp;Send Enquiry</div>
 </div>
 
-<!-- STEP 1 -->
+<!-- STEP 1: CHOOSE LOCATION -->
 <section id="step1">
   <div class="container">
     <h2 class="sec-title">Where do you want to stay?</h2>
@@ -254,28 +283,25 @@
   </div>
 </section>
 
-<!-- STEP 2 -->
+<!-- STEP 2: FILTER & VIEW PROPERTIES -->
 <section id="step2">
   <div class="container">
     <button class="back-btn" onclick="goBack()">← Back to Locations</button>
     <h2 class="sec-title" id="propHeading">Properties</h2>
     <p class="sec-sub" id="propSub"></p>
 
-    <!-- ── FILTER BAR ── -->
     <div class="filter-bar" id="filterBar">
       <span class="filter-label">Filter</span>
       <div class="filter-divider"></div>
-      <div class="filter-group" id="typeFilters">
-        <!-- populated by JS -->
-      </div>
+      <div class="filter-group" id="typeFilters"></div>
       <div class="filter-divider"></div>
       <div class="filter-group" id="priceFilters">
         <button class="filter-chip" data-price="budget" onclick="togglePriceFilter('budget')">💰 Budget (&lt;₹1,500)</button>
-        <button class="filter-chip" data-price="mid" onclick="togglePriceFilter('mid')">🏷️ Mid (₹1,500–₹3,000)</button>
+        <button class="filter-chip" data-price="mid"    onclick="togglePriceFilter('mid')">🏷️ Mid (₹1,500–₹3,000)</button>
         <button class="filter-chip" data-price="luxury" onclick="togglePriceFilter('luxury')">✨ Luxury (&gt;₹3,000)</button>
       </div>
       <button class="filter-reset" onclick="resetFilters()">Reset filters</button>
-      <div class="filter-results-count" id="filterCount"></div>
+      <p class="filter-results-count" id="filterCount"></p>
     </div>
 
     <div class="prop-grid" id="propGrid"></div>
@@ -283,73 +309,75 @@
 </section>
 
 <!-- BOOKING MODAL -->
-<div class="modal-overlay" id="bookModal">
+<div class="modal-overlay" id="propModal" onclick="closePropModal(event)">
   <div class="modal">
     <div class="modal-header">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <h3 id="modalTitle">Book Your Stay</h3>
-      <p id="modalSub">Fill details — we'll confirm via WhatsApp</p>
+      <h3>Enquire About This Property</h3>
+      <p>We'll send you availability and pricing via WhatsApp</p>
+      <button class="modal-close" onclick="closePropModalBtn()">✕</button>
     </div>
-    <div class="modal-prop-preview" id="modalPreview"></div>
+    <div class="modal-prop-preview" id="modalPropPreview">
+      <div class="ph">🏡</div>
+      <div>
+        <div class="mpname" id="modalPropName">Property Name</div>
+        <div class="mploc" id="modalPropLoc">Location</div>
+        <div class="mpprice" id="modalPropPrice">Price</div>
+      </div>
+    </div>
     <div class="modal-body">
       <div class="mform-row">
         <div class="mform-group">
           <label>Check-in Date</label>
-          <input type="date" id="mCheckin" oninput="validateDates()">
-          <span class="field-error" id="checkinErr">Please select a check-in date.</span>
+          <input type="date" id="m-checkin">
+          <span class="field-error" id="e-checkin">Please select check-in date</span>
         </div>
         <div class="mform-group">
           <label>Check-out Date</label>
-          <input type="date" id="mCheckout" oninput="validateDates()">
-          <span class="field-error" id="checkoutErr">Check-out must be after check-in.</span>
+          <input type="date" id="m-checkout">
+          <span class="field-error" id="e-checkout">Check-out must be after check-in</span>
         </div>
       </div>
       <div class="mform-row">
+        <div class="mform-group">
+          <label>No. of Guests</label>
+          <select id="m-guests">
+            <option value="">Select</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8+</option>
+          </select>
+          <span class="field-error" id="e-guests">Please select guests</span>
+        </div>
         <div class="mform-group">
           <label>No. of Rooms</label>
-          <select id="mRooms">
+          <select id="m-rooms">
             <option value="">Select</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
           </select>
-        </div>
-        <div class="mform-group">
-          <label>No. of Persons</label>
-          <select id="mPersons">
-            <option value="">Select</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-            <option>6</option><option>7</option><option>8</option><option>9</option><option>10+</option>
-          </select>
+          <span class="field-error" id="e-rooms">Please select rooms</span>
         </div>
       </div>
       <div class="mform-row">
         <div class="mform-group full">
-          <label>Your Name</label>
-          <input type="text" id="mName" placeholder="Full name">
-          <span class="field-error" id="nameErr">Please enter your name.</span>
+          <label>Any special requests? (optional)</label>
+          <textarea id="m-notes" placeholder="E.g. mountain view room, anniversary, dietary requirements…"></textarea>
         </div>
       </div>
-      <div class="mform-row">
-        <div class="mform-group full">
-          <label>Special Requests (optional)</label>
-          <textarea id="mNote" placeholder="Any dietary needs, extra beds, special occasions..."></textarea>
-        </div>
-      </div>
-      <button class="btn-wa-modal" onclick="sendPropertyWA()">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Send Booking Enquiry via WhatsApp
+      <button class="btn-wa-modal" onclick="sendPropEnquiry()">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Send Enquiry via WhatsApp
       </button>
-      <p class="modal-note">We typically reply within 2–4 hours. No payment required at this stage.</p>
+      <p class="modal-note">Opens WhatsApp with your details — we reply within a few hours 🙂</p>
     </div>
   </div>
 </div>
 
-<!-- FOOTER — full version matching index.html -->
-<footer id="contact">
+<!-- FOOTER -->
+<footer>
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <h2>Sana On The Go</h2>
-        <p>Based in Siliguri, North Bengal — we craft unforgettable journeys through Darjeeling, Kalimpong, and the hidden corners of Sikkim. Every trip is personal.</p>
+        <h2>Sana <span>On The Go</span></h2>
+        <p>Based in Siliguri, North Bengal — we curate handpicked stays and craft unforgettable journeys through Darjeeling, Kalimpong, Sikkim and the hidden Himalayas.</p>
         <div class="footer-social">
           <a class="f-soc insta" href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener" title="Instagram">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -367,318 +395,279 @@
         <div class="contact-row"><div class="ci phone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><div class="ct"><span class="cl">Call / WhatsApp</span><a href="tel:+919874740763">+91 98747 40763</a></div></div>
         <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div></div>
         <div class="contact-row"><div class="ci ci-insta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div><div class="ct"><span class="cl">Instagram</span><a href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener">@sana.onthe.go</a></div></div>
-        <div class="contact-row"><div class="ci ci-fb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div><div class="ct"><span class="cl">Facebook</span><a href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" rel="noopener">Sana On The Go</a></div></div>
-        <div class="contact-row"><div class="ci map"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="ct"><span class="cl">Office</span><div class="office-box"><strong>Into The Wild Tour and Travels</strong>100/A/3/L, Rabindra Nagar Main Road<br>P.S: Siliguri, Dist: Darjeeling<br>West Bengal &ndash; 734006</div></div></div>
+        <div class="contact-row"><div class="ci map"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="ct"><span class="cl">Office</span><div class="office-box"><strong>Into The Wild Tour and Travels</strong>100/A/3/L, Rabindra Nagar Main Road<br>P.S: Siliguri, Dist: Darjeeling<br>West Bengal – 734006</div></div></div>
       </div>
     </div>
     <div class="map-wrap">
       <iframe src="https://www.google.com/maps?q=Siliguri+West+Bengal+India&output=embed" loading="lazy" allowfullscreen title="Office location"></iframe>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</span>
-      <a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties">WhatsApp Enquiry &rarr;</a>
+      <span>© 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</span>
+      <a href="index.html">← Back to Home</a>
     </div>
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties" aria-label="Chat on WhatsApp">
+<!-- Scroll to top -->
+<button class="scroll-top" id="scrollTopProp" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button>
+
+<!-- Floating WA with pulse -->
+<a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties" aria-label="Chat on WhatsApp" target="_blank">
+  <div class="wa-pulse"></div>
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
-const LOCATIONS=[
-  {id:'darjeeling',name:'Darjeeling',icon:'🍵',region:'West Bengal'},
-  {id:'kalimpong',name:'Kalimpong',icon:'🌸',region:'West Bengal'},
-  {id:'kurseong',name:'Kurseong',icon:'🌿',region:'West Bengal'},
-  {id:'mirik',name:'Mirik',icon:'🏞️',region:'West Bengal'},
-  {id:'siliguri',name:'Siliguri',icon:'🏙️',region:'West Bengal'},
-  {id:'dooars',name:'Dooars',icon:'🐘',region:'West Bengal'},
-  {id:'lataguri',name:'Lataguri',icon:'🌳',region:'West Bengal'},
-  {id:'jaldapara',name:'Jaldapara',icon:'🦏',region:'West Bengal'},
-  {id:'gangtok',name:'Gangtok',icon:'🏔️',region:'Sikkim'},
-  {id:'pelling',name:'Pelling',icon:'🌄',region:'Sikkim'},
-  {id:'lachung',name:'Lachung',icon:'❄️',region:'Sikkim'},
-  {id:'namchi',name:'Namchi',icon:'🛕',region:'Sikkim'},
-  {id:'ravangla',name:'Ravangla',icon:'🌅',region:'Sikkim'},
-  {id:'yuksom',name:'Yuksom',icon:'🥾',region:'Sikkim'},
-  {id:'zuluk',name:'Zuluk',icon:'🛤️',region:'Sikkim'},
-  {id:'lava',name:'Lava',icon:'🌲',region:'West Bengal'},
-  {id:'lolegaon',name:'Lolegaon',icon:'🏡',region:'West Bengal'},
-  {id:'rishyap',name:'Rishyap',icon:'🌌',region:'West Bengal'},
-];
+  // ── Nav & mobile menu
+  const hbg = document.getElementById('hamburger'), mm = document.getElementById('mobileMenu');
+  hbg.addEventListener('click', () => { mm.classList.toggle('open'); hbg.classList.toggle('open'); });
+  function closeMenu() { mm.classList.remove('open'); hbg.classList.remove('open'); }
+  document.addEventListener('click', e => { if (!hbg.contains(e.target) && !mm.contains(e.target)) { mm.classList.remove('open'); hbg.classList.remove('open'); } });
 
-const PROPERTIES=[
-  {id:'darj-01',locationId:'darjeeling',name:'Cedar Inn',type:'Hotel',price:1800,desc:'A heritage colonial bungalow overlooking the Kanchenjunga range, walking distance from Mall Road.',amenities:['Mountain View','Breakfast Included','WiFi','Hot Water'],img1:'images/properties/darjeeling-cedarinn-1.jpg',img2:'images/properties/darjeeling-cedarinn-2.jpg'},
-  {id:'darj-02',locationId:'darjeeling',name:'Sunrise Homestay',type:'Homestay',price:1200,desc:'Family-run homestay with home-cooked Nepali and Bengali meals, panoramic garden views.',amenities:['Home-cooked Meals','Garden','Heater','Local Guide'],img1:'images/properties/darjeeling-sunrise-1.jpg',img2:'images/properties/darjeeling-sunrise-2.jpg'},
-  {id:'darj-03',locationId:'darjeeling',name:'Windamere Hotel',type:'Hotel',price:3500,desc:'Iconic heritage hotel with old-world charm, fireside lounges and impeccable service since 1939.',amenities:['Heritage Property','Fireplace','Dining Hall','Bar'],img1:'images/properties/darjeeling-windamere-1.jpg',img2:'images/properties/darjeeling-windamere-2.jpg'},
-  {id:'kalim-01',locationId:'kalimpong',name:'Morgan House',type:'Resort',price:2200,desc:'Colonial-era bungalow set amidst orchards with sweeping views of the Teesta valley.',amenities:['Valley View','Orchard Walk','Breakfast','Parking'],img1:'images/properties/kalimpong-morgan-1.jpg',img2:'images/properties/kalimpong-morgan-2.jpg'},
-  {id:'kalim-02',locationId:'kalimpong',name:'Himalayan Hotel',type:'Hotel',price:2800,desc:'Elegant boutique hotel with beautiful gardens and personalised service in the heart of Kalimpong.',amenities:['Garden','Restaurant','WiFi','Room Service'],img1:'images/properties/kalimpong-himalayan-1.jpg',img2:'images/properties/kalimpong-himalayan-2.jpg'},
-  {id:'kurs-01',locationId:'kurseong',name:'Cochrane Place',type:'Resort',price:3200,desc:'Award-winning boutique resort inside a 1920s heritage building surrounded by tea estates.',amenities:['Tea Garden','Pool','Spa','Restaurant','Heritage'],img1:'images/properties/kurseong-cochrane-1.jpg',img2:'images/properties/kurseong-cochrane-2.jpg'},
-  {id:'kurs-02',locationId:'kurseong',name:'Tea Bungalow Homestay',type:'Homestay',price:1400,desc:'Cozy rooms inside a working tea estate with daily tea tasting and organic farm meals.',amenities:['Tea Tasting','Organic Meals','Nature Walk','Heater'],img1:'images/properties/kurseong-teabungalow-1.jpg',img2:'images/properties/kurseong-teabungalow-2.jpg'},
-  {id:'gang-01',locationId:'gangtok',name:'Elgin Nor-Khill',type:'Hotel',price:4200,desc:'Sikkim\'s most iconic heritage hotel with stunning Kanchenjunga views.',amenities:['Kanchenjunga View','Heritage','Restaurant','Spa','WiFi'],img1:'images/properties/gangtok-elgin-1.jpg',img2:'images/properties/gangtok-elgin-2.jpg'},
-  {id:'gang-02',locationId:'gangtok',name:'Sikkim Homestay',type:'Homestay',price:1100,desc:'Warm Nepali family homestay near MG Marg with home-cooked meals and local sightseeing tips.',amenities:['Home-cooked Meals','MG Marg Access','WiFi','Heater'],img1:'images/properties/gangtok-homestay-1.jpg',img2:'images/properties/gangtok-homestay-2.jpg'},
-  {id:'pell-01',locationId:'pelling',name:'Norbu Ghang Resort',type:'Resort',price:3800,desc:'Spectacular resort with unobstructed views of Kanchenjunga. Infinity pool, spa and gourmet dining.',amenities:['Infinity Pool','Kanchenjunga View','Spa','Restaurant','Balcony'],img1:'images/properties/pelling-norbu-1.jpg',img2:'images/properties/pelling-norbu-2.jpg'},
-  {id:'pell-02',locationId:'pelling',name:'Mountain Dew Homestay',type:'Homestay',price:1300,desc:'Simple, clean homestay with stunning sunrise views over the Himalayan range.',amenities:['Sunrise View','Balcony','Home-cooked Meals','Quiet'],img1:'images/properties/pelling-mountaindew-1.jpg',img2:'images/properties/pelling-mountaindew-2.jpg'},
-  {id:'lach-01',locationId:'lachung',name:'Lachung Alpine Resort',type:'Resort',price:2600,desc:'Cozy mountain resort at 8,600 ft with river views, perfect base for Yumthang Valley.',amenities:['River View','Bonfire','Hot Water','Restaurant','Alpine Setting'],img1:'images/properties/lachung-alpine-1.jpg',img2:'images/properties/lachung-alpine-2.jpg'},
-  {id:'door-01',locationId:'dooars',name:'Jungle Camp Dooars',type:'Resort',price:2000,desc:'Eco-resort inside the forest buffer zone with safari access and bonfire evenings.',amenities:['Jungle Safari','Bonfire','Wildlife','Eco-resort','Meals Included'],img1:'images/properties/dooars-junglecamp-1.jpg',img2:'images/properties/dooars-junglecamp-2.jpg'},
-  {id:'mirik-01',locationId:'mirik',name:'Lake View Cottage',type:'Cottage',price:1600,desc:'Peaceful cottage right on the banks of Mirik Lake with rowing boat access.',amenities:['Lake View','Rowing Boat','Tea Garden','Quiet','Bonfire'],img1:'images/properties/mirik-lakeview-1.jpg',img2:'images/properties/mirik-lakeview-2.jpg'},
-  {id:'lava-01',locationId:'lava',name:'Lava Forest Retreat',type:'Homestay',price:1200,desc:'Offbeat homestay surrounded by oak and rhododendron forests, close to Neora Valley National Park.',amenities:['Forest Walk','Bird Watching','Home Meals','Fireplace','Offbeat'],img1:'images/properties/lava-forest-1.jpg',img2:'images/properties/lava-forest-2.jpg'},
-  {id:'rish-01',locationId:'rishyap',name:'Rishyap Starview Homestay',type:'Homestay',price:1100,desc:'Elevated homestay with one of the clearest night skies in North Bengal — perfect for stargazing.',amenities:['Stargazing','Panoramic View','Home Meals','Peaceful','Bonfire'],img1:'images/properties/rishyap-starview-1.jpg',img2:'images/properties/rishyap-starview-2.jpg'},
-];
+  // ── Scroll to top
+  const stBtn = document.getElementById('scrollTopProp');
+  window.addEventListener('scroll', () => { if(stBtn) stBtn.classList.toggle('visible', window.scrollY > 400); });
 
-/* ── State ── */
-let currentLocId   = null;
-let selectedProp   = null;
-let activeTypes    = new Set();
-let activePriceBand = null;
-
-/* ── Price band helper ── */
-function priceBand(p) {
-  if (p < 1500)  return 'budget';
-  if (p <= 3000) return 'mid';
-  return 'luxury';
-}
-
-/* ── Build Location Grid ── */
-function buildLocGrid() {
-  const grid = document.getElementById('locGrid');
-  LOCATIONS.forEach(loc => {
-    const count = PROPERTIES.filter(p => p.locationId === loc.id).length;
-    const card = document.createElement('div');
-    card.className = 'loc-card';
-    card.innerHTML = `
-      <span class="loc-icon">${loc.icon}</span>
-      <span class="loc-name">${loc.name}</span>
-      <span class="loc-region">${loc.region}</span>
-      ${count > 0 ? `<span class="loc-count">${count} propert${count > 1 ? 'ies' : 'y'}</span>` : ''}`;
-    card.addEventListener('click', () => showProperties(loc));
-    grid.appendChild(card);
-  });
-}
-
-/* ── Show Properties ── */
-function showProperties(loc) {
-  currentLocId = loc.id;
-  activeTypes.clear();
-  activePriceBand = null;
-
-  document.getElementById('step1').style.display = 'none';
-  document.getElementById('step2').style.display = 'block';
-  document.getElementById('propHeading').textContent = `Stays in ${loc.name}`;
-  document.getElementById('s1ind').classList.remove('active');
-  document.getElementById('s1ind').classList.add('done');
-  document.getElementById('sl1').classList.add('done');
-  document.getElementById('s2ind').classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  buildTypeFilters(loc.id);
-  renderProps();
-}
-
-/* ── Build type filter chips from available types ── */
-function buildTypeFilters(locId) {
-  const types = [...new Set(PROPERTIES.filter(p => p.locationId === locId).map(p => p.type))].sort();
-  const container = document.getElementById('typeFilters');
-  container.innerHTML = '';
-  const typeIcons = { Hotel:'🏨', Homestay:'🏡', Resort:'🌴', Guesthouse:'🛎️', Cottage:'🏕️' };
-  types.forEach(t => {
-    const btn = document.createElement('button');
-    btn.className = 'filter-chip';
-    btn.dataset.type = t;
-    btn.textContent = `${typeIcons[t] || '🏠'} ${t}`;
-    btn.addEventListener('click', () => toggleTypeFilter(t));
-    container.appendChild(btn);
-  });
-  // Reset price chips
-  document.querySelectorAll('[data-price]').forEach(b => b.classList.remove('price-active'));
-}
-
-/* ── Filter toggle helpers ── */
-function toggleTypeFilter(type) {
-  if (activeTypes.has(type)) activeTypes.delete(type);
-  else activeTypes.add(type);
-  document.querySelectorAll('[data-type]').forEach(b => {
-    b.classList.toggle('active', activeTypes.has(b.dataset.type));
-  });
-  renderProps();
-}
-function togglePriceFilter(band) {
-  activePriceBand = activePriceBand === band ? null : band;
-  document.querySelectorAll('[data-price]').forEach(b => {
-    b.classList.toggle('price-active', b.dataset.price === activePriceBand);
-  });
-  renderProps();
-}
-function resetFilters() {
-  activeTypes.clear();
-  activePriceBand = null;
-  document.querySelectorAll('[data-type],[data-price]').forEach(b => {
-    b.classList.remove('active','price-active');
-  });
-  renderProps();
-}
-
-/* ── Render property grid with active filters ── */
-function renderProps() {
-  let props = PROPERTIES.filter(p => p.locationId === currentLocId);
-  if (activeTypes.size > 0) props = props.filter(p => activeTypes.has(p.type));
-  if (activePriceBand) props = props.filter(p => priceBand(p.price) === activePriceBand);
-
-  const grid = document.getElementById('propGrid');
-  const count = document.getElementById('filterCount');
-
-  if (props.length === 0) {
-    const allCount = PROPERTIES.filter(p => p.locationId === currentLocId).length;
-    grid.innerHTML = `
-      <div class="no-results">
-        <span class="nr-icon">🔍</span>
-        <p><strong>No properties match your filters.</strong><br>
-        Try removing a filter, or <a href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20looking%20for%20a%20stay%20and%20need%20help" target="_blank" style="color:var(--green);">WhatsApp us for help</a> finding the right stay.</p>
-      </div>`;
-    count.textContent = `0 of ${allCount} properties shown`;
-  } else {
-    grid.innerHTML = props.map(buildPropCard).join('');
-    count.textContent = `Showing ${props.length} of ${PROPERTIES.filter(p=>p.locationId===currentLocId).length} properties`;
+  // ── Toast
+  function showToast(msg, duration = 3500) {
+    const t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), duration);
   }
-}
 
-function goBack() {
-  document.getElementById('step2').style.display = 'none';
-  document.getElementById('step1').style.display = 'block';
-  document.getElementById('s1ind').classList.add('active');
-  document.getElementById('s1ind').classList.remove('done');
-  document.getElementById('sl1').classList.remove('done');
-  document.getElementById('s2ind').classList.remove('active');
-}
+  // ════════════════════════════════════════════════════════
+  // PROPERTY DATA
+  // ════════════════════════════════════════════════════════
+  /*
+    HOW TO ADD PROPERTIES
+    ─────────────────────────────────────────────────────
+    Add new property objects to the PROPERTIES array below.
+    Each object has these fields:
 
-/* ── Build property card HTML ── */
-function buildPropCard(p) {
-  const amenities = (p.amenities||[]).map(a=>`<span class="amenity">${a}</span>`).join('');
-  const locName = LOCATIONS.find(l=>l.id===p.locationId)?.name||'';
-  return `
-    <div class="prop-card">
-      <div class="prop-imgs">
-        <span class="prop-type-badge">${p.type}</span>
-        ${buildPropImg(p.img1,p.name+' 1')}
-        ${buildPropImg(p.img2,p.name+' 2')}
-      </div>
-      <div class="prop-body">
-        <div class="prop-name">${p.name}</div>
-        <div class="prop-loc">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          ${locName}
+    id:        Unique string ID (e.g. "prop-001")
+    name:      Property name
+    location:  City/area name (must match a key in LOCATIONS below)
+    region:    State/region text (display only)
+    type:      "Hotel" | "Homestay" | "Resort" | "Bungalow" | "Campsite"
+    price:     Numeric price per night in ₹ (used for budget/mid/luxury filter)
+    priceText: Display string e.g. "₹2,500 / night"
+    amenities: Array of strings (max 4 shown)
+    images:    Array of image src paths (2 shown). Leave empty for placeholder.
+    desc:      Short description (1-2 lines)
+    priceRange:"budget" | "mid" | "luxury"
+
+    PRICE RANGES:
+      budget  = under ₹1,500/night
+      mid     = ₹1,500 – ₹3,000/night
+      luxury  = above ₹3,000/night
+    ─────────────────────────────────────────────────────
+  */
+  const PROPERTIES = [
+    // ── Add your properties here ──
+    // Example (delete or replace):
+    {
+      id: 'prop-001',
+      name: 'Property Name Here',
+      location: 'darjeeling',
+      region: 'Darjeeling, West Bengal',
+      type: 'Homestay',
+      price: 2000,
+      priceText: '₹X,XXX / night',
+      priceRange: 'mid',
+      amenities: ['🌄 Mountain View', '🍳 Breakfast', '📶 WiFi', '🚗 Pickup'],
+      images: [],   // add paths: ['images/prop-001-a.jpg', 'images/prop-001-b.jpg']
+      desc: 'Add a 1-2 line description of this property here. Replace with actual details.'
+    },
+    {
+      id: 'prop-002',
+      name: 'Property Name Here',
+      location: 'kalimpong',
+      region: 'Kalimpong, West Bengal',
+      type: 'Hotel',
+      price: 3500,
+      priceText: '₹X,XXX / night',
+      priceRange: 'luxury',
+      amenities: ['🏔️ Himalayan View', '🍽️ Restaurant', '🧖 Spa', '🏊 Pool'],
+      images: [],
+      desc: 'Add a 1-2 line description of this property here. Replace with actual details.'
+    },
+  ];
+
+  // ── Location definitions
+  const LOCATIONS = {
+    darjeeling:  { icon: '🍵', name: 'Darjeeling',  region: 'West Bengal' },
+    kalimpong:   { icon: '🌸', name: 'Kalimpong',   region: 'West Bengal' },
+    sikkim:      { icon: '🏔️', name: 'Sikkim',       region: 'Sikkim' },
+    dooars:      { icon: '🌿', name: 'Dooars',       region: 'West Bengal' },
+    kurseong:    { icon: '☁️', name: 'Kurseong',     region: 'West Bengal' },
+    mirik:       { icon: '💧', name: 'Mirik',        region: 'West Bengal' },
+  };
+
+  // ── STATE
+  let currentLoc = null, activeTypes = [], activePrices = [];
+
+  // ── Build location grid
+  function buildLocGrid() {
+    const grid = document.getElementById('locGrid');
+    grid.innerHTML = '';
+    Object.entries(LOCATIONS).forEach(([key, loc]) => {
+      const count = PROPERTIES.filter(p => p.location === key).length;
+      if (count === 0) return; // hide locations with no properties
+      const card = document.createElement('div');
+      card.className = 'loc-card';
+      card.innerHTML = `<span class="loc-icon">${loc.icon}</span><span class="loc-name">${loc.name}</span><span class="loc-region">${loc.region}</span><span class="loc-count">${count} propert${count===1?'y':'ies'}</span>`;
+      card.addEventListener('click', () => selectLocation(key));
+      grid.appendChild(card);
+    });
+  }
+
+  function selectLocation(locKey) {
+    currentLoc = locKey;
+    activeTypes = []; activePrices = [];
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+    document.getElementById('s1ind').classList.remove('active'); document.getElementById('s1ind').classList.add('done');
+    document.getElementById('sl1').classList.add('done');
+    document.getElementById('s2ind').classList.add('active');
+    const loc = LOCATIONS[locKey];
+    document.getElementById('propHeading').textContent = `${loc.icon} ${loc.name} Properties`;
+    document.getElementById('propSub').textContent = `${loc.name}, ${loc.region} — browse and enquire via WhatsApp`;
+    buildTypeFilters(locKey);
+    renderProperties();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goBack() {
+    currentLoc = null; activeTypes = []; activePrices = [];
+    document.getElementById('step2').style.display = 'none';
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('s2ind').classList.remove('active');
+    document.getElementById('s1ind').classList.remove('done'); document.getElementById('s1ind').classList.add('active');
+    document.getElementById('sl1').classList.remove('done');
+  }
+
+  function buildTypeFilters(locKey) {
+    const types = [...new Set(PROPERTIES.filter(p => p.location === locKey).map(p => p.type))];
+    const container = document.getElementById('typeFilters');
+    container.innerHTML = '';
+    types.forEach(t => {
+      const chip = document.createElement('button');
+      chip.className = 'filter-chip';
+      chip.textContent = t;
+      chip.dataset.type = t;
+      chip.onclick = () => toggleTypeFilter(t);
+      container.appendChild(chip);
+    });
+  }
+
+  function toggleTypeFilter(type) {
+    const idx = activeTypes.indexOf(type);
+    if (idx === -1) activeTypes.push(type); else activeTypes.splice(idx, 1);
+    document.querySelectorAll('#typeFilters .filter-chip').forEach(c => c.classList.toggle('active', activeTypes.includes(c.dataset.type)));
+    renderProperties();
+  }
+
+  function togglePriceFilter(range) {
+    const idx = activePrices.indexOf(range);
+    if (idx === -1) activePrices.push(range); else activePrices.splice(idx, 1);
+    document.querySelectorAll('#priceFilters .filter-chip').forEach(c => {
+      const isActive = activePrices.includes(c.dataset.price);
+      c.classList.toggle('active', isActive);
+      c.classList.toggle('price-active', isActive);
+    });
+    renderProperties();
+  }
+
+  function resetFilters() {
+    activeTypes = []; activePrices = [];
+    document.querySelectorAll('.filter-chip').forEach(c => { c.classList.remove('active', 'price-active'); });
+    renderProperties();
+  }
+
+  function renderProperties() {
+    const grid = document.getElementById('propGrid');
+    let props = PROPERTIES.filter(p => p.location === currentLoc);
+    if (activeTypes.length)  props = props.filter(p => activeTypes.includes(p.type));
+    if (activePrices.length) props = props.filter(p => activePrices.includes(p.priceRange));
+
+    const countEl = document.getElementById('filterCount');
+    countEl.textContent = props.length > 0 ? `Showing ${props.length} propert${props.length===1?'y':'ies'}` : '';
+
+    if (props.length === 0) {
+      grid.innerHTML = `<div class="no-results"><span class="nr-icon">🔍</span><p>No properties match your filters for this location.<br>Try resetting the filters.</p></div>`;
+      return;
+    }
+
+    grid.innerHTML = props.map(p => `
+      <div class="prop-card" data-id="${p.id}">
+        <div class="prop-imgs" style="background:linear-gradient(135deg,#1a3d2b,#3d8b62);">
+          <span class="prop-type-badge">${p.type}</span>
+          ${p.images && p.images[0]
+            ? `<img src="${p.images[0]}" alt="${p.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+               <div class="prop-img-ph" style="display:none;"><span class="ph-i">🏡</span><span>Image loading…</span></div>`
+            : `<div class="prop-img-ph"><span class="ph-i">🏡</span><span>Upload image</span></div>`}
+          ${p.images && p.images[1]
+            ? `<img src="${p.images[1]}" alt="${p.name} 2" onerror="this.style.display='none';">`
+            : `<div class="prop-img-ph"><span class="ph-i">🌄</span><span>Upload image</span></div>`}
         </div>
-        <p style="font-size:0.85rem;color:var(--muted);margin-bottom:10px;line-height:1.55;">${p.desc}</p>
-        <div class="prop-amenities">${amenities}</div>
-        <div class="prop-price">₹${p.price.toLocaleString('en-IN')} <span>per person / night</span></div>
-        <button class="btn-book" onclick="openModal('${p.id}')">Enquire &amp; Book →</button>
-      </div>
-    </div>`;
-}
-
-function buildPropImg(src,alt){
-  if(!src) return `<div class="prop-img-ph"><span class="ph-i">🏨</span><span>Add image</span></div>`;
-  return `<img src="${src}" alt="${alt}" loading="lazy" onerror="this.outerHTML='<div class=\\'prop-img-ph\\'><span class=\\'ph-i\\'>📷</span></div>'">`;
-}
-
-/* ── Modal ── */
-function openModal(propId) {
-  selectedProp = PROPERTIES.find(p=>p.id===propId);
-  if(!selectedProp) return;
-  document.getElementById('modalTitle').textContent=`Book: ${selectedProp.name}`;
-  document.getElementById('modalSub').textContent=`${selectedProp.type} · ${LOCATIONS.find(l=>l.id===selectedProp.locationId)?.name}`;
-  const preview=document.getElementById('modalPreview');
-  const imgHTML=selectedProp.img1?`<img src="${selectedProp.img1}" alt="${selectedProp.name}" onerror="this.outerHTML='<div class=\\'ph\\'>🏨</div>'">`:`<div class="ph">🏨</div>`;
-  preview.innerHTML=`${imgHTML}<div><div class="mpname">${selectedProp.name}</div><div class="mploc">${LOCATIONS.find(l=>l.id===selectedProp.locationId)?.name} · ${selectedProp.type}</div><div class="mpprice">₹${selectedProp.price.toLocaleString('en-IN')} per person/night</div></div>`;
-  // Reset fields and errors
-  ['mCheckin','mCheckout','mRooms','mPersons','mName','mNote'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-  document.querySelectorAll('.field-error').forEach(e=>e.classList.remove('show'));
-  document.querySelectorAll('.mform-group input').forEach(e=>e.classList.remove('error'));
-  document.getElementById('bookModal').classList.add('open');
-  document.body.style.overflow='hidden';
-  document.getElementById('s2ind').classList.add('done');
-  document.getElementById('sl2').classList.add('done');
-  document.getElementById('s3ind').classList.add('active');
-}
-
-function closeModal(){
-  document.getElementById('bookModal').classList.remove('open');
-  document.body.style.overflow='';
-  document.getElementById('s2ind').classList.remove('done');
-  document.getElementById('sl2').classList.remove('done');
-  document.getElementById('s3ind').classList.remove('active');
-  document.getElementById('s2ind').classList.add('active');
-}
-document.getElementById('bookModal').addEventListener('click',e=>{if(e.target===document.getElementById('bookModal'))closeModal();});
-
-/* ── Date validation ── */
-function validateDates() {
-  const ci = document.getElementById('mCheckin').value;
-  const co = document.getElementById('mCheckout').value;
-  const coErr = document.getElementById('checkoutErr');
-  const coInput = document.getElementById('mCheckout');
-  if (ci && co && new Date(co) <= new Date(ci)) {
-    coErr.textContent = 'Check-out must be after check-in.';
-    coErr.classList.add('show');
-    coInput.classList.add('error');
-    return false;
+        <div class="prop-body">
+          <div class="prop-name">${p.name}</div>
+          <div class="prop-loc"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>${p.region}</div>
+          <div class="prop-amenities">${(p.amenities || []).slice(0,4).map(a => `<span class="amenity">${a}</span>`).join('')}</div>
+          <div class="prop-price">${p.priceText} <span>per night</span></div>
+          <button class="btn-book" onclick="openPropModal('${p.id}')">Enquire via WhatsApp</button>
+        </div>
+      </div>`).join('');
   }
-  coErr.classList.remove('show');
-  coInput.classList.remove('error');
-  return true;
-}
 
-/* ── Send WA ── */
-function sendPropertyWA(){
-  const ci   = document.getElementById('mCheckin').value;
-  const co   = document.getElementById('mCheckout').value;
-  const rm   = document.getElementById('mRooms').value;
-  const per  = document.getElementById('mPersons').value;
-  const name = document.getElementById('mName').value.trim();
-  const note = document.getElementById('mNote').value.trim();
-  let valid  = true;
+  // ── Modal
+  let currentPropId = null;
+  function openPropModal(propId) {
+    currentPropId = propId;
+    const p = PROPERTIES.find(x => x.id === propId);
+    if (!p) return;
+    document.getElementById('modalPropName').textContent  = p.name;
+    document.getElementById('modalPropLoc').textContent   = p.region;
+    document.getElementById('modalPropPrice').textContent = p.priceText + ' per night';
+    document.getElementById('propModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePropModalBtn() { document.getElementById('propModal').classList.remove('open'); document.body.style.overflow = ''; }
+  function closePropModal(e) { if (e.target === document.getElementById('propModal')) closePropModalBtn(); }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePropModalBtn(); });
 
-  // Field validations
-  if (!ci) { document.getElementById('checkinErr').classList.add('show'); document.getElementById('mCheckin').classList.add('error'); valid=false; }
-  else { document.getElementById('checkinErr').classList.remove('show'); document.getElementById('mCheckin').classList.remove('error'); }
+  function sendPropEnquiry() {
+    const ci = document.getElementById('m-checkin').value;
+    const co = document.getElementById('m-checkout').value;
+    const gu = document.getElementById('m-guests').value;
+    const ro = document.getElementById('m-rooms').value;
+    const no = document.getElementById('m-notes').value.trim();
 
-  if (!co || !validateDates()) { valid=false; }
+    let valid = true;
+    const showE = (id, show) => { document.getElementById(id).classList.toggle('show', show); document.getElementById(id).previousElementSibling?.classList?.toggle('error', show); };
+    if (!ci) { showE('e-checkin', true); valid = false; } else showE('e-checkin', false);
+    if (!co || (ci && new Date(co) <= new Date(ci))) { showE('e-checkout', true); valid = false; } else showE('e-checkout', false);
+    if (!gu) { showE('e-guests', true); valid = false; } else showE('e-guests', false);
+    if (!ro) { showE('e-rooms', true); valid = false; } else showE('e-rooms', false);
+    if (!valid) return;
 
-  if (!name) { document.getElementById('nameErr').classList.add('show'); document.getElementById('mName').classList.add('error'); valid=false; }
-  else { document.getElementById('nameErr').classList.remove('show'); document.getElementById('mName').classList.remove('error'); }
+    const p = PROPERTIES.find(x => x.id === currentPropId);
+    const fmt = v => { const [y,m,d] = v.split('-'); return `${d} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]} ${y}`; };
+    let msg = `Hi Sana! I'd like to enquire about a property 🏡\n\n`;
+    msg += `🏨 Property: ${p?.name || 'Property'}\n📍 Location: ${p?.region || ''}\n\n`;
+    msg += `📅 Check-in:  ${fmt(ci)}\n📅 Check-out: ${fmt(co)}\n`;
+    msg += `👥 Guests: ${gu}\n🛏️ Rooms: ${ro}\n`;
+    if (no) msg += `\n📝 Notes: ${no}\n`;
+    msg += `\nPlease share availability and pricing. Thank you!`;
 
-  if (!rm || !per) { alert('Please select number of rooms and persons.'); valid=false; }
+    window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg), '_blank');
+    showToast('Opening WhatsApp — we\'ll reply within a few hours! ✓');
+    setTimeout(closePropModalBtn, 1200);
+  }
 
-  if (!valid) return;
-
-  const fmt=v=>{const[y,m,d]=v.split('-');return`${d} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]} ${y}`;};
-  const loc=LOCATIONS.find(l=>l.id===selectedProp.locationId)?.name||'';
-  const msg=
-    `🏨 *PROPERTY BOOKING ENQUIRY*\n`+
-    `━━━━━━━━━━━━━━━━━━━━━━━━\n`+
-    `*Property:* ${selectedProp.name}\n`+
-    `*Location:* ${loc}\n`+
-    `*Type:* ${selectedProp.type}\n`+
-    `*Price:* ₹${selectedProp.price.toLocaleString('en-IN')} per person/night\n\n`+
-    `📅 *Check-in:* ${fmt(ci)}\n`+
-    `📅 *Check-out:* ${fmt(co)}\n`+
-    `🛏️ *Rooms Required:* ${rm}\n`+
-    `👥 *Total Persons:* ${per}\n`+
-    `👤 *Guest Name:* ${name}\n`+
-    (note?`📝 *Special Requests:* ${note}\n`:'')+
-    `━━━━━━━━━━━━━━━━━━━━━━━━\n`+
-    `Please confirm availability. Thank you!`;
-  window.open('https://wa.me/919874740763?text='+encodeURIComponent(msg),'_blank');
-}
-
-/* ── Hamburger ── */
-const hbg=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu');
-hbg.addEventListener('click',()=>mm.classList.toggle('open'));
-function closeMenu(){mm.classList.remove('open');}
-document.addEventListener('click',e=>{if(!hbg.contains(e.target)&&!mm.contains(e.target))mm.classList.remove('open');});
-
-// Init
-buildLocGrid();
+  // ── Init
+  buildLocGrid();
 </script>
 </body>
 </html>
