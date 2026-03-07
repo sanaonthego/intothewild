@@ -301,9 +301,47 @@
     /* ── FLOATING WA ── */
     .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 200; background: var(--wa); width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.45); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
     .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(37,211,102,0.55); }
-    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; position: relative; z-index: 1; }
     .wa-pulse { position: absolute; width: 56px; height: 56px; border-radius: 50%; background: var(--wa); animation: pulse-ring 2s ease infinite; }
+    .scroll-top { position: fixed; bottom: 98px; right: 28px; z-index: 200; width: 42px; height: 42px; border-radius: 50%; background: var(--green-dk); border: 2px solid rgba(255,255,255,0.15); color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+    .scroll-top.visible { opacity: 1; pointer-events: auto; }
+    .scroll-top:hover { background: var(--green); transform: translateY(-2px); }
     @keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.6); opacity: 0; } }
+
+    /* ── PROPERTY STAYS SLIDER ── */
+    #hill-stays { background: var(--bg2); }
+    .prop-slider-wrap { position: relative; overflow: hidden; border-radius: var(--radius); box-shadow: 0 8px 40px rgba(26,61,43,0.14); }
+    .prop-slider-track { display: flex; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+    .prop-slide { min-width: 100%; display: grid; grid-template-columns: 1fr 1fr; min-height: 360px; }
+    .prop-slide-img-wrap { position: relative; overflow: hidden; min-height: 320px; background: linear-gradient(135deg,#1a3d2b,#3d8b62); }
+    .prop-slide-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.5s ease; }
+    .prop-slide:hover .prop-slide-img-wrap img { transform: scale(1.04); }
+    .prop-slide-ph { width:100%; height:100%; display:none; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:24px; text-align:center; }
+    .prop-ph-emoji { font-size:2.8rem; }
+    .prop-ph-text { color:rgba(255,255,255,0.5); font-size:0.8rem; line-height:1.55; }
+    .prop-ph-text small { font-size:0.7rem; opacity:0.7; }
+    .prop-slide-overlay { position:absolute; inset:0; background:linear-gradient(to right, transparent 70%, rgba(238,240,235,1) 100%); }
+    .prop-slide-tag { position:absolute; top:16px; left:16px; background:rgba(26,61,43,0.88); color:#fff; font-size:0.67rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:4px 11px; border-radius:20px; }
+    .prop-slide-body { background:#fff; padding:40px 36px; display:flex; flex-direction:column; justify-content:center; }
+    .prop-slide-name { font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:700; color:var(--green); margin-bottom:8px; line-height:1.25; }
+    .prop-slide-loc { display:flex; align-items:center; gap:5px; font-size:0.82rem; color:var(--muted); margin-bottom:12px; }
+    .prop-slide-desc { font-size:0.9rem; color:var(--muted); line-height:1.7; margin-bottom:18px; flex:1; }
+    .prop-slide-amenities { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:20px; }
+    .prop-amenity { font-size:0.73rem; background:var(--bg); color:var(--green); padding:4px 10px; border-radius:20px; border:1px solid #d8d3ca; }
+    .prop-slide-cta { display:inline-flex; align-items:center; gap:6px; color:var(--green); font-weight:700; font-size:0.88rem; text-decoration:none; border-bottom:2px solid var(--green-lt); padding-bottom:2px; transition:color 0.2s, border-color 0.2s; align-self:flex-start; }
+    .prop-slide-cta:hover { color:var(--green-dk); border-color:var(--green); }
+    .prop-slider-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.92); border:1px solid rgba(0,0,0,0.1); color:var(--green); font-size:1.5rem; width:44px; height:44px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s, box-shadow 0.2s; z-index:2; box-shadow:0 2px 12px rgba(0,0,0,0.12); }
+    .prop-slider-btn:hover { background:#fff; box-shadow:0 4px 20px rgba(0,0,0,0.18); }
+    .prop-prev { left:14px; } .prop-next { right:14px; }
+    .prop-slider-dots { display:flex; justify-content:center; gap:8px; padding:18px 0 0; }
+    .prop-dot { width:8px; height:8px; border-radius:50%; background:rgba(45,106,79,0.25); border:none; cursor:pointer; transition:background 0.2s, transform 0.2s, width 0.3s; }
+    .prop-dot.active { background:var(--green); transform:scale(1.2); width:20px; border-radius:4px; }
+    @media (max-width:768px) {
+      .prop-slide { grid-template-columns:1fr; min-height:auto; }
+      .prop-slide-img-wrap { min-height:220px; }
+      .prop-slide-overlay { background:linear-gradient(to bottom, transparent 70%, rgba(238,240,235,1) 100%); }
+      .prop-slide-body { padding:24px 20px; }
+    }
 
     /* ── DESTINATION STRIP ── */
     .dest-strip { background: var(--green); padding: 18px 0; overflow: hidden; white-space: nowrap; }
@@ -545,6 +583,175 @@
   </div>
 </section>
 
+<!-- ══ HILL STAYS PROPERTY SLIDER ══ -->
+<section id="hill-stays" style="background:var(--bg2); padding:76px 0;">
+  <div style="max-width:960px; margin:0 auto; padding:0 24px 36px;">
+    <span class="section-tag">Your Best Possible</span>
+    <h2 class="section-title">Hill Stays</h2>
+    <p class="section-sub">Handpicked properties — from heritage bungalows to forest homestays. <a href="properties.html" style="color:var(--green);font-weight:600;">Explore all properties →</a></p>
+  </div>
+
+  <div style="max-width:960px; margin:0 auto; padding:0 24px;">
+    <div class="prop-slider-wrap">
+      <div class="prop-slider-track" id="propSliderTrack">
+
+        <!--
+        ════════════════════════════════════════════════
+        HOW TO ADD / EDIT PROPERTY SLIDES
+        ════════════════════════════════════════════════
+        Each .prop-slide block = one property card in the slider.
+        To add a new property:
+          1. Copy one entire .prop-slide block below
+          2. Update the <img src=""> with your property image path
+          3. Update the caption title, location, and description text
+          4. Update the href on "View Property" button
+        To remove a property: delete the entire .prop-slide block.
+        Recommended image size: 1200×700px, landscape orientation.
+        ════════════════════════════════════════════════
+        -->
+
+        <!-- PROPERTY SLIDE 1 — Edit this -->
+        <div class="prop-slide">
+          <div class="prop-slide-img-wrap">
+            <img src="" alt="Property 1 — replace this image"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <!-- ↑ Replace src="" with your image path e.g. src="images/property-1.jpg" -->
+            <div class="prop-slide-ph" style="display:flex;">
+              <div class="prop-ph-emoji">🏡</div>
+              <div class="prop-ph-text">Upload property image here<br><small>Replace src="" above with: images/property-1.jpg</small></div>
+            </div>
+            <div class="prop-slide-overlay"></div>
+            <div class="prop-slide-tag">Property Name Here</div>
+            <!-- ↑ Replace with property type e.g. "Heritage Bungalow" or "Forest Homestay" -->
+          </div>
+          <div class="prop-slide-body">
+            <h3 class="prop-slide-name">Property 1 — Add Name Here</h3>
+            <!-- ↑ Replace with actual property name e.g. "The Elgin Darjeeling" -->
+            <div class="prop-slide-loc">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="var(--green-lt)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Location, Region
+              <!-- ↑ Replace with e.g. "Darjeeling, West Bengal" -->
+            </div>
+            <p class="prop-slide-desc">Add a 1-2 line description of this property here. Mention what makes it special — views, atmosphere, amenities, or the experience it offers.</p>
+            <!-- ↑ Replace with actual property description -->
+            <div class="prop-slide-amenities">
+              <span class="prop-amenity">🌄 Mountain View</span>
+              <span class="prop-amenity">🍳 Breakfast Included</span>
+              <span class="prop-amenity">🚗 Pickup Available</span>
+              <!-- ↑ Edit or add amenity tags as needed -->
+            </div>
+            <a class="prop-slide-cta" href="properties.html">View Property →</a>
+          </div>
+        </div>
+
+        <!-- PROPERTY SLIDE 2 — Edit this -->
+        <div class="prop-slide">
+          <div class="prop-slide-img-wrap">
+            <img src="" alt="Property 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="prop-slide-ph" style="display:flex;">
+              <div class="prop-ph-emoji">🌿</div>
+              <div class="prop-ph-text">Upload property image here<br><small>Replace src="" above with: images/property-2.jpg</small></div>
+            </div>
+            <div class="prop-slide-overlay"></div>
+            <div class="prop-slide-tag">Property Type Here</div>
+          </div>
+          <div class="prop-slide-body">
+            <h3 class="prop-slide-name">Property 2 — Add Name Here</h3>
+            <div class="prop-slide-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="var(--green-lt)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Location, Region</div>
+            <p class="prop-slide-desc">Add a 1-2 line description of this property here.</p>
+            <div class="prop-slide-amenities">
+              <span class="prop-amenity">🌲 Forest Setting</span>
+              <span class="prop-amenity">🏔️ Himalayan Views</span>
+              <span class="prop-amenity">🍵 Tea Garden Nearby</span>
+            </div>
+            <a class="prop-slide-cta" href="properties.html">View Property →</a>
+          </div>
+        </div>
+
+        <!-- PROPERTY SLIDE 3 — Edit this -->
+        <div class="prop-slide">
+          <div class="prop-slide-img-wrap">
+            <img src="" alt="Property 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="prop-slide-ph" style="display:flex;">
+              <div class="prop-ph-emoji">🏰</div>
+              <div class="prop-ph-text">Upload property image here<br><small>Replace src="" above with: images/property-3.jpg</small></div>
+            </div>
+            <div class="prop-slide-overlay"></div>
+            <div class="prop-slide-tag">Property Type Here</div>
+          </div>
+          <div class="prop-slide-body">
+            <h3 class="prop-slide-name">Property 3 — Add Name Here</h3>
+            <div class="prop-slide-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="var(--green-lt)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Location, Region</div>
+            <p class="prop-slide-desc">Add a 1-2 line description of this property here.</p>
+            <div class="prop-slide-amenities">
+              <span class="prop-amenity">✨ Heritage Property</span>
+              <span class="prop-amenity">🛏️ Luxury Rooms</span>
+              <span class="prop-amenity">🌸 Garden</span>
+            </div>
+            <a class="prop-slide-cta" href="properties.html">View Property →</a>
+          </div>
+        </div>
+
+        <!-- PROPERTY SLIDE 4 — Edit this -->
+        <div class="prop-slide">
+          <div class="prop-slide-img-wrap">
+            <img src="" alt="Property 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="prop-slide-ph" style="display:flex;">
+              <div class="prop-ph-emoji">⛺</div>
+              <div class="prop-ph-text">Upload property image here<br><small>Replace src="" above with: images/property-4.jpg</small></div>
+            </div>
+            <div class="prop-slide-overlay"></div>
+            <div class="prop-slide-tag">Property Type Here</div>
+          </div>
+          <div class="prop-slide-body">
+            <h3 class="prop-slide-name">Property 4 — Add Name Here</h3>
+            <div class="prop-slide-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="var(--green-lt)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Location, Region</div>
+            <p class="prop-slide-desc">Add a 1-2 line description of this property here.</p>
+            <div class="prop-slide-amenities">
+              <span class="prop-amenity">🌊 Riverside</span>
+              <span class="prop-amenity">🦜 Bird Watching</span>
+              <span class="prop-amenity">🔥 Bonfire</span>
+            </div>
+            <a class="prop-slide-cta" href="properties.html">View Property →</a>
+          </div>
+        </div>
+
+        <!-- PROPERTY SLIDE 5 — Edit this -->
+        <div class="prop-slide">
+          <div class="prop-slide-img-wrap">
+            <img src="" alt="Property 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="prop-slide-ph" style="display:flex;">
+              <div class="prop-ph-emoji">🌄</div>
+              <div class="prop-ph-text">Upload property image here<br><small>Replace src="" above with: images/property-5.jpg</small></div>
+            </div>
+            <div class="prop-slide-overlay"></div>
+            <div class="prop-slide-tag">Property Type Here</div>
+          </div>
+          <div class="prop-slide-body">
+            <h3 class="prop-slide-name">Property 5 — Add Name Here</h3>
+            <div class="prop-slide-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="var(--green-lt)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Location, Region</div>
+            <p class="prop-slide-desc">Add a 1-2 line description of this property here.</p>
+            <div class="prop-slide-amenities">
+              <span class="prop-amenity">🌅 Sunrise View</span>
+              <span class="prop-amenity">🏔️ Kanchenjunga View</span>
+              <span class="prop-amenity">🍽️ Home Food</span>
+            </div>
+            <a class="prop-slide-cta" href="properties.html">View Property →</a>
+          </div>
+        </div>
+
+      </div><!-- /track -->
+
+      <button class="prop-slider-btn prop-prev" onclick="propSlide(-1)" aria-label="Previous">&#8249;</button>
+      <button class="prop-slider-btn prop-next" onclick="propSlide(1)" aria-label="Next">&#8250;</button>
+    </div><!-- /wrap -->
+    <div class="prop-slider-dots" id="propDots"></div>
+    <div style="text-align:center; margin-top:8px;">
+      <a class="btn-gold" href="properties.html" style="display:inline-flex; align-items:center; gap:8px; margin-top:16px;">Browse All Properties →</a>
+    </div>
+  </div>
+</section>
+
 <!-- Google Reviews via Trustindex ONLY — no fake reviews -->
 <section id="testimonials">
   <div class="testi-inner">
@@ -680,7 +887,7 @@
       <div class="footer-contact">
         <h3>Contact Us</h3>
         <div class="contact-row"><div class="ci phone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><div class="ct"><span class="cl">Call / WhatsApp</span><a href="tel:+919874740763">+91 98747 40763</a></div></div>
-        <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div></div>
+        <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="/cdn-cgi/l/email-protection#5427352d353a203d3f353d3a203b203c31233d3830143339353d387a373b39"><span class="__cf_email__" data-cfemail="9fecfee6fef1ebf6f4fef6f1ebf0ebf7fae8f6f3fbdff8f2fef6f3b1fcf0f2">[email&#160;protected]</span></a></div></div>
         <div class="contact-row"><div class="ci ci-insta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div><div class="ct"><span class="cl">Instagram</span><a href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener">@sana.onthe.go</a></div></div>
         <div class="contact-row"><div class="ci map"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="ct"><span class="cl">Office</span><div class="office-box"><strong>Into The Wild Tour and Travels</strong>100/A/3/L, Rabindra Nagar Main Road<br>P.S: Siliguri, Dist: Darjeeling<br>West Bengal – 734006</div></div></div>
       </div>
@@ -697,13 +904,15 @@
   </div>
 </footer>
 
+<button class="scroll-top" id="scrollTopHome" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button>
+
 <!-- Floating WhatsApp with pulse -->
 <a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages" aria-label="Chat on WhatsApp" target="_blank">
   <div class="wa-pulse"></div>
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Nav scroll
   window.addEventListener('scroll', () => {
     document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
@@ -784,14 +993,49 @@
     const fmt = v => { const [y,m,day] = v.split('-'); return `${day} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]} ${y}`; };
     const msg = `Hi Sana! I'd like to enquire about a trip 🏔️\n\n📅 Arrival at NJP/Bagdogra: ${fmt(a)}\n📅 Departure from NJP/Bagdogra: ${fmt(d)}\n👥 Persons: ${p}\n🛏️ Rooms: ${r}\n🗺️ Package Interest: ${i || 'Not decided yet'}\n\nPlease share options and pricing. Thank you!`;
     window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg), '_blank');
-    showToast('Opening WhatsApp… we\'ll reply within a few hours! ✓');
+    showToast('Opening WhatsApp — we reply within a few hours! ✓');
   }
 
-  // Hide Trustindex loading spinner once widget appears
-  setTimeout(() => {
-    const loader = document.getElementById('tiLoading');
-    if (loader) loader.style.display = 'none';
-  }, 5000);
+  // Property stays slider
+  (function() {
+    const track = document.getElementById('propSliderTrack');
+    const dotsEl = document.getElementById('propDots');
+    if (!track || !dotsEl) return;
+    const slides = track.querySelectorAll('.prop-slide');
+    let cur = 0, ptimer;
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'prop-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Property ' + (i + 1));
+      d.addEventListener('click', () => pgoto(i));
+      dotsEl.appendChild(d);
+    });
+    function pgoto(n) {
+      cur = (n + slides.length) % slides.length;
+      track.style.transform = `translateX(-${cur * 100}%)`;
+      dotsEl.querySelectorAll('.prop-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+      clearInterval(ptimer); ptimer = setInterval(() => pgoto(cur + 1), 6000);
+    }
+    window.propSlide = function(dir) { pgoto(cur + dir); };
+    let ptx = 0;
+    track.addEventListener('touchstart', e => { ptx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend',   e => { if (Math.abs(ptx - e.changedTouches[0].clientX) > 40) pgoto(cur + (ptx > e.changedTouches[0].clientX ? 1 : -1)); });
+    ptimer = setInterval(() => pgoto(cur + 1), 6000);
+  })();
+
+  // Scroll to top button
+  const scrollTopBtnHome = document.getElementById('scrollTopHome');
+  if (scrollTopBtnHome) {
+    window.addEventListener('scroll', () => {
+      scrollTopBtnHome.classList.toggle('visible', window.scrollY > 500);
+    });
+  }
+
+  // Trustindex loading state
+  const tiLoading = document.getElementById('tiLoading');
+  if (tiLoading) {
+    setTimeout(() => { tiLoading.style.display = 'none'; }, 4000);
+  }
 </script>
 </body>
 </html>
