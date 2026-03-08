@@ -80,7 +80,8 @@
       position: sticky; top: 57px; z-index: 90;
       box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     }
-    .cat-tabs { display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .cat-tabs { display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; justify-content: center; }
+    @media (max-width: 900px) { .cat-tabs { justify-content: flex-start; } }
     .cat-tabs::-webkit-scrollbar { display: none; }
     .cat-tab {
       flex-shrink: 0;
@@ -1281,7 +1282,7 @@
       <div class="footer-contact">
         <h3>Contact Us</h3>
         <div class="contact-row"><div class="ci phone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><div class="ct"><span class="cl">Call / WhatsApp</span><a href="tel:+919874740763">+91 98747 40763</a></div></div>
-        <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="/cdn-cgi/l/email-protection#71021008101f05181a10181f051e05191406181d1531161c10181d5f121e1c"><span class="__cf_email__" data-cfemail="1e6d7f677f706a77757f77706a716a767b6977727a5e79737f7772307d7173">[email&#160;protected]</span></a></div></div>
+        <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="/cdn-cgi/l/email-protection#3447554d555a405d5f555d5a405b405c51435d5850745359555d581a575b59"><span class="__cf_email__" data-cfemail="9ceffde5fdf2e8f5f7fdf5f2e8f3e8f4f9ebf5f0f8dcfbf1fdf5f0b2fff3f1">[email&#160;protected]</span></a></div></div>
         <div class="contact-row"><div class="ci map"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="ct"><span class="cl">Office</span><div class="office-box"><strong>Into The Wild Tour and Travels</strong>100/A/3/L, Rabindra Nagar Main Road<br>P.S: Siliguri, Dist: Darjeeling<br>West Bengal – 734006</div></div></div>
       </div>
     </div>
@@ -1436,7 +1437,6 @@
   }
 
   function _generatePDF({ pkgId, pkgName, pkgCat, pkgDur, pkgPrice, pkgDesc }) {
-    // ── Colours & fonts
     const C = {
       green:   [26,  61, 43],
       greenLt: [52, 183, 136],
@@ -1447,237 +1447,249 @@
       text:    [28,  28, 28],
       muted:   [100, 112, 94],
       accent1: [61, 139, 98],
+      red:     [180, 60, 60],
     };
+    const fill = (c) => doc.setFillColor(...c);
+    const tc   = (c) => doc.setTextColor(...c);
+    const draw = (c) => doc.setDrawColor(...c);
 
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
     const W = 210, H = 297;
+    const FOOTER_H = 50;           // reserved at bottom
+    const FOOTER_Y = H - FOOTER_H;
+    const MARGIN = 14;
 
-    // ── Helper: setColor
-    const rgb  = (c) => c;   // already arrays
-    const fill = (c) => doc.setFillColor(...c);
-    const text = (c) => doc.setTextColor(...c);
-    const draw = (c) => doc.setDrawColor(...c);
-
-    // ═══════════════════════════════════════════
-    // HEADER BAND — forest green with diagonal accent
-    // ═══════════════════════════════════════════
+    // ══════════════════════════════════════
+    // 1. HEADER BAND (0 → 52mm)
+    // ══════════════════════════════════════
     fill(C.green); doc.rect(0, 0, W, 52, 'F');
 
-    // Diagonal accent stripe (gold)
+    // gold triangle bottom-left accent
     fill(C.gold);
-    doc.triangle(0, 38, 0, 52, 48, 52, 'F');
+    doc.triangle(0, 38, 0, 52, 52, 52, 'F');
 
-    // Top-right decorative corner
-    fill(C.accent1);
-    doc.rect(W - 28, 0, 28, 52, 'F');
-    fill(C.greenLt);
-    doc.circle(W - 14, 26, 14, 'F');
+    // right accent bar
+    fill(C.accent1); doc.rect(W - 30, 0, 30, 52, 'F');
+    fill(C.greenLt); doc.circle(W - 15, 26, 15, 'F');
 
-    // Brand name
-    text(C.white);
+    // Brand name + tagline (left)
+    tc(C.white);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(22);
-    doc.text('SANA ON THE GO', 14, 22);
+    doc.setFontSize(21);
+    doc.text('SANA ON THE GO', MARGIN, 21);
 
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(9);
-    text([232, 201, 122]);
-    doc.text('Into The Wild Tour and Travels  ·  Siliguri, West Bengal', 14, 30);
-
-    // Contact top-right (small)
-    text(C.white);
-    doc.setFontSize(7.5);
-    doc.text('+91 98747 40763', W - 14, 10, { align: 'right' });
-    doc.text('sayantikaintothewild@gmail.com', W - 14, 16, { align: 'right' });
-    doc.text('sanaonthego.github.io', W - 14, 22, { align: 'right' });
-
-    // ═══════════════════════════════════════════
-    // GOLD CATEGORY STRIP
-    // ═══════════════════════════════════════════
-    fill(C.gold); doc.rect(0, 52, W, 10, 'F');
-    text(C.green);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8);
-    doc.text(pkgCat.toUpperCase() + '  ·  PACKAGE ' + pkgId, W / 2, 58.5, { align: 'center' });
-
-    // ═══════════════════════════════════════════
-    // PACKAGE TITLE BLOCK
-    // ═══════════════════════════════════════════
-    let y = 74;
-    fill(C.bg); doc.rect(0, 62, W, 28, 'F');
-
-    // Duration badge
-    if (pkgDur) {
-      fill(C.greenLt);
-      doc.roundedRect(14, 64, pkgDur.length * 2.2 + 10, 8, 2, 2, 'F');
-      text(C.white);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(7);
-      doc.text(pkgDur.toUpperCase(), 19, 69.5);
-    }
-
-    // Package name
-    text(C.green);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(18);
-    const nameLines = doc.splitTextToSize(pkgName, 170);
-    doc.text(nameLines, 14, y);
-    y += nameLines.length * 7 + 4;
-
-    // ═══════════════════════════════════════════
-    // DESCRIPTION SECTION
-    // ═══════════════════════════════════════════
-    fill(C.white); doc.rect(0, y - 2, W, 1, 'F');
-    y += 4;
-
-    // Section header
-    fill(C.green);
-    doc.rect(14, y, 3, 10, 'F');
-    text(C.green);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(11);
-    doc.text('About This Package', 20, y + 7.5);
-    y += 16;
-
-    text(C.muted);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(10);
-    const descLines = doc.splitTextToSize(pkgDesc, 180);
-    doc.text(descLines, 14, y);
-    y += descLines.length * 5.5 + 12;
-
-    // ═══════════════════════════════════════════
-    // ITINERARY PLACEHOLDER SECTION
-    // ═══════════════════════════════════════════
-    // Decorative divider
-    draw(C.goldLt); doc.setLineWidth(0.5);
-    doc.line(14, y, W - 14, y);
-    y += 10;
-
-    fill(C.green);
-    doc.rect(14, y, 3, 10, 'F');
-    text(C.green);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(11);
-    doc.text('Day-by-Day Itinerary', 20, y + 7.5);
-    y += 18;
-
-    // Itinerary placeholder rows
-    const days = [
-      'Day 1  ·  Arrival & Check-in',
-      'Day 2  ·  Exploration & Sightseeing',
-      'Day 3  ·  Local Experiences & Activities',
-      'Day 4  ·  Offbeat Village Trail',
-      'Day 5  ·  Leisure & Departure',
-    ];
-
-    days.forEach((day, i) => {
-      const rowY = y + i * 18;
-      if (rowY > H - 60) return;
-
-      fill(i % 2 === 0 ? C.bg : C.white);
-      doc.rect(14, rowY - 5, W - 28, 16, 'F');
-
-      // Day number circle
-      fill(C.greenLt);
-      doc.circle(21, rowY + 3, 5, 'F');
-      text(C.white);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(7);
-      doc.text(String(i + 1), 21, rowY + 5.5, { align: 'center' });
-
-      // Day text
-      text(C.text);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(9.5);
-      doc.text(day, 30, rowY + 2.5);
-
-      text(C.muted);
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8.5);
-      doc.text('Details to be filled in by Sana On The Go — contact us to receive full itinerary.', 30, rowY + 8.5);
-    });
-    y += days.length * 18 + 10;
-
-    // ═══════════════════════════════════════════
-    // INCLUDES / EXCLUDES BOX
-    // ═══════════════════════════════════════════
-    if (y < H - 90) {
-      doc.line(14, y, W - 14, y); y += 10;
-      fill(C.green);
-      doc.rect(14, y, 3, 10, 'F');
-      text(C.green);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(11);
-      doc.text('What\'s Typically Included', 20, y + 7.5);
-      y += 16;
-
-      const includes = [
-        '✓  Accommodation (hotels / homestays as per itinerary)',
-        '✓  Meals as specified (breakfast + dinner)',
-        '✓  All transfers & sightseeing by private vehicle',
-        '✓  Experienced local guide',
-        '✓  All applicable permits & entry fees',
-        '✗  Airfare / train tickets to/from NJP or Bagdogra',
-        '✗  Personal expenses & tips',
-      ];
-
-      includes.forEach((item, i) => {
-        const iy = y + i * 7;
-        if (iy > H - 58) return;
-        const isInclude = item.startsWith('✓');
-        text(isInclude ? C.green : [180, 60, 60]);
-        doc.setFont('helvetica', isInclude ? 'normal' : 'normal');
-        doc.setFontSize(9);
-        doc.text(item, 18, iy);
-      });
-      y += includes.length * 7 + 8;
-    }
-
-    // ═══════════════════════════════════════════
-    // PRICE & BOOKING FOOTER BAND
-    // ═══════════════════════════════════════════
-    const footerY = H - 44;
-    fill(C.green); doc.rect(0, footerY, W, 44, 'F');
-    fill(C.gold);  doc.rect(0, footerY, W, 2, 'F');
-
-    // Price
-    if (pkgPrice) {
-      text(C.goldLt);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(9);
-      doc.text('STARTING FROM', 14, footerY + 10);
-      text(C.white);
-      doc.setFontSize(20);
-      doc.text(pkgPrice, 14, footerY + 22);
-    }
-
-    // CTA text
-    text(C.white);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10);
-    doc.text('Book Your Trip', W - 14, footerY + 12, { align: 'right' });
-    text([200, 230, 200]);
+    tc([232, 201, 122]);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
-    doc.text('📱 +91 98747 40763  (WhatsApp / Call)', W - 14, footerY + 20, { align: 'right' });
-    doc.text('✉  sayantikaintothewild@gmail.com', W - 14, footerY + 27, { align: 'right' });
-    doc.text('🌐 sanaonthego.github.io', W - 14, footerY + 34, { align: 'right' });
+    doc.text('Into The Wild Tour and Travels  |  Siliguri, West Bengal', MARGIN, 30);
 
-    // ═══════════════════════════════════════════
-    // DIAGONAL WATERMARK
-    // ═══════════════════════════════════════════
-    doc.setGState(new doc.GState({ opacity: 0.07 }));
-    text([26, 61, 43]);
+    // Contact details top-right — NO emoji (jsPDF renders them as boxes)
+    tc(C.white);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    const contactX = W - 32;
+    doc.text('Ph: +91 98747 40763', contactX, 10, { align: 'right' });
+    doc.text('sayantikaintothewild@gmail.com', contactX, 17, { align: 'right' });
+    doc.text('sanaonthego.github.io', contactX, 24, { align: 'right' });
+    doc.text('@sana.onthe.go', contactX, 31, { align: 'right' });
+
+    // ══════════════════════════════════════
+    // 2. GOLD CATEGORY STRIP (52 → 62mm)
+    // ══════════════════════════════════════
+    fill(C.gold); doc.rect(0, 52, W, 10, 'F');
+    tc(C.green);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(52);
-    doc.text('SANA ON THE GO', W / 2, H / 2 + 30, { align: 'center', angle: 45 });
-    doc.setGState(new doc.GState({ opacity: 1 }));
+    doc.setFontSize(7.5);
+    const catStr = (pkgCat || '').replace(/[^\x00-\x7F]/g, '').trim().toUpperCase();
+    doc.text(catStr + '   |   PACKAGE ' + pkgId, W / 2, 58.5, { align: 'center' });
 
-    // ── Save
-    const fileName = `Sana-OnTheGo-${pkgId}-Itinerary.pdf`;
-    doc.save(fileName);
-    showToast(`📄 "${pkgName}" itinerary PDF downloaded!`);
-  }
-</script>
+    // ══════════════════════════════════════
+    // 3. TITLE BLOCK (62 → ~95mm)
+    //    Duration badge ABOVE name — no overlap
+    // ══════════════════════════════════════
+    fill(C.bg); doc.rect(0, 62, W, 40, 'F');
+
+    let y = 68;
+
+    // Duration badge (green pill, top of block)
+    if (pkgDur) {
+      const durClean = pkgDur.replace(/[^\x00-\x7F]/g, '').trim();
+      const badgeW = Math.min(doc.getTextWidth(durClean) * 1.0 + 12, 80);
+      fill(C.greenLt);
+      doc.roundedRect(MARGIN, y, badgeW, 7, 2, 2, 'F');
+      tc(C.white);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7);
+      doc.text(durClean.toUpperCase(), MARGIN + 6, y + 5);
+      y += 11;  // gap between badge and name
+    }
+
+    // Package name (below the badge, not overlapping)
+    tc(C.green);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(17);
+    const nameClean = (pkgName || 'Package').replace(/[^\x00-\x7F]/g, '').trim();
+    const nameLines = doc.splitTextToSize(nameClean, W - 2 * MARGIN - 5);
+    doc.text(nameLines, MARGIN, y);
+    y = Math.max(y + nameLines.length * 7.5 + 4, 100); // ensure we clear the bg rect
+
+    // ══════════════════════════════════════
+    // 4. ABOUT SECTION
+    // ══════════════════════════════════════
+    draw(C.goldLt); doc.setLineWidth(0.4);
+    doc.line(MARGIN, y, W - MARGIN, y);
+    y += 8;
+
+    fill(C.green); doc.rect(MARGIN, y, 3, 9, 'F');
+    tc(C.green);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10.5);
+    doc.text('About This Package', MARGIN + 6, y + 7);
+    y += 15;
+
+    tc(C.muted);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9.5);
+    const descClean = (pkgDesc || 'Details will be shared on enquiry.').replace(/[^\x00-\x7F]/g, '').trim();
+    const descLines = doc.splitTextToSize(descClean, W - 2 * MARGIN);
+    doc.text(descLines, MARGIN, y);
+    y += descLines.length * 5.5 + 10;
+
+    // ══════════════════════════════════════
+    // 5. DAY-BY-DAY ITINERARY
+    // ══════════════════════════════════════
+    if (y + 14 < FOOTER_Y - 30) {
+      draw(C.goldLt);
+      doc.line(MARGIN, y, W - MARGIN, y);
+      y += 8;
+
+      fill(C.green); doc.rect(MARGIN, y, 3, 9, 'F');
+      tc(C.green);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10.5);
+      doc.text('Day-by-Day Itinerary', MARGIN + 6, y + 7);
+      y += 15;
+
+      const days = [
+        ['Day 1', 'Arrival & Check-in at your stay'],
+        ['Day 2', 'Exploration & Local Sightseeing'],
+        ['Day 3', 'Offbeat Trails & Village Walk'],
+        ['Day 4', 'Cultural Experiences & Free Time'],
+        ['Day 5', 'Leisure Morning & Departure'],
+      ];
+
+      days.forEach(([label, detail], i) => {
+        if (y + 14 > FOOTER_Y - 5) return;
+        fill(i % 2 === 0 ? C.bg : C.white);
+        doc.rect(MARGIN, y - 3, W - 2 * MARGIN, 14, 'F');
+
+        // Numbered circle
+        fill(C.greenLt);
+        doc.circle(MARGIN + 5, y + 4, 4.5, 'F');
+        tc(C.white);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(7);
+        doc.text(String(i + 1), MARGIN + 5, y + 6, { align: 'center' });
+
+        tc(C.text);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(9);
+        doc.text(label, MARGIN + 13, y + 3);
+
+        tc(C.muted);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8.5);
+        doc.text(detail + ' — full details shared on booking.', MARGIN + 13, y + 9);
+        y += 16;
+      });
+      y += 6;
+    }
+
+    // ══════════════════════════════════════
+    // 6. INCLUDES / EXCLUDES
+    // ══════════════════════════════════════
+    if (y + 10 < FOOTER_Y - 40) {
+      draw(C.goldLt);
+      doc.line(MARGIN, y, W - MARGIN, y);
+      y += 8;
+
+      fill(C.green); doc.rect(MARGIN, y, 3, 9, 'F');
+      tc(C.green);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10.5);
+      doc.text("What's Typically Included", MARGIN + 6, y + 7);
+      y += 15;
+
+      const items = [
+        [true,  'Accommodation (hotels / homestays as per itinerary)'],
+        [true,  'Meals as specified (breakfast + dinner)'],
+        [true,  'All transfers & sightseeing by private vehicle'],
+        [true,  'Experienced local guide throughout the trip'],
+        [true,  'All applicable permits & entry fees'],
+        [false, 'Airfare / train tickets to/from NJP or Bagdogra'],
+        [false, 'Personal expenses & tips'],
+      ];
+
+      items.forEach(([inc, label]) => {
+        if (y + 2 > FOOTER_Y - 10) return;
+        tc(inc ? C.green : C.red);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8.5);
+        doc.text((inc ? '[+]  ' : '[-]  ') + label, MARGIN + 4, y);
+        y += 6.5;
+      });
+    }
+
+    // ══════════════════════════════════════
+    // 7. FOOTER BAND — fixed at bottom
+    //    Divides left (price) and right (contacts)
+    //    Uses plain text only — no emoji
+    // ══════════════════════════════════════
+    fill(C.green); doc.rect(0, FOOTER_Y, W, FOOTER_H, 'F');
+    // Gold top border line
+    fill(C.gold); doc.rect(0, FOOTER_Y, W, 2, 'F');
+    // Vertical divider between left and right
+    fill([45, 90, 65]); doc.rect(W / 2, FOOTER_Y + 2, 0.5, FOOTER_H - 4, 'F');
+
+    // LEFT — Price block
+    const FY = FOOTER_Y;
+    tc(C.goldLt);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.text('STARTING FROM', MARGIN, FY + 12);
+
+    const priceClean = (pkgPrice || 'Contact us').replace(/[^\x00-\x7F]/g, '').trim();
+    tc(C.white);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(19);
+    doc.text(priceClean, MARGIN, FY + 26);
+
+    tc([180, 220, 180]);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.text('per person  |  subject to group size', MARGIN, FY + 33);
+
+    // RIGHT — Contact block (no emoji, plain ASCII)
+    const RX = W / 2 + 8;
+    tc(C.goldLt);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.text('BOOK YOUR TRIP', RX, FY + 11);
+
+    tc(C.white);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.text('Ph / WhatsApp: +91 98747 40763', RX, FY + 20);
+    doc.text('Email: sayantikaintothewild@gmail.com', RX, FY + 28);
+    doc.text('Web:   sanaonthego.github.io', RX, FY + 36);
+    doc.text('Insta: @sana.onthe.go', RX, FY + 44);
+
+    // ══════════════════════════════════════
+    // 8. SUBTLE WATERMARK
+    // ══════════════════════════════════════
+    doc.setGState(new doc.GState({ opacity: 0.05 }));
+    tc(C.green);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(48);
+    doc.text('SAN
