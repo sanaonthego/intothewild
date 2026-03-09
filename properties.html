@@ -5,239 +5,174 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Properties – Sana On The Go | Hotels & Homestays North Bengal & Sikkim</title>
   <meta name="description" content="Browse handpicked hotels and homestays in Darjeeling, Sikkim, Kalimpong and across North Bengal. Book via WhatsApp with Sana On The Go.">
+  <meta name="keywords" content="hotels darjeeling, homestay sikkim, kalimpong accommodation, north bengal hotels, offbeat stays north bengal, budget hotels darjeeling, luxury resort sikkim">
   <link rel="canonical" href="https://sanaonthego.github.io/properties.html">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"Sana On The Go – Properties","url":"https://sanaonthego.github.io/properties.html","telephone":"+91-98747-40763","address":{"@type":"PostalAddress","addressLocality":"Siliguri","addressRegion":"West Bengal","addressCountry":"IN"}}</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --green:#2d6a4f;--green-lt:#52b788;--green-dk:#1a3d2b;--green-mid:#3d8b62;
-      --wa:#25D366;--wa-dk:#1aab55;
-      --gold:#c9a84c;--gold-lt:#e8c97a;--gold-dk:#a07830;
-      --bg:#f6f3ee;--text:#1c1c1c;--muted:#64705e;--radius:14px;
-      --shadow:0 4px 24px rgba(26,61,43,.10);
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:#2d6a4f; --green-lt:#52b788; --green-dk:#1a3d2b;
+      --wa:#25D366; --wa-dk:#1aab55;
+      --bg:#f7f4ef; --text:#1e1e1e; --muted:#666; --radius:12px;
     }
-    html{scroll-behavior:smooth}
-    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+    html { scroll-behavior: smooth; }
+    body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
 
     /* NAV */
-    nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:13px 40px;background:var(--green-dk);box-shadow:0 2px 20px rgba(0,0,0,.22)}
-    .logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#fff;text-decoration:none;letter-spacing:.3px}
-    .logo span{color:var(--gold-lt)}
-    .nav-links{list-style:none;display:flex;gap:22px;align-items:center}
-    .nav-links a{color:rgba(255,255,255,.84);text-decoration:none;font-size:.87rem;font-weight:500;transition:color .2s}
-    .nav-links a:hover{color:var(--gold-lt)}
-    .nav-links a.active{color:var(--gold-lt);border-bottom:2px solid var(--gold-lt);padding-bottom:2px}
-    .nav-cta{background:var(--wa)!important;color:#fff!important;padding:8px 16px!important;border-radius:50px!important;font-weight:600!important;border-bottom:none!important;transition:background .2s,transform .2s!important}
-    .nav-cta:hover{background:var(--wa-dk)!important;transform:translateY(-1px)}
-    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-    .hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
-    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-    .hamburger.open span:nth-child(2){opacity:0}
-    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-    .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,28,18,.98);backdrop-filter:blur(16px);z-index:99;padding:88px 36px 36px;flex-direction:column}
-    .mobile-menu.open{display:flex}
-    .mobile-menu a{color:rgba(255,255,255,.88);text-decoration:none;font-size:1.3rem;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07);font-family:'Cormorant Garamond',serif;transition:color .2s}
-    .mobile-menu a:hover{color:var(--gold-lt)}
-    .mobile-menu a:last-child{border-bottom:none}
-    .mobile-menu a.m-wa{color:var(--wa)!important;font-family:'DM Sans',sans-serif;font-size:1rem;display:flex;align-items:center;gap:8px;margin-top:8px}
-    .mobile-close{position:absolute;top:22px;right:24px;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:1.2rem;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
-    .mobile-close:hover{background:rgba(255,255,255,.2)}
+    nav { position:sticky; top:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:14px 36px; background:var(--green); box-shadow:0 2px 12px rgba(0,0,0,0.18); }
+    .logo { font-family:'Playfair Display',serif; font-size:1.25rem; color:#fff; text-decoration:none; flex-shrink:0; }
+    .nav-links { list-style:none; display:flex; gap:22px; align-items:center; }
+    .nav-links a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:0.88rem; font-weight:500; transition:color 0.2s; white-space:nowrap; }
+    .nav-links a:hover,.nav-links a.active { color:var(--green-lt); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .hamburger span { display:block; width:24px; height:2px; background:#fff; border-radius:2px; }
+    .mobile-menu { display:none; position:fixed; top:58px; left:0; right:0; background:rgba(20,40,30,0.98); backdrop-filter:blur(10px); z-index:99; padding:16px 24px 24px; flex-direction:column; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:1rem; font-weight:500; padding:13px 0; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .mobile-menu a:last-child { border-bottom:none; }
+    .mobile-menu a:hover { color:var(--green-lt); }
 
     /* PAGE HERO */
-    .page-hero{background:linear-gradient(135deg,#1a3d2b,#2d6a4f,#3d8b62);color:#fff;text-align:center;padding:64px 24px 52px;position:relative;overflow:hidden}
-    .page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
-    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold-lt);margin-bottom:14px;font-weight:600}
-    .eyebrow::before,.eyebrow::after{content:'';display:block;width:28px;height:1px;background:var(--gold-lt);opacity:.6}
-    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:700;margin-bottom:10px}
-    .page-hero p{font-size:.96rem;color:rgba(255,255,255,.72);max-width:520px;margin:0 auto}
+    .page-hero { background:linear-gradient(135deg,#1a3d2b,#2d6a4f); color:#fff; text-align:center; padding:60px 24px 52px; }
+    .page-hero .eyebrow { font-size:0.74rem; letter-spacing:3px; text-transform:uppercase; color:var(--green-lt); margin-bottom:12px; font-weight:600; }
+    .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,5vw,3rem); margin-bottom:12px; }
+    .page-hero p { font-size:0.97rem; color:rgba(255,255,255,0.74); max-width:500px; margin:0 auto; }
 
-    /* CONTAINER */
-    .container{max-width:1060px;margin:0 auto;padding:0 20px}
+    /* MAIN CONTAINER */
+    .container { max-width:1060px; margin:0 auto; padding:0 20px; }
 
-    /* BREADCRUMB / STEP */
-    .breadcrumb{display:flex;align-items:center;gap:8px;padding:18px 0 6px;font-size:.82rem;color:var(--muted)}
-    .breadcrumb button{background:none;border:none;color:var(--green);font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.82rem}
-    .breadcrumb button:hover{text-decoration:underline}
-    .breadcrumb .sep{color:#bbb}
+    /* ── STEP INDICATOR ── */
+    .steps { display:flex; align-items:center; justify-content:center; gap:0; padding:28px 24px 0; flex-wrap:wrap; }
+    .step { display:flex; align-items:center; gap:8px; font-size:0.82rem; color:var(--muted); font-weight:500; }
+    .step .num { width:26px; height:26px; border-radius:50%; border:2px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#ccc; transition:all 0.3s; }
+    .step.active .num { background:var(--green); border-color:var(--green); color:#fff; }
+    .step.active { color:var(--green); }
+    .step.done .num { background:var(--green-lt); border-color:var(--green-lt); color:#fff; }
+    .step-line { width:40px; height:2px; background:#ddd; margin:0 4px; }
+    .step-line.done { background:var(--green-lt); }
 
     /* SECTION TITLE */
-    .sec-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--green);margin-bottom:6px}
-    .sec-sub{color:var(--muted);font-size:.9rem;margin-bottom:28px}
+    .sec-title { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--green); margin-bottom:6px; }
+    .sec-sub { color:var(--muted); font-size:0.9rem; margin-bottom:28px; }
 
-    /* LOCATION GRID */
-    #step1{padding:36px 0 60px}
-    .region-label{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin:28px 0 12px;display:flex;align-items:center;gap:10px}
-    .region-label::after{content:'';flex:1;height:1px;background:#d8d3ca}
-    .loc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
-    .loc-card{background:#fff;border:2px solid #e8e2d9;border-radius:var(--radius);padding:20px 14px 16px;text-align:center;cursor:pointer;transition:all .2s;user-select:none;position:relative;overflow:hidden}
-    .loc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--green),var(--green-lt));opacity:0;transition:opacity .2s}
-    .loc-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:var(--shadow)}
-    .loc-card:hover::before{opacity:.04}
-    .loc-card.selected{border-color:var(--green);background:#eaf5ee}
-    .loc-icon{font-size:2rem;display:block;margin-bottom:8px;position:relative}
-    .loc-name{font-weight:700;font-size:.92rem;color:var(--text);display:block;margin-bottom:2px;position:relative}
-    .loc-state{font-size:.7rem;color:var(--muted);display:block;position:relative}
-    .loc-count{font-size:.68rem;color:var(--green);font-weight:700;margin-top:5px;display:block;position:relative}
+    /* ── STEP 1: LOCATION GRID ── */
+    #step1 { padding:36px 0 60px; }
+    .loc-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(150px,1fr));
+      gap:12px;
+    }
+    .loc-card {
+      background:#fff; border:2px solid #e8e2d9; border-radius:var(--radius);
+      padding:18px 14px; text-align:center; cursor:pointer;
+      transition:all 0.2s; user-select:none;
+    }
+    .loc-card:hover { border-color:var(--green); transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,0.1); }
+    .loc-card.selected { border-color:var(--green); background:#eaf5ee; }
+    .loc-card .loc-icon { font-size:1.8rem; margin-bottom:8px; display:block; }
+    .loc-card .loc-name { font-weight:600; font-size:0.88rem; color:var(--text); display:block; margin-bottom:3px; }
+    .loc-card .loc-region { font-size:0.72rem; color:var(--muted); }
 
-    /* PROPERTIES VIEW */
-    #step2{display:none;padding:28px 0 60px}
-    .back-btn{display:inline-flex;align-items:center;gap:6px;color:var(--green);font-weight:600;font-size:.88rem;cursor:pointer;margin-bottom:8px;background:none;border:none;font-family:'DM Sans',sans-serif;padding:0;transition:gap .2s}
-    .back-btn:hover{gap:10px}
+    /* ── STEP 2: PROPERTY CARDS ── */
+    #step2 { display:none; padding:36px 0 60px; }
+    .back-btn { display:inline-flex; align-items:center; gap:6px; color:var(--green); font-weight:600; font-size:0.88rem; cursor:pointer; margin-bottom:24px; background:none; border:none; font-family:'DM Sans',sans-serif; }
+    .back-btn:hover { text-decoration:underline; }
+    .prop-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:20px; }
+    .prop-card { background:#fff; border-radius:var(--radius); border:1px solid #e8e2d9; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.06); transition:transform 0.2s, box-shadow 0.2s; }
+    .prop-card:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(0,0,0,0.12); }
 
-    /* LOCATION HERO STRIP */
-    .loc-hero{background:var(--green-dk);border-radius:var(--radius);padding:22px 24px;margin-bottom:24px;display:flex;align-items:center;gap:18px;position:relative;overflow:hidden}
-    .loc-hero::after{content:'';position:absolute;right:-10px;top:-10px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.03)}
-    .loc-hero-icon{font-size:2.4rem;flex-shrink:0}
-    .loc-hero-text h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;margin-bottom:3px}
-    .loc-hero-text p{font-size:.84rem;color:rgba(255,255,255,.6)}
-    .loc-hero-badge{margin-left:auto;background:rgba(255,255,255,.1);color:var(--gold-lt);font-size:.75rem;font-weight:700;padding:5px 12px;border-radius:20px;flex-shrink:0}
+    /* Property image gallery — 2 photos shown side by side */
+    .prop-imgs { display:grid; grid-template-columns:1fr 1fr; height:160px; gap:2px; overflow:hidden; position:relative; }
+    .prop-imgs img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.3s; }
+    .prop-imgs:hover img { transform:scale(1.04); }
+    /*
+    ════════════════════════════════════════════════════════════
+    HOW TO ADD PROPERTY IMAGES:
+    Each property has 2 images shown side-by-side.
+    In the PROPERTIES data array (JS below), each property has:
+      img1: "images/properties/LOCATION-PROPNAME-1.jpg"
+      img2: "images/properties/LOCATION-PROPNAME-2.jpg"
 
-    /* FILTER BAR */
-    .filter-bar{background:#fff;border:1px solid #e8e2d9;border-radius:var(--radius);padding:14px 18px;margin-bottom:24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .filter-label{font-size:.71rem;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;flex-shrink:0}
-    .filter-div{width:1px;height:20px;background:#e0dbd2;flex-shrink:0}
-    .filter-group{display:flex;gap:7px;flex-wrap:wrap}
-    .chip{display:inline-flex;align-items:center;gap:4px;padding:5px 13px;border-radius:50px;font-size:.78rem;font-weight:600;border:1.5px solid #d4cfc7;color:var(--muted);background:#fff;cursor:pointer;transition:all .18s;user-select:none}
-    .chip:hover{border-color:var(--green);color:var(--green)}
-    .chip.on{background:var(--green);border-color:var(--green);color:#fff}
-    .chip.price-on{background:var(--gold-dk);border-color:var(--gold-dk);color:#fff}
-    .filter-reset{margin-left:auto;font-size:.78rem;color:var(--muted);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'DM Sans',sans-serif}
-    .filter-reset:hover{color:var(--green)}
-    .filter-count{width:100%;font-size:.81rem;color:var(--muted);padding-top:4px}
+    1. Create a folder: images/properties/
+    2. Upload your property photos there
+    3. Update the img1 and img2 values in the PROPERTIES array
+    4. If images are missing, a green placeholder is shown
+    ════════════════════════════════════════════════════════════
+    */
+    .prop-img-ph { background:linear-gradient(135deg,#1a3d2b,#2d6a4f); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:4px; }
+    .prop-img-ph span { color:rgba(255,255,255,0.5); font-size:0.7rem; text-align:center; padding:0 6px; }
+    .prop-img-ph .ph-i { font-size:1.4rem; }
+    .prop-type-badge { position:absolute; top:10px; left:10px; background:rgba(26,61,43,0.85); color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 9px; border-radius:20px; z-index:1; }
+    .prop-body { padding:18px; }
+    .prop-name { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--text); margin-bottom:4px; }
+    .prop-loc { font-size:0.8rem; color:var(--muted); margin-bottom:10px; display:flex; align-items:center; gap:4px; }
+    .prop-loc svg { width:13px; height:13px; fill:var(--green-lt); }
+    .prop-amenities { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px; }
+    .amenity { font-size:0.7rem; background:#f0f0ea; color:#555; padding:3px 8px; border-radius:20px; }
+    .prop-price { font-size:0.95rem; font-weight:700; color:var(--green); margin-bottom:14px; }
+    .prop-price span { font-size:0.78rem; font-weight:400; color:var(--muted); }
+    .btn-book { display:block; width:100%; background:var(--green); color:#fff; border:none; padding:11px; border-radius:8px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:0.9rem; cursor:pointer; transition:background 0.2s; }
+    .btn-book:hover { background:var(--green-dk); }
 
-    /* PROPERTIES GRID */
-    .prop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:20px}
-    .prop-card{background:#fff;border-radius:var(--radius);border:1px solid #e8e2d9;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
-    .prop-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.13)}
-    .prop-img-wrap{height:180px;background:linear-gradient(135deg,#1a3d2b,#3d8b62);position:relative;overflow:hidden}
-    .prop-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-    .prop-card:hover .prop-img-wrap img{transform:scale(1.06)}
-    .prop-img-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:rgba(255,255,255,.5);font-size:.8rem;text-align:center;padding:12px}
-    .prop-img-ph .phi{font-size:2.2rem;margin-bottom:4px}
-    .prop-img-ph small{font-size:.68rem;color:rgba(255,255,255,.35)}
-    .type-badge{position:absolute;top:10px;left:10px;background:rgba(26,61,43,.88);color:#fff;font-size:.67rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:20px}
-    .prop-body{padding:18px;flex:1;display:flex;flex-direction:column}
-    .prop-name{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--text);margin-bottom:4px;line-height:1.3}
-    .prop-loc{font-size:.79rem;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:4px}
-    .prop-loc svg{width:12px;height:12px;fill:var(--green-lt);flex-shrink:0}
-    .prop-amenities{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
-    .amenity{font-size:.69rem;background:#f0f0ea;color:#555;padding:3px 9px;border-radius:20px}
-    .prop-desc{font-size:.83rem;color:var(--muted);line-height:1.55;margin-bottom:12px;flex:1}
-    .prop-price{font-size:.96rem;font-weight:700;color:var(--gold-dk);margin-bottom:14px}
-    .prop-price span{font-size:.77rem;font-weight:400;color:var(--muted)}
-    .btn-enquire{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--green);color:#fff;border:none;padding:11px;border-radius:9px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.89rem;cursor:pointer;transition:background .2s}
-    .btn-enquire:hover{background:var(--green-dk)}
-    .btn-enquire svg{width:16px;height:16px;fill:#fff;flex-shrink:0}
+    /* ── BOOKING MODAL ── */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:500; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(4px); }
+    .modal-overlay.open { display:flex; }
+    .modal { background:#fff; border-radius:16px; max-width:480px; width:100%; max-height:92vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+    .modal-header { background:var(--green); color:#fff; padding:22px 24px 18px; border-radius:16px 16px 0 0; position:relative; }
+    .modal-header h3 { font-family:'Playfair Display',serif; font-size:1.25rem; margin-bottom:3px; }
+    .modal-header p { font-size:0.83rem; color:rgba(255,255,255,0.75); }
+    .modal-close { position:absolute; top:16px; right:18px; background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:1.2rem; width:30px; height:30px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+    .modal-close:hover { background:rgba(255,255,255,0.3); }
 
-    /* ADD PROPERTY HINT CARD */
-    .add-card{border:2px dashed #d0ccc4;border-radius:var(--radius);padding:36px 20px;text-align:center;color:var(--muted)}
-    .add-card .add-icon{font-size:2rem;margin-bottom:10px}
-    .add-card p{font-size:.84rem;line-height:1.65}
-    .add-card code{background:#eee;padding:2px 6px;border-radius:4px;font-size:.8rem;color:var(--green)}
+    /* Mini property preview inside modal */
+    .modal-prop-preview { display:grid; grid-template-columns:90px 1fr; gap:14px; align-items:center; background:#f7f4ef; padding:14px 20px; border-bottom:1px solid #e8e2d9; }
+    .modal-prop-preview img { width:90px; height:60px; object-fit:cover; border-radius:8px; }
+    .modal-prop-preview .ph { width:90px; height:60px; background:linear-gradient(135deg,#1a3d2b,#2d6a4f); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+    .modal-prop-preview .mpname { font-weight:600; font-size:0.95rem; color:var(--text); }
+    .modal-prop-preview .mpprice { font-size:0.85rem; color:var(--green); font-weight:600; }
+    .modal-prop-preview .mploc { font-size:0.78rem; color:var(--muted); }
 
-    /* NO RESULTS */
-    .no-results{grid-column:1/-1;text-align:center;padding:56px 24px;color:var(--muted)}
-    .no-results .nri{font-size:2.5rem;margin-bottom:12px;display:block}
-
-    /* MODAL */
-    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
-    .modal-overlay.open{display:flex}
-    @media(min-width:640px){.modal-overlay.open{align-items:center}}
-    .modal{background:#fff;width:100%;max-width:500px;border-radius:22px 22px 0 0;padding:0;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:slideUp .32s ease}
-    @media(min-width:640px){.modal{border-radius:20px}}
-    @keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
-    .modal-header{background:var(--green);color:#fff;padding:22px 24px 18px;border-radius:22px 22px 0 0;position:relative}
-    @media(min-width:640px){.modal-header{border-radius:20px 20px 0 0}}
-    .modal-header h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;margin-bottom:3px}
-    .modal-header p{font-size:.82rem;color:rgba(255,255,255,.7)}
-    .modal-close{position:absolute;top:16px;right:18px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:1.1rem;width:32px;height:32px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
-    .modal-close:hover{background:rgba(255,255,255,.3)}
-    .modal-preview{background:#f7f4ef;padding:14px 20px;border-bottom:1px solid #e8e2d9;display:flex;align-items:center;gap:14px}
-    .modal-preview .mp-ph{width:72px;height:52px;background:linear-gradient(135deg,#1a3d2b,#2d6a4f);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
-    .modal-preview .mp-ph img{width:72px;height:52px;object-fit:cover;border-radius:8px}
-    .mp-name{font-weight:600;font-size:.94rem;color:var(--text)}
-    .mp-loc{font-size:.77rem;color:var(--muted);margin-top:2px}
-    .mp-price{font-size:.84rem;color:var(--gold-dk);font-weight:700;margin-top:2px}
-    .modal-body{padding:20px 24px 28px}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-    .fg{display:flex;flex-direction:column;gap:4px}
-    .fg.full{grid-column:1/-1}
-    .fg label{font-size:.7rem;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase}
-    .fg input,.fg select,.fg textarea{padding:10px 13px;border:1.5px solid #d4cfc7;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--text);background:var(--bg);transition:border-color .2s;width:100%}
-    .fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(45,106,79,.1)}
-    .fg textarea{resize:vertical;min-height:62px}
-    .btn-wa-send{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--wa);color:#fff;border:none;padding:14px;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;margin-top:16px;transition:background .2s,transform .2s;box-shadow:0 4px 16px rgba(37,211,102,.35)}
-    .btn-wa-send:hover{background:var(--wa-dk);transform:translateY(-1px)}
-    .btn-wa-send svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
-    .modal-note{font-size:.74rem;color:var(--muted);text-align:center;margin-top:10px}
-
-    /* TOAST */
-    .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--green-dk);color:#fff;padding:13px 24px;border-radius:50px;font-size:.89rem;font-weight:600;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:1000;white-space:nowrap}
-    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-    /* WA FLOAT */
-    .wa-float{position:fixed;bottom:28px;right:28px;z-index:200;background:var(--wa);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);text-decoration:none;transition:transform .2s}
-    .wa-float:hover{transform:scale(1.1)}
-    .wa-float svg{width:28px;height:28px;fill:#fff;position:relative;z-index:1}
-    .wa-pulse{position:absolute;width:56px;height:56px;border-radius:50%;background:var(--wa);animation:pulse-ring 2.2s ease infinite}
-    @keyframes pulse-ring{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.65);opacity:0}}
-    .scroll-top{position:fixed;bottom:98px;right:28px;z-index:200;width:42px;height:42px;border-radius:50%;background:var(--green-dk);border:2px solid rgba(255,255,255,.15);color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;box-shadow:0 4px 16px rgba(0,0,0,.2)}
-    .scroll-top.visible{opacity:1;pointer-events:auto}
-    .scroll-top:hover{background:var(--green);transform:translateY(-2px)}
+    .modal-body { padding:20px 24px 24px; }
+    .mform-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+    .mform-group { display:flex; flex-direction:column; gap:5px; }
+    .mform-group.full { grid-column:1/-1; }
+    .mform-group label { font-size:0.72rem; font-weight:600; color:var(--green); letter-spacing:0.5px; text-transform:uppercase; }
+    .mform-group input, .mform-group select, .mform-group textarea { padding:10px 13px; border:1.5px solid #d4cfc7; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); background:var(--bg); transition:border-color 0.2s; width:100%; }
+    .mform-group input:focus,.mform-group select:focus,.mform-group textarea:focus { outline:none; border-color:var(--green); }
+    .mform-group textarea { resize:vertical; min-height:64px; }
+    .btn-wa-modal { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--wa); color:#fff; border:none; padding:14px; border-radius:10px; font-family:'DM Sans',sans-serif; font-weight:700; font-size:1rem; cursor:pointer; margin-top:16px; transition:background 0.2s, transform 0.2s; box-shadow:0 4px 16px rgba(37,211,102,0.35); }
+    .btn-wa-modal:hover { background:var(--wa-dk); transform:translateY(-1px); }
+    .btn-wa-modal svg { width:20px; height:20px; fill:#fff; flex-shrink:0; }
+    .modal-note { font-size:0.75rem; color:var(--muted); text-align:center; margin-top:10px; }
 
     /* FOOTER */
-    footer{background:#0d1a10;color:rgba(255,255,255,.82)}
-    .footer-inner{max-width:960px;margin:0 auto;padding:52px 24px 30px}
-    .footer-top{display:grid;grid-template-columns:1.2fr 1fr;gap:52px;margin-bottom:36px}
-    .footer-brand h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:10px}
-    .footer-brand h2 span{color:var(--gold-lt)}
-    .footer-brand p{font-size:.87rem;color:rgba(255,255,255,.45);line-height:1.8;margin-bottom:18px}
-    .footer-social{display:flex;gap:10px}
-    .f-soc{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s}
-    .f-soc:hover{transform:translateY(-3px)}
-    .f-soc.insta{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
-    .f-soc.fb{background:#1877f2} .f-soc.wa-s{background:var(--wa)}
-    .f-soc svg{width:17px;height:17px;fill:#fff}
-    .footer-contact h3{font-size:.73rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green-lt);margin-bottom:18px}
-    .contact-row{display:flex;align-items:flex-start;gap:11px;margin-bottom:13px}
-    .ci{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .ci svg{width:14px;height:14px}
-    .ci.phone{background:rgba(37,211,102,.14)} .ci.phone svg{fill:var(--wa)}
-    .ci.email{background:rgba(234,67,53,.14)} .ci.email svg{fill:#ea4335}
-    .ci.insta-i{background:rgba(188,24,136,.14)} .ci.insta-i svg{fill:#bc1888}
-    .ci.map{background:rgba(82,183,136,.14)} .ci.map svg{fill:var(--green-lt)}
-    .ct{font-size:.87rem;color:rgba(255,255,255,.67);line-height:1.55}
-    .ct a{color:rgba(255,255,255,.84);text-decoration:none}
-    .ct a:hover{color:var(--green-lt)}
-    .ct .cl{font-size:.65rem;color:rgba(255,255,255,.33);display:block;margin-bottom:2px;text-transform:uppercase;letter-spacing:.5px}
-    .office-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:9px;padding:11px 13px;font-size:.82rem;color:rgba(255,255,255,.57);line-height:1.65}
-    .office-box strong{display:block;color:rgba(255,255,255,.84);font-size:.85rem;margin-bottom:4px}
-    .map-wrap{border-radius:var(--radius);overflow:hidden;margin-bottom:32px;box-shadow:0 4px 20px rgba(0,0,0,.3)}
-    .map-wrap iframe{width:100%;height:220px;border:0;display:block}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:18px;display:flex;justify-content:space-between;align-items:center;font-size:.79rem;color:rgba(255,255,255,.27);flex-wrap:wrap;gap:10px}
-    .footer-bottom a{color:var(--green-lt);text-decoration:none}
+    footer { background:#111e18; color:rgba(255,255,255,0.8); padding:36px 24px 24px; text-align:center; }
+    .footer-links { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:16px; }
+    .footer-links a { color:var(--green-lt); text-decoration:none; font-size:0.88rem; }
+    .footer-copy { font-size:0.78rem; color:rgba(255,255,255,0.3); }
+
+    /* WA float */
+    .wa-float { position:fixed; bottom:26px; right:26px; z-index:200; background:var(--wa); width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(37,211,102,0.42); text-decoration:none; transition:transform 0.2s; }
+    .wa-float:hover { transform:scale(1.1); }
+    .wa-float svg { width:27px; height:27px; fill:#fff; }
 
     /* RESPONSIVE */
-    @media(max-width:768px){
-      nav{padding:13px 18px} .nav-links{display:none} .hamburger{display:flex}
-      .loc-grid{grid-template-columns:repeat(auto-fill,minmax(135px,1fr))}
-      .prop-grid{grid-template-columns:1fr}
-      .form-row{grid-template-columns:1fr}
-      .footer-top{grid-template-columns:1fr;gap:30px}
-      .filter-bar{flex-direction:column;align-items:flex-start}
-      .filter-reset{margin-left:0}
+    @media (max-width:768px) {
+      nav { padding:13px 18px; } .nav-links { display:none; } .hamburger { display:flex; }
+      .loc-grid { grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); }
+      .prop-grid { grid-template-columns:1fr; }
+      .mform-row { grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
 
-<div class="toast" id="toast"><span>✅</span><span id="toastMsg"></span></div>
-
-<!-- NAV -->
-<nav id="mainNav">
-  <a class="logo" href="index.html">Sana <span>On The Go</span></a>
+<nav>
+  <a class="logo" href="index.html">Sana On The Go</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#booking">Quick Enquiry</a></li>
@@ -246,2658 +181,498 @@
     <li><a href="index.html#why-us">Why Us</a></li>
     <li><a href="index.html#gallery">Gallery</a></li>
     <li><a href="index.html#contact">Contact</a></li>
-    <li><a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties" class="nav-cta" target="_blank">WhatsApp Us</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="closeMenu()">✕</button>
   <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="index.html#booking" onclick="closeMenu()">Quick Enquiry</a>
   <a href="packages.html" onclick="closeMenu()">Packages</a>
   <a href="properties.html" onclick="closeMenu()">Properties</a>
   <a href="index.html#why-us" onclick="closeMenu()">Why Us</a>
   <a href="index.html#gallery" onclick="closeMenu()">Gallery</a>
   <a href="index.html#contact" onclick="closeMenu()">Contact</a>
-  <a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties" class="m-wa" target="_blank">💬 WhatsApp Us</a>
 </div>
 
-<!-- HERO -->
 <div class="page-hero">
   <p class="eyebrow">Handpicked Stays</p>
   <h1>Browse Properties</h1>
-  <p>Explore hotels, resorts, homestays &amp; bungalows across 20+ destinations in North Bengal &amp; Sikkim — curated by local experts.</p>
+  <p>Hotels, resorts and homestays across North Bengal &amp; Sikkim — curated by local experts.</p>
 </div>
 
-<!-- STEP 1: LOCATION CHOOSER -->
+<!-- Step indicator -->
+<div class="steps" id="stepIndicator">
+  <div class="step active" id="s1ind"><span class="num">1</span> Choose Location</div>
+  <div class="step-line" id="sl1"></div>
+  <div class="step" id="s2ind"><span class="num">2</span> View Properties</div>
+  <div class="step-line" id="sl2"></div>
+  <div class="step" id="s3ind"><span class="num">3</span> Send Booking Enquiry</div>
+</div>
+
+<!-- STEP 1: LOCATION -->
 <section id="step1">
   <div class="container">
-    <h2 class="sec-title">Where would you like to stay?</h2>
-    <p class="sec-sub">Select a destination to view available properties</p>
-    <div id="locContainer"></div>
+    <h2 class="sec-title">Where do you want to stay?</h2>
+    <p class="sec-sub">Select a destination to see available properties</p>
+    <div class="loc-grid" id="locGrid">
+      <!-- Populated by JS -->
+    </div>
   </div>
 </section>
 
 <!-- STEP 2: PROPERTIES -->
 <section id="step2">
   <div class="container">
-    <div class="breadcrumb">
-      <button onclick="goBack()">← All Destinations</button>
-      <span class="sep">/</span>
-      <span id="bcLoc">Location</span>
+    <button class="back-btn" onclick="goBack()">← Back to Locations</button>
+    <h2 class="sec-title" id="propHeading">Properties</h2>
+    <p class="sec-sub" id="propSub">Select a property to enquire</p>
+    <div class="prop-grid" id="propGrid">
+      <!-- Populated by JS -->
     </div>
-    <div class="loc-hero" id="locHero">
-      <span class="loc-hero-icon" id="heroIcon"></span>
-      <div class="loc-hero-text">
-        <h2 id="heroName"></h2>
-        <p id="heroDesc"></p>
-      </div>
-      <span class="loc-hero-badge" id="heroBadge"></span>
-    </div>
-    <div class="filter-bar">
-      <span class="filter-label">Filter</span>
-      <div class="filter-div"></div>
-      <div class="filter-group" id="typeFilters"></div>
-      <div class="filter-div"></div>
-      <div class="filter-group">
-        <button class="chip" data-price="budget" onclick="togglePrice('budget')">Budget (&lt;₹1,500)</button>
-        <button class="chip" data-price="mid"    onclick="togglePrice('mid')">Mid (₹1,500–3,000)</button>
-        <button class="chip" data-price="luxury" onclick="togglePrice('luxury')">Luxury (&gt;₹3,000)</button>
-      </div>
-      <button class="filter-reset" onclick="resetFilters()">Reset</button>
-      <p class="filter-count" id="filterCount"></p>
-    </div>
-    <div class="prop-grid" id="propGrid"></div>
   </div>
 </section>
 
 <!-- BOOKING MODAL -->
-<div class="modal-overlay" id="propModal" onclick="closeModalBg(event)">
+<div class="modal-overlay" id="bookModal">
   <div class="modal">
     <div class="modal-header">
-      <h3>Enquire About This Property</h3>
-      <p>We'll confirm availability &amp; pricing via WhatsApp</p>
       <button class="modal-close" onclick="closeModal()">✕</button>
+      <h3 id="modalTitle">Book Your Stay</h3>
+      <p id="modalSub">Fill details — we'll confirm via WhatsApp</p>
     </div>
-    <div class="modal-preview">
-      <div class="mp-ph" id="modalThumb">🏡</div>
-      <div>
-        <div class="mp-name" id="modalName"></div>
-        <div class="mp-loc" id="modalLoc"></div>
-        <div class="mp-price" id="modalPrice"></div>
-      </div>
-    </div>
+    <div class="modal-prop-preview" id="modalPreview"></div>
     <div class="modal-body">
-      <div class="form-row">
-        <div class="fg"><label>Check-in Date</label><input type="date" id="m-in"></div>
-        <div class="fg"><label>Check-out Date</label><input type="date" id="m-out"></div>
-      </div>
-      <div class="form-row">
-        <div class="fg">
-          <label>No. of Guests</label>
-          <select id="m-guests">
-            <option value="">Select</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option>
-            <option>5</option><option>6</option><option>7</option><option>8+</option>
-          </select>
+      <div class="mform-row">
+        <div class="mform-group">
+          <label>Check-in Date</label>
+          <input type="date" id="mCheckin">
         </div>
-        <div class="fg">
+        <div class="mform-group">
+          <label>Check-out Date</label>
+          <input type="date" id="mCheckout">
+        </div>
+      </div>
+      <div class="mform-row">
+        <div class="mform-group">
           <label>No. of Rooms</label>
-          <select id="m-rooms">
+          <select id="mRooms">
             <option value="">Select</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option>
+          </select>
+        </div>
+        <div class="mform-group">
+          <label>No. of Persons</label>
+          <select id="mPersons">
+            <option value="">Select</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+            <option>6</option><option>7</option><option>8</option><option>9</option><option>10+</option>
           </select>
         </div>
       </div>
-      <div class="form-row">
-        <div class="fg full">
-          <label>Special Requests (optional)</label>
-          <textarea id="m-notes" placeholder="E.g. mountain view room, anniversary, dietary needs…"></textarea>
+      <div class="mform-row">
+        <div class="mform-group full">
+          <label>Your Name</label>
+          <input type="text" id="mName" placeholder="Full name">
         </div>
       </div>
-      <button class="btn-wa-send" onclick="sendEnquiry()">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Send Enquiry via WhatsApp
+      <div class="mform-row">
+        <div class="mform-group full">
+          <label>Special Requests (optional)</label>
+          <textarea id="mNote" placeholder="Any dietary needs, extra beds, special occasions..."></textarea>
+        </div>
+      </div>
+      <button class="btn-wa-modal" onclick="sendPropertyWA()">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Send Booking Enquiry via WhatsApp
       </button>
-      <p class="modal-note">Opens WhatsApp with your details — we reply within a few hours 🙂</p>
+      <p class="modal-note">We typically reply within 2–4 hours. No payment required at this stage.</p>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <h2>Sana <span>On The Go</span></h2>
-        <p>Based in Siliguri, North Bengal — we curate handpicked stays and craft unforgettable journeys through Darjeeling, Kalimpong, Sikkim and the hidden Himalayas.</p>
-        <div class="footer-social">
-          <a class="f-soc insta" href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-          <a class="f-soc fb" href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" rel="noopener" title="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-          <a class="f-soc wa-s" href="https://wa.me/919874740763" target="_blank" rel="noopener" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-contact">
-        <h3>Contact Us</h3>
-        <div class="contact-row"><div class="ci phone"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><div class="ct"><span class="cl">Call / WhatsApp</span><a href="tel:+919874740763">+91 98747 40763</a></div></div>
-        <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="/cdn-cgi/l/email-protection#dfacbea6beb1abb6b4beb6b1abb0abb7baa8b6b3bb9fb8b2beb6b3f1bcb0b2"><span class="__cf_email__" data-cfemail="097a687068677d60626860677d667d616c7e60656d496e64686065276a6664">[email&#160;protected]</span></a></div></div>
-        <div class="contact-row"><div class="ci insta-i"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div><div class="ct"><span class="cl">Instagram</span><a href="https://www.instagram.com/sana.onthe.go" target="_blank" rel="noopener">@sana.onthe.go</a></div></div>
-        <div class="contact-row"><div class="ci map"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="ct"><span class="cl">Office</span><div class="office-box"><strong>Into The Wild Tour and Travels</strong>100/A/3/L, Rabindra Nagar Main Road<br>P.S: Siliguri, Dist: Darjeeling<br>West Bengal – 734006</div></div></div>
-      </div>
-    </div>
-    <div class="map-wrap"><iframe src="https://www.google.com/maps?q=Siliguri+West+Bengal+India&output=embed" loading="lazy" allowfullscreen title="Office location"></iframe></div>
-    <div class="footer-bottom">
-      <span>© 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</span>
-      <a href="index.html">← Back to Home</a>
-    </div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="packages.html">Tour Packages</a>
+    <a href="properties.html">Properties</a>
+    <a href="index.html#contact">Contact</a>
   </div>
+  <p class="footer-copy">© 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</p>
 </footer>
 
-<button class="scroll-top" id="scrollTopProp" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button>
-<a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties" aria-label="Chat on WhatsApp" target="_blank">
-  <div class="wa-pulse"></div>
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20properties" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ══════════════════════════════════════════════
-// NAV
-// ══════════════════════════════════════════════
-const hbg = document.getElementById('hamburger'), mm = document.getElementById('mobileMenu');
-hbg.addEventListener('click', () => { mm.classList.toggle('open'); hbg.classList.toggle('open'); });
-function closeMenu() { mm.classList.remove('open'); hbg.classList.remove('open'); }
-document.addEventListener('click', e => { if (!hbg.contains(e.target) && !mm.contains(e.target)) { mm.classList.remove('open'); hbg.classList.remove('open'); } });
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   LOCATIONS DATA
+   Add / edit locations here. Each has: id, name, icon, region
+═══════════════════════════════════════════════════════════════════════ */
+const LOCATIONS = [
+  { id:'darjeeling',  name:'Darjeeling',      icon:'🍵', region:'West Bengal' },
+  { id:'kalimpong',   name:'Kalimpong',        icon:'🌸', region:'West Bengal' },
+  { id:'kurseong',    name:'Kurseong',         icon:'🌿', region:'West Bengal' },
+  { id:'mirik',       name:'Mirik',            icon:'🏞️', region:'West Bengal' },
+  { id:'siliguri',    name:'Siliguri',         icon:'🏙️', region:'West Bengal' },
+  { id:'dooars',      name:'Dooars',           icon:'🐘', region:'West Bengal' },
+  { id:'lataguri',    name:'Lataguri',         icon:'🌳', region:'West Bengal' },
+  { id:'jaldapara',   name:'Jaldapara',        icon:'🦏', region:'West Bengal' },
+  { id:'gangtok',     name:'Gangtok',          icon:'🏔️', region:'Sikkim' },
+  { id:'pelling',     name:'Pelling',          icon:'🌄', region:'Sikkim' },
+  { id:'lachung',     name:'Lachung',          icon:'❄️', region:'Sikkim' },
+  { id:'namchi',      name:'Namchi',           icon:'🛕', region:'Sikkim' },
+  { id:'ravangla',    name:'Ravangla',         icon:'🌅', region:'Sikkim' },
+  { id:'yuksom',      name:'Yuksom',           icon:'🥾', region:'Sikkim' },
+  { id:'zuluk',       name:'Zuluk',            icon:'🛤️', region:'Sikkim' },
+  { id:'lava',        name:'Lava',             icon:'🌲', region:'West Bengal' },
+  { id:'lolegaon',    name:'Lolegaon',         icon:'🏡', region:'West Bengal' },
+  { id:'rishyap',     name:'Rishyap',          icon:'🌌', region:'West Bengal' },
+];
 
-// Scroll-to-top
-const stb = document.getElementById('scrollTopProp');
-window.addEventListener('scroll', () => { if(stb) stb.classList.toggle('visible', window.scrollY > 350); });
+/* ═══════════════════════════════════════════════════════════════════════
+   PROPERTIES DATA
+   ────────────────────────────────────────────────────────────────────
+   HOW TO ADD YOUR OWN PROPERTIES:
+   1. Copy one of the property objects below
+   2. Change the id (must be unique), name, locationId, type, price etc.
+   3. Set img1 and img2 to YOUR image filenames inside images/properties/
+      Example: "images/properties/darjeeling-cedarinn-1.jpg"
+   4. Upload those images to the images/properties/ folder in your repo
+   5. If images are not found, a green placeholder is shown automatically
 
-// Toast
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  document.getElementById('toastMsg').textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3500);
-}
+   FIELDS:
+   - id:         unique identifier (no spaces)
+   - locationId: must match a location id above
+   - name:       property display name
+   - type:       "Hotel" | "Homestay" | "Resort" | "Guesthouse" | "Cottage"
+   - price:      price per person per day (number, in Rs.)
+   - desc:       short description (1-2 sentences)
+   - amenities:  array of short feature tags
+   - img1:       path to first image  (shown on left of property card)
+   - img2:       path to second image (shown on right of property card)
+═══════════════════════════════════════════════════════════════════════ */
+const PROPERTIES = [
 
-  const LOCATIONS = [
-    { id: 'loc_01', region: 'darjeeling', icon: '🍵', name: 'Location 1 — Darjeeling Town', state: 'West Bengal', desc: 'The Queen of Hills — toy trains, Tiger Hill sunrises, tea estates and colonial charm.' },
-    { id: 'loc_02', region: 'darjeeling', icon: '☁️', name: 'Location 2 — Kurseong', state: 'West Bengal', desc: 'The Town of White Orchids — misty pine forests, heritage bungalows and quiet trails.' },
-    { id: 'loc_03', region: 'darjeeling', icon: '💧', name: 'Location 3 — Mirik', state: 'West Bengal', desc: 'A serene lake town surrounded by orange orchards, tea gardens and pine trees.' },
-    { id: 'loc_04', region: 'darjeeling', icon: '🌲', name: 'Location 4 — Lamahatta', state: 'West Bengal', desc: 'An offbeat eco-park village with stunning Kanchenjunga views and apple orchards.' },
-    { id: 'loc_05', region: 'darjeeling', icon: '🍊', name: 'Location 5 — Sittong', state: 'West Bengal', desc: 'The Orange Village — famous for mandarin orchards, birding trails and village homestays.' },
-    { id: 'loc_06', region: 'darjeeling', icon: '🌸', name: 'Location 6 — Takdah', state: 'West Bengal', desc: 'A quiet ridge village with orchid farms, colonial bungalows and Kanchenjunga panoramas.' },
-    { id: 'loc_07', region: 'darjeeling', icon: '🫖', name: 'Location 7 — Tinchuley', state: 'West Bengal', desc: 'An organic tea-garden village with spectacular mountain views and eco-homestays.' },
-    { id: 'loc_08', region: 'darjeeling', icon: '🦋', name: 'Location 8 — Lepchajagat', state: 'West Bengal', desc: 'A hidden gem in dense pine forest — birdwatcher\'s paradise near Darjeeling.' },
-    { id: 'loc_09', region: 'kalimpong', icon: '🌼', name: 'Location 9 — Kalimpong Town', state: 'West Bengal', desc: 'The city of orchids and nurseries — colonial churches, handicrafts and Teesta views.' },
-    { id: 'loc_10', region: 'kalimpong', icon: '🌿', name: 'Location 10 — Lava', state: 'West Bengal', desc: 'A forested mountain village bordering Neora Valley — ideal for trekking and birding.' },
-    { id: 'loc_11', region: 'kalimpong', icon: '🌁', name: 'Location 11 — Lolegaon', state: 'West Bengal', desc: 'Famous for its canopy walk and misty rhododendron forests above the Teesta valley.' },
-    { id: 'loc_12', region: 'kalimpong', icon: '🕊️', name: 'Location 12 — Pedong', state: 'West Bengal', desc: 'A peaceful village on the ancient Silk Route with monasteries and old fort ruins.' },
-    { id: 'loc_13', region: 'kalimpong', icon: '🌾', name: 'Location 13 — Samthar Plateau', state: 'West Bengal', desc: 'A high-altitude plateau with open meadows, yak farms and sweeping valley views.' },
-    { id: 'loc_14', region: 'sikkim', icon: '🏔️', name: 'Location 14 — Gangtok', state: 'Sikkim', desc: 'The vibrant capital of Sikkim — MG Marg, Rumtek Monastery and views of Kanchenjunga.' },
-    { id: 'loc_15', region: 'sikkim', icon: '⛩️', name: 'Location 15 — Pelling', state: 'Sikkim', desc: 'Gateway to Kanchenjunga — Rabdentse ruins, Skywalk and Khecheopalri Lake nearby.' },
-    { id: 'loc_16', region: 'sikkim', icon: '🧘', name: 'Location 16 — Ravangla', state: 'Sikkim', desc: 'Home to the famous Buddha Park and one of the best sunrise views of Kanchenjunga.' },
-    { id: 'loc_17', region: 'sikkim', icon: '🥾', name: 'Location 17 — Yuksom', state: 'Sikkim', desc: 'The historic first capital of Sikkim — base camp for the Dzongri-Goechala trek.' },
-    { id: 'loc_18', region: 'sikkim', icon: '🙏', name: 'Location 18 — Namchi', state: 'Sikkim', desc: 'Famous for giant statues of Guru Padmasambhava and the Chardham replica pilgrimage site.' },
-    { id: 'loc_19', region: 'dooars', icon: '🐘', name: 'Location 19 — Lataguri / Gorumara', state: 'West Bengal', desc: 'Gateway to Gorumara National Park — elephant safaris, rhino sightings, forest lodges.' },
-    { id: 'loc_20', region: 'dooars', icon: '🦏', name: 'Location 20 — Jaldapara', state: 'West Bengal', desc: 'Home to one-horned rhinoceros — elephant rides at dawn inside the national park.' },
-    { id: 'loc_21', region: 'dooars', icon: '🌳', name: 'Location 21 — Buxa Tiger Reserve', state: 'West Bengal', desc: 'Dense Dooars forest with tigers, leopards, ancient fort ruins and Bhutan border proximity.' },
-    { id: 'loc_22', region: 'dooars', icon: '🚉', name: 'Location 22 — Siliguri', state: 'West Bengal', desc: 'The gateway city of North Bengal — NJP rail hub, entry point for all Himalayan destinations.' },
-  ];
+  /* ── DARJEELING ── */
+  {
+    id:'darj-01', locationId:'darjeeling', name:'Cedar Inn', type:'Hotel',
+    price:1800,
+    desc:'A heritage colonial bungalow overlooking the Kanchenjunga range, walking distance from Mall Road.',
+    amenities:['Mountain View','Breakfast Included','WiFi','Hot Water'],
+    img1:'images/properties/darjeeling-cedarinn-1.jpg',
+    img2:'images/properties/darjeeling-cedarinn-2.jpg'
+  },
+  {
+    id:'darj-02', locationId:'darjeeling', name:'Sunrise Homestay', type:'Homestay',
+    price:1200,
+    desc:'Family-run homestay with home-cooked Nepali and Bengali meals, panoramic garden views.',
+    amenities:['Home-cooked Meals','Garden','Heater','Local Guide'],
+    img1:'images/properties/darjeeling-sunrise-1.jpg',
+    img2:'images/properties/darjeeling-sunrise-2.jpg'
+  },
+  {
+    id:'darj-03', locationId:'darjeeling', name:'Windamere Hotel', type:'Hotel',
+    price:3500,
+    desc:'Iconic heritage hotel with old-world charm, fireside lounges and impeccable service since 1939.',
+    amenities:['Heritage Property','Fireplace','Dining Hall','Bar'],
+    img1:'images/properties/darjeeling-windamere-1.jpg',
+    img2:'images/properties/darjeeling-windamere-2.jpg'
+  },
 
-  const REGIONS = {
-    'darjeeling': '🏔 Darjeeling Hills',
-    'kalimpong': '🌿 Kalimpong District',
-    'sikkim': '⛩ Sikkim',
-    'dooars': '🌳 Dooars & Terai',
-  };
+  /* ── KALIMPONG ── */
+  {
+    id:'kalim-01', locationId:'kalimpong', name:'Morgan House', type:'Resort',
+    price:2200,
+    desc:'Colonial-era bungalow set amidst orchards with sweeping views of the Teesta valley.',
+    amenities:['Valley View','Orchard Walk','Breakfast','Parking'],
+    img1:'images/properties/kalimpong-morgan-1.jpg',
+    img2:'images/properties/kalimpong-morgan-2.jpg'
+  },
+  {
+    id:'kalim-02', locationId:'kalimpong', name:'Himalayan Hotel', type:'Hotel',
+    price:2800,
+    desc:'Elegant boutique hotel with beautiful gardens and personalised service in the heart of Kalimpong.',
+    amenities:['Garden','Restaurant','WiFi','Room Service'],
+    img1:'images/properties/kalimpong-himalayan-1.jpg',
+    img2:'images/properties/kalimpong-himalayan-2.jpg'
+  },
 
-  /*
-   * ═══════════════════════════════════════════════════
-   * HOW TO EDIT PROPERTIES
-   * ═══════════════════════════════════════════════════
-   * For each property object, replace:
-   *   name       → actual property name
-   *   type       → 'Hotel' | 'Homestay' | 'Resort' | 'Bungalow' | 'Campsite'
-   *   priceRange → 'budget' | 'mid' | 'luxury'
-   *   priceText  → e.g. '₹2,500 / night'
-   *   amenities  → array of up to 4 short strings
-   *   images     → array of image paths e.g. ['images/prop-loc01-01.jpg']
-   *   desc       → 1–2 sentence description
-   *
-   * PRICE RANGES: budget = under ₹1,500 | mid = ₹1,500–3,000 | luxury = above ₹3,000
-   * TO ADD MORE: copy any block, change the id (e.g. 'loc01_p09') and locId
-   * TO REMOVE: delete the full { ... }, block
-   * ═══════════════════════════════════════════════════
-   */
-  const PROPERTIES = [
+  /* ── KURSEONG ── */
+  {
+    id:'kurs-01', locationId:'kurseong', name:'Cochrane Place', type:'Resort',
+    price:3200,
+    desc:'Award-winning boutique resort inside a 1920s heritage building surrounded by tea estates.',
+    amenities:['Tea Garden','Pool','Spa','Restaurant','Heritage'],
+    img1:'images/properties/kurseong-cochrane-1.jpg',
+    img2:'images/properties/kurseong-cochrane-2.jpg'
+  },
+  {
+    id:'kurs-02', locationId:'kurseong', name:'Tea Bungalow Homestay', type:'Homestay',
+    price:1400,
+    desc:'Cozy rooms inside a working tea estate with daily tea tasting and organic farm meals.',
+    amenities:['Tea Tasting','Organic Meals','Nature Walk','Heater'],
+    img1:'images/properties/kurseong-teabungalow-1.jpg',
+    img2:'images/properties/kurseong-teabungalow-2.jpg'
+  },
 
-    // ── Location 1 — Darjeeling Town
-    {
-      id: 'loc_01_p01',
-      locId: 'loc_01',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_01_p02',
-      locId: 'loc_01',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_01_p03',
-      locId: 'loc_01',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_01_p04',
-      locId: 'loc_01',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_01_p05',
-      locId: 'loc_01',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_01_p06',
-      locId: 'loc_01',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_01_p07',
-      locId: 'loc_01',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_01_p08',
-      locId: 'loc_01',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_01_p09',
-      locId: 'loc_01',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
+  /* ── GANGTOK ── */
+  {
+    id:'gang-01', locationId:'gangtok', name:'Elgin Nor-Khill', type:'Hotel',
+    price:4200,
+    desc:'Sikkim\'s most iconic heritage hotel, built for the Chogyal of Sikkim, with stunning Kanchenjunga views.',
+    amenities:['Kanchenjunga View','Heritage','Restaurant','Spa','WiFi'],
+    img1:'images/properties/gangtok-elgin-1.jpg',
+    img2:'images/properties/gangtok-elgin-2.jpg'
+  },
+  {
+    id:'gang-02', locationId:'gangtok', name:'Sikkim Homestay', type:'Homestay',
+    price:1100,
+    desc:'Warm Nepali family homestay near MG Marg with home-cooked meals and local sightseeing tips.',
+    amenities:['Home-cooked Meals','MG Marg Access','WiFi','Heater'],
+    img1:'images/properties/gangtok-homestay-1.jpg',
+    img2:'images/properties/gangtok-homestay-2.jpg'
+  },
 
-    // ── Location 2 — Kurseong
-    {
-      id: 'loc_02_p01',
-      locId: 'loc_02',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_02_p02',
-      locId: 'loc_02',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_02_p03',
-      locId: 'loc_02',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_02_p04',
-      locId: 'loc_02',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_02_p05',
-      locId: 'loc_02',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_02_p06',
-      locId: 'loc_02',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_02_p07',
-      locId: 'loc_02',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_02_p08',
-      locId: 'loc_02',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_02_p09',
-      locId: 'loc_02',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
+  /* ── PELLING ── */
+  {
+    id:'pell-01', locationId:'pelling', name:'Norbu Ghang Resort', type:'Resort',
+    price:3800,
+    desc:'Spectacular resort with unobstructed views of Kanchenjunga. Infinity pool, spa and gourmet dining.',
+    amenities:['Infinity Pool','Kanchenjunga View','Spa','Restaurant','Balcony'],
+    img1:'images/properties/pelling-norbu-1.jpg',
+    img2:'images/properties/pelling-norbu-2.jpg'
+  },
+  {
+    id:'pell-02', locationId:'pelling', name:'Mountain Dew Homestay', type:'Homestay',
+    price:1300,
+    desc:'Simple, clean homestay with stunning sunrise views over the Himalayan range. Walk to Pemayangtse.',
+    amenities:['Sunrise View','Balcony','Home-cooked Meals','Quiet'],
+    img1:'images/properties/pelling-mountaindew-1.jpg',
+    img2:'images/properties/pelling-mountaindew-2.jpg'
+  },
 
-    // ── Location 3 — Mirik
-    {
-      id: 'loc_03_p01',
-      locId: 'loc_03',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_03_p02',
-      locId: 'loc_03',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_03_p03',
-      locId: 'loc_03',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_03_p04',
-      locId: 'loc_03',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_03_p05',
-      locId: 'loc_03',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_03_p06',
-      locId: 'loc_03',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_03_p07',
-      locId: 'loc_03',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_03_p08',
-      locId: 'loc_03',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_03_p09',
-      locId: 'loc_03',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
+  /* ── LACHUNG ── */
+  {
+    id:'lach-01', locationId:'lachung', name:'Lachung Alpine Resort', type:'Resort',
+    price:2600,
+    desc:'Cozy mountain resort at 8,600 ft with river views, perfect base for Yumthang Valley.',
+    amenities:['River View','Bonfire','Hot Water','Restaurant','Alpine Setting'],
+    img1:'images/properties/lachung-alpine-1.jpg',
+    img2:'images/properties/lachung-alpine-2.jpg'
+  },
 
-    // ── Location 4 — Lamahatta
-    {
-      id: 'loc_04_p01',
-      locId: 'loc_04',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_04_p02',
-      locId: 'loc_04',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_04_p03',
-      locId: 'loc_04',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_04_p04',
-      locId: 'loc_04',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_04_p05',
-      locId: 'loc_04',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_04_p06',
-      locId: 'loc_04',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_04_p07',
-      locId: 'loc_04',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_04_p08',
-      locId: 'loc_04',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_04_p09',
-      locId: 'loc_04',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
+  /* ── DOOARS ── */
+  {
+    id:'door-01', locationId:'dooars', name:'Jungle Camp Dooars', type:'Resort',
+    price:2000,
+    desc:'Eco-resort inside the forest buffer zone with safari access, bonfire evenings and wildlife sightings.',
+    amenities:['Jungle Safari','Bonfire','Wildlife','Eco-resort','Meals Included'],
+    img1:'images/properties/dooars-junglecamp-1.jpg',
+    img2:'images/properties/dooars-junglecamp-2.jpg'
+  },
 
-    // ── Location 5 — Sittong
-    {
-      id: 'loc_05_p01',
-      locId: 'loc_05',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_05_p02',
-      locId: 'loc_05',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_05_p03',
-      locId: 'loc_05',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_05_p04',
-      locId: 'loc_05',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_05_p05',
-      locId: 'loc_05',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_05_p06',
-      locId: 'loc_05',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_05_p07',
-      locId: 'loc_05',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_05_p08',
-      locId: 'loc_05',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_05_p09',
-      locId: 'loc_05',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
+  /* ── MIRIK ── */
+  {
+    id:'mirik-01', locationId:'mirik', name:'Lake View Cottage', type:'Cottage',
+    price:1600,
+    desc:'Peaceful cottage right on the banks of Mirik Lake with rowing boat access and tea garden surrounds.',
+    amenities:['Lake View','Rowing Boat','Tea Garden','Quiet','Bonfire'],
+    img1:'images/properties/mirik-lakeview-1.jpg',
+    img2:'images/properties/mirik-lakeview-2.jpg'
+  },
 
-    // ── Location 6 — Takdah
-    {
-      id: 'loc_06_p01',
-      locId: 'loc_06',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_06_p02',
-      locId: 'loc_06',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_06_p03',
-      locId: 'loc_06',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_06_p04',
-      locId: 'loc_06',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_06_p05',
-      locId: 'loc_06',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_06_p06',
-      locId: 'loc_06',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_06_p07',
-      locId: 'loc_06',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_06_p08',
-      locId: 'loc_06',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_06_p09',
-      locId: 'loc_06',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
+  /* ── LAVA ── */
+  {
+    id:'lava-01', locationId:'lava', name:'Lava Forest Retreat', type:'Homestay',
+    price:1200,
+    desc:'Offbeat homestay surrounded by oak and rhododendron forests, close to Neora Valley National Park.',
+    amenities:['Forest Walk','Bird Watching','Home Meals','Fireplace','Offbeat'],
+    img1:'images/properties/lava-forest-1.jpg',
+    img2:'images/properties/lava-forest-2.jpg'
+  },
 
-    // ── Location 7 — Tinchuley
-    {
-      id: 'loc_07_p01',
-      locId: 'loc_07',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_07_p02',
-      locId: 'loc_07',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_07_p03',
-      locId: 'loc_07',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_07_p04',
-      locId: 'loc_07',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_07_p05',
-      locId: 'loc_07',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_07_p06',
-      locId: 'loc_07',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_07_p07',
-      locId: 'loc_07',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_07_p08',
-      locId: 'loc_07',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_07_p09',
-      locId: 'loc_07',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
+  /* ── RISHYAP ── */
+  {
+    id:'rish-01', locationId:'rishyap', name:'Rishyap Starview Homestay', type:'Homestay',
+    price:1100,
+    desc:'Elevated homestay with one of the clearest night skies in North Bengal — perfect for stargazing.',
+    amenities:['Stargazing','Panoramic View','Home Meals','Peaceful','Bonfire'],
+    img1:'images/properties/rishyap-starview-1.jpg',
+    img2:'images/properties/rishyap-starview-2.jpg'
+  },
+];
+/* ═══════ END OF PROPERTY DATA — EDIT ABOVE ═══════ */
 
-    // ── Location 8 — Lepchajagat
-    {
-      id: 'loc_08_p01',
-      locId: 'loc_08',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_08_p02',
-      locId: 'loc_08',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_08_p03',
-      locId: 'loc_08',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_08_p04',
-      locId: 'loc_08',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_08_p05',
-      locId: 'loc_08',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_08_p06',
-      locId: 'loc_08',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_08_p07',
-      locId: 'loc_08',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_08_p08',
-      locId: 'loc_08',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_08_p09',
-      locId: 'loc_08',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
+let selectedProp = null;
 
-    // ── Location 9 — Kalimpong Town
-    {
-      id: 'loc_09_p01',
-      locId: 'loc_09',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_09_p02',
-      locId: 'loc_09',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_09_p03',
-      locId: 'loc_09',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_09_p04',
-      locId: 'loc_09',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_09_p05',
-      locId: 'loc_09',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_09_p06',
-      locId: 'loc_09',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_09_p07',
-      locId: 'loc_09',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_09_p08',
-      locId: 'loc_09',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_09_p09',
-      locId: 'loc_09',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 10 — Lava
-    {
-      id: 'loc_10_p01',
-      locId: 'loc_10',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_10_p02',
-      locId: 'loc_10',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_10_p03',
-      locId: 'loc_10',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_10_p04',
-      locId: 'loc_10',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_10_p05',
-      locId: 'loc_10',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_10_p06',
-      locId: 'loc_10',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_10_p07',
-      locId: 'loc_10',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_10_p08',
-      locId: 'loc_10',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_10_p09',
-      locId: 'loc_10',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 11 — Lolegaon
-    {
-      id: 'loc_11_p01',
-      locId: 'loc_11',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_11_p02',
-      locId: 'loc_11',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_11_p03',
-      locId: 'loc_11',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_11_p04',
-      locId: 'loc_11',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_11_p05',
-      locId: 'loc_11',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_11_p06',
-      locId: 'loc_11',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_11_p07',
-      locId: 'loc_11',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_11_p08',
-      locId: 'loc_11',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_11_p09',
-      locId: 'loc_11',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 12 — Pedong
-    {
-      id: 'loc_12_p01',
-      locId: 'loc_12',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_12_p02',
-      locId: 'loc_12',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_12_p03',
-      locId: 'loc_12',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_12_p04',
-      locId: 'loc_12',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_12_p05',
-      locId: 'loc_12',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_12_p06',
-      locId: 'loc_12',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_12_p07',
-      locId: 'loc_12',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_12_p08',
-      locId: 'loc_12',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_12_p09',
-      locId: 'loc_12',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 13 — Samthar Plateau
-    {
-      id: 'loc_13_p01',
-      locId: 'loc_13',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_13_p02',
-      locId: 'loc_13',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_13_p03',
-      locId: 'loc_13',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_13_p04',
-      locId: 'loc_13',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_13_p05',
-      locId: 'loc_13',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_13_p06',
-      locId: 'loc_13',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_13_p07',
-      locId: 'loc_13',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_13_p08',
-      locId: 'loc_13',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_13_p09',
-      locId: 'loc_13',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 14 — Gangtok
-    {
-      id: 'loc_14_p01',
-      locId: 'loc_14',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_14_p02',
-      locId: 'loc_14',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_14_p03',
-      locId: 'loc_14',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_14_p04',
-      locId: 'loc_14',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_14_p05',
-      locId: 'loc_14',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_14_p06',
-      locId: 'loc_14',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_14_p07',
-      locId: 'loc_14',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_14_p08',
-      locId: 'loc_14',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_14_p09',
-      locId: 'loc_14',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 15 — Pelling
-    {
-      id: 'loc_15_p01',
-      locId: 'loc_15',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_15_p02',
-      locId: 'loc_15',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_15_p03',
-      locId: 'loc_15',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_15_p04',
-      locId: 'loc_15',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_15_p05',
-      locId: 'loc_15',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_15_p06',
-      locId: 'loc_15',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_15_p07',
-      locId: 'loc_15',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_15_p08',
-      locId: 'loc_15',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_15_p09',
-      locId: 'loc_15',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 16 — Ravangla
-    {
-      id: 'loc_16_p01',
-      locId: 'loc_16',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_16_p02',
-      locId: 'loc_16',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_16_p03',
-      locId: 'loc_16',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_16_p04',
-      locId: 'loc_16',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_16_p05',
-      locId: 'loc_16',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_16_p06',
-      locId: 'loc_16',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_16_p07',
-      locId: 'loc_16',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_16_p08',
-      locId: 'loc_16',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_16_p09',
-      locId: 'loc_16',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 17 — Yuksom
-    {
-      id: 'loc_17_p01',
-      locId: 'loc_17',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_17_p02',
-      locId: 'loc_17',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_17_p03',
-      locId: 'loc_17',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_17_p04',
-      locId: 'loc_17',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_17_p05',
-      locId: 'loc_17',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_17_p06',
-      locId: 'loc_17',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_17_p07',
-      locId: 'loc_17',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_17_p08',
-      locId: 'loc_17',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_17_p09',
-      locId: 'loc_17',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 18 — Namchi
-    {
-      id: 'loc_18_p01',
-      locId: 'loc_18',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_18_p02',
-      locId: 'loc_18',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_18_p03',
-      locId: 'loc_18',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_18_p04',
-      locId: 'loc_18',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_18_p05',
-      locId: 'loc_18',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_18_p06',
-      locId: 'loc_18',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_18_p07',
-      locId: 'loc_18',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_18_p08',
-      locId: 'loc_18',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_18_p09',
-      locId: 'loc_18',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 19 — Lataguri / Gorumara
-    {
-      id: 'loc_19_p01',
-      locId: 'loc_19',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_19_p02',
-      locId: 'loc_19',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_19_p03',
-      locId: 'loc_19',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_19_p04',
-      locId: 'loc_19',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_19_p05',
-      locId: 'loc_19',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_19_p06',
-      locId: 'loc_19',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_19_p07',
-      locId: 'loc_19',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_19_p08',
-      locId: 'loc_19',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_19_p09',
-      locId: 'loc_19',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 20 — Jaldapara
-    {
-      id: 'loc_20_p01',
-      locId: 'loc_20',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_20_p02',
-      locId: 'loc_20',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_20_p03',
-      locId: 'loc_20',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_20_p04',
-      locId: 'loc_20',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_20_p05',
-      locId: 'loc_20',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_20_p06',
-      locId: 'loc_20',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_20_p07',
-      locId: 'loc_20',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_20_p08',
-      locId: 'loc_20',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_20_p09',
-      locId: 'loc_20',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 21 — Buxa Tiger Reserve
-    {
-      id: 'loc_21_p01',
-      locId: 'loc_21',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_21_p02',
-      locId: 'loc_21',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_21_p03',
-      locId: 'loc_21',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_21_p04',
-      locId: 'loc_21',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_21_p05',
-      locId: 'loc_21',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_21_p06',
-      locId: 'loc_21',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_21_p07',
-      locId: 'loc_21',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_21_p08',
-      locId: 'loc_21',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_21_p09',
-      locId: 'loc_21',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-
-    // ── Location 22 — Siliguri
-    {
-      id: 'loc_22_p01',
-      locId: 'loc_22',
-      name: 'Property 1 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Mountain View', 'Breakfast', 'WiFi', 'Transfers'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_22_p02',
-      locId: 'loc_22',
-      name: 'Property 2 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Home Meals', 'Garden', 'Views', 'Local Guide'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_22_p03',
-      locId: 'loc_22',
-      name: 'Property 3 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Spa', 'Pool', 'Fine Dining', 'Valley View'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_22_p04',
-      locId: 'loc_22',
-      name: 'Property 4 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Heritage Room', 'Forest Walk', 'Meals', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_22_p05',
-      locId: 'loc_22',
-      name: 'Property 5 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Organic Farm', 'Village Life', 'Home Cooking', 'Nature Trails'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_22_p06',
-      locId: 'loc_22',
-      name: 'Property 6 — Name Here',         // ← replace with actual name
-      type: 'Hotel',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Sunrise View', 'Restaurant', 'WiFi', 'Pickup'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_22_p07',
-      locId: 'loc_22',
-      name: 'Property 7 — Name Here',         // ← replace with actual name
-      type: 'Homestay',
-      priceRange: 'budget',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Tea Garden', 'Eco Stay', 'Meals', 'Mountain Views'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_22_p08',
-      locId: 'loc_22',
-      name: 'Property 8 — Name Here',         // ← replace with actual name
-      type: 'Resort',
-      priceRange: 'luxury',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Luxury Suite', 'Infinity View', 'Fine Dining', 'Spa'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-    {
-      id: 'loc_22_p09',
-      locId: 'loc_22',
-      name: 'Property 9 — Name Here',         // ← replace with actual name
-      type: 'Bungalow',
-      priceRange: 'mid',
-      priceText: '₹X,XXX / night',              // ← replace with actual price
-      amenities: ['Verandah', 'Forest Walks', 'Breakfast', 'WiFi'],  // ← edit these
-      images: [],              // ← add: ['images/FILENAME.jpg']
-      desc: 'Add a description for this property. Replace this with actual details.',
-    },
-  ];  // END PROPERTIES
-  // Total: 198 placeholder properties across 22 locations
-
-  // ══════════════════════════════════════
-  // STATE
-
-// ══════════════════════════════════════════════
-let currentLocId = null, activeTypes = [], activePrices = [];
-
-// ══════════════════════════════════════════════
-// BUILD LOCATION GRID
-// ══════════════════════════════════════════════
+/* ── Build Location Grid ── */
 function buildLocGrid() {
-  const container = document.getElementById('locContainer');
-  container.innerHTML = '';
-
-  // Group by region
-  const grouped = {};
+  const grid = document.getElementById('locGrid');
   LOCATIONS.forEach(loc => {
-    if (!grouped[loc.region]) grouped[loc.region] = [];
-    grouped[loc.region].push(loc);
-  });
-
-  Object.entries(REGIONS).forEach(([regionKey, regionLabel]) => {
-    if (!grouped[regionKey]) return;
-    const label = document.createElement('div');
-    label.className = 'region-label';
-    label.textContent = regionLabel;
-    container.appendChild(label);
-
-    const grid = document.createElement('div');
-    grid.className = 'loc-grid';
-
-    grouped[regionKey].forEach(loc => {
-      const count = PROPERTIES.filter(p => p.locId === loc.id).length;
-      const card = document.createElement('div');
-      card.className = 'loc-card';
-      card.innerHTML = `
-        <span class="loc-icon">${loc.icon}</span>
-        <span class="loc-name">${loc.name}</span>
-        <span class="loc-state">${loc.state}</span>
-        <span class="loc-count">${count} propert${count === 1 ? 'y' : 'ies'}</span>
-      `;
-      card.addEventListener('click', () => selectLocation(loc.id));
-      grid.appendChild(card);
-    });
-    container.appendChild(grid);
+    const card = document.createElement('div');
+    card.className = 'loc-card';
+    card.innerHTML = `
+      <span class="loc-icon">${loc.icon}</span>
+      <span class="loc-name">${loc.name}</span>
+      <span class="loc-region">${loc.region}</span>`;
+    card.addEventListener('click', () => showProperties(loc));
+    grid.appendChild(card);
   });
 }
 
-// ══════════════════════════════════════════════
-// SELECT LOCATION
-// ══════════════════════════════════════════════
-function selectLocation(locId) {
-  currentLocId = locId;
-  activeTypes = []; activePrices = [];
-  const loc = LOCATIONS.find(l => l.id === locId);
-  if (!loc) return;
-
+/* ── Show Properties for selected location ── */
+function showProperties(loc) {
+  const props = PROPERTIES.filter(p => p.locationId === loc.id);
   document.getElementById('step1').style.display = 'none';
   document.getElementById('step2').style.display = 'block';
-  document.getElementById('bcLoc').textContent = loc.name;
-  document.getElementById('heroIcon').textContent = loc.icon;
-  document.getElementById('heroName').textContent = loc.name + ', ' + loc.state;
-  document.getElementById('heroDesc').textContent = loc.desc;
+  document.getElementById('propHeading').textContent = `Properties in ${loc.name}`;
 
-  const count = PROPERTIES.filter(p => p.locId === locId).length;
-  document.getElementById('heroBadge').textContent = count + ' propert' + (count === 1 ? 'y' : 'ies');
+  if (props.length === 0) {
+    document.getElementById('propSub').textContent = 'No properties listed yet for this location.';
+    document.getElementById('propGrid').innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--muted);">
+        <div style="font-size:2.5rem;margin-bottom:12px;">🏗️</div>
+        <p style="font-weight:600;margin-bottom:6px;">Coming Soon</p>
+        <p style="font-size:0.88rem;">We're adding properties for ${loc.name}.<br>
+        <a href="https://wa.me/919874740763?text=Hi%2C%20I%20am%20looking%20for%20accommodation%20in%20${encodeURIComponent(loc.name)}" target="_blank" style="color:var(--green);font-weight:600;">
+          WhatsApp us directly →</a></p>
+      </div>`;
+  } else {
+    document.getElementById('propSub').textContent = `${props.length} ${props.length === 1 ? 'property' : 'properties'} available — tap to enquire`;
+    document.getElementById('propGrid').innerHTML = props.map(buildPropCard).join('');
+  }
 
-  buildTypeFilters(locId);
-  renderProperties();
+  // Update step indicators
+  document.getElementById('s1ind').classList.remove('active'); document.getElementById('s1ind').classList.add('done');
+  document.getElementById('sl1').classList.add('done');
+  document.getElementById('s2ind').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function goBack() {
-  currentLocId = null; activeTypes = []; activePrices = [];
   document.getElementById('step2').style.display = 'none';
   document.getElementById('step1').style.display = 'block';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('s1ind').classList.add('active'); document.getElementById('s1ind').classList.remove('done');
+  document.getElementById('sl1').classList.remove('done');
+  document.getElementById('s2ind').classList.remove('active');
 }
 
-// ══════════════════════════════════════════════
-// FILTERS
-// ══════════════════════════════════════════════
-function buildTypeFilters(locId) {
-  const types = [...new Set(PROPERTIES.filter(p => p.locId === locId).map(p => p.type))];
-  const el = document.getElementById('typeFilters');
-  el.innerHTML = types.map(t =>
-    `<button class="chip" data-type="${t}" onclick="toggleType('${t}')">${t}</button>`
-  ).join('');
-}
-
-function toggleType(type) {
-  const idx = activeTypes.indexOf(type);
-  if (idx === -1) activeTypes.push(type); else activeTypes.splice(idx, 1);
-  document.querySelectorAll('#typeFilters .chip').forEach(c =>
-    c.classList.toggle('on', activeTypes.includes(c.dataset.type)));
-  renderProperties();
-}
-
-function togglePrice(range) {
-  const idx = activePrices.indexOf(range);
-  if (idx === -1) activePrices.push(range); else activePrices.splice(idx, 1);
-  document.querySelectorAll('[data-price]').forEach(c => {
-    const on = activePrices.includes(c.dataset.price);
-    c.classList.toggle('on', on);
-    c.classList.toggle('price-on', on);
-  });
-  renderProperties();
-}
-
-function resetFilters() {
-  activeTypes = []; activePrices = [];
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('on','price-on'));
-  renderProperties();
-}
-
-// ══════════════════════════════════════════════
-// RENDER PROPERTIES
-// ══════════════════════════════════════════════
-function renderProperties() {
-  let props = PROPERTIES.filter(p => p.locId === currentLocId);
-  if (activeTypes.length)  props = props.filter(p => activeTypes.includes(p.type));
-  if (activePrices.length) props = props.filter(p => activePrices.includes(p.priceRange));
-
-  const countEl = document.getElementById('filterCount');
-  countEl.textContent = props.length > 0 ? `Showing ${props.length} propert${props.length===1?'y':'ies'}` : '';
-
-  const grid = document.getElementById('propGrid');
-
-  if (props.length === 0) {
-    grid.innerHTML = `<div class="no-results"><span class="nri">🔍</span><p>No properties match your filters.<br>Try resetting or browsing all types.</p></div>`;
-    return;
-  }
-
-  // SVG pin icon for location
-  const pin = `<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`;
-  const loc = LOCATIONS.find(l => l.id === currentLocId);
-
-  grid.innerHTML = props.map(p => {
-    const imgHtml = p.images && p.images[0]
-      ? `<img src="${p.images[0]}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-         <div class="prop-img-ph" style="display:none"><div class="phi">🏡</div><span>Image coming soon</span><small>Upload: images/${p.id}.jpg</small></div>`
-      : `<div class="prop-img-ph"><div class="phi">🏡</div><span>${p.type}</span><small>Upload: images/${p.id}.jpg</small></div>`;
-
-    return `
+function buildPropCard(p) {
+  const imgBlock = `
+    <div class="prop-imgs">
+      <span class="prop-type-badge">${p.type}</span>
+      ${buildPropImg(p.img1, p.name + ' photo 1')}
+      ${buildPropImg(p.img2, p.name + ' photo 2')}
+    </div>`;
+  const amenities = (p.amenities||[]).map(a => `<span class="amenity">${a}</span>`).join('');
+  return `
     <div class="prop-card">
-      <div class="prop-img-wrap">
-        ${imgHtml}
-        <span class="type-badge">${p.type}</span>
-      </div>
+      ${imgBlock}
       <div class="prop-body">
         <div class="prop-name">${p.name}</div>
-        <div class="prop-loc">${pin}${loc ? loc.name + ', ' + loc.state : ''}</div>
-        <div class="prop-amenities">${(p.amenities || []).slice(0,4).map(a => `<span class="amenity">${a}</span>`).join('')}</div>
-        <div class="prop-desc">${p.desc}</div>
-        <div class="prop-price">${p.priceText} <span>per night</span></div>
-        <button class="btn-enquire" onclick="openModal('${p.id}')">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Enquire via WhatsApp
-        </button>
+        <div class="prop-loc">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          ${LOCATIONS.find(l=>l.id===p.locationId)?.name || ''}
+        </div>
+        <p style="font-size:0.85rem;color:var(--muted);margin-bottom:10px;line-height:1.55;">${p.desc}</p>
+        <div class="prop-amenities">${amenities}</div>
+        <div class="prop-price">₹${p.price.toLocaleString('en-IN')} <span>per person / night</span></div>
+        <button class="btn-book" onclick="openModal('${p.id}')">Enquire &amp; Book →</button>
       </div>
     </div>`;
-  }).join('');
 }
 
-// ══════════════════════════════════════════════
-// BOOKING MODAL
-// ══════════════════════════════════════════════
-let currentPropId = null;
+function buildPropImg(src, alt) {
+  if (!src) return `<div class="prop-img-ph"><span class="ph-i">🏨</span><span>Add image</span></div>`;
+  return `<img src="${src}" alt="${alt}" loading="lazy"
+    onerror="this.outerHTML='<div class=\\'prop-img-ph\\'><span class=\\'ph-i\\'>📷</span><span>${src.split('/').pop()}</span></div>'">`;
+}
 
+/* ── Open Booking Modal ── */
 function openModal(propId) {
-  currentPropId = propId;
-  const p = PROPERTIES.find(x => x.id === propId);
-  const loc = LOCATIONS.find(l => l.id === p.locId);
-  document.getElementById('modalName').textContent  = p.name;
-  document.getElementById('modalLoc').textContent   = loc ? loc.name + ', ' + loc.state : '';
-  document.getElementById('modalPrice').textContent = p.priceText + ' per night';
-  document.getElementById('propModal').classList.add('open');
+  selectedProp = PROPERTIES.find(p => p.id === propId);
+  if (!selectedProp) return;
+
+  document.getElementById('modalTitle').textContent = `Book: ${selectedProp.name}`;
+  document.getElementById('modalSub').textContent = `${selectedProp.type} · ${LOCATIONS.find(l=>l.id===selectedProp.locationId)?.name}`;
+
+  // Modal preview with 2 property photos
+  const preview = document.getElementById('modalPreview');
+  const img1HTML = selectedProp.img1
+    ? `<img src="${selectedProp.img1}" alt="${selectedProp.name}" onerror="this.outerHTML='<div class=\\'ph\\'>🏨</div>'">`
+    : `<div class="ph">🏨</div>`;
+  preview.innerHTML = `
+    ${img1HTML}
+    <div>
+      <div class="mpname">${selectedProp.name}</div>
+      <div class="mploc">${LOCATIONS.find(l=>l.id===selectedProp.locationId)?.name} · ${selectedProp.type}</div>
+      <div class="mpprice">₹${selectedProp.price.toLocaleString('en-IN')} per person/night</div>
+    </div>`;
+
+  document.getElementById('bookModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  // Update step indicator
+  document.getElementById('s2ind').classList.add('done');
+  document.getElementById('sl2').classList.add('done');
+  document.getElementById('s3ind').classList.add('active');
 }
 
 function closeModal() {
-  document.getElementById('propModal').classList.remove('open');
+  document.getElementById('bookModal').classList.remove('open');
   document.body.style.overflow = '';
+  document.getElementById('s2ind').classList.remove('done');
+  document.getElementById('sl2').classList.remove('done');
+  document.getElementById('s3ind').classList.remove('active');
+  document.getElementById('s2ind').classList.add('active');
 }
-function closeModalBg(e) { if (e.target === document.getElementById('propModal')) closeModal(); }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-function sendEnquiry() {
-  const ci = document.getElementById('m-in').value;
-  const co = document.getElementById('m-out').value;
-  const gu = document.getElementById('m-guests').value;
-  const ro = document.getElementById('m-rooms').value;
-  const no = document.getElementById('m-notes').value.trim();
+document.getElementById('bookModal').addEventListener('click', e => { if (e.target === document.getElementById('bookModal')) closeModal(); });
 
-  if (!ci || !co || !gu || !ro) { alert('Please fill in all required fields.'); return; }
-  if (new Date(co) <= new Date(ci)) { alert('Check-out must be after check-in.'); return; }
+/* ── Send WhatsApp Enquiry ── */
+function sendPropertyWA() {
+  const ci   = document.getElementById('mCheckin').value;
+  const co   = document.getElementById('mCheckout').value;
+  const rm   = document.getElementById('mRooms').value;
+  const per  = document.getElementById('mPersons').value;
+  const name = document.getElementById('mName').value.trim();
+  const note = document.getElementById('mNote').value.trim();
 
-  const p   = PROPERTIES.find(x => x.id === currentPropId);
-  const loc = LOCATIONS.find(l => l.id === p.locId);
+  if (!ci || !co || !rm || !per) { alert('Please fill in Check-in, Check-out, Rooms, and Persons.'); return; }
+  if (!name) { alert('Please enter your name.'); return; }
+
   const fmt = v => { const [y,m,d] = v.split('-'); return `${d} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]} ${y}`; };
+  const loc = LOCATIONS.find(l => l.id === selectedProp.locationId)?.name || '';
 
-  let msg = `Hi Sana! I'd like to enquire about a property 🏡\n\n`;
-  msg += `🏨 Property: ${p.name}\n📍 Location: ${loc ? loc.name + ', ' + loc.state : ''}\n\n`;
-  msg += `📅 Check-in:  ${fmt(ci)}\n📅 Check-out: ${fmt(co)}\n`;
-  msg += `👥 Guests: ${gu}\n🛏️ Rooms: ${ro}\n`;
-  if (no) msg += `\n📝 Notes: ${no}\n`;
-  msg += `\nPlease confirm availability and pricing
+  const msg =
+    `🏨 *PROPERTY BOOKING ENQUIRY*\n` +
+    `━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+    `*Property:* ${selectedProp.name}\n` +
+    `*Location:* ${loc}\n` +
+    `*Type:* ${selectedProp.type}\n` +
+    `*Price:* ₹${selectedProp.price.toLocaleString('en-IN')} per person/night\n\n` +
+    `📅 *Check-in:* ${fmt(ci)}\n` +
+    `📅 *Check-out:* ${fmt(co)}\n` +
+    `🛏️ *Rooms Required:* ${rm}\n` +
+    `👥 *Total Persons:* ${per}\n` +
+    `👤 *Guest Name:* ${name}\n` +
+    (note ? `📝 *Special Requests:* ${note}\n` : '') +
+    `━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+    `Please confirm availability and share the booking details. Thank you!`;
+
+  window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg), '_blank');
+}
+
+/* ── Hamburger ── */
+const hbg = document.getElementById('hamburger');
+const mm  = document.getElementById('mobileMenu');
+hbg.addEventListener('click', () => mm.classList.toggle('open'));
+function closeMenu() { mm.classList.remove('open'); }
+document.addEventListener('click', e => { if (!hbg.contains(e.target) && !mm.contains(e.target)) mm.classList.remove('open'); });
+
+// Init
+buildLocGrid();
+</script>
+</body>
+</html>
