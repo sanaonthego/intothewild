@@ -1,621 +1,118 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ═══ SEO META TAGS ═══ -->
-  <title>Sana On The Go | Best Travel Agency in North Bengal – Darjeeling, Sikkim, Kalimpong Tours</title>
-  <meta name="description" content="Sana On The Go is a trusted travel agency in North Bengal offering customised tour packages to Darjeeling, Kalimpong, Sikkim and offbeat Himalayan destinations. Book now via WhatsApp.">
-  <meta name="keywords" content="travel agency north bengal, darjeeling tour package, sikkim tour package, kalimpong trip, himalayan travel, siliguri travel agent, north bengal tourism, offbeat sikkim, tea garden tour darjeeling, best tour operator north bengal, into the wild tour travels siliguri">
-  <meta name="author" content="Sana On The Go – Into The Wild Tour and Travels">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://sanaonthego.github.io/">
+<title>Into The Wild | North Bengal Travel</title>
 
-  <!-- Open Graph (for WhatsApp / Facebook link previews) -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sanaonthego.github.io/">
-  <meta property="og:title" content="Sana On The Go | Travel Agency North Bengal">
-  <meta property="og:description" content="Curated tour packages to Darjeeling, Sikkim & Kalimpong. Trusted local travel experts from Siliguri, North Bengal.">
-  <meta property="og:image" content="https://sanaonthego.github.io/images/hero.jpeg">
-  <meta property="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles.css">
 
-  <!-- Local Business Schema (helps Google show your business in local search) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    "name": "Sana On The Go – Into The Wild Tour and Travels",
-    "description": "Customised tour packages to Darjeeling, Kalimpong, Sikkim and offbeat North Bengal destinations.",
-    "url": "https://sanaonthego.github.io/",
-    "telephone": "+91-98747-40763",
-    "email": "sayantikaintothewild@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "100/A/3/L Rabindra Nagar Main Road",
-      "addressLocality": "Siliguri",
-      "addressRegion": "West Bengal",
-      "postalCode": "734006",
-      "addressCountry": "IN"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 26.7271,
-      "longitude": 88.3953
-    },
-    "openingHours": "Mo-Su 09:00-20:00",
-    "sameAs": [
-      "https://www.instagram.com/sana.onthe.go",
-      "https://www.facebook.com/share/1CQNotCTJ3/"
-    ],
-    "areaServed": ["Darjeeling", "Kalimpong", "Sikkim", "North Bengal", "Siliguri"],
-    "priceRange": "₹₹"
-  }
-  </script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --green: #2d6a4f; --green-lt: #52b788; --green-dk: #1a3d2b;
-      --wa: #25D366; --wa-dk: #1aab55;
-      --gold: #c9a84c; --bg: #f7f4ef; --text: #1e1e1e;
-      --muted: #666; --card-bg: #fff; --radius: 12px;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 36px;
-      background: rgba(0,0,0,0.45); backdrop-filter: blur(10px);
-      transition: background 0.3s;
-    }
-    nav.scrolled { background: rgba(26,61,43,0.97); }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #fff; text-decoration: none; flex-shrink: 0; }
-    .nav-links { list-style: none; display: flex; gap: 24px; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
-    .nav-links a:hover, .nav-links a.active { color: var(--green-lt); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
-    .mobile-menu { display: none; position: fixed; top: 58px; left: 0; right: 0; background: rgba(20,40,30,0.98); backdrop-filter: blur(10px); z-index: 99; padding: 16px 24px 24px; flex-direction: column; }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: var(--green-lt); }
-
-    /* ── HERO ── */
-    header {
-      height: 100vh; min-height: 600px; position: relative;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 0 24px; color: #fff; overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background-color: var(--green-dk);
-      background-image: url("images/hero.jpeg");
-      background-size: cover; background-position: center;
-    }
-    .hero-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.22) 55%, rgba(0,0,0,0.68) 100%);
-    }
-    header > * { position: relative; z-index: 1; }
-    .eyebrow { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--green-lt); margin-bottom: 14px; font-weight: 600; animation: fadeUp 0.8s ease both; }
-    header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.15; margin-bottom: 18px; text-shadow: 0 2px 24px rgba(0,0,0,0.45); animation: fadeUp 0.8s ease 0.15s both; }
-    header > p { font-size: 1.05rem; max-width: 560px; margin: 0 auto 32px; color: rgba(255,255,255,0.87); line-height: 1.7; animation: fadeUp 0.8s ease 0.3s both; }
-    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.8s ease 0.45s both; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* Hero social pills */
-    .hero-socials { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s ease 0.6s both; }
-    .hero-social-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 9px 18px; border-radius: 50px;
-      text-decoration: none; font-weight: 600; font-size: 0.86rem; color: #fff;
-      border: 1.5px solid rgba(255,255,255,0.45); backdrop-filter: blur(8px);
-      transition: transform 0.2s, background 0.2s;
-    }
-    .hero-social-pill:hover { transform: translateY(-2px); background: rgba(255,255,255,0.2); }
-    .hero-social-pill svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
-    .pill-insta { background: rgba(188,24,136,0.38); border-color: rgba(220,100,180,0.55); }
-    .pill-fb    { background: rgba(24,119,242,0.38); border-color: rgba(80,150,255,0.55); }
-
-    .scroll-hint { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 5px; color: rgba(255,255,255,0.45); font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; animation: fadeUp 1s ease 1s both; }
-    .scroll-hint .arrow { width: 18px; height: 18px; border-right: 2px solid rgba(255,255,255,0.4); border-bottom: 2px solid rgba(255,255,255,0.4); transform: rotate(45deg); animation: bounce 1.5s infinite; }
-    @keyframes bounce { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(5px); } }
-
-    /* ── BUTTONS ── */
-    .btn-wa { display: inline-flex; align-items: center; gap: 9px; background: var(--wa); color: #fff; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; box-shadow: 0 4px 18px rgba(37,211,102,0.38); transition: background 0.2s, transform 0.2s; }
-    .btn-wa:hover { background: var(--wa-dk); transform: translateY(-2px); }
-    .btn-wa svg { width: 19px; height: 19px; flex-shrink: 0; }
-    .btn-outline-white { display: inline-flex; align-items: center; gap: 9px; background: transparent; color: #fff; padding: 14px 28px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.6); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s, border-color 0.2s, transform 0.2s; }
-    .btn-outline-white:hover { background: rgba(255,255,255,0.14); border-color: #fff; transform: translateY(-2px); }
-    .btn-outline { display: inline-block; border: 2px solid var(--green); color: var(--green); padding: 9px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.86rem; transition: background 0.2s, color 0.2s; }
-    .btn-outline:hover { background: var(--green); color: #fff; }
-
-    /* ── STATS BAR ── */
-    .stats-bar { background: var(--green); color: #fff; }
-    .stats-inner { max-width: 900px; margin: 0 auto; padding: 26px 24px; display: grid; grid-template-columns: repeat(4, 1fr); }
-    .stat-item { text-align: center; padding: 0 12px; border-right: 1px solid rgba(255,255,255,0.2); }
-    .stat-item:last-child { border-right: none; }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 1.9rem; display: block; line-height: 1; margin-bottom: 3px; }
-    .stat-lbl { font-size: 0.74rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.8; }
-
-    /* ── BOOKING WIDGET ── */
-    .booking-wrap { background: #fff; border-bottom: 1px solid #e0dbd2; }
-    .booking-inner { max-width: 900px; margin: 0 auto; padding: 36px 24px; }
-    .booking-inner h2 { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--green); margin-bottom: 5px; }
-    .booking-sub { font-size: 0.88rem; color: var(--muted); margin-bottom: 20px; }
-    .booking-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; align-items: end; }
-    .form-group { display: flex; flex-direction: column; gap: 5px; }
-    .form-group label { font-size: 0.72rem; font-weight: 600; color: var(--green); letter-spacing: 0.5px; text-transform: uppercase; }
-    .form-group input, .form-group select { padding: 10px 13px; border: 1.5px solid #d4cfc7; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.91rem; color: var(--text); background: var(--bg); transition: border-color 0.2s; width: 100%; }
-    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--green); }
-    .booking-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--wa); color: #fff; padding: 11px 18px; border-radius: 8px; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%; justify-content: center; }
-    .booking-btn:hover { background: var(--wa-dk); }
-    .booking-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
-
-    /* ── SECTION BASE ── */
-    .section { max-width: 900px; margin: 0 auto; padding: 68px 24px; }
-    .section-tag { font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green-lt); font-weight: 700; margin-bottom: 8px; display: block; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3.5vw, 2.3rem); margin-bottom: 8px; color: var(--green); }
-    .section-sub { color: var(--muted); font-size: 0.97rem; margin-bottom: 36px; }
-
-    /* ── PACKAGES SECTION ── */
-    #packages { background: #fff; }
-    .pkg-section-inner { max-width: 900px; margin: 0 auto; padding: 68px 24px; }
-    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; }
-    .card { background: var(--card-bg); border: 1px solid #e8e2d9; border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); transition: transform 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 32px rgba(0,0,0,0.12); }
-    .card-thumb-wrap {
-      width: 100%; height: 175px; overflow: hidden;
-      background: linear-gradient(135deg, #1a3d2b 0%, #2d6a4f 100%);
-      display: flex; align-items: center; justify-content: center; position: relative;
-    }
-    .card-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .card-thumb-placeholder { color: rgba(255,255,255,0.4); font-size: 0.8rem; text-align: center; padding: 12px; }
-    .card-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
-    .card-badge { display: inline-block; background: #e8f5ee; color: var(--green); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
-    .card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 7px; }
-    .card p { color: var(--muted); font-size: 0.9rem; flex: 1; margin-bottom: 14px; }
-    .card .price { font-size: 0.97rem; font-weight: 700; color: var(--green); margin-bottom: 16px; }
-
-    /* ── GALLERY SLIDER ── */
-    #gallery { background: var(--green-dk); overflow: hidden; }
-    .gallery-inner { max-width: 900px; margin: 0 auto; padding: 68px 24px 36px; }
-    .gallery-inner .section-title { color: #fff; }
-    .gallery-inner .section-sub { color: rgba(255,255,255,0.6); }
-    .slider-wrap { position: relative; overflow: hidden; border-radius: var(--radius); }
-    .slider-track { display: flex; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
-    .slide { min-width: 100%; position: relative; }
-    .slide img { width: 100%; height: 400px; object-fit: cover; display: block; }
-    .slide-placeholder {
-      width: 100%; height: 400px;
-      background: linear-gradient(135deg, #1a3d2b 0%, #2d6a4f 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 10px;
-    }
-    .slide-placeholder .ph-icon { font-size: 2.5rem; }
-    .slide-placeholder .ph-txt { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
-    .slide-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: #fff; padding: 44px 22px 18px; font-size: 0.95rem; font-weight: 500; }
-    .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.18); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.3); color: #fff; font-size: 1.3rem; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 2; }
-    .slider-btn:hover { background: rgba(255,255,255,0.34); }
-    .slider-btn.prev { left: 12px; } .slider-btn.next { right: 12px; }
-    .slider-dots { display: flex; justify-content: center; gap: 8px; padding: 18px 0 44px; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; }
-    .dot.active { background: var(--green-lt); transform: scale(1.3); }
-
-    /* ── WHY US ── */
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 18px; }
-    .why-item { background: var(--card-bg); border-radius: var(--radius); padding: 26px 18px; border: 1px solid #e8e2d9; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
-    .why-item:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
-    .why-item .icon { font-size: 2rem; margin-bottom: 10px; }
-    .why-item h4 { font-size: 0.9rem; font-weight: 600; color: var(--green); }
-
-    /* ── GOOGLE REVIEWS (Trustindex) ── */
-    #testimonials { background: var(--green-dk); }
-    .testi-inner { max-width: 900px; margin: 0 auto; padding: 68px 24px; }
-    .testi-inner .section-title { color: #fff; }
-    .testi-inner .section-sub { color: rgba(255,255,255,0.6); }
-
-    /* ── FOOTER ── */
-    footer { background: #111e18; color: rgba(255,255,255,0.85); }
-    .footer-inner { max-width: 900px; margin: 0 auto; padding: 56px 24px 36px; }
-    .footer-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; margin-bottom: 40px; }
-    .footer-brand h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 8px; }
-    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 18px; }
-    .footer-social { display: flex; gap: 10px; }
-    .f-soc { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s; }
-    .f-soc:hover { transform: translateY(-3px); }
-    .f-soc.insta { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
-    .f-soc.fb { background: #1877f2; } .f-soc.wa { background: var(--wa); }
-    .f-soc svg { width: 17px; height: 17px; fill: #fff; }
-    .footer-contact h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green-lt); margin-bottom: 18px; }
-    .contact-row { display: flex; align-items: flex-start; gap: 11px; margin-bottom: 14px; }
-    .ci { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .ci svg { width: 15px; height: 15px; }
-    .ci.phone { background: rgba(37,211,102,0.15); } .ci.phone svg { fill: var(--wa); }
-    .ci.email { background: rgba(234,67,53,0.15); } .ci.email svg { fill: #ea4335; }
-    .ci.ci-insta { background: rgba(188,24,136,0.15); } .ci.ci-insta svg { fill: #bc1888; }
-    .ci.ci-fb { background: rgba(24,119,242,0.15); } .ci.ci-fb svg { fill: #1877f2; }
-    .ci.map { background: rgba(82,183,136,0.15); } .ci.map svg { fill: var(--green-lt); }
-    .ct { font-size: 0.88rem; color: rgba(255,255,255,0.72); line-height: 1.55; }
-    .ct a { color: rgba(255,255,255,0.86); text-decoration: none; }
-    .ct a:hover { color: var(--green-lt); }
-    .ct .cl { font-size: 0.68rem; color: rgba(255,255,255,0.38); display: block; margin-bottom: 2px; letter-spacing: 0.5px; text-transform: uppercase; }
-    .office-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 9px; padding: 12px 14px; font-size: 0.83rem; color: rgba(255,255,255,0.62); line-height: 1.65; }
-    .office-box strong { display: block; color: rgba(255,255,255,0.86); font-size: 0.86rem; margin-bottom: 4px; }
-    .map-wrap { border-radius: var(--radius); overflow: hidden; margin-bottom: 36px; }
-    .map-wrap iframe { width: 100%; height: 240px; border: 0; display: block; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.32); flex-wrap: wrap; gap: 10px; }
-    .footer-bottom a { color: var(--green-lt); text-decoration: none; }
-
-    /* ── FLOATING WA ── */
-    .wa-float { position: fixed; bottom: 26px; right: 26px; z-index: 200; background: var(--wa); width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(37,211,102,0.42); text-decoration: none; transition: transform 0.2s; }
-    .wa-float:hover { transform: scale(1.1); }
-    .wa-float svg { width: 27px; height: 27px; fill: #fff; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 13px 18px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .stats-inner { grid-template-columns: repeat(2,1fr); }
-      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 14px; }
-      .stat-item:nth-child(2n) { border-right: none; }
-      .stat-item:last-child, .stat-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
-      .footer-top { grid-template-columns: 1fr; gap: 32px; }
-      .slide img, .slide-placeholder { height: 240px; }
-    }
-    @media (max-width: 480px) {
-      header { background-attachment: scroll; }
-      .booking-form { grid-template-columns: 1fr; }
-      .footer-bottom { justify-content: center; text-align: center; }
-    }
-  </style>
 </head>
+
 <body>
 
-<!-- ── NAV ── -->
-<nav id="mainNav">
-  <a class="logo" href="index.html">Sana On The Go</a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="#booking">Quick Enquiry</a></li>
-    <li><a href="packages.html">Packages</a></li>
-    <li><a href="properties.html">Properties</a></li>
-    <li><a href="#why-us">Why Us</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
+<header>
+
+<div class="logo">Into The Wild</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="packages.html">Packages</a>
+<a href="properties.html">Properties</a>
+<a href="#">Gallery</a>
+<a href="#">Reviews</a>
+<a href="#">Contact</a>
+
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="closeMenu()">Home</a>
-  <a href="#booking" onclick="closeMenu()">Quick Enquiry</a>
-  <a href="packages.html" onclick="closeMenu()">Packages</a>
-  <a href="properties.html" onclick="closeMenu()">Properties</a>
-  <a href="#why-us" onclick="closeMenu()">Why Us</a>
-  <a href="#gallery" onclick="closeMenu()">Gallery</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-</div>
-
-<!-- ── HERO ── -->
-<header>
-  <div class="hero-bg"></div>
-  <p class="eyebrow">Himalayan Travel Specialists · Siliguri, North Bengal</p>
-  <h1>Sana On The Go</h1>
-  <p>Curated travel experiences across Darjeeling, Kalimpong, Sikkim &amp; the Offbeat Himalayas</p>
-
-  <div class="hero-btns">
-    <a class="btn-wa" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp Enquiry
-    </a>
-    <a class="btn-outline-white" href="packages.html">Explore Packages &rarr;</a>
-  </div>
-
-  <div class="hero-socials">
-    <a class="hero-social-pill pill-insta" href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      @sana.onthe.go
-    </a>
-    <a class="hero-social-pill pill-fb" href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      Sana On The Go
-    </a>
-  </div>
-
-  <div class="scroll-hint"><div class="arrow"></div></div>
 </header>
 
-<!-- Stats Bar -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat-item"><span class="stat-num">500+</span><span class="stat-lbl">Happy Travellers</span></div>
-    <div class="stat-item"><span class="stat-num">10+</span><span class="stat-lbl">Curated Packages</span></div>
-    <div class="stat-item"><span class="stat-num">5&#9733;</span><span class="stat-lbl">Avg. Rating</span></div>
-    <div class="stat-item"><span class="stat-num">5+</span><span class="stat-lbl">Years Experience</span></div>
-  </div>
+<section class="hero">
+
+<h1>Explore The Hidden Himalayas</h1>
+
+<p>Darjeeling • Kalimpong • Dooars • Offbeat Villages</p>
+
+<a href="packages.html" class="primary-btn">Explore Packages</a>
+
+</section>
+
+<section class="featured">
+
+<h2>Featured Travel Experiences</h2>
+
+<div class="card-grid">
+
+<div class="card">
+<img src="images/experience1.jpg">
+<h3>Village Life Experience</h3>
 </div>
 
-<!-- Booking Widget -->
-<div class="booking-wrap" id="booking">
-  <div class="booking-inner">
-    <h2>&#127956;&#65039; Plan Your Hill Escape</h2>
-    <p class="booking-sub">Fill in details and send us a WhatsApp enquiry — we reply within a few hours!</p>
-    <div class="booking-form">
-      <div class="form-group"><label>Arrival at NJP / Bagdogra</label><input type="date" id="arrivalDate"></div>
-      <div class="form-group"><label>Departure from NJP / Bagdogra</label><input type="date" id="departureDate"></div>
-      <div class="form-group"><label>Persons</label>
-        <select id="numPersons"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10+</option></select>
-      </div>
-      <div class="form-group"><label>Rooms</label>
-        <select id="numRooms"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select>
-      </div>
-      <div class="form-group"><label>Interested In</label>
-        <select id="interest"><option value="">Select Package</option><option>Darjeeling &amp; Kalimpong</option><option>Offbeat Sikkim</option><option>Custom / Not Sure Yet</option></select>
-      </div>
-      <div class="form-group"><label>&nbsp;</label>
-        <button class="booking-btn" onclick="sendBookingWA()">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Send via WhatsApp
-        </button>
-      </div>
-    </div>
-  </div>
+<div class="card">
+<img src="images/experience2.jpg">
+<h3>Tea Garden Stays</h3>
 </div>
 
-<!-- Featured Packages -->
-<section id="packages">
-  <div class="pkg-section-inner">
-    <span class="section-tag">Handcrafted Itineraries</span>
-    <h2 class="section-title">Featured Travel Experiences</h2>
-    <p class="section-sub">Local expertise, personal touch — <a href="packages.html" style="color:var(--green);font-weight:600;">view all packages &rarr;</a></p>
-    <div class="cards-grid">
+<div class="card">
+<img src="images/experience3.jpg">
+<h3>Himalayan View Homestays</h3>
+</div>
 
-      <div class="card">
-        <div class="card-thumb-wrap">
-          <img class="card-thumb" src="images/darjeeling-thumb.jpg" alt="Darjeeling & Kalimpong tour"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="card-thumb-placeholder" style="display:none;">&#127956;<br>Upload: images/darjeeling-thumb.jpg</div>
-        </div>
-        <div class="card-body">
-          <span class="card-badge">5 Nights / 6 Days</span>
-          <h3>Darjeeling &amp; Kalimpong</h3>
-          <p>Tea gardens, Tiger Hill sunrise, toy train rides, and the charm of colonial hill towns.</p>
-          <p class="price">From &#8377;18,500 per person</p>
-          <a class="btn-outline" href="packages.html#darjeeling">View Full Itinerary</a>
-        </div>
-      </div>
+</div>
 
-      <div class="card">
-        <div class="card-thumb-wrap">
-          <img class="card-thumb" src="images/sikkim-thumb.jpg" alt="Offbeat Sikkim tour"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="card-thumb-placeholder" style="display:none;">&#127748;<br>Upload: images/sikkim-thumb.jpg</div>
-        </div>
-        <div class="card-body">
-          <span class="card-badge">7 Nights / 8 Days</span>
-          <h3>Offbeat Sikkim</h3>
-          <p>Lachung, Yumthang Valley, alpine meadows, and authentic village homestays.</p>
-          <p class="price">From &#8377;24,900 per person</p>
-          <a class="btn-outline" href="packages.html#sikkim">View Full Itinerary</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-thumb-wrap">
-          <img class="card-thumb" src="images/pkg3-thumb.jpg" alt="Package 3"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="card-thumb-placeholder" style="display:none;">&#127807;<br>Upload: images/pkg3-thumb.jpg</div>
-        </div>
-        <div class="card-body">
-          <span class="card-badge">X Nights / X Days</span>
-          <h3>Your Package Name</h3>
-          <p>Add a short description of this package that excites travellers.</p>
-          <p class="price">From &#8377;XX,XXX per person</p>
-          <a class="btn-outline" href="packages.html#package3">View Full Itinerary</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </section>
 
-<!-- Google Reviews via Trustindex -->
-<section id="testimonials">
-  <div class="testi-inner">
-    <span class="section-tag">Google Reviews</span>
-    <h2 class="section-title">What Travellers Say</h2>
-    <p class="section-sub">Real reviews from our guests on Google</p>
-    <script defer async src='https://cdn.trustindex.io/loader.js?eaa7d8166192365d7e168830e3f'></script>
-  </div>
+<section class="slider-section">
+
+<h2>Your Best Possible Hill Stays</h2>
+
+<div class="slider">
+
+<div class="slide">
+<img src="images/property1.jpg">
+<p>Property 1</p>
+</div>
+
+<div class="slide">
+<img src="images/property2.jpg">
+<p>Property 2</p>
+</div>
+
+<div class="slide">
+<img src="images/property3.jpg">
+<p>Property 3</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- Why Us -->
-<section id="why-us" class="section">
-  <span class="section-tag">Why Choose Us</span>
-  <h2 class="section-title">Travel With Confidence</h2>
-  <p class="section-sub">We handle every detail so you focus on the journey</p>
-  <div class="why-grid">
-    <div class="why-item"><div class="icon">&#128506;&#65039;</div><h4>Local North Bengal Expertise</h4></div>
-    <div class="why-item"><div class="icon">&#9999;&#65039;</div><h4>Custom Itineraries</h4></div>
-    <div class="why-item"><div class="icon">&#127969;</div><h4>Vetted Hotels &amp; Homestays</h4></div>
-    <div class="why-item"><div class="icon">&#128242;</div><h4>24/7 Personal Support</h4></div>
-    <div class="why-item"><div class="icon">&#128176;</div><h4>Best Value for Money</h4></div>
-    <div class="why-item"><div class="icon">&#127807;</div><h4>Responsible Travel</h4></div>
-  </div>
+<section class="testimonials">
+
+<h2>What Our Travelers Say</h2>
+
+<!-- Replace this widget with your Google review embed -->
+<div class="review-box">
+Latest Google Reviews will appear here
+</div>
+
 </section>
 
-<!-- Gallery Slider -->
-<section id="gallery">
-  <div class="gallery-inner">
-    <span class="section-tag">Gallery</span>
-    <h2 class="section-title">A Glimpse of the Himalayas</h2>
-    <p class="section-sub">Your adventures, waiting to happen</p>
-  </div>
+<footer>
 
-  <div style="max-width:900px; margin:0 auto; padding:0 24px 68px;">
-    <div class="slider-wrap">
-      <div class="slider-track" id="sliderTrack">
+<p>Into The Wild Tour & Travels</p>
+<p>Phone / WhatsApp: 9874740763</p>
 
-        <div class="slide">
-          <img src="images/gallery-1.JPG" alt="Gallery photo 1" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-1.jpg</span></div>
-          <div class="slide-caption">The Sleeping Buddha from the Thakum Valley</div>
-        </div>
-
-        <div class="slide">
-          <img src="images/gallery-2.JPG" alt="Gallery photo 2" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-2.jpg</span></div>
-          <div class="slide-caption">The mountains, clouds and the rain</div>
-        </div>
-
-        <div class="slide">
-          <img src="images/gallery-3.JPG" alt="Gallery photo 3" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-3.jpg</span></div>
-          <div class="slide-caption">Mt. Pandim painted red</div>
-        </div>
-
-        <div class="slide">
-          <img src="images/gallery-4.JPG" alt="Gallery photo 4" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-4.jpg</span></div>
-          <div class="slide-caption">Darjeeling, where the champagne of teas are made</div>
-        </div>
-
-        <div class="slide">
-          <img src="images/gallery-5.jpeg" alt="Gallery photo 5" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-5.jpg</span></div>
-          <div class="slide-caption">The breathtaking holy Gurudongmar Lake</div>
-        </div>
-
-        <div class="slide">
-          <img src="images/gallery-6.JPG" alt="Gallery photo 6" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-6.jpg</span></div>
-          <div class="slide-caption">Kahi door jab din dhal jaye</div>
-        </div>
-
-      </div><!-- /slider-track -->
-      <button class="slider-btn prev" onclick="slideGallery(-1)">&#8249;</button>
-      <button class="slider-btn next" onclick="slideGallery(1)">&#8250;</button>
-    </div>
-    <div class="slider-dots" id="sliderDots"></div>
-  </div>
-</section>
-
-<!-- Footer / Contact -->
-<footer id="contact">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <h2>Sana On The Go</h2>
-        <p>Based in Siliguri, North Bengal — we craft unforgettable journeys through Darjeeling, Kalimpong, and the hidden corners of Sikkim. Every trip is personal.</p>
-        <div class="footer-social">
-          <a class="f-soc insta" href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener" title="Instagram">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a class="f-soc fb" href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" rel="noopener" title="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <a class="f-soc wa" href="https://wa.me/919874740763" target="_blank" rel="noopener" title="WhatsApp">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-contact">
-        <h3>Contact Us</h3>
-        <div class="contact-row"><div class="ci phone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><div class="ct"><span class="cl">Call / WhatsApp</span><a href="tel:+919874740763">+91 98747 40763</a></div></div>
-        <div class="contact-row"><div class="ci email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="ct"><span class="cl">Email</span><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div></div>
-        <div class="contact-row"><div class="ci ci-insta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div><div class="ct"><span class="cl">Instagram</span><a href="https://www.instagram.com/sana.onthe.go?igsh=MTRuaWVmOWJ5d2ZpMg==" target="_blank" rel="noopener">@sana.onthe.go</a></div></div>
-        <div class="contact-row"><div class="ci ci-fb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div><div class="ct"><span class="cl">Facebook</span><a href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" rel="noopener">Sana On The Go</a></div></div>
-        <div class="contact-row"><div class="ci map"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="ct"><span class="cl">Office</span><div class="office-box"><strong>Into The Wild Tour and Travels</strong>100/A/3/L, Rabindra Nagar Main Road<br>P.S: Siliguri, Dist: Darjeeling<br>West Bengal &ndash; 734006</div></div></div>
-      </div>
-    </div>
-
-    <div class="map-wrap">
-      <iframe src="https://www.google.com/maps?q=Siliguri+West+Bengal+India&output=embed" loading="lazy" allowfullscreen title="Office location"></iframe>
-    </div>
-
-    <div class="footer-bottom">
-      <span>&copy; 2026 Sana On The Go | Into The Wild Tour and Travels. All rights reserved.</span>
-      <a href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages">WhatsApp Enquiry &rarr;</a>
-    </div>
-  </div>
 </footer>
 
-<!-- Floating WhatsApp -->
-<a class="wa-float" href="https://wa.me/919874740763?text=Hi%20I%20am%20interested%20in%20your%20travel%20packages" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+<a href="https://wa.me/919874740763" class="whatsapp-float">WhatsApp</a>
 
-<script>
-  // Nav scroll
-  window.addEventListener('scroll', () => {
-    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
-  });
-
-  // Hamburger
-  const hbg = document.getElementById('hamburger');
-  const mm  = document.getElementById('mobileMenu');
-  hbg.addEventListener('click', () => mm.classList.toggle('open'));
-  function closeMenu() { mm.classList.remove('open'); }
-  document.addEventListener('click', e => { if (!hbg.contains(e.target) && !mm.contains(e.target)) mm.classList.remove('open'); });
-
-  // Gallery slider
-  const track  = document.getElementById('sliderTrack');
-  const dotsEl = document.getElementById('sliderDots');
-  const slides = track.querySelectorAll('.slide');
-  let cur = 0, timer;
-
-  slides.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.addEventListener('click', () => go(i));
-    dotsEl.appendChild(d);
-  });
-
-  function go(n) {
-    cur = (n + slides.length) % slides.length;
-    track.style.transform = `translateX(-${cur * 100}%)`;
-    dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === cur));
-    clearInterval(timer); timer = setInterval(() => go(cur + 1), 4500);
-  }
-  function slideGallery(d) { go(cur + d); }
-  timer = setInterval(() => go(cur + 1), 4500);
-
-  // Touch swipe
-  let tx = 0;
-  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend',   e => { if (Math.abs(tx - e.changedTouches[0].clientX) > 40) go(cur + (tx > e.changedTouches[0].clientX ? 1 : -1)); });
-
-  // Booking WhatsApp
-  function sendBookingWA() {
-    const a = document.getElementById('arrivalDate').value;
-    const d = document.getElementById('departureDate').value;
-    const p = document.getElementById('numPersons').value;
-    const r = document.getElementById('numRooms').value;
-    const i = document.getElementById('interest').value;
-    if (!a || !d || !p || !r) { alert('Please fill in all fields before sending.'); return; }
-    const fmt = v => { const [y,m,day] = v.split('-'); return `${day} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]} ${y}`; };
-    const msg = `Hi Sana! I'd like to enquire about a trip 🏔️\n\n📅 Arrival: ${fmt(a)}\n📅 Departure: ${fmt(d)}\n👥 Persons: ${p}\n🛏️ Rooms: ${r}\n🗺️ Interested In: ${i || 'Not decided yet'}\n\nPlease share package options and pricing. Thank you!`;
-    window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg), '_blank');
-  }
-</script>
 </body>
 </html>
+```
