@@ -654,7 +654,7 @@ function toggleReview(id, btn) {
 </a>
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ══════════════════════════════════════════════════════════════════
    HILL STAYS SLIDER DATA
    ══════════════════════════════════════════════════════════════════
@@ -804,4 +804,67 @@ function sendBookingWA() {
   if (new Date(d) <= new Date(a)) { alert('Departure date must be after your arrival date.'); return; }
   const fmt = v => { const [y,m,day] = v.split('-'); return `${day} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]} ${y}`; };
   const msg = `Hi Sana! I'd like to enquire about a trip 🏔️\n\n📅 Arrival: ${fmt(a)}\n📅 Departure: ${fmt(d)}\n👥 Persons: ${p}\n🛏️ Rooms: ${r}\n🗺️ Interested In: ${i || 'Not decided yet'}\n\nPlease share package options and pricing. Thank you!`;
-  window.open('https://wa.me/919874740763?text=' + encodeURIComponent(ms
+  window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg));
+}
+
+// ── Hamburger ──
+const hbg = document.getElementById('hamburger');
+const mm = document.getElementById('mobileMenu');
+hbg.addEventListener('click', () => mm.classList.toggle('open'));
+function closeMenu() { mm.classList.remove('open'); }
+document.addEventListener('click', e => { if (!hbg.contains(e.target) && !mm.contains(e.target)) mm.classList.remove('open'); });
+
+// ── Scroll-top button ──
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ── Gallery slider ──
+(function() {
+  const track = document.querySelector('.gallery-track');
+  const slides = document.querySelectorAll('.gallery-slide');
+  let cur = 0;
+  function goTo(n) {
+    cur = (n + slides.length) % slides.length;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    document.querySelectorAll('.gallery-dot').forEach((d,i) => d.classList.toggle('active', i === cur));
+  }
+  document.getElementById('galPrev')?.addEventListener('click', () => goTo(cur - 1));
+  document.getElementById('galNext')?.addEventListener('click', () => goTo(cur + 1));
+  document.querySelectorAll('.gallery-dot').forEach((d,i) => d.addEventListener('click', () => goTo(i)));
+  let autoGal = setInterval(() => goTo(cur + 1), 4500);
+  track?.parentElement?.addEventListener('mouseenter', () => clearInterval(autoGal));
+  track?.parentElement?.addEventListener('mouseleave', () => { autoGal = setInterval(() => goTo(cur + 1), 4500); });
+  // touch
+  let tsx = 0;
+  track?.addEventListener('touchstart', e => { tsx = e.touches[0].clientX; }, { passive: true });
+  track?.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - tsx; if (Math.abs(dx) > 40) goTo(cur + (dx < 0 ? 1 : -1)); }, { passive: true });
+})();
+
+// ── Hill Stays slider ──
+(function() {
+  const track = document.getElementById('hillTrack');
+  if (!track) return;
+  const slides = track.querySelectorAll('.hill-slide');
+  const dots = document.querySelectorAll('.hill-dot');
+  let cur = 0;
+  function goTo(n) {
+    cur = (n + slides.length) % slides.length;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    dots.forEach((d,i) => d.classList.toggle('active', i === cur));
+  }
+  document.getElementById('hillPrev')?.addEventListener('click', () => goTo(cur - 1));
+  document.getElementById('hillNext')?.addEventListener('click', () => goTo(cur + 1));
+  dots.forEach((d,i) => d.addEventListener('click', () => goTo(i)));
+  let autoH = setInterval(() => goTo(cur + 1), 4000);
+  track.parentElement?.addEventListener('mouseenter', () => clearInterval(autoH));
+  track.parentElement?.addEventListener('mouseleave', () => { autoH = setInterval(() => goTo(cur + 1), 4000); });
+  let tsx = 0;
+  track.addEventListener('touchstart', e => { tsx = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - tsx; if (Math.abs(dx) > 40) goTo(cur + (dx < 0 ? 1 : -1)); }, { passive: true });
+})();
+
+</script>
+</body>
+</html>
