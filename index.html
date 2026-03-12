@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Sana On The Go | Best Travel Agency in North Bengal – Darjeeling, Sikkim, Kalimpong Tours</title>
   <meta name="description" content="Sana On The Go is a trusted travel agency in North Bengal offering customised tour packages to Darjeeling, Kalimpong, Sikkim and offbeat Himalayan destinations. Book now via WhatsApp.">
   <meta name="keywords" content="travel agency north bengal, darjeeling tour package, sikkim tour package, kalimpong trip, himalayan travel, siliguri travel agent, north bengal tourism, offbeat sikkim, tea garden tour darjeeling, best tour operator north bengal, into the wild tour travels siliguri">
@@ -35,15 +38,14 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
-    /* ── NAV ── */
+    /* ── NAV — sticky solid green, matches packages.html ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
       padding: 14px 36px;
-      background: rgba(0,0,0,0.45); backdrop-filter: blur(12px);
-      transition: background 0.3s, box-shadow 0.3s;
+      background: var(--green);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
     }
-    nav.scrolled { background: rgba(18,40,30,0.97); box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
     .logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #fff; text-decoration: none; flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
     .nav-links { list-style: none; display: flex; gap: 22px; align-items: center; }
     .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
@@ -159,33 +161,17 @@
     .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; }
     .dot.active { background: var(--green-lt); transform: scale(1.35); }
 
-    /* ── HILL STAYS SLIDER (new section) ── */
+    /* ── HILL STAYS SLIDER ── */
     #hill-stays { background: var(--bg); overflow: hidden; }
     .hill-stays-inner { max-width: 960px; margin: 0 auto; padding: 72px 24px 52px; }
     .hs-slider-wrap { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--green-dk); }
     .hs-track { display: flex; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
     .hs-slide { min-width: 100%; position: relative; }
     .hs-slide img { width: 100%; height: 380px; object-fit: cover; display: block; }
-    /* ════ HOW TO ADD HILL STAY PROPERTY IMAGES ════
-       For each .hs-slide, replace the .hs-ph div with:
-       <img src="images/property-photo.jpg" alt="Property Name, Location" style="width:100%;height:380px;object-fit:cover;display:block;">
-       Then update the .hs-caption text below the image. */
-    .hs-ph {
-      width: 100%; height: 380px;
-      /* ── EDIT: replace gradient with: background: url('images/YOUR-PROPERTY.jpg') center/cover no-repeat; ── */
-      background: linear-gradient(135deg, #1a3d2b 0%, #2d6a4f 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-    }
+    .hs-ph { width: 100%; height: 380px; background: linear-gradient(135deg, #1a3d2b 0%, #2d6a4f 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
     .hs-ph .phi { font-size: 3rem; color: rgba(255,255,255,0.25); }
     .hs-ph .pht { color: rgba(255,255,255,0.4); font-size: 0.84rem; text-align: center; padding: 0 20px; }
-    .hs-caption {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.72));
-      color: #fff; padding: 52px 24px 22px;
-    }
-    /* ════ HOW TO EDIT PROPERTY CAPTIONS ════
-       Find each .hs-caption-name and .hs-caption-loc inside each .hs-slide
-       and replace the placeholder text with your actual property name and location. */
+    .hs-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.72)); color: #fff; padding: 52px 24px 22px; }
     .hs-caption-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
     .hs-caption-loc { font-size: 0.84rem; color: rgba(255,255,255,0.78); display: flex; align-items: center; gap: 5px; }
     .hs-caption-badge { display: inline-block; background: var(--gold); color: #fff; font-size: 0.68rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-left: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -248,8 +234,6 @@
     .ci svg { width: 15px; height: 15px; }
     .ci.phone { background: rgba(37,211,102,0.15); } .ci.phone svg { fill: var(--wa); }
     .ci.email { background: rgba(234,67,53,0.15); } .ci.email svg { fill: #ea4335; }
-    .ci.ci-insta { background: rgba(188,24,136,0.15); } .ci.ci-insta svg { fill: #bc1888; }
-    .ci.ci-fb { background: rgba(24,119,242,0.15); } .ci.ci-fb svg { fill: #1877f2; }
     .ci.map { background: rgba(82,183,136,0.15); } .ci.map svg { fill: var(--green-lt); }
     .ct { font-size: 0.87rem; color: rgba(255,255,255,0.68); line-height: 1.57; }
     .ct a { color: rgba(255,255,255,0.85); text-decoration: none; }
@@ -359,29 +343,29 @@
   <div class="scroll-hint"><div class="arrow"></div></div>
 </header>
 
-<!-- Stats Bar -->
+<!-- ── STATS BAR ── -->
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat-item">
-      <span class="stat-num" data-target="500" data-suffix="+">0</span>
+      <span class="stat-num" data-target="500" data-suffix="+">500+</span>
       <span class="stat-lbl">Happy Travellers</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num" data-target="37" data-suffix="+">0</span>
+      <span class="stat-num" data-target="37" data-suffix="+">37+</span>
       <span class="stat-lbl">Curated Packages</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num" data-target="5" data-suffix="★" data-decimal="1">0</span>
+      <span class="stat-num" data-target="5" data-suffix="★" data-decimal="1">5.0★</span>
       <span class="stat-lbl">Avg. Rating</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num" data-target="5" data-suffix="+">0</span>
+      <span class="stat-num" data-target="5" data-suffix="+">5+</span>
       <span class="stat-lbl">Years Experience</span>
     </div>
   </div>
 </div>
 
-<!-- Booking Widget -->
+<!-- ── BOOKING WIDGET ── -->
 <div class="booking-wrap" id="booking">
   <div class="booking-inner">
     <h2>🏕️ Plan Your Hill Escape</h2>
@@ -425,7 +409,7 @@
 </div>
 
 <!-- ══════════════════════════════════════
-     FEATURED TRAVEL EXPERIENCE / PACKAGES
+     FEATURED PACKAGES — 6 CARDS + CUSTOM
 ══════════════════════════════════════ -->
 <div id="packages" style="background:#fff;">
   <div class="pkg-section-inner">
@@ -438,10 +422,7 @@
       <div class="card">
         <div class="card-thumb-wrap">
           <!-- ► Replace with: <img class="card-thumb" src="images/darjeeling-offbeat.jpg" alt="Darjeeling Offbeat"> -->
-          <div class="card-thumb-placeholder">
-            <div class="phi">🏔️</div>
-            <span>Add darjeeling-offbeat.jpg</span>
-          </div>
+          <div class="card-thumb-placeholder"><div class="phi">🏔️</div><span>Add darjeeling-offbeat.jpg</span></div>
           <div class="card-coming-badge" style="background:var(--green);">8 Packages</div>
         </div>
         <div class="card-body">
@@ -457,10 +438,7 @@
       <div class="card">
         <div class="card-thumb-wrap">
           <!-- ► Replace with: <img class="card-thumb" src="images/kalimpong-offbeat.jpg" alt="Kalimpong Offbeat"> -->
-          <div class="card-thumb-placeholder">
-            <div class="phi">🌸</div>
-            <span>Add kalimpong-offbeat.jpg</span>
-          </div>
+          <div class="card-thumb-placeholder"><div class="phi">🌸</div><span>Add kalimpong-offbeat.jpg</span></div>
           <div class="card-coming-badge" style="background:var(--green);">8 Packages</div>
         </div>
         <div class="card-body">
@@ -476,16 +454,13 @@
       <div class="card">
         <div class="card-thumb-wrap">
           <!-- ► Replace with: <img class="card-thumb" src="images/jungle-safari.jpg" alt="Jungle Safari"> -->
-          <div class="card-thumb-placeholder">
-            <div class="phi">🐘</div>
-            <span>Add jungle-safari.jpg</span>
-          </div>
+          <div class="card-thumb-placeholder"><div class="phi">🐘</div><span>Add jungle-safari.jpg</span></div>
           <div class="card-coming-badge" style="background:var(--green);">7 Packages</div>
         </div>
         <div class="card-body">
           <span class="card-badge">🐘 Jungle Safari</span>
           <h3>Dooars Wildlife Safaris</h3>
-          <p>Encounter elephants, rhinos and leopards in Gorumara, Jaldapara & Chapramari — the wild heart of the Dooars forests.</p>
+          <p>Encounter elephants, rhinos and leopards in Gorumara, Jaldapara &amp; Chapramari — the wild heart of the Dooars forests.</p>
           <div class="price">From ₹X,XXX / person</div>
           <a class="btn-outline" href="packages.html#jungle">Explore Packages →</a>
         </div>
@@ -495,10 +470,7 @@
       <div class="card">
         <div class="card-thumb-wrap">
           <!-- ► Replace with: <img class="card-thumb" src="images/mixed-circuit.jpg" alt="Mixed Circuit"> -->
-          <div class="card-thumb-placeholder">
-            <div class="phi">🗺️</div>
-            <span>Add mixed-circuit.jpg</span>
-          </div>
+          <div class="card-thumb-placeholder"><div class="phi">🗺️</div><span>Add mixed-circuit.jpg</span></div>
           <div class="card-coming-badge" style="background:var(--gold-dk);">7 Packages</div>
         </div>
         <div class="card-body">
@@ -514,10 +486,7 @@
       <div class="card">
         <div class="card-thumb-wrap">
           <!-- ► Replace with: <img class="card-thumb" src="images/darjeeling-town.jpg" alt="Darjeeling Town"> -->
-          <div class="card-thumb-placeholder">
-            <div class="phi">🍵</div>
-            <span>Add darjeeling-town.jpg</span>
-          </div>
+          <div class="card-thumb-placeholder"><div class="phi">🍵</div><span>Add darjeeling-town.jpg</span></div>
           <div class="card-coming-badge" style="background:var(--gold-dk);">7 Packages</div>
         </div>
         <div class="card-body">
@@ -529,7 +498,7 @@
         </div>
       </div>
 
-      <!-- CARD 6: CUSTOM -->
+      <!-- CARD 6: CUSTOM PACKAGE -->
       <div class="card" style="background: linear-gradient(135deg, #1a3d2b, #2d6a4f);">
         <div class="card-body" style="justify-content:center;align-items:center;text-align:center;padding:36px 22px;">
           <div style="font-size:2.5rem;margin-bottom:14px;">✨</div>
@@ -547,98 +516,46 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     🏡 YOUR BEST POSSIBLE HILL STAYS — SLIDER
-     ► HOW TO ADD PROPERTIES:
-       1. Duplicate a <div class="hs-slide"> block
-       2. Replace .hs-ph with an <img> tag
+<!-- ══════════════════════════════════════
+     HILL STAYS SLIDER
+     ► To add a property:
+       1. Copy a .hs-slide block
+       2. Replace .hs-ph with <img src="images/YOUR.jpg" ...>
        3. Update .hs-caption-name and .hs-caption-loc
-       4. Update JS hsTotal variable below to match your slide count
-══════════════════════════════════════════════ -->
+══════════════════════════════════════ -->
 <div id="hill-stays">
   <div class="hill-stays-inner">
     <span class="section-tag">🏡 Curated Stays</span>
     <h2 class="section-title">Your Best Possible Hill Stays</h2>
     <p class="section-sub">Handpicked hotels and homestays that we personally recommend — from cosy village cottages to ridge-top retreats.</p>
-
     <div class="hs-slider-wrap">
       <div class="hs-track" id="hsTrack">
-
-        <!-- ════ SLIDE 1 ════
-             Replace .hs-ph with: <img src="images/property-1.jpg" alt="Property 1 Name" style="width:100%;height:380px;object-fit:cover;display:block;">
-             Update caption below. -->
         <div class="hs-slide">
-          <div class="hs-ph">
-            <div class="phi">🏡</div>
-            <div class="pht">Slide 1 — Add property photo here<br>(images/property-1.jpg)</div>
-          </div>
-          <div class="hs-caption">
-            <!-- ► EDIT: Property name and location -->
-            <div class="hs-caption-name">Property 1 Name <span class="hs-caption-badge">Homestay</span></div>
-            <div class="hs-caption-loc">📍 Location 1, North Bengal</div>
-          </div>
+          <div class="hs-ph"><div class="phi">🏡</div><div class="pht">Slide 1 — Add property photo here<br>(images/property-1.jpg)</div></div>
+          <div class="hs-caption"><div class="hs-caption-name">Property 1 Name <span class="hs-caption-badge">Homestay</span></div><div class="hs-caption-loc">📍 Location 1, North Bengal</div></div>
         </div>
-
-        <!-- ════ SLIDE 2 ════ -->
         <div class="hs-slide">
-          <div class="hs-ph" style="background:linear-gradient(135deg,#1d4030,#3a7a55);">
-            <div class="phi">🌿</div>
-            <div class="pht">Slide 2 — Add property photo here</div>
-          </div>
-          <div class="hs-caption">
-            <div class="hs-caption-name">Property 2 Name <span class="hs-caption-badge">Resort</span></div>
-            <div class="hs-caption-loc">📍 Location 2, North Bengal</div>
-          </div>
+          <div class="hs-ph" style="background:linear-gradient(135deg,#1d4030,#3a7a55);"><div class="phi">🌿</div><div class="pht">Slide 2 — Add property photo here</div></div>
+          <div class="hs-caption"><div class="hs-caption-name">Property 2 Name <span class="hs-caption-badge">Resort</span></div><div class="hs-caption-loc">📍 Location 2, North Bengal</div></div>
         </div>
-
-        <!-- ════ SLIDE 3 ════ -->
         <div class="hs-slide">
-          <div class="hs-ph" style="background:linear-gradient(135deg,#243020,#4a8a60);">
-            <div class="phi">⛰️</div>
-            <div class="pht">Slide 3 — Add property photo here</div>
-          </div>
-          <div class="hs-caption">
-            <div class="hs-caption-name">Property 3 Name <span class="hs-caption-badge">Boutique Hotel</span></div>
-            <div class="hs-caption-loc">📍 Location 3, North Bengal</div>
-          </div>
+          <div class="hs-ph" style="background:linear-gradient(135deg,#243020,#4a8a60);"><div class="phi">⛰️</div><div class="pht">Slide 3 — Add property photo here</div></div>
+          <div class="hs-caption"><div class="hs-caption-name">Property 3 Name <span class="hs-caption-badge">Boutique Hotel</span></div><div class="hs-caption-loc">📍 Location 3, North Bengal</div></div>
         </div>
-
-        <!-- ════ SLIDE 4 ════ -->
         <div class="hs-slide">
-          <div class="hs-ph" style="background:linear-gradient(135deg,#1a3530,#2d6a55);">
-            <div class="phi">🍵</div>
-            <div class="pht">Slide 4 — Add property photo here</div>
-          </div>
-          <div class="hs-caption">
-            <div class="hs-caption-name">Property 4 Name <span class="hs-caption-badge">Tea Estate Stay</span></div>
-            <div class="hs-caption-loc">📍 Location 4, North Bengal</div>
-          </div>
+          <div class="hs-ph" style="background:linear-gradient(135deg,#1a3530,#2d6a55);"><div class="phi">🍵</div><div class="pht">Slide 4 — Add property photo here</div></div>
+          <div class="hs-caption"><div class="hs-caption-name">Property 4 Name <span class="hs-caption-badge">Tea Estate Stay</span></div><div class="hs-caption-loc">📍 Location 4, North Bengal</div></div>
         </div>
-
-        <!-- ════ SLIDE 5 ════ -->
         <div class="hs-slide">
-          <div class="hs-ph" style="background:linear-gradient(135deg,#1a2d3d,#2d5a6a);">
-            <div class="phi">🌄</div>
-            <div class="pht">Slide 5 — Add property photo here</div>
-          </div>
-          <div class="hs-caption">
-            <div class="hs-caption-name">Property 5 Name <span class="hs-caption-badge">Eco Lodge</span></div>
-            <div class="hs-caption-loc">📍 Location 5, North Bengal</div>
-          </div>
+          <div class="hs-ph" style="background:linear-gradient(135deg,#1a2d3d,#2d5a6a);"><div class="phi">🌄</div><div class="pht">Slide 5 — Add property photo here</div></div>
+          <div class="hs-caption"><div class="hs-caption-name">Property 5 Name <span class="hs-caption-badge">Eco Lodge</span></div><div class="hs-caption-loc">📍 Location 5, North Bengal</div></div>
         </div>
-
-        <!-- ► ADD MORE SLIDES ABOVE THIS COMMENT ◄
-             Copy a .hs-slide block, replace the image and update the caption.
-             Then update hsTotal in the script below. -->
-
       </div>
       <button class="hs-btn hs-prev" id="hsPrev" aria-label="Previous">&#8249;</button>
       <button class="hs-btn hs-next" id="hsNext" aria-label="Next">&#8250;</button>
     </div>
     <div class="hs-dots" id="hsDots"></div>
-    <div class="hs-cta">
-      <a href="properties.html" class="btn-outline">Browse All Properties →</a>
-    </div>
+    <div class="hs-cta"><a href="properties.html" class="btn-outline">Browse All Properties →</a></div>
   </div>
 </div>
 
@@ -671,8 +588,6 @@
     <p class="section-sub">Glimpses from our travellers' adventures across the Himalayan foothills.</p>
     <div class="slider-wrap">
       <div class="slider-track" id="sliderTrack">
-        <!-- ► GALLERY SLIDES — replace placeholders with your images:
-             <img src="images/gallery-1.jpg" alt="Caption here" style="width:100%;height:420px;object-fit:cover;display:block;"> -->
         <div class="slide"><div class="slide-placeholder"><div class="ph-icon">📸</div><div class="ph-txt">Gallery Image 1 — Add images/gallery-1.jpg</div></div><div class="slide-caption">Caption 1 — Edit this (e.g. "Dawn at Tiger Hill, Darjeeling")</div></div>
         <div class="slide"><div class="slide-placeholder"><div class="ph-icon">📸</div><div class="ph-txt">Gallery Image 2 — Add images/gallery-2.jpg</div></div><div class="slide-caption">Caption 2 — Edit this</div></div>
         <div class="slide"><div class="slide-placeholder"><div class="ph-icon">📸</div><div class="ph-txt">Gallery Image 3 — Add images/gallery-3.jpg</div></div><div class="slide-caption">Caption 3 — Edit this</div></div>
@@ -694,7 +609,6 @@
     <span class="section-tag">✦ Traveller Reviews</span>
     <h2 class="section-title">What Our Guests Say</h2>
     <p class="section-sub">Real 5‑star reviews from guests — straight from Google</p>
-
     <div class="review-grid">
 
       <!-- Anirban -->
@@ -748,7 +662,6 @@
       </div>
 
     </div>
-
     <div class="testi-cta">
       <a class="btn-google-reviews" href="https://share.google/5dTWhISUrA2SqOOea" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
@@ -756,17 +669,8 @@
       </a>
       <p class="testi-total">⭐ 5.0 · All verified Google reviews</p>
     </div>
-
   </div>
 </div>
-
-<script>
-function toggleReview(id, btn) {
-  const el = document.getElementById(id);
-  if (el.classList.contains('collapsed')) { el.classList.remove('collapsed'); btn.textContent = 'Show less'; }
-  else { el.classList.add('collapsed'); btn.textContent = 'Read more'; }
-}
-</script>
 
 <!-- ══════════════════════════════════════
      FOOTER
@@ -797,7 +701,7 @@ function toggleReview(id, btn) {
         </div>
         <div class="contact-row">
           <div class="ci email"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-          <div class="ct"><span class="cl">Email</span><a href="/cdn-cgi/l/email-protection#ee9d8f978f809a87858f87809a819a868b9987828aae89838f8782c08d8183"><span class="__cf_email__" data-cfemail="aad9cbd3cbc4dec3c1cbc3c4dec5dec2cfddc3c6ceeacdc7cbc3c684c9c5c7">[email&#160;protected]</span></a></div>
+          <div class="ct"><span class="cl">Email</span><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div>
         </div>
         <div class="contact-row">
           <div class="ci map"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
@@ -831,13 +735,7 @@ function toggleReview(id, btn) {
   Chat with Us
 </a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── NAV SCROLL ──
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
-
+<script>
 // ── HAMBURGER ──
 document.getElementById('hamburger').addEventListener('click', () => {
   document.getElementById('mobileMenu').classList.toggle('open');
@@ -866,7 +764,6 @@ document.getElementById('hamburger').addEventListener('click', () => {
 (function() {
   const track = document.getElementById('hsTrack');
   const dotsEl = document.getElementById('hsDots');
-  // ► EDIT: Update this number when you add more slides
   const hsTotal = track.children.length;
   let cur = 0, timer;
   dotsEl.innerHTML = Array.from({length:hsTotal},(_,i)=>`<button class="hs-dot${i===0?' active':''}" data-i="${i}"></button>`).join('');
@@ -883,6 +780,9 @@ document.getElementById('hamburger').addEventListener('click', () => {
 })();
 
 // ── STAT COUNTER ANIMATION ──
+// Final values are pre-filled as text so stats are never blank.
+// threshold:0 fires as soon as 1px enters the viewport.
+// 2s fallback handles any edge case where observer never fires.
 (function() {
   const nums = document.querySelectorAll('.stat-num[data-target]');
   function animateNum(el) {
@@ -911,7 +811,6 @@ document.getElementById('hamburger').addEventListener('click', () => {
   } else {
     nums.forEach(animateNum);
   }
-  // Fallback: if still 0 after 2s (observer never fired), animate anyway
   setTimeout(() => { nums.forEach(n => { if (!n.dataset.animated) animateNum(n); }); }, 2000);
 })();
 
@@ -921,13 +820,20 @@ document.getElementById('bookingBtn').addEventListener('click', () => {
   const departure = document.getElementById('departureDate').value;
   const persons   = document.getElementById('numPersons').value;
   const dest      = document.getElementById('destSelect').value;
-  const msg = `🏔️ *Tour Enquiry – Sana On The Go*
-
-📅 Arrival: ${arrival || 'Not specified'}
-📅 Departure: ${departure || 'Not specified'}
-👥 Persons: ${persons || 'Not specified'}
-🗺️ Destination: ${dest || 'Open to suggestions'}
-
-Please suggest suitable packages!`;
+  const msg = `🏔️ *Tour Enquiry – Sana On The Go*\n\n📅 Arrival: ${arrival || 'Not specified'}\n📅 Departure: ${departure || 'Not specified'}\n👥 Persons: ${persons || 'Not specified'}\n🗺️ Destination: ${dest || 'Open to suggestions'}\n\nPlease suggest suitable packages!`;
   const toast = document.getElementById('toast');
-  document.getElementById('toastMsg').textContent = 'Opening WhatsApp…
+  document.getElementById('toastMsg').textContent = "Opening WhatsApp… we'll reply within a few hours!";
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+  setTimeout(() => window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg), '_blank'), 400);
+});
+
+// ── READ MORE TOGGLE ──
+function toggleReview(id, btn) {
+  const el = document.getElementById(id);
+  if (el.classList.contains('collapsed')) { el.classList.remove('collapsed'); btn.textContent = 'Show less'; }
+  else { el.classList.add('collapsed'); btn.textContent = 'Read more'; }
+}
+</script>
+</body>
+</html>
