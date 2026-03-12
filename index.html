@@ -198,26 +198,105 @@
     .gal-slide:hover img { transform:scale(1.04); }
     .gal-cap { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(0,0,0,.65),transparent); color:#fff; padding:28px 14px 12px; font-size:.78rem; font-style:italic; }
 
-    /* REVIEWS — centred */
-    #reviews { background:#2A5240; }
+    /* REVIEWS */
+    #reviews {
+      background: linear-gradient(160deg, #1B3A2D 0%, #2A5240 50%, #1B3A2D 100%);
+      position: relative; overflow: hidden;
+    }
+    #reviews::before {
+      content: '"';
+      position: absolute; top: -40px; left: 3%;
+      font-family: var(--font-d); font-size: 28rem; font-weight: 700;
+      color: rgba(255,255,255,.03); line-height: 1; pointer-events: none;
+      user-select: none;
+    }
     #reviews .sec-label { color:var(--gold-light); }
     #reviews .sec-title { color:#fff; }
-    #reviews .sec-sub { color:rgba(255,255,255,.7); }
-    .reviews-wrap { max-width:980px; margin:0 auto; text-align:center; }
+    #reviews .sec-sub { color:rgba(255,255,255,.65); }
+    .reviews-wrap { max-width:1020px; margin:0 auto; text-align:center; position:relative; z-index:1; }
     .reviews-wrap .sec-sub { margin:0 auto; }
-    .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:40px; }
+    .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:44px; }
     @media(max-width:860px){ .reviews-grid{grid-template-columns:1fr 1fr} }
     @media(max-width:580px){ .reviews-grid{grid-template-columns:1fr} }
-    .review-card { background:rgba(255,255,255,.09); border:1.5px solid rgba(255,255,255,.15); border-radius:var(--radius); padding:28px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; }
-    .review-av { width:48px; height:48px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:12px; flex-shrink:0; border:2px solid rgba(255,255,255,.25); }
-    .review-stars { color:var(--gold-light); font-size:.95rem; margin-bottom:6px; }
-    .review-name { font-weight:700; font-size:.92rem; margin-bottom:2px; color:#fff; }
-    .review-src { font-size:.73rem; color:rgba(255,255,255,.5); margin-bottom:12px; }
-    .review-text { font-size:.85rem; color:rgba(255,255,255,.75); line-height:1.65; text-align:center; }
-    .reviews-cta { text-align:center; margin-top:28px; }
-    .btn-outline-w-rev { display:inline-block; border:2px solid rgba(255,255,255,.5); color:#fff; padding:12px 32px; border-radius:40px; font-weight:700; font-size:.9rem; transition:.2s; }
-    .btn-outline-w-rev:hover { background:rgba(255,255,255,.12); border-color:#fff; }
-    .reviews-note { text-align:center; font-size:.8rem; color:rgba(255,255,255,.5); margin-top:10px; }
+
+    .review-card {
+      background: linear-gradient(145deg, rgba(255,255,255,.11) 0%, rgba(255,255,255,.05) 100%);
+      border: 1px solid rgba(212,160,23,.35);
+      border-radius: var(--radius);
+      padding: 32px 26px 28px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      position: relative; overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      backdrop-filter: blur(4px);
+    }
+    .review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.3), 0 0 0 1px rgba(212,160,23,.5);
+    }
+    /* decorative top gold line */
+    .review-card::before {
+      content: '';
+      position: absolute; top: 0; left: 20%; right: 20%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      border-radius: 0 0 2px 2px;
+    }
+    /* giant quote mark watermark inside each card */
+    .review-card::after {
+      content: '\201C';
+      position: absolute; top: -10px; right: 14px;
+      font-family: var(--font-d); font-size: 7rem; font-weight: 700; line-height: 1;
+      color: rgba(240,200,66,.12); pointer-events: none; user-select: none;
+    }
+
+    .review-av {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-light), var(--green-dark));
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d); font-weight: 700; font-size: 1.3rem;
+      margin-bottom: 14px; flex-shrink: 0;
+      border: 2px solid rgba(212,160,23,.6);
+      box-shadow: 0 0 0 4px rgba(212,160,23,.12);
+    }
+    .review-stars {
+      display: flex; gap: 3px; justify-content: center; margin-bottom: 8px;
+    }
+    .review-stars span {
+      font-size: 1.05rem; color: var(--gold-light);
+      filter: drop-shadow(0 0 4px rgba(240,200,66,.6));
+    }
+    .review-name { font-weight: 700; font-size: 1rem; color: #fff; margin-bottom: 2px; }
+    .review-src {
+      font-size: .72rem; color: rgba(255,255,255,.45); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 5px; justify-content: center;
+    }
+    .review-src::before {
+      content: '';
+      display: inline-block; width: 12px; height: 12px; border-radius: 50%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234285F4' d='M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z'/%3E%3Cpath fill='%2334A853' d='M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z'/%3E%3Cpath fill='%23FBBC05' d='M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z'/%3E%3Cpath fill='%23EA4335' d='M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z'/%3E%3C/svg%3E") center/contain no-repeat;
+      flex-shrink: 0;
+    }
+    .review-text {
+      font-size: .87rem; color: rgba(255,255,255,.78);
+      line-height: 1.7; text-align: center; font-style: italic;
+      position: relative; z-index: 1;
+    }
+
+    .reviews-cta { text-align:center; margin-top:36px; }
+    .btn-outline-w-rev {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid rgba(212,160,23,.6); color: var(--gold-light);
+      padding: 13px 32px; border-radius: 40px;
+      font-weight: 700; font-size: .9rem; transition: .2s;
+      background: rgba(212,160,23,.08);
+    }
+    .btn-outline-w-rev:hover {
+      background: rgba(212,160,23,.2); border-color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+    .reviews-note {
+      text-align:center; font-size:.8rem;
+      color:rgba(255,255,255,.4); margin-top:12px;
+    }
 
     /* FOOTER */
     footer { background:var(--green-dark); color:rgba(255,255,255,.75); padding:60px 5% 30px; }
@@ -567,30 +646,30 @@
     <div class="reviews-grid">
       <div class="review-card">
         <div class="review-av">A</div>
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <div class="review-name">Anirban</div>
         <div class="review-src">Google Review</div>
-        <div class="review-text">Amazing Experience with Sana On The Go! Traveling with Sana di was an amazing experience. I went on a North Bengal trip with my homies and it was one of the best travel experiences I've had. This was my second trip with them, and once again everything was perfectly organized. Traveling with them feels more like going on a trip with friends. Highly recommended!</div>
+        <div class="review-text">Traveling with Sana di was an amazing experience. Everything was perfectly organized, the places were beautiful, and she makes sure everyone feels comfortable. Traveling with them feels more like going on a trip with friends rather than a tour company. Highly recommended — this was already my second trip!</div>
       </div>
       <div class="review-card">
         <div class="review-av">B</div>
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <div class="review-name">Bipasha</div>
         <div class="review-src">Google Review</div>
-        <div class="review-text">If you'd just want to lie down and relax don't come with her as she makes sure that you don't miss any surreal experience and view, despite saying you're sleepy! I loved those sleepless nights by the way!! Already on my second trip with her.</div>
+        <div class="review-text">If you'd just want to lie down and relax, don't come with her — she makes sure you don't miss any surreal experience or view, despite saying you're sleepy! I loved those sleepless nights by the way!! Already on my second trip with her.</div>
       </div>
       <div class="review-card">
         <div class="review-av">P</div>
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <div class="review-name">Pushpal</div>
         <div class="review-src">Google Review</div>
-        <div class="review-text">Traveling to North Bengal with Sana di was truly an unforgettable experience. She plans and organizes every tour so beautifully that each trip feels like discovering the mountains in a completely new way. The hotels and homestays are always of premium quality. Highly recommended!</div>
+        <div class="review-text">Traveling to North Bengal with Sana di was truly an unforgettable experience. She plans every tour so beautifully that each trip feels like discovering the mountains anew. Hotels and homestays are always premium quality. Highly recommended for anyone who wants to experience the mountains at a reasonable cost.</div>
       </div>
     </div>
     <div class="reviews-cta">
-      <a href="https://share.google/5dTWhISUrA2SqOOea" target="_blank" class="btn-outline-w-rev">Read More Reviews on Google →</a>
+      <a href="https://share.google/5dTWhISUrA2SqOOea" target="_blank" class="btn-outline-w-rev">⭐ Read More Reviews on Google</a>
     </div>
-    <p class="reviews-note">⭐ 5.0 · All verified Google reviews</p>
+    <p class="reviews-note">5.0 · All verified Google reviews</p>
   </div>
 </section>
 
