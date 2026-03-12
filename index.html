@@ -70,9 +70,9 @@
     @media(max-width:768px){ .nav-links{display:none} .nav-ham{display:block} }
 
     /* HERO */
-    .hero { position:relative; min-height:90vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; background:var(--green-dark); }
-    .hero-bg { position:absolute; inset:0; background:url('images/hero.jpeg') center/cover no-repeat; opacity:.7; }
-    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(15,40,25,.45) 0%,rgba(15,40,25,.68) 100%); }
+    .hero { position:relative; min-height:90vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; background:#000; }
+    .hero-bg { position:absolute; inset:0; background:url('images/hero.jpeg') center/cover no-repeat; opacity:1; }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.55) 100%); }
     .hero-content { position:relative; z-index:2; max-width:700px; padding:0 24px; }
     .hero-badge { display:inline-block; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); color:rgba(255,255,255,.88); font-size:.75rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; padding:6px 20px; border-radius:40px; margin-bottom:20px; }
     .hero h1 { font-family:var(--font-d); font-size:clamp(2.8rem,6vw,4.6rem); font-weight:700; color:#fff; line-height:1.1; margin-bottom:18px; }
@@ -86,10 +86,13 @@
 
     /* Social icons in hero */
     .hero-socials { display:flex; gap:18px; justify-content:center; align-items:center; }
-    .hero-socials a { display:flex; align-items:center; gap:7px; color:rgba(255,255,255,.75); font-size:.84rem; font-weight:500; transition:color .2s; }
-    .hero-socials a:hover { color:var(--gold-light); }
-    .hero-socials svg { width:20px; height:20px; fill:currentColor; flex-shrink:0; }
+    .hero-socials a { display:flex; align-items:center; gap:8px; color:rgba(255,255,255,.88); font-size:.84rem; font-weight:500; transition:opacity .2s; }
+    .hero-socials a:hover { opacity:.75; }
     .soc-div { color:rgba(255,255,255,.3); }
+    .insta-icon { background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); border-radius:7px; width:26px; height:26px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .insta-icon svg { fill:#fff; width:15px; height:15px; }
+    .fb-icon { background:#1877F2; border-radius:50%; width:26px; height:26px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .fb-icon svg { fill:#fff; width:14px; height:14px; }
 
     .hero-stats { display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-top:52px; padding-top:36px; border-top:1px solid rgba(255,255,255,.15); }
     .hero-stat strong { display:block; font-family:var(--font-d); font-size:2rem; color:var(--gold-light); font-weight:700; }
@@ -182,27 +185,39 @@
     .why-card p { font-size:.84rem; color:var(--muted); }
 
     /* GALLERY */
-    #gallery { background:var(--off-white); }
+    #gallery { background:#2A5240; }
+    #gallery .sec-label { color:var(--gold-light); }
+    #gallery .sec-title { color:#fff; }
+    #gallery .sec-sub { color:rgba(255,255,255,.7); }
+    #gallery .sl-btn { background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.3); color:#fff; }
+    #gallery .sl-btn:hover { background:rgba(255,255,255,.25); }
+    #gallery .sl-dots button { background:rgba(255,255,255,.3); }
+    #gallery .sl-dots button.on { background:#fff; }
     .gal-slide { flex-shrink:0; border-radius:var(--radius-sm); overflow:hidden; position:relative; }
     .gal-slide img { width:100%; height:230px; object-fit:cover; display:block; transition:transform .35s; }
     .gal-slide:hover img { transform:scale(1.04); }
     .gal-cap { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(0,0,0,.65),transparent); color:#fff; padding:28px 14px 12px; font-size:.78rem; font-style:italic; }
 
     /* REVIEWS — centred */
-    #reviews { background:#fff; }
+    #reviews { background:#2A5240; }
+    #reviews .sec-label { color:var(--gold-light); }
+    #reviews .sec-title { color:#fff; }
+    #reviews .sec-sub { color:rgba(255,255,255,.7); }
     .reviews-wrap { max-width:980px; margin:0 auto; text-align:center; }
     .reviews-wrap .sec-sub { margin:0 auto; }
     .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:40px; }
     @media(max-width:860px){ .reviews-grid{grid-template-columns:1fr 1fr} }
     @media(max-width:580px){ .reviews-grid{grid-template-columns:1fr} }
-    .review-card { background:var(--off-white); border:1.5px solid var(--border); border-radius:var(--radius); padding:28px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; }
-    .review-av { width:48px; height:48px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:12px; flex-shrink:0; }
-    .review-stars { color:var(--gold); font-size:.95rem; margin-bottom:6px; }
-    .review-name { font-weight:700; font-size:.92rem; margin-bottom:2px; }
-    .review-src { font-size:.73rem; color:#aaa; margin-bottom:12px; }
-    .review-text { font-size:.85rem; color:var(--muted); line-height:1.65; text-align:center; }
+    .review-card { background:rgba(255,255,255,.09); border:1.5px solid rgba(255,255,255,.15); border-radius:var(--radius); padding:28px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+    .review-av { width:48px; height:48px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:12px; flex-shrink:0; border:2px solid rgba(255,255,255,.25); }
+    .review-stars { color:var(--gold-light); font-size:.95rem; margin-bottom:6px; }
+    .review-name { font-weight:700; font-size:.92rem; margin-bottom:2px; color:#fff; }
+    .review-src { font-size:.73rem; color:rgba(255,255,255,.5); margin-bottom:12px; }
+    .review-text { font-size:.85rem; color:rgba(255,255,255,.75); line-height:1.65; text-align:center; }
     .reviews-cta { text-align:center; margin-top:28px; }
-    .reviews-note { text-align:center; font-size:.8rem; color:var(--muted); margin-top:10px; }
+    .btn-outline-w-rev { display:inline-block; border:2px solid rgba(255,255,255,.5); color:#fff; padding:12px 32px; border-radius:40px; font-weight:700; font-size:.9rem; transition:.2s; }
+    .btn-outline-w-rev:hover { background:rgba(255,255,255,.12); border-color:#fff; }
+    .reviews-note { text-align:center; font-size:.8rem; color:rgba(255,255,255,.5); margin-top:10px; }
 
     /* FOOTER */
     footer { background:var(--green-dark); color:rgba(255,255,255,.75); padding:60px 5% 30px; }
@@ -271,15 +286,19 @@
       <a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20your%20travel%20packages." class="btn-wa" target="_blank" onclick="showToast()">💬 WhatsApp Enquiry</a>
       <a href="packages.html" class="btn-outline-w">Explore Packages →</a>
     </div>
-    <!-- Social icons with proper SVG logos -->
+    <!-- Social icons with brand colours -->
     <div class="hero-socials">
       <a href="https://www.instagram.com/sana.onthe.go" target="_blank" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <span class="insta-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </span>
         @sana.onthe.go
       </a>
       <span class="soc-div">·</span>
       <a href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" aria-label="Facebook">
-        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <span class="fb-icon">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </span>
         Sana On The Go
       </a>
     </div>
@@ -508,7 +527,7 @@
       </div>
     </div>
     <div class="reviews-cta">
-      <a href="https://share.google/5dTWhISUrA2SqOOea" target="_blank" class="btn-outline-g">Read More Reviews on Google →</a>
+      <a href="https://share.google/5dTWhISUrA2SqOOea" target="_blank" class="btn-outline-w-rev">Read More Reviews on Google →</a>
     </div>
     <p class="reviews-note">⭐ 5.0 · All verified Google reviews</p>
   </div>
