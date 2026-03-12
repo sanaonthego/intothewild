@@ -22,7 +22,8 @@
       --shadow: 0 2px 16px rgba(0,0,0,0.07);
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    /* FIX 1: prevent horizontal overflow on mobile */
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; width: 100%; max-width: 100%; }
 
     /* ── NAV ── */
     nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 13px 36px; background: var(--green-dk); box-shadow: 0 2px 18px rgba(0,0,0,0.22); }
@@ -57,12 +58,15 @@
     .cat-inner { max-width: 980px; margin: 0 auto; }
     .cat-heading { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--green); text-align: center; margin-bottom: 6px; }
     .cat-sub { text-align: center; color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
-    .cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    /* FIX 1: cat-grid — use 2 cols on small screens instead of 3 to prevent card text overflow */
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
     .cat-btn {
       display: flex; flex-direction: column; align-items: center; gap: 9px;
       padding: 22px 14px 18px; border: 2px solid #e0dbd2; border-radius: var(--radius);
       background: var(--bg); cursor: pointer; transition: all 0.22s;
       font-family: 'DM Sans', sans-serif; color: var(--text); text-align: center;
+      /* FIX 1: ensure labels wrap rather than overflow */
+      word-break: break-word;
     }
     .cat-btn:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(45,106,79,0.14); }
     .cat-btn.active { border-color: var(--green); background: var(--green-bg); }
@@ -74,7 +78,7 @@
     /* ── PACKAGES AREA ── */
     .pkgs-area { max-width: 980px; margin: 0 auto; padding: 0 24px 80px; }
 
-    /* ── BOOKING BANNER (appears after category selection) ── */
+    /* ── BOOKING BANNER ── */
     .book-banner {
       background: linear-gradient(135deg, var(--green-dk), var(--green));
       border-radius: var(--radius); padding: 24px 28px; margin: 32px 0 8px;
@@ -99,7 +103,6 @@
     }
     .pkg-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,0,0,0.13); }
 
-    /* Card image area */
     .pkg-card-img {
       position: relative; height: 195px; overflow: hidden;
       background: linear-gradient(135deg, var(--green-dk), var(--green));
@@ -107,36 +110,19 @@
     .pkg-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
     .pkg-card:hover .pkg-card-img img { transform: scale(1.06); }
     .pkg-card-img .img-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-    /* ════════════════════════════════════════════════════════════════
-       HOW TO ADD PACKAGE IMAGES:
-       Replace src="images/pkg-XX-1.jpg" with your actual image path.
-       Images should be ~800×500px landscape. Upload to your images/ folder.
-       Each card shows one cover photo. Edit img src in the card HTML below.
-    ════════════════════════════════════════════════════════════════ */
     .pkg-card-img .img-ph-icon { font-size: 2.2rem; opacity: 0.5; }
     .pkg-card-img .img-ph-txt { color: rgba(255,255,255,0.45); font-size: 0.75rem; text-align: center; padding: 0 12px; }
     .pkg-badge { position: absolute; top: 12px; left: 12px; background: rgba(26,61,43,0.88); backdrop-filter: blur(4px); color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; }
     .pkg-gold-badge { position: absolute; top: 12px; right: 12px; background: var(--gold); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 3px 9px; border-radius: 20px; }
 
-    /* Card body */
     .pkg-card-body { padding: 20px 20px 16px; display: flex; flex-direction: column; flex: 1; }
     .pkg-card-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--green-dk); margin-bottom: 7px; line-height: 1.25; }
-    /* ════════════════════════════════════════════════════════════════
-       HOW TO EDIT PACKAGE DESCRIPTION:
-       Find the <p class="pkg-desc"> tag inside each card and replace
-       "Package description here..." with your actual description text.
-    ════════════════════════════════════════════════════════════════ */
     .pkg-desc { font-size: 0.875rem; color: var(--muted); flex: 1; margin-bottom: 14px; line-height: 1.6; }
 
     .pkg-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
     .pkg-meta-item { display: flex; align-items: center; gap: 4px; font-size: 0.75rem; color: var(--muted); }
     .pkg-meta-item svg { width: 13px; height: 13px; fill: var(--green-lt); flex-shrink: 0; }
 
-    /* ════════════════════════════════════════════════════════════════
-       HOW TO EDIT PACKAGE PRICE:
-       Find <span class="pkg-price"> and replace "₹XX,XXX" with actual price.
-       The "per person" text is separate — keep it.
-    ════════════════════════════════════════════════════════════════ */
     .pkg-price-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 14px; padding: 10px 12px; background: #faf8f4; border-radius: 8px; border: 1px solid #ede8e0; }
     .pkg-price { font-size: 1.1rem; font-weight: 700; color: var(--gold-dk); }
     .pkg-price-per { font-size: 0.72rem; color: var(--muted); }
@@ -197,7 +183,6 @@
     .day-desc strong { display: block; font-size: 0.8rem; color: var(--green); margin-bottom: 2px; }
     .day-desc span { font-size: 0.88rem; color: #444; line-height: 1.55; }
 
-    /* Booking form in modal */
     .modal-book-form { background: var(--green-bg); border-radius: 12px; padding: 20px; margin-top: 20px; border: 1px solid #c3e0d0; }
     .modal-book-form h4 { font-size: 0.9rem; font-weight: 700; color: var(--green); margin-bottom: 14px; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
@@ -273,10 +258,11 @@
     .scroll-top.visible { opacity: 1; }
     .scroll-top:hover { transform: translateY(-3px); }
 
-    /* RESPONSIVE */
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 12px 18px; } .nav-links { display: none; } .hamburger { display: flex; }
-      .cat-grid { grid-template-columns: repeat(3, 1fr); }
+      /* FIX 1: 2 columns on mobile for category grid */
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
       .pkg-grid { grid-template-columns: 1fr; }
       .highlight-list { grid-template-columns: 1fr; }
       .form-grid { grid-template-columns: 1fr; }
@@ -284,6 +270,16 @@
       .footer-top { grid-template-columns: 1fr; gap: 30px; }
       .modal-body { padding: 18px 20px 24px; }
       .modal-hero { height: 190px; }
+      /* FIX 1: prevent book-banner from overflowing on mobile */
+      .book-banner { padding: 18px 16px; }
+      .btn-book-now { width: 100%; justify-content: center; }
+      .custom-section { padding: 32px 20px; }
+      /* FIX 1: pkg-price-row stacks on very small screens */
+      .pkg-price-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+    }
+
+    @media (max-width: 400px) {
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -469,30 +465,7 @@
 <script>
 /* ══════════════════════════════════════════════════════════════════
    PACKAGE DATA
-   ══════════════════════════════════════════════════════════════════
-   HOW TO EDIT PACKAGES:
-   - Find the category you want (e.g., 'darjeeling')
-   - Find the package by its id (e.g., 'darj-1')
-   - Edit the fields:
-       name: "Package Name"
-       nights: "3 Nights / 4 Days"   ← change duration
-       price: "₹XX,XXX"              ← change price
-       desc: "Package description…"  ← change description
-       img: "images/pkg-XX.jpg"      ← change image path
-       highlights: [...]             ← edit bullet points
-       days: [...]                   ← edit day-by-day itinerary
-
-   HOW TO ADD PACKAGE IMAGES:
-   - Upload your jpg/jpeg image to the images/ folder of your repo
-   - Set img: "images/your-image-filename.jpg"
-   - Recommended size: 800×500px landscape orientation
-
-   HOW TO ADD A NEW PACKAGE:
-   - Copy one of the existing package objects (between { and })
-   - Paste it after the last package in that category (before the ] )
-   - Give it a new unique id like "darj-9"
-   - Update all the fields
-══════════════════════════════════════════════════════════════════ */
+   ══════════════════════════════════════════════════════════════════ */
 
 const CATEGORIES = [
   { id: 'darjeeling', icon: '🍵', label: 'Darjeeling Offbeat', count: 8 },
@@ -500,6 +473,8 @@ const CATEGORIES = [
   { id: 'mixed-dk',   icon: '🏔️', label: 'Darjeeling + Kalimpong Mixed', count: 7 },
   { id: 'mixed-town', icon: '🚂', label: 'Offbeat + Darjeeling Town', count: 7 },
   { id: 'jungle',     icon: '🐘', label: 'Jungle Safari Based', count: 7 },
+  // NEW CATEGORY
+  { id: 'sikkim',     icon: '🏯', label: 'Offbeat Sikkim', count: 8 },
 ];
 
 const PACKAGES = {
@@ -509,132 +484,24 @@ const PACKAGES = {
       id: 'darj-1',
       name: 'Package 1 – Darjeeling Offbeat',
       nights: '3 Nights / 4 Days',
-      /* EDIT PRICE: change "₹XX,XXX" to your actual price */
       price: '₹XX,XXX',
-      /* EDIT DESCRIPTION: replace the text below with your package description */
       desc: 'Package description here. Add details about what makes this Darjeeling offbeat package special — the places, experiences, and unique moments that travellers will remember.',
-      /* EDIT IMAGE: upload your image and change the path below */
       img: 'images/pkg-darj-1.jpg',
-      highlights: [
-        /* EDIT HIGHLIGHTS: replace each item with actual highlights */
-        'Highlight 1 — edit me',
-        'Highlight 2 — edit me',
-        'Highlight 3 — edit me',
-        'Highlight 4 — edit me',
-        'Highlight 5 — edit me',
-        'Highlight 6 — edit me',
-      ],
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me','Highlight 5 — edit me','Highlight 6 — edit me'],
       days: [
-        /* EDIT ITINERARY: replace each day's title and desc */
         { day: 'Day 1', title: 'Arrival Day', desc: 'Arrival at NJP/Bagdogra. Transfer to destination. Check-in and settle in. Evening at leisure.' },
         { day: 'Day 2', title: 'Sightseeing Day 1', desc: 'Full day sightseeing. Visit [Location 1], [Location 2]. Lunch at [place]. Evening at [viewpoint].' },
         { day: 'Day 3', title: 'Sightseeing Day 2', desc: 'Morning excursion to [Location]. Afternoon at [place]. Dinner and overnight stay.' },
         { day: 'Day 4', title: 'Departure', desc: 'Early morning. Breakfast. Transfer to NJP/Bagdogra for departure. Tour ends.' },
       ],
     },
-    {
-      id: 'darj-2',
-      name: 'Package 2 – Darjeeling Offbeat',
-      nights: '4 Nights / 5 Days',
-      price: '₹XX,XXX',
-      desc: 'Package description here. Add details about what makes this Darjeeling offbeat package special — the places, experiences, and unique moments that travellers will remember.',
-      img: 'images/pkg-darj-2.jpg',
-      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me','Highlight 5 — edit me','Highlight 6 — edit me'],
-      days: [
-        { day: 'Day 1', title: 'Arrival', desc: 'Arrival at NJP/Bagdogra. Transfer and check-in.' },
-        { day: 'Day 2', title: 'Exploration Day 1', desc: 'Sightseeing details here.' },
-        { day: 'Day 3', title: 'Exploration Day 2', desc: 'Sightseeing details here.' },
-        { day: 'Day 4', title: 'Exploration Day 3', desc: 'Sightseeing details here.' },
-        { day: 'Day 5', title: 'Departure', desc: 'Breakfast and departure transfer.' },
-      ],
-    },
-    {
-      id: 'darj-3',
-      name: 'Package 3 – Darjeeling Offbeat',
-      nights: '5 Nights / 6 Days',
-      price: '₹XX,XXX',
-      desc: 'Package description here. Add details about what makes this Darjeeling offbeat package special.',
-      img: 'images/pkg-darj-3.jpg',
-      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me','Highlight 5 — edit me'],
-      days: [
-        { day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },
-        { day: 'Day 2', title: 'Day 2', desc: 'Itinerary details here.' },
-        { day: 'Day 3', title: 'Day 3', desc: 'Itinerary details here.' },
-        { day: 'Day 4', title: 'Day 4', desc: 'Itinerary details here.' },
-        { day: 'Day 5', title: 'Day 5', desc: 'Itinerary details here.' },
-        { day: 'Day 6', title: 'Departure', desc: 'Breakfast and departure transfer.' },
-      ],
-    },
-    {
-      id: 'darj-4',
-      name: 'Package 4 – Darjeeling Offbeat',
-      nights: '5 Nights / 6 Days',
-      price: '₹XX,XXX',
-      desc: 'Package description here.',
-      img: 'images/pkg-darj-4.jpg',
-      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
-      days: [
-        { day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },
-        { day: 'Day 2–5', title: 'Exploration Days', desc: 'Sightseeing details here across multiple days.' },
-        { day: 'Day 6', title: 'Departure', desc: 'Departure transfer.' },
-      ],
-    },
-    {
-      id: 'darj-5',
-      name: 'Package 5 – Darjeeling Offbeat',
-      nights: '6 Nights / 7 Days',
-      price: '₹XX,XXX',
-      desc: 'Package description here.',
-      img: 'images/pkg-darj-5.jpg',
-      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
-      days: [
-        { day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },
-        { day: 'Day 2–6', title: 'Exploration Days', desc: 'Sightseeing details here.' },
-        { day: 'Day 7', title: 'Departure', desc: 'Departure transfer.' },
-      ],
-    },
-    {
-      id: 'darj-6',
-      name: 'Package 6 – Darjeeling Offbeat',
-      nights: '3 Nights / 4 Days',
-      price: '₹XX,XXX',
-      desc: 'Package description here.',
-      img: 'images/pkg-darj-6.jpg',
-      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'],
-      days: [
-        { day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },
-        { day: 'Day 2–3', title: 'Exploration', desc: 'Sightseeing details here.' },
-        { day: 'Day 4', title: 'Departure', desc: 'Departure transfer.' },
-      ],
-    },
-    {
-      id: 'darj-7',
-      name: 'Package 7 – Darjeeling Offbeat',
-      nights: '4 Nights / 5 Days',
-      price: '₹XX,XXX',
-      desc: 'Package description here.',
-      img: 'images/pkg-darj-7.jpg',
-      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'],
-      days: [
-        { day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },
-        { day: 'Day 2–4', title: 'Exploration', desc: 'Sightseeing details here.' },
-        { day: 'Day 5', title: 'Departure', desc: 'Departure transfer.' },
-      ],
-    },
-    {
-      id: 'darj-8',
-      name: 'Package 8 – Darjeeling Offbeat',
-      nights: '6 Nights / 7 Days',
-      price: '₹XX,XXX',
-      desc: 'Package description here.',
-      img: 'images/pkg-darj-8.jpg',
-      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'],
-      days: [
-        { day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },
-        { day: 'Day 2–6', title: 'Exploration', desc: 'Sightseeing details here.' },
-        { day: 'Day 7', title: 'Departure', desc: 'Departure transfer.' },
-      ],
-    },
+    { id: 'darj-2', name: 'Package 2 – Darjeeling Offbeat', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here. Add details about what makes this Darjeeling offbeat package special.', img: 'images/pkg-darj-2.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me','Highlight 5 — edit me','Highlight 6 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival at NJP/Bagdogra. Transfer and check-in.' },{ day: 'Day 2', title: 'Exploration Day 1', desc: 'Sightseeing details here.' },{ day: 'Day 3', title: 'Exploration Day 2', desc: 'Sightseeing details here.' },{ day: 'Day 4', title: 'Exploration Day 3', desc: 'Sightseeing details here.' },{ day: 'Day 5', title: 'Departure', desc: 'Breakfast and departure transfer.' }] },
+    { id: 'darj-3', name: 'Package 3 – Darjeeling Offbeat', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'Package description here. Add details about what makes this Darjeeling offbeat package special.', img: 'images/pkg-darj-3.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me','Highlight 5 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2', title: 'Day 2', desc: 'Itinerary details here.' },{ day: 'Day 3', title: 'Day 3', desc: 'Itinerary details here.' },{ day: 'Day 4', title: 'Day 4', desc: 'Itinerary details here.' },{ day: 'Day 5', title: 'Day 5', desc: 'Itinerary details here.' },{ day: 'Day 6', title: 'Departure', desc: 'Breakfast and departure transfer.' }] },
+    { id: 'darj-4', name: 'Package 4 – Darjeeling Offbeat', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-darj-4.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2–5', title: 'Exploration Days', desc: 'Sightseeing details here across multiple days.' },{ day: 'Day 6', title: 'Departure', desc: 'Departure transfer.' }] },
+    { id: 'darj-5', name: 'Package 5 – Darjeeling Offbeat', nights: '6 Nights / 7 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-darj-5.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2–6', title: 'Exploration Days', desc: 'Sightseeing details here.' },{ day: 'Day 7', title: 'Departure', desc: 'Departure transfer.' }] },
+    { id: 'darj-6', name: 'Package 6 – Darjeeling Offbeat', nights: '3 Nights / 4 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-darj-6.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2–3', title: 'Exploration', desc: 'Sightseeing details here.' },{ day: 'Day 4', title: 'Departure', desc: 'Departure transfer.' }] },
+    { id: 'darj-7', name: 'Package 7 – Darjeeling Offbeat', nights: '4 Nights / 5 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-darj-7.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2–4', title: 'Exploration', desc: 'Sightseeing details here.' },{ day: 'Day 5', title: 'Departure', desc: 'Departure transfer.' }] },
+    { id: 'darj-8', name: 'Package 8 – Darjeeling Offbeat', nights: '6 Nights / 7 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-darj-8.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival and transfer.' },{ day: 'Day 2–6', title: 'Exploration', desc: 'Sightseeing details here.' },{ day: 'Day 7', title: 'Departure', desc: 'Departure transfer.' }] },
   ],
 
   kalimpong: [
@@ -677,6 +544,155 @@ const PACKAGES = {
     { id: 'jng-6', name: 'Package 6 – Jaldapara Safari', nights: '3 Nights / 4 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-jng-6.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–3', title: 'Safari Days', desc: 'Safari days.' },{ day: 'Day 4', title: 'Departure', desc: 'Departure.' }] },
     { id: 'jng-7', name: 'Package 7 – Dooars Complete Safari', nights: '5 Nights / 6 Days', price: '₹XX,XXX', desc: 'Package description here.', img: 'images/pkg-jng-7.jpg', highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'], days: [{ day: 'Day 1', title: 'Arrival', desc: 'Arrival.' },{ day: 'Day 2–5', title: 'Safari & Nature Days', desc: 'Multiple safari experiences.' },{ day: 'Day 6', title: 'Departure', desc: 'Departure.' }] },
   ],
+
+  /* ══════════════════════════════════════════════════════════════════
+     NEW CATEGORY: OFFBEAT SIKKIM
+     8 packages covering North Sikkim, East Sikkim, West Sikkim, and
+     combined circuits. Edit exactly as you would for any other category.
+  ══════════════════════════════════════════════════════════════════ */
+  sikkim: [
+    {
+      id: 'sik-1',
+      name: 'Package 1 – North Sikkim Offbeat',
+      nights: '4 Nights / 5 Days',
+      /* EDIT PRICE */
+      price: '₹XX,XXX',
+      /* EDIT DESCRIPTION */
+      desc: 'Package description here. Add details about this North Sikkim offbeat package — Lachen, Lachung, Gurudongmar Lake and hidden valleys that very few tourists explore.',
+      /* EDIT IMAGE: upload to images/ folder and update path */
+      img: 'images/pkg-sik-1.jpg',
+      highlights: [
+        'Highlight 1 — edit me',
+        'Highlight 2 — edit me',
+        'Highlight 3 — edit me',
+        'Highlight 4 — edit me',
+        'Highlight 5 — edit me',
+        'Highlight 6 — edit me',
+      ],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival at NJP/Bagdogra. Transfer to Gangtok. Check-in and evening at leisure.' },
+        { day: 'Day 2', title: 'Gangtok to Lachung', desc: 'Drive to Lachung via Chungthang. En-route scenic valley views. Overnight at Lachung.' },
+        { day: 'Day 3', title: 'Yumthang Valley', desc: 'Morning excursion to Yumthang Valley (Valley of Flowers). Return to Lachung. Afternoon leisure.' },
+        { day: 'Day 4', title: 'Lachung to Gangtok', desc: 'After breakfast drive back to Gangtok. Evening MG Marg. Overnight Gangtok.' },
+        { day: 'Day 5', title: 'Departure', desc: 'Breakfast. Transfer to NJP/Bagdogra for departure. Tour ends.' },
+      ],
+    },
+    {
+      id: 'sik-2',
+      name: 'Package 2 – North Sikkim with Gurudongmar',
+      nights: '5 Nights / 6 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. A longer North Sikkim package covering both Lachung / Yumthang and the sacred Gurudongmar Lake circuit via Lachen.',
+      img: 'images/pkg-sik-2.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me','Highlight 5 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival and transfer to Gangtok.' },
+        { day: 'Day 2', title: 'Gangtok to Lachen', desc: 'Drive to Lachen. En-route waterfall stops.' },
+        { day: 'Day 3', title: 'Gurudongmar Lake', desc: 'Early morning excursion to Gurudongmar Lake (~17,000 ft). Return to Lachen, drive to Lachung overnight.' },
+        { day: 'Day 4', title: 'Yumthang Valley', desc: 'Excursion to Yumthang Valley. Return to Lachung.' },
+        { day: 'Day 5', title: 'Return to Gangtok', desc: 'Drive to Gangtok. Evening at MG Marg.' },
+        { day: 'Day 6', title: 'Departure', desc: 'Transfer to NJP/Bagdogra.' },
+      ],
+    },
+    {
+      id: 'sik-3',
+      name: 'Package 3 – East Sikkim Offbeat',
+      nights: '3 Nights / 4 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. East Sikkim offbeat circuit covering Tsomgo (Changu) Lake, Baba Mandir, Nathang Valley, and Old Silk Route villages.',
+      img: 'images/pkg-sik-3.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival and transfer. Check-in and evening at leisure.' },
+        { day: 'Day 2', title: 'Old Silk Route', desc: 'Full day excursion on the Old Silk Route — Aritar, Zuluk, Thambi View Point.' },
+        { day: 'Day 3', title: 'Tsomgo & Baba Mandir', desc: 'Tsomgo Lake and Baba Mandir visit (permit required). Return to Gangtok.' },
+        { day: 'Day 4', title: 'Departure', desc: 'Breakfast and departure transfer.' },
+      ],
+    },
+    {
+      id: 'sik-4',
+      name: 'Package 4 – West Sikkim Offbeat',
+      nights: '4 Nights / 5 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. West Sikkim offbeat package covering Pelling, Yuksom, Khecheopalri Lake and the stunning Kanchenjunga views.',
+      img: 'images/pkg-sik-4.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Pelling', desc: 'Arrival at NJP/Bagdogra and drive to Pelling.' },
+        { day: 'Day 2', title: 'Pelling Sightseeing', desc: 'Pemayangtse Monastery, Rabdentse Ruins, Kanchenjunga Waterfall.' },
+        { day: 'Day 3', title: 'Yuksom & Khecheopalri', desc: 'Excursion to Yuksom (first capital of Sikkim) and sacred Khecheopalri Lake.' },
+        { day: 'Day 4', title: 'Offbeat Villages', desc: 'Explore lesser-known villages and viewpoints. Description here.' },
+        { day: 'Day 5', title: 'Departure', desc: 'Breakfast and transfer to NJP/Bagdogra.' },
+      ],
+    },
+    {
+      id: 'sik-5',
+      name: 'Package 5 – Gangtok & East Sikkim Circuit',
+      nights: '3 Nights / 4 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. A compact Gangtok-based package with day excursions to East Sikkim offbeat spots — ideal for a short Sikkim break.',
+      img: 'images/pkg-sik-5.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival, check-in. Evening MG Marg.' },
+        { day: 'Day 2', title: 'Gangtok Sightseeing', desc: 'Rumtek Monastery, Enchey Monastery, Tashi Viewpoint, local market.' },
+        { day: 'Day 3', title: 'East Sikkim Day Trip', desc: 'Tsomgo Lake, Baba Mandir excursion.' },
+        { day: 'Day 4', title: 'Departure', desc: 'Breakfast. Departure transfer.' },
+      ],
+    },
+    {
+      id: 'sik-6',
+      name: 'Package 6 – Sikkim Complete (North + West)',
+      nights: '6 Nights / 7 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. A week-long Sikkim grand circuit combining North Sikkim (Lachung, Gurudongmar) and West Sikkim (Pelling, Yuksom) with Gangtok.',
+      img: 'images/pkg-sik-6.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival and check-in.' },
+        { day: 'Day 2', title: 'Gangtok to Lachung', desc: 'Drive to Lachung.' },
+        { day: 'Day 3', title: 'Yumthang Valley', desc: 'Excursion to Yumthang. Return to Lachung.' },
+        { day: 'Day 4', title: 'Lachung to Pelling', desc: 'Long scenic drive to Pelling via Gangtok.' },
+        { day: 'Day 5', title: 'West Sikkim Sightseeing', desc: 'Pemayangtse, Khecheopalri, Yuksom.' },
+        { day: 'Day 6', title: 'Pelling to Gangtok', desc: 'Drive back to Gangtok. Evening leisure.' },
+        { day: 'Day 7', title: 'Departure', desc: 'Transfer to NJP/Bagdogra.' },
+      ],
+    },
+    {
+      id: 'sik-7',
+      name: 'Package 7 – Sikkim Monastery Trail',
+      nights: '4 Nights / 5 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. A spiritual and cultural tour covering the most significant and offbeat monasteries across Sikkim — from ancient gompas to hillside shrines.',
+      img: 'images/pkg-sik-7.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival and check-in. Rumtek Monastery visit in the evening.' },
+        { day: 'Day 2', title: 'North Sikkim Monasteries', desc: 'Drive towards North Sikkim. Phensang and Lachen Gompa visits.' },
+        { day: 'Day 3', title: 'Return via Chungthang', desc: 'Scenic valley monasteries en-route. Return to Gangtok.' },
+        { day: 'Day 4', title: 'West Sikkim Monasteries', desc: 'Day excursion to Pemayangtse and Tashiding Monastery.' },
+        { day: 'Day 5', title: 'Departure', desc: 'Breakfast and departure transfer.' },
+      ],
+    },
+    {
+      id: 'sik-8',
+      name: 'Package 8 – Silk Route & South Sikkim',
+      nights: '5 Nights / 6 Days',
+      price: '₹XX,XXX',
+      desc: 'Package description here. Covers the historic Old Silk Route, Zuluk zigzag, Nathang Valley and South Sikkim highlights like Ravangla and Namchi — all largely offbeat.',
+      img: 'images/pkg-sik-8.jpg',
+      highlights: ['Highlight 1 — edit me','Highlight 2 — edit me','Highlight 3 — edit me','Highlight 4 — edit me'],
+      days: [
+        { day: 'Day 1', title: 'Arrival at Gangtok', desc: 'Arrival and check-in.' },
+        { day: 'Day 2', title: 'Old Silk Route', desc: 'Drive via Aritar and Zuluk. Thambi View Point. Overnight at Zuluk or Nathang.' },
+        { day: 'Day 3', title: 'Nathang Valley', desc: 'Morning at Nathang (flat valley, stunning views). Drive to Tsomgo. Return to Gangtok.' },
+        { day: 'Day 4', title: 'South Sikkim – Ravangla', desc: 'Drive to Ravangla. Buddha Park, Temi Tea Garden, offbeat viewpoints.' },
+        { day: 'Day 5', title: 'Namchi & Return', desc: 'Namchi Char Dham, Siddheshwar Dham. Return to Gangtok.' },
+        { day: 'Day 6', title: 'Departure', desc: 'Breakfast and transfer to NJP/Bagdogra.' },
+      ],
+    },
+  ],
+
 };
 
 /* ═══ RENDER CATEGORY BUTTONS ═══ */
@@ -854,7 +870,8 @@ function generatePDF(pkg) {
   doc.text(pkg.name, M, y);
   y += 8;
 
-  // Duration badge + price
+  // ── FIX 3: Duration badge + price on TWO separate lines to prevent truncation ──
+  // Duration badge
   doc.setFillColor(234, 245, 238);
   doc.roundedRect(M, y, 58, 7.5, 2, 2, 'F');
   doc.setFont('helvetica', 'bold');
@@ -862,11 +879,14 @@ function generatePDF(pkg) {
   doc.setTextColor(45, 106, 79);
   doc.text(pkg.nights, M + 4, y + 5.2);
 
+  // Price — placed below the badge, full width, never truncated
+  y += 11;
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(13);
+  doc.setFontSize(12);
   doc.setTextColor(160, 120, 48);
-  doc.text(pkg.price + ' per person', W - M, y + 5.2, { align: 'right' });
-  y += 14;
+  doc.text('Price: ' + pkg.price + ' per person', M, y);
+  y += 10;
+  // ── end FIX 3 ──
 
   // Divider
   doc.setDrawColor(201, 168, 76);
