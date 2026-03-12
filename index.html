@@ -581,27 +581,67 @@
 <!-- ══════════════════════════════════════
      GALLERY SLIDER
 ══════════════════════════════════════ -->
-<div id="gallery">
+ 
+<section id="gallery">
   <div class="gallery-inner">
-    <span class="section-tag">✦ Through Our Lens</span>
-    <h2 class="section-title">Journey Gallery</h2>
-    <p class="section-sub">Glimpses from our travellers' adventures across the Himalayan foothills.</p>
+    <span class="section-tag">Gallery</span>
+    <h2 class="section-title">A Glimpse of the Himalayas</h2>
+    <p class="section-sub">Your adventures, waiting to happen</p>
+  </div>
+
+  <div style="max-width:900px; margin:0 auto; padding:0 24px 68px;">
     <div class="slider-wrap">
       <div class="slider-track" id="sliderTrack">
-        <div class="slide"><div class="slide-placeholder"><div class="ph-icon">📸</div><div class="ph-txt">Upload: images/gallery-1.JPG</div></div><div class="slide-caption">The Sleeping Buddha from the Thakum Valley</div></div>
-        <div class="slide"><div class="slide-placeholder"><div class="ph-icon">📸</div><div class="ph-txt">Upload: images/gallery-2.JPG</div></div><div class="slide-caption">The mountains, clouds and the rain</div></div>
-        <div class="slide"><div class="slide-placeholder"><div class="ph-icon">📸</div><div class="ph-txt">Upload: images/gallery-3.JPG</div></div><div class="slide-caption">Mt. Pandim painted red</div></div>
-        <div class="slide"><div class="slide-placeholder"><div class="ph-icon">📸</div><div class="ph-txt">Upload: images/gallery-4.JPG</div></div><div class="slide-caption">Darjeeling,where champagne of teas are made</div></div>
-        <div class="slide"><div class="slide-placeholder"><div class="ph-icon">📸</div><div class="ph-txt">Upload: images/gallery-5.jpeg</div></div><div class="slide-caption">The breathtaking holy Gurudongmar lake</div></div>
-        <div class="slide"><div class="slide-placeholder"><div class="ph-icon">📸</div><div class="ph-txt">Upload: images/gallery-6.JPG</div></div><div class="slide-caption">Kahi Door Jab Din Dhal Jaye</div></div>
-      </div>
-      <button class="slider-btn prev" id="galleryPrev">&#8249;</button>
-      <button class="slider-btn next" id="galleryNext">&#8250;</button>
-    </div>
-    <div class="slider-dots" id="galleryDots"></div>
-  </div>
-</div>
 
+        <div class="slide">
+          <img src="images/gallery-1.JPG" alt="Gallery photo 1" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-1.jpg</span></div>
+          <div class="slide-caption">The Sleeping Buddha from the Thakum Valley</div>
+        </div>
+
+        <div class="slide">
+          <img src="images/gallery-2.JPG" alt="Gallery photo 2" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-2.jpg</span></div>
+          <div class="slide-caption">The mountains, clouds and the rain</div>
+        </div>
+
+        <div class="slide">
+          <img src="images/gallery-3.JPG" alt="Gallery photo 3" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-3.jpg</span></div>
+          <div class="slide-caption">Mt. Pandim painted red</div>
+        </div>
+
+        <div class="slide">
+          <img src="images/gallery-4.JPG" alt="Gallery photo 4" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-4.jpg</span></div>
+          <div class="slide-caption">Darjeeling, where the champagne of teas are made</div>
+        </div>
+
+        <div class="slide">
+          <img src="images/gallery-5.jpeg" alt="Gallery photo 5" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-5.jpg</span></div>
+          <div class="slide-caption">The breathtaking holy Gurudongmar Lake</div>
+        </div>
+
+        <div class="slide">
+          <img src="images/gallery-6.JPG" alt="Gallery photo 6" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="slide-placeholder" style="display:none;"><span class="ph-icon">&#128247;</span><span class="ph-txt">Upload: images/gallery-6.jpg</span></div>
+          <div class="slide-caption">Kahi door jab din dhal jaye</div>
+        </div>
+
+      </div><!-- /slider-track -->
+      <button class="slider-btn prev" onclick="slideGallery(-1)">&#8249;</button>
+      <button class="slider-btn next" onclick="slideGallery(1)">&#8250;</button>
+    </div>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+</section>
 <!-- ══════════════════════════════════════
      GOOGLE REVIEWS
 ══════════════════════════════════════ -->
