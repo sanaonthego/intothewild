@@ -31,8 +31,8 @@
       --font-b:      'DM Sans', sans-serif;
     }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { font-family:var(--font-b); color:var(--text); background:#fff; line-height:1.6; }
+    html { scroll-behavior:smooth; overflow-x:hidden; }
+    body { font-family:var(--font-b); color:var(--text); background:#fff; line-height:1.6; overflow-x:hidden; }
     img { max-width:100%; }
     a { text-decoration:none; }
 
@@ -129,8 +129,8 @@
 
     /* PACKAGES SLIDER */
     #packages { background:#fff; }
-    .sl-outer { position:relative; margin-top:40px; }
-    .sl-vp { overflow:hidden; }
+    .sl-outer { position:relative; margin-top:40px; max-width:100%; }
+    .sl-vp { overflow:hidden; width:100%; }
     .sl-track { display:flex; transition:transform .45s cubic-bezier(.4,0,.2,1); will-change:transform; }
 
     /* Package cards */
@@ -233,6 +233,7 @@
     .footer-links { display:flex; flex-direction:column; gap:9px; }
     .footer-ci { font-size:.84rem; color:rgba(255,255,255,.65); margin-bottom:9px; line-height:1.5; }
     .footer-ci a { color:var(--gold-light); }
+    .footer-map { margin-top:4px; }
     .footer-bottom { border-top:1px solid rgba(255,255,255,.1); padding-top:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:.77rem; color:rgba(255,255,255,.4); }
 
     /* FLOAT WA */
@@ -240,8 +241,94 @@
     .float-wa:hover { transform:scale(1.1); }
     @keyframes wap { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)} 50%{box-shadow:0 4px 32px rgba(37,211,102,.7)} }
 
-    @media(max-width:768px){ section{padding:60px 5%} .hero{min-height:80vh} .hero-stats{gap:22px} .why-grid{grid-template-columns:1fr 1fr} .reviews-grid{grid-template-columns:1fr} }
-    @media(max-width:480px){ .why-grid{grid-template-columns:1fr} .booking-form{padding:24px 16px} }
+    /* ── RESPONSIVE ── */
+
+    /* Tablet */
+    @media(max-width:900px){
+      .footer-grid { grid-template-columns:1fr 1fr; }
+      .reviews-grid { grid-template-columns:1fr 1fr; }
+    }
+
+    /* Mobile landscape / large phone */
+    @media(max-width:768px){
+      /* Global */
+      body { overflow-x:hidden; }
+      section { padding:52px 5%; }
+
+      /* Hero — proportionate, not too tall */
+      .hero { min-height:60vh; max-height:680px; }
+      .hero h1 { font-size:2.2rem; }
+      .hero p { font-size:.93rem; }
+      .hero-badge { font-size:.68rem; padding:5px 14px; }
+      .hero-cta { gap:10px; }
+      .btn-wa, .btn-outline-w { padding:12px 20px; font-size:.88rem; }
+      .hero-stats { gap:18px; margin-top:32px; padding-top:24px; }
+      .hero-stat strong { font-size:1.5rem; }
+      .hero-stat span { font-size:.72rem; }
+      .hero-socials { gap:12px; font-size:.78rem; }
+
+      /* Nav */
+      .nav-links { display:none; }
+      .nav-ham { display:block; }
+
+      /* Sections headings */
+      .sec-title { font-size:1.6rem; }
+      .sec-sub { font-size:.9rem; }
+
+      /* Booking form */
+      .booking-form { padding:22px 16px; }
+      .form-grid { grid-template-columns:1fr; gap:12px; }
+
+      /* Sliders — show 1 card on mobile */
+      .sl-btn.prev { left:2px; }
+      .sl-btn.next { right:2px; }
+
+      /* Why grid */
+      .why-grid { grid-template-columns:1fr 1fr; }
+
+      /* Reviews */
+      .reviews-grid { grid-template-columns:1fr; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns:1fr; gap:28px; }
+      .footer-desc { max-width:100%; }
+    }
+
+    /* Small phones */
+    @media(max-width:480px){
+      /* Hero — compact on small screens */
+      .hero { min-height:52vh; max-height:560px; }
+      .hero h1 { font-size:1.85rem; line-height:1.15; }
+      .hero p { font-size:.87rem; margin-bottom:22px; }
+      .hero-badge { display:none; }
+      .hero-cta { flex-direction:column; align-items:center; gap:10px; }
+      .btn-wa, .btn-outline-w { width:100%; max-width:280px; text-align:center; padding:13px 18px; }
+      .hero-stats { gap:14px; }
+      .hero-stat strong { font-size:1.35rem; }
+      .hero-socials { flex-wrap:wrap; justify-content:center; gap:10px; }
+      .soc-div { display:none; }
+
+      /* Why grid */
+      .why-grid { grid-template-columns:1fr; }
+
+      /* Booking */
+      .booking-form { padding:18px 14px; }
+      .form-field input, .form-field select { font-size:.88rem; padding:10px 12px; }
+
+      /* Slider arrows inset */
+      .sl-btn { width:36px; height:36px; font-size:1.1rem; }
+      .sl-btn.prev { left:0; }
+      .sl-btn.next { right:0; }
+
+      /* Package cards on mobile — no overflow */
+      .pkg-img { height:170px; }
+
+      /* Footer map */
+      .footer-map iframe { height:140px; }
+
+      /* Reviews 1 col already set above */
+      .reviews-grid { grid-template-columns:1fr; }
+    }
   </style>
 </head>
 <body>
@@ -351,40 +438,14 @@
         <div class="form-field" style="grid-column:1/-1">
           <label>Destination / Package</label>
           <select id="dest">
-            <option value="">Any destination</option>
-            <optgroup label="── Darjeeling Offbeat ──">
-              <option>Darjeeling Offbeat – Offbeat Villages Circuit</option>
-              <option>Darjeeling Offbeat – Tea Garden Retreat</option>
-              <option>Darjeeling Offbeat – Sandakphu Trek Stay</option>
-              <option>Darjeeling Offbeat – Lepchajagat &amp; Lava</option>
-              <option>Darjeeling Offbeat – Lamahatta &amp; Jorpokhri</option>
-              <option>Darjeeling Offbeat – Tinchuley &amp; Ramdhura</option>
-              <option>Darjeeling Offbeat – Mongpu &amp; Sittong</option>
-            </optgroup>
-            <optgroup label="── Kalimpong Offbeat ──">
-              <option>Kalimpong Offbeat – Rishyap &amp; Neora Valley</option>
-              <option>Kalimpong Offbeat – Lolegaon Forest Stay</option>
-              <option>Kalimpong Offbeat – Pedong &amp; Aritar</option>
-              <option>Kalimpong Offbeat – Icche Gaon &amp; Algara</option>
-              <option>Kalimpong Offbeat – Lava &amp; Kaffer</option>
-            </optgroup>
-            <optgroup label="── Mixed Circuit ──">
-              <option>Mixed Circuit – Darjeeling + Kalimpong Combo</option>
-              <option>Mixed Circuit – North Bengal Panorama</option>
-              <option>Mixed Circuit – Tea &amp; Forest Circuit</option>
-            </optgroup>
-            <optgroup label="── With Darjeeling Town ──">
-              <option>With Darjeeling Town – Toy Train &amp; Tiger Hill</option>
-              <option>With Darjeeling Town – Classic Darjeeling</option>
-              <option>With Darjeeling Town – Darjeeling + Offbeat Mix</option>
-            </optgroup>
-            <optgroup label="── Jungle Safari ──">
-              <option>Jungle Safari – Gorumara &amp; Jaldapara</option>
-              <option>Jungle Safari – Chapramari Wildlife Circuit</option>
-              <option>Jungle Safari – Dooars Forest Camp</option>
-              <option>Jungle Safari – Elephant Safari Package</option>
-            </optgroup>
-            <option value="custom">🗺️ Custom Package – I'll describe my preference</option>
+            <option value="">Select a category</option>
+            <option value="Darjeeling Offbeat">🏔️ Darjeeling Offbeat</option>
+            <option value="Kalimpong Offbeat">🌸 Kalimpong Offbeat</option>
+            <option value="Darjeeling &amp; Kalimpong Mixed">🗺️ Darjeeling &amp; Kalimpong Mixed</option>
+            <option value="Offbeat &amp; Darjeeling Town">🍵 Offbeat &amp; Darjeeling Town</option>
+            <option value="Offbeat Sikkim">⛰️ Offbeat Sikkim</option>
+            <option value="Jungle Safari">🐘 Jungle Safari Based</option>
+            <option value="Custom">✨ Custom Package</option>
           </select>
         </div>
       </div>
@@ -546,6 +607,15 @@
       <div class="footer-ci">📞 Phone / WhatsApp<br/><a href="tel:+919874740763">+91 98747 40763</a></div>
       <div class="footer-ci">✉️ Email<br/><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div>
       <div class="footer-ci">📍 Office<br/>100/A/3/L Rabindra Nagar Main Road, Siliguri, WB 734006<br/><small>Open Mon–Sun · 9 AM – 8 PM</small></div>
+      <div class="footer-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.2!2d88.4266!3d26.7221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e441c4b6b6b6b7%3A0x0!2s100%2FA%2F3%2FL%20Rabindra%20Nagar%20Main%20Road%2C%20Siliguri%2C%20West%20Bengal%20734006!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          width="100%" height="160" style="border:0; border-radius:8px; margin-top:10px; opacity:0.85; filter:grayscale(20%);"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Into The Wild Tour and Travels location">
+        </iframe>
+        <a href="https://maps.google.com/?q=100/A/3/L+Rabindra+Nagar+Main+Road,+Siliguri,+West+Bengal+734006" target="_blank" style="display:inline-block;margin-top:6px;font-size:.75rem;color:var(--gold-light);">📍 Open in Google Maps →</a>
+      </div>
     </div>
     <div>
       <h4>Quick Links</h4>
