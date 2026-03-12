@@ -8,713 +8,229 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
   <style>
-    /* ===== CSS VARIABLES ===== */
     :root {
-      --gold: #D4A017;
-      --gold-light: #F0C842;
-      --gold-pale: #FFF8E7;
-      --gold-border: #E8C547;
-      --white: #FFFFFF;
-      --off-white: #FAFAF7;
-      --dark: #1A1A1A;
-      --text: #2D2D2D;
-      --text-muted: #666;
-      --shadow: 0 4px 24px rgba(0,0,0,0.10);
-      --shadow-lg: 0 8px 40px rgba(0,0,0,0.14);
-      --radius: 14px;
-      --radius-sm: 8px;
-      --font-display: 'Playfair Display', serif;
-      --font-body: 'DM Sans', sans-serif;
-      --wa-green: #25D366;
+      --green-dark:  #1B3A2D;
+      --green:       #2D6A4F;
+      --green-light: #3A8C65;
+      --green-pale:  #EAF4EE;
+      --gold:        #D4A017;
+      --gold-light:  #F0C842;
+      --white:       #FFFFFF;
+      --off-white:   #F9FAFB;
+      --dark:        #1A1A1A;
+      --text:        #2D2D2D;
+      --muted:       #6B7280;
+      --border:      #E5E7EB;
+      --wa-green:    #25D366;
+      --radius:      14px;
+      --radius-sm:   8px;
+      --shadow:      0 4px 20px rgba(0,0,0,0.08);
+      --shadow-lg:   0 8px 40px rgba(0,0,0,0.13);
+      --font-d:      'Playfair Display', serif;
+      --font-b:      'DM Sans', sans-serif;
     }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--font-b); color:var(--text); background:#fff; line-height:1.6; }
+    img { max-width:100%; }
+    a { text-decoration:none; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: var(--font-body);
-      color: var(--text);
-      background: var(--white);
-      line-height: 1.6;
-    }
-
-    /* ===== WHATSAPP TOAST ===== */
+    /* TOAST */
     .wa-toast {
-      display: none;
-      position: fixed;
-      top: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #25D366;
-      color: #fff;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      z-index: 9999;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
-      animation: fadeSlideDown 0.3s ease;
+      display:none; position:fixed; top:22px; left:50%; transform:translateX(-50%);
+      background:#25D366; color:#fff; padding:11px 28px; border-radius:40px;
+      font-size:.9rem; font-weight:600; z-index:9999;
+      box-shadow:0 4px 20px rgba(37,211,102,.35);
     }
-    .wa-toast.show { display: block; }
-    @keyframes fadeSlideDown {
-      from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
-      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
+    .wa-toast.show { display:block; animation:tin .3s ease; }
+    @keyframes tin { from{opacity:0;transform:translateX(-50%) translateY(-10px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
 
-    /* ===== NAV ===== */
+    /* NAV */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #f0e8c8;
-      padding: 0 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      box-shadow: 0 2px 12px rgba(212,160,23,0.08);
+      position:sticky; top:0; z-index:100;
+      background:rgba(27,58,45,.97); backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 5%; height:64px; box-shadow:0 2px 16px rgba(0,0,0,.2);
     }
-    .nav-brand {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--dark);
-      text-decoration: none;
-    }
-    .nav-brand span { color: var(--gold); }
-    .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.88rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-wa {
-      background: var(--wa-green);
-      color: #fff !important;
-      padding: 7px 18px;
-      border-radius: 40px;
-      font-weight: 600 !important;
-      font-size: 0.85rem !important;
-    }
-    .nav-wa:hover { background: #1ebe5d !important; color: #fff !important; }
+    .nav-brand { font-family:var(--font-d); font-size:1.15rem; font-weight:700; color:#fff; }
+    .nav-brand span { color:var(--gold-light); }
+    .nav-links { display:flex; gap:26px; align-items:center; }
+    .nav-links a { color:rgba(255,255,255,.82); font-size:.87rem; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--gold-light); }
+    .nav-wa { background:var(--wa-green); color:#fff !important; padding:7px 18px; border-radius:40px; font-weight:700 !important; font-size:.84rem !important; }
+    .nav-wa:hover { background:#1ebe5d !important; }
+    .nav-ham { display:none; background:none; border:none; cursor:pointer; padding:4px; }
+    .nav-ham span { display:block; width:24px; height:2px; background:#fff; margin:5px 0; border-radius:2px; }
+    .mob-nav { display:none; flex-direction:column; position:fixed; top:64px; left:0; right:0; z-index:99; background:var(--green-dark); border-bottom:1px solid rgba(255,255,255,.1); box-shadow:0 8px 24px rgba(0,0,0,.25); }
+    .mob-nav.open { display:flex; }
+    .mob-nav a { color:rgba(255,255,255,.85); font-size:.95rem; font-weight:500; padding:14px 5%; border-bottom:1px solid rgba(255,255,255,.07); transition:background .15s; }
+    .mob-nav a:hover { background:rgba(255,255,255,.06); color:var(--gold-light); }
+    @media(max-width:768px){ .nav-links{display:none} .nav-ham{display:block} }
 
-    /* Mobile nav */
-    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); margin: 5px 0; border-radius: 2px; transition: 0.3s; }
-    .mobile-nav { display: none; }
+    /* HERO */
+    .hero { position:relative; min-height:90vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; background:var(--green-dark); }
+    .hero-bg { position:absolute; inset:0; background:url('images/hero.jpeg') center/cover no-repeat; opacity:.7; }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(15,40,25,.45) 0%,rgba(15,40,25,.68) 100%); }
+    .hero-content { position:relative; z-index:2; max-width:700px; padding:0 24px; }
+    .hero-badge { display:inline-block; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); color:rgba(255,255,255,.88); font-size:.75rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; padding:6px 20px; border-radius:40px; margin-bottom:20px; }
+    .hero h1 { font-family:var(--font-d); font-size:clamp(2.8rem,6vw,4.6rem); font-weight:700; color:#fff; line-height:1.1; margin-bottom:18px; }
+    .hero h1 span { color:var(--gold-light); }
+    .hero p { font-size:1.05rem; color:rgba(255,255,255,.82); max-width:520px; margin:0 auto 32px; }
+    .hero-cta { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:36px; }
+    .btn-wa { background:var(--wa-green); color:#fff; padding:14px 28px; border-radius:50px; font-weight:700; font-size:.95rem; box-shadow:0 4px 18px rgba(37,211,102,.3); transition:.2s; }
+    .btn-wa:hover { background:#1ebe5d; transform:translateY(-2px); }
+    .btn-outline-w { background:transparent; color:#fff; border:2px solid rgba(255,255,255,.4); padding:12px 26px; border-radius:50px; font-weight:600; font-size:.95rem; transition:.2s; }
+    .btn-outline-w:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.7); }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-hamburger { display: block; }
-      .mobile-nav {
-        display: none;
-        position: fixed;
-        top: 64px; left: 0; right: 0;
-        background: #fff;
-        z-index: 99;
-        padding: 20px 5%;
-        border-bottom: 1px solid #f0e8c8;
-        flex-direction: column;
-        gap: 16px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      }
-      .mobile-nav.open { display: flex; }
-      .mobile-nav a {
-        text-decoration: none;
-        color: var(--text);
-        font-size: 1rem;
-        font-weight: 500;
-        padding: 6px 0;
-        border-bottom: 1px solid #f5f0e0;
-      }
-      .mobile-nav a:last-child { border: none; }
-    }
+    /* Social icons in hero */
+    .hero-socials { display:flex; gap:18px; justify-content:center; align-items:center; }
+    .hero-socials a { display:flex; align-items:center; gap:7px; color:rgba(255,255,255,.75); font-size:.84rem; font-weight:500; transition:color .2s; }
+    .hero-socials a:hover { color:var(--gold-light); }
+    .hero-socials svg { width:20px; height:20px; fill:currentColor; flex-shrink:0; }
+    .soc-div { color:rgba(255,255,255,.3); }
 
-    /* ===== HERO ===== */
-    .hero {
-      position: relative;
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-      /* Dual-tone gradient: white top → gold-tinted bottom, matching packages page */
-      background: linear-gradient(160deg, #FFFFFF 0%, #FFFDF5 30%, #FFF8E0 60%, #F5E8B0 100%);
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('images/hero-bg.jpg') center/cover no-repeat;
-      opacity: 0.18;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 700px;
-      padding: 0 24px;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: linear-gradient(90deg, #fff8e7, #fdf0c0);
-      border: 1px solid var(--gold-border);
-      color: #8a6800;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 6px 20px;
-      border-radius: 40px;
-      margin-bottom: 18px;
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 6vw, 4.4rem);
-      font-weight: 700;
-      color: var(--dark);
-      line-height: 1.12;
-      margin-bottom: 18px;
-    }
-    .hero h1 span { color: var(--gold); }
-    .hero p {
-      font-size: 1.05rem;
-      color: #555;
-      max-width: 520px;
-      margin: 0 auto 32px;
-    }
-    .hero-cta {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
-    .btn-primary {
-      background: var(--wa-green);
-      color: #fff;
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: 0.2s;
-      box-shadow: 0 4px 18px rgba(37,211,102,0.28);
-    }
-    .btn-primary:hover { background: #1ebe5d; transform: translateY(-2px); }
-    .btn-secondary {
-      background: transparent;
-      color: var(--dark);
-      border: 2px solid var(--gold-border);
-      padding: 12px 26px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .btn-secondary:hover { background: var(--gold-pale); }
-    .hero-socials { display: flex; gap: 16px; justify-content: center; align-items: center; }
-    .hero-socials a {
-      color: #888;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .hero-socials a:hover { color: var(--gold); }
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 50px;
-      flex-wrap: wrap;
-    }
-    .hero-stat strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 1.9rem;
-      color: var(--gold);
-      font-weight: 700;
-    }
-    .hero-stat span { font-size: 0.82rem; color: #888; font-weight: 500; }
+    .hero-stats { display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-top:52px; padding-top:36px; border-top:1px solid rgba(255,255,255,.15); }
+    .hero-stat strong { display:block; font-family:var(--font-d); font-size:2rem; color:var(--gold-light); font-weight:700; }
+    .hero-stat span { font-size:.8rem; color:rgba(255,255,255,.65); font-weight:500; }
 
-    /* ===== SECTION COMMON ===== */
-    section { padding: 80px 5%; }
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
-    .section-sub { color: var(--text-muted); font-size: 1rem; max-width: 560px; }
+    /* SECTION COMMON */
+    section { padding:80px 5%; }
+    .sec-label { font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+    .sec-title { font-family:var(--font-d); font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:700; color:var(--dark); margin-bottom:12px; line-height:1.2; }
+    .sec-sub { color:var(--muted); font-size:.97rem; max-width:560px; }
+    .sec-cta { margin-top:36px; text-align:center; }
+    .btn-outline-g { display:inline-block; border:2px solid var(--green); color:var(--green); padding:12px 32px; border-radius:40px; font-weight:700; font-size:.9rem; transition:.2s; }
+    .btn-outline-g:hover { background:var(--green); color:#fff; }
 
-    /* ===== BOOKING / PLAN SECTION ===== */
-    #booking {
-      background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF5 40%, #FFF4C0 80%, #F5E49A 100%);
-      border-top: 1px solid #f0e0a0;
-      border-bottom: 1px solid #f0e0a0;
-    }
-    #booking .inner {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    #booking .section-sub { margin: 0 auto 36px; }
-    .booking-form {
-      background: #fff;
-      border: 1.5px solid #f0e0a0;
-      border-radius: var(--radius);
-      padding: 36px 32px;
-      box-shadow: 0 8px 40px rgba(212,160,23,0.10);
-    }
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    @media (max-width: 540px) { .form-grid { grid-template-columns: 1fr; } }
-    .form-field { display: flex; flex-direction: column; gap: 6px; text-align: left; }
-    .form-field label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #555;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .form-field input,
-    .form-field select {
-      padding: 11px 14px;
-      border: 1.5px solid #e5d8a0;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-size: 0.92rem;
-      color: var(--text);
-      background: #fffdf8;
-      transition: border-color 0.2s;
-      outline: none;
-    }
-    .form-field input:focus,
-    .form-field select:focus { border-color: var(--gold); background: #fff; }
-    .form-field input.error,
-    .form-field select.error { border-color: #e05050; }
-    .form-field .field-error {
-      font-size: 0.75rem;
-      color: #e05050;
-      margin-top: 2px;
-      display: none;
-    }
-    .form-field .field-error.show { display: block; }
-    .btn-wa-submit {
-      width: 100%;
-      margin-top: 6px;
-      background: var(--wa-green);
-      color: #fff;
-      border: none;
-      padding: 15px;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.2s;
-      box-shadow: 0 4px 18px rgba(37,211,102,0.25);
-    }
-    .btn-wa-submit:hover { background: #1ebe5d; transform: translateY(-1px); }
+    /* BOOKING */
+    #booking { background:var(--green-dark); }
+    #booking .sec-label { color:var(--gold-light); }
+    #booking .sec-title { color:#fff; }
+    #booking .sec-sub { color:rgba(255,255,255,.7); margin:0 auto 36px; }
+    #booking .inner { max-width:700px; margin:0 auto; text-align:center; }
+    .booking-form { background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:36px 32px; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+    @media(max-width:540px){ .form-grid{grid-template-columns:1fr} }
+    .form-field { display:flex; flex-direction:column; gap:6px; text-align:left; }
+    .form-field label { font-size:.78rem; font-weight:600; color:rgba(255,255,255,.65); text-transform:uppercase; letter-spacing:.06em; }
+    .form-field input, .form-field select { padding:11px 14px; border:1.5px solid rgba(255,255,255,.18); border-radius:var(--radius-sm); font-family:var(--font-b); font-size:.92rem; color:#fff; background:rgba(255,255,255,.09); transition:border-color .2s; outline:none; }
+    .form-field select option { background:var(--green-dark); color:#fff; }
+    .form-field input:focus, .form-field select:focus { border-color:var(--gold-light); background:rgba(255,255,255,.13); }
+    .form-field input.err, .form-field select.err { border-color:#f87171; }
+    .ferr { font-size:.74rem; color:#f87171; display:none; margin-top:2px; }
+    .ferr.show { display:block; }
+    .btn-wa-submit { width:100%; margin-top:6px; background:var(--wa-green); color:#fff; border:none; padding:15px; border-radius:var(--radius-sm); font-family:var(--font-b); font-size:1rem; font-weight:700; cursor:pointer; transition:.2s; box-shadow:0 4px 18px rgba(37,211,102,.25); }
+    .btn-wa-submit:hover { background:#1ebe5d; transform:translateY(-1px); }
 
-    /* ===== FEATURED PACKAGES ===== */
-    #packages { background: var(--off-white); }
-    .pkg-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
-    .pkg-card {
-      background: #fff;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-    .pkg-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .pkg-card-img {
-      height: 190px;
-      background: linear-gradient(135deg, #f5e8b0, #e0c870);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      position: relative;
-    }
-    .pkg-card-img img { width: 100%; height: 100%; object-fit: cover; }
-    .pkg-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-    .pkg-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .pkg-card-cat { font-size: 0.72rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
-    .pkg-card-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-    .pkg-card-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px; flex: 1; }
-    .pkg-card-price { font-size: 0.82rem; color: #888; margin-bottom: 14px; }
-    .pkg-card-price strong { font-size: 1.05rem; color: var(--dark); }
-    .btn-pkg {
-      text-align: center;
-      background: transparent;
-      border: 2px solid var(--gold-border);
-      color: var(--dark);
-      padding: 9px;
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.2s;
-      display: block;
-    }
-    .btn-pkg:hover { background: var(--gold-pale); }
-    .pkg-custom {
-      background: linear-gradient(135deg, #fff8e0, #f5e090);
-      border: 2px dashed var(--gold-border);
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 12px;
-    }
-    .pkg-custom h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--dark); }
-    .pkg-custom p { font-size: 0.85rem; color: var(--text-muted); }
-    .btn-custom-chat {
-      background: var(--wa-green);
-      color: #fff;
-      padding: 10px 22px;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 0.88rem;
-      text-decoration: none;
-      margin-top: 4px;
-    }
-    .section-cta-row { margin-top: 36px; text-align: center; }
-    .btn-outline-gold {
-      display: inline-block;
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      padding: 12px 32px;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .btn-outline-gold:hover { background: var(--gold); color: #fff; }
+    /* PACKAGES SLIDER */
+    #packages { background:#fff; }
+    .sl-outer { position:relative; margin-top:40px; }
+    .sl-vp { overflow:hidden; }
+    .sl-track { display:flex; transition:transform .45s cubic-bezier(.4,0,.2,1); will-change:transform; }
 
-    /* ===== PROPERTIES SLIDER ===== */
-    #properties {
-      background: linear-gradient(160deg, #FFFFFF 0%, #FFFDF5 40%, #FFF4C0 80%, #F5E8A0 100%);
-    }
-    .slider-wrap { position: relative; overflow: hidden; border-radius: var(--radius); margin-top: 40px; }
-    .slider-track {
-      display: flex;
-      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
-      will-change: transform;
-    }
-    .slide {
-      min-width: 320px;
-      max-width: 320px;
-      margin-right: 20px;
-      background: #fff;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      flex-shrink: 0;
-    }
-    .slide-img {
-      height: 200px;
-      background: linear-gradient(135deg, #f0e8c0, #ddc870);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.5rem;
-      overflow: hidden;
-    }
-    .slide-img img { width: 100%; height: 100%; object-fit: cover; }
-    .slide-body { padding: 18px 20px; }
-    .slide-name { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-    .slide-loc { font-size: 0.82rem; color: var(--text-muted); }
-    .slide-tag {
-      display: inline-block;
-      margin-top: 8px;
-      background: var(--gold-pale);
-      border: 1px solid var(--gold-border);
-      color: #8a6800;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
-    }
-    .slider-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #fff;
-      border: 2px solid var(--gold-border);
-      color: var(--dark);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      cursor: pointer;
-      z-index: 5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
-      transition: 0.2s;
-    }
-    .slider-btn:hover { background: var(--gold-pale); border-color: var(--gold); }
-    .slider-btn.prev { left: 8px; }
-    .slider-btn.next { right: 8px; }
-    .slider-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 18px;
-    }
-    .dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #ddd;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .dot.active { background: var(--gold); transform: scale(1.3); }
+    /* Package cards */
+    .pkg-card { flex-shrink:0; background:#fff; border-radius:var(--radius); border:1.5px solid var(--border); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column; transition:transform .2s,box-shadow .2s; }
+    .pkg-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+    .pkg-img { height:210px; background:linear-gradient(135deg,var(--green-pale),#b7ddc5); display:flex; align-items:center; justify-content:center; font-size:3.5rem; position:relative; overflow:hidden; }
+    .pkg-img img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    .pkg-badge { position:absolute; top:12px; left:12px; background:rgba(27,58,45,.8); color:#fff; font-size:.68rem; font-weight:700; padding:4px 10px; border-radius:20px; letter-spacing:.04em; }
+    .pkg-body { padding:22px; flex:1; display:flex; flex-direction:column; }
+    .pkg-cat { font-size:.68rem; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:.12em; margin-bottom:7px; }
+    .pkg-name { font-family:var(--font-d); font-size:1.1rem; font-weight:700; color:var(--dark); margin-bottom:10px; line-height:1.3; }
+    .pkg-desc { font-size:.84rem; color:var(--muted); margin-bottom:16px; flex:1; line-height:1.6; }
+    .pkg-price { font-size:.82rem; color:var(--muted); margin-bottom:16px; }
+    .pkg-price strong { font-size:1rem; color:var(--dark); }
+    .btn-pkg { display:block; text-align:center; background:var(--green-pale); color:var(--green); border:1.5px solid #b7ddc5; padding:10px; border-radius:var(--radius-sm); font-size:.85rem; font-weight:700; transition:.2s; }
+    .btn-pkg:hover { background:var(--green); color:#fff; border-color:var(--green); }
 
-    /* ===== WHY US ===== */
-    #why-us { background: var(--white); }
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 22px;
-      margin-top: 40px;
-    }
-    .why-card {
-      background: linear-gradient(135deg, #fff 60%, #fffae8 100%);
-      border: 1.5px solid #f0e4a0;
-      border-radius: var(--radius);
-      padding: 26px 22px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .why-icon { font-size: 2rem; margin-bottom: 12px; }
-    .why-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
-    .why-card p { font-size: 0.84rem; color: var(--text-muted); }
+    /* Custom package card */
+    .pkg-custom-card { flex-shrink:0; background:linear-gradient(145deg,var(--green-dark),var(--green)); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:36px 28px; gap:14px; min-height:360px; }
+    .pkg-custom-card h3 { font-family:var(--font-d); font-size:1.2rem; color:#fff; line-height:1.3; }
+    .pkg-custom-card p { font-size:.84rem; color:rgba(255,255,255,.78); line-height:1.6; }
+    .btn-custom { background:var(--wa-green); color:#fff; padding:11px 24px; border-radius:40px; font-weight:700; font-size:.88rem; transition:.2s; }
+    .btn-custom:hover { background:#1ebe5d; }
 
-    /* ===== GALLERY ===== */
-    #gallery {
-      background: linear-gradient(160deg, #FFFFFF 0%, #FFFDF5 40%, #FFF4C0 80%, #F5E8A0 100%);
-    }
-    .gallery-slider-wrap { position: relative; overflow: hidden; margin-top: 40px; border-radius: var(--radius); }
-    .gallery-track {
-      display: flex;
-      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
-    }
-    .gallery-slide {
-      min-width: calc(33.33% - 10px);
-      margin-right: 14px;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      position: relative;
-      flex-shrink: 0;
-    }
-    @media (max-width: 768px) {
-      .gallery-slide { min-width: calc(50% - 7px); }
-    }
-    @media (max-width: 480px) {
-      .gallery-slide { min-width: calc(100% - 0px); margin-right: 0; }
-    }
-    .gallery-slide img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.35s;
-    }
-    .gallery-slide:hover img { transform: scale(1.04); }
-    .gallery-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
-      color: #fff;
-      padding: 28px 14px 12px;
-      font-size: 0.8rem;
-      font-style: italic;
-    }
-    .gallery-placeholder {
-      width: 100%;
-      height: 240px;
-      background: linear-gradient(135deg, #f0e8c0, #ddc870);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 8px;
-      color: #8a6800;
-      font-size: 0.85rem;
-    }
-    .gallery-placeholder span { font-size: 2rem; }
+    /* Slider controls */
+    .sl-btn { position:absolute; top:40%; transform:translateY(-50%); background:#fff; border:2px solid var(--border); width:44px; height:44px; border-radius:50%; font-size:1.3rem; cursor:pointer; z-index:5; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 12px rgba(0,0,0,.1); transition:.2s; color:var(--dark); line-height:1; }
+    .sl-btn:hover { background:var(--green-pale); border-color:var(--green); }
+    .sl-btn.prev { left:-22px; }
+    .sl-btn.next { right:-22px; }
+    @media(max-width:600px){ .sl-btn.prev{left:4px} .sl-btn.next{right:4px} }
+    .sl-dots { display:flex; justify-content:center; gap:8px; margin-top:18px; }
+    .sl-dots button { width:8px; height:8px; border-radius:50%; border:none; background:#d1d5db; cursor:pointer; padding:0; transition:.2s; }
+    .sl-dots button.on { background:var(--green); transform:scale(1.3); }
 
-    /* ===== REVIEWS ===== */
-    #reviews { background: #fff; }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 22px;
-      margin-top: 40px;
-    }
-    .review-card {
-      background: linear-gradient(135deg, #fff 60%, #fffae8 100%);
-      border: 1.5px solid #f0e4a0;
-      border-radius: var(--radius);
-      padding: 26px;
-    }
-    .review-avatar {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: var(--gold);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 12px;
-    }
-    .review-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 8px; }
-    .review-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
-    .review-source { font-size: 0.75rem; color: #aaa; margin-bottom: 12px; }
-    .review-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.6; }
-    .reviews-cta { text-align: center; margin-top: 28px; }
+    /* PROPERTIES */
+    #properties { background:var(--off-white); }
+    .prop-card { flex-shrink:0; background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+    .prop-img { height:200px; background:linear-gradient(135deg,var(--green-pale),#b7ddc5); display:flex; align-items:center; justify-content:center; font-size:3.5rem; overflow:hidden; position:relative; }
+    .prop-img img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    .prop-body { padding:18px 20px; }
+    .prop-name { font-family:var(--font-d); font-size:1rem; font-weight:700; color:var(--dark); margin-bottom:4px; }
+    .prop-loc { font-size:.82rem; color:var(--muted); }
+    .prop-tag { display:inline-block; margin-top:8px; background:var(--green-pale); border:1px solid #b7ddc5; color:var(--green); font-size:.7rem; font-weight:700; padding:3px 10px; border-radius:20px; }
 
-    /* ===== FOOTER ===== */
-    footer {
-      background: linear-gradient(135deg, #1A1A1A, #2a2010);
-      color: #ccc;
-      padding: 60px 5% 30px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
-    .footer-brand {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-    .footer-brand span { color: var(--gold-light); }
-    .footer-desc { font-size: 0.85rem; color: #aaa; line-height: 1.7; max-width: 300px; }
-    footer h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.08em; }
-    footer a { color: #bbb; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
-    footer a:hover { color: var(--gold-light); }
-    .footer-links { display: flex; flex-direction: column; gap: 8px; }
-    .footer-contact-item { font-size: 0.85rem; color: #aaa; margin-bottom: 8px; line-height: 1.5; }
-    .footer-contact-item a { color: var(--gold-light); }
-    .footer-bottom {
-      border-top: 1px solid #333;
-      padding-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 0.78rem;
-      color: #777;
-    }
-    .footer-wa-btn {
-      background: var(--wa-green);
-      color: #fff;
-      padding: 10px 22px;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-decoration: none;
-    }
+    /* WHY US */
+    #why-us { background:#fff; }
+    .why-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; margin-top:40px; }
+    .why-card { background:var(--off-white); border:1.5px solid var(--border); border-radius:var(--radius); padding:26px 22px; transition:.2s; }
+    .why-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); border-color:#b7ddc5; }
+    .why-icon { font-size:2rem; margin-bottom:12px; }
+    .why-card h4 { font-family:var(--font-d); font-size:1rem; font-weight:700; color:var(--dark); margin-bottom:6px; }
+    .why-card p { font-size:.84rem; color:var(--muted); }
 
-    /* ===== FLOATING WA BUTTON ===== */
-    .float-wa {
-      position: fixed;
-      bottom: 28px;
-      right: 24px;
-      background: var(--wa-green);
-      color: #fff;
-      width: 58px; height: 58px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      z-index: 200;
-      text-decoration: none;
-      transition: 0.2s;
-      animation: pulse-wa 2.5s infinite;
-    }
-    .float-wa:hover { transform: scale(1.1); }
-    @keyframes pulse-wa {
-      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.7); }
-    }
+    /* GALLERY */
+    #gallery { background:var(--off-white); }
+    .gal-slide { flex-shrink:0; border-radius:var(--radius-sm); overflow:hidden; position:relative; }
+    .gal-slide img { width:100%; height:230px; object-fit:cover; display:block; transition:transform .35s; }
+    .gal-slide:hover img { transform:scale(1.04); }
+    .gal-cap { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(0,0,0,.65),transparent); color:#fff; padding:28px 14px 12px; font-size:.78rem; font-style:italic; }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      section { padding: 60px 5%; }
-      .hero { min-height: 80vh; }
-      .hero-stats { gap: 24px; }
-      .pkg-grid { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: 1fr 1fr; }
-      .reviews-grid { grid-template-columns: 1fr; }
-      .slide { min-width: 280px; max-width: 280px; }
-    }
-    @media (max-width: 480px) {
-      .why-grid { grid-template-columns: 1fr; }
-      .booking-form { padding: 24px 18px; }
-    }
+    /* REVIEWS — centred */
+    #reviews { background:#fff; }
+    .reviews-wrap { max-width:980px; margin:0 auto; text-align:center; }
+    .reviews-wrap .sec-sub { margin:0 auto; }
+    .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:40px; }
+    @media(max-width:860px){ .reviews-grid{grid-template-columns:1fr 1fr} }
+    @media(max-width:580px){ .reviews-grid{grid-template-columns:1fr} }
+    .review-card { background:var(--off-white); border:1.5px solid var(--border); border-radius:var(--radius); padding:28px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+    .review-av { width:48px; height:48px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:12px; flex-shrink:0; }
+    .review-stars { color:var(--gold); font-size:.95rem; margin-bottom:6px; }
+    .review-name { font-weight:700; font-size:.92rem; margin-bottom:2px; }
+    .review-src { font-size:.73rem; color:#aaa; margin-bottom:12px; }
+    .review-text { font-size:.85rem; color:var(--muted); line-height:1.65; text-align:center; }
+    .reviews-cta { text-align:center; margin-top:28px; }
+    .reviews-note { text-align:center; font-size:.8rem; color:var(--muted); margin-top:10px; }
+
+    /* FOOTER */
+    footer { background:var(--green-dark); color:rgba(255,255,255,.75); padding:60px 5% 30px; }
+    .footer-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:40px; margin-bottom:40px; }
+    @media(max-width:768px){ .footer-grid{grid-template-columns:1fr} }
+    .footer-brand { font-family:var(--font-d); font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:10px; }
+    .footer-brand span { color:var(--gold-light); }
+    .footer-desc { font-size:.85rem; color:rgba(255,255,255,.6); line-height:1.7; max-width:300px; margin-bottom:20px; }
+    .footer-wa { background:var(--wa-green); color:#fff; padding:10px 22px; border-radius:40px; font-weight:700; font-size:.85rem; display:inline-block; }
+    footer h4 { color:#fff; font-size:.88rem; font-weight:700; margin-bottom:14px; text-transform:uppercase; letter-spacing:.08em; }
+    footer a { color:rgba(255,255,255,.65); font-size:.84rem; transition:color .2s; }
+    footer a:hover { color:var(--gold-light); }
+    .footer-links { display:flex; flex-direction:column; gap:9px; }
+    .footer-ci { font-size:.84rem; color:rgba(255,255,255,.65); margin-bottom:9px; line-height:1.5; }
+    .footer-ci a { color:var(--gold-light); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.1); padding-top:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:.77rem; color:rgba(255,255,255,.4); }
+
+    /* FLOAT WA */
+    .float-wa { position:fixed; bottom:28px; right:24px; background:var(--wa-green); color:#fff; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; box-shadow:0 4px 20px rgba(37,211,102,.4); z-index:200; transition:.2s; animation:wap 2.5s infinite; }
+    .float-wa:hover { transform:scale(1.1); }
+    @keyframes wap { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)} 50%{box-shadow:0 4px 32px rgba(37,211,102,.7)} }
+
+    @media(max-width:768px){ section{padding:60px 5%} .hero{min-height:80vh} .hero-stats{gap:22px} .why-grid{grid-template-columns:1fr 1fr} .reviews-grid{grid-template-columns:1fr} }
+    @media(max-width:480px){ .why-grid{grid-template-columns:1fr} .booking-form{padding:24px 16px} }
   </style>
 </head>
 <body>
 
-<!-- WhatsApp Toast -->
 <div class="wa-toast" id="waToast">✅ Opening WhatsApp… we'll reply within a few hours!</div>
 
 <!-- NAV -->
@@ -728,13 +244,11 @@
     <a href="#why-us">Why Us</a>
     <a href="#gallery">Gallery</a>
     <a href="#contact">Contact</a>
-    <a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20a%20tour%20package." class="nav-wa" target="_blank">💬 WhatsApp</a>
+    <a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20a%20tour%20package." class="nav-wa" target="_blank" onclick="showToast()">💬 WhatsApp</a>
   </div>
-  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-nav" id="mobileNav">
+<div class="mob-nav" id="mobNav">
   <a href="index.html">Home</a>
   <a href="#booking">Quick Enquiry</a>
   <a href="packages.html">Packages</a>
@@ -742,22 +256,32 @@
   <a href="#why-us">Why Us</a>
   <a href="#gallery">Gallery</a>
   <a href="#contact">Contact</a>
-  <a href="https://wa.me/919874740763" target="_blank">💬 WhatsApp Us</a>
+  <a href="https://wa.me/919874740763" target="_blank" onclick="showToast()">💬 WhatsApp Us</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-badge">✦ Himalayan Travel Specialists · Siliguri, North Bengal</div>
     <h1>Sana <span>On The Go</span></h1>
     <p>Curated travel experiences across Darjeeling, Kalimpong, Sikkim &amp; the Offbeat Himalayas</p>
     <div class="hero-cta">
-      <a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20your%20travel%20packages." class="btn-primary" target="_blank" onclick="showWaToast()">💬 WhatsApp Enquiry</a>
-      <a href="packages.html" class="btn-secondary">Explore Packages →</a>
+      <a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20your%20travel%20packages." class="btn-wa" target="_blank" onclick="showToast()">💬 WhatsApp Enquiry</a>
+      <a href="packages.html" class="btn-outline-w">Explore Packages →</a>
     </div>
+    <!-- Social icons with proper SVG logos -->
     <div class="hero-socials">
-      <a href="https://www.instagram.com/sana.onthe.go" target="_blank">📷 @sana.onthe.go</a>
-      <a href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank">👍 Sana On The Go</a>
+      <a href="https://www.instagram.com/sana.onthe.go" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @sana.onthe.go
+      </a>
+      <span class="soc-div">·</span>
+      <a href="https://www.facebook.com/share/1CQNotCTJ3/" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Sana On The Go
+      </a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><strong>500+</strong><span>Happy Travellers</span></div>
@@ -768,34 +292,33 @@
   </div>
 </section>
 
-<!-- BOOKING FORM -->
+<!-- BOOKING -->
 <section id="booking">
   <div class="inner">
-    <div class="section-label">🏕️ Plan Your Hill Escape</div>
-    <h2 class="section-title">Get a Personalised Quote</h2>
-    <p class="section-sub">Fill in your details and we'll send you our best packages on WhatsApp within hours!</p>
-
+    <div class="sec-label">🏕️ Plan Your Hill Escape</div>
+    <h2 class="sec-title">Get a Personalised Quote</h2>
+    <p class="sec-sub">Fill in your details and we'll send you our best packages on WhatsApp within hours!</p>
     <div class="booking-form">
       <div class="form-grid">
         <div class="form-field">
           <label>Arrival at NJP / Bagdogra</label>
-          <input type="date" id="arrivalDate" placeholder="Arrival date" />
-          <span class="field-error" id="arrivalErr">Please select an arrival date.</span>
+          <input type="date" id="arrDate" />
+          <span class="ferr" id="eArr">Please select an arrival date.</span>
         </div>
         <div class="form-field">
           <label>Departure from NJP / Bagdogra</label>
-          <input type="date" id="departureDate" placeholder="Departure date" />
-          <span class="field-error" id="departureErr">Departure must be after arrival date.</span>
+          <input type="date" id="depDate" />
+          <span class="ferr" id="eDep">Departure must be after arrival date.</span>
         </div>
         <div class="form-field">
           <label>No. of Persons</label>
           <select id="persons">
             <option value="">Select</option>
-            <option>1</option><option>2</option><option>3</option>
-            <option>4</option><option>5</option><option>6</option>
-            <option>7</option><option>8</option><option>9</option><option>10+</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option>
+            <option>9</option><option>10+</option>
           </select>
-          <span class="field-error" id="personsErr">Please select number of persons.</span>
+          <span class="ferr" id="ePer">Please select number of persons.</span>
         </div>
         <div class="form-field">
           <label>No. of Rooms</label>
@@ -804,13 +327,13 @@
             <option>1</option><option>2</option><option>3</option>
             <option>4</option><option>5</option><option>6+</option>
           </select>
-          <span class="field-error" id="roomsErr">Please select number of rooms.</span>
+          <span class="ferr" id="eRom">Please select number of rooms.</span>
         </div>
-        <div class="form-field" style="grid-column: 1 / -1;">
+        <div class="form-field" style="grid-column:1/-1">
           <label>Destination / Package</label>
-          <select id="destination">
+          <select id="dest">
             <option value="">Any destination</option>
-            <optgroup label="— Darjeeling Offbeat —">
+            <optgroup label="── Darjeeling Offbeat ──">
               <option>Darjeeling Offbeat – Offbeat Villages Circuit</option>
               <option>Darjeeling Offbeat – Tea Garden Retreat</option>
               <option>Darjeeling Offbeat – Sandakphu Trek Stay</option>
@@ -818,254 +341,111 @@
               <option>Darjeeling Offbeat – Lamahatta &amp; Jorpokhri</option>
               <option>Darjeeling Offbeat – Tinchuley &amp; Ramdhura</option>
               <option>Darjeeling Offbeat – Mongpu &amp; Sittong</option>
-              <option>Darjeeling Offbeat – Custom Darjeeling</option>
             </optgroup>
-            <optgroup label="— Kalimpong Offbeat —">
+            <optgroup label="── Kalimpong Offbeat ──">
               <option>Kalimpong Offbeat – Rishyap &amp; Neora Valley</option>
               <option>Kalimpong Offbeat – Lolegaon Forest Stay</option>
               <option>Kalimpong Offbeat – Pedong &amp; Aritar</option>
               <option>Kalimpong Offbeat – Icche Gaon &amp; Algara</option>
-              <option>Kalimpong Offbeat – Delo &amp; Kalimpong Town</option>
-              <option>Kalimpong Offbeat – Samsing &amp; Murti</option>
               <option>Kalimpong Offbeat – Lava &amp; Kaffer</option>
-              <option>Kalimpong Offbeat – Custom Kalimpong</option>
             </optgroup>
-            <optgroup label="— Mixed Circuit —">
+            <optgroup label="── Mixed Circuit ──">
               <option>Mixed Circuit – Darjeeling + Kalimpong Combo</option>
-              <option>Mixed Circuit – Offbeat Villages Trail</option>
               <option>Mixed Circuit – North Bengal Panorama</option>
               <option>Mixed Circuit – Tea &amp; Forest Circuit</option>
-              <option>Mixed Circuit – Riverside &amp; Hilltop Trail</option>
-              <option>Mixed Circuit – Heritage &amp; Nature Escape</option>
-              <option>Mixed Circuit – Custom Combo</option>
             </optgroup>
-            <optgroup label="— With Darjeeling Town —">
+            <optgroup label="── With Darjeeling Town ──">
               <option>With Darjeeling Town – Toy Train &amp; Tiger Hill</option>
               <option>With Darjeeling Town – Classic Darjeeling</option>
               <option>With Darjeeling Town – Darjeeling + Offbeat Mix</option>
-              <option>With Darjeeling Town – Weekend Darjeeling</option>
-              <option>With Darjeeling Town – Darjeeling Heritage Tour</option>
-              <option>With Darjeeling Town – Custom with Town</option>
             </optgroup>
-            <optgroup label="— Jungle Safari —">
+            <optgroup label="── Jungle Safari ──">
               <option>Jungle Safari – Gorumara &amp; Jaldapara</option>
               <option>Jungle Safari – Chapramari Wildlife Circuit</option>
               <option>Jungle Safari – Dooars Forest Camp</option>
               <option>Jungle Safari – Elephant Safari Package</option>
-              <option>Jungle Safari – Buxa Tiger Reserve</option>
-              <option>Jungle Safari – Dooars + Hills Combo</option>
-              <option>Jungle Safari – Custom Safari</option>
             </optgroup>
-            <option value="custom">🗺️ Custom Package (I'll describe my preference)</option>
+            <option value="custom">🗺️ Custom Package – I'll describe my preference</option>
           </select>
         </div>
       </div>
-
-      <button class="btn-wa-submit" id="bookingSubmit" onclick="submitBookingEnquiry()">
-        💬 Send Enquiry on WhatsApp
-      </button>
+      <button class="btn-wa-submit" onclick="submitEnquiry()">💬 Send Enquiry on WhatsApp</button>
     </div>
   </div>
 </section>
 
-<!-- FEATURED PACKAGES -->
+<!-- PACKAGES SLIDER -->
 <section id="packages">
-  <div class="section-label">✦ Our Collections</div>
-  <h2 class="section-title">Featured Travel Experiences</h2>
-  <p class="section-sub">Hand-picked journeys through North Bengal's most beautiful corners. Click a category to browse all packages.</p>
-
-  <div class="pkg-grid">
-    <!-- Darjeeling Offbeat -->
-    <div class="pkg-card">
-      <div class="pkg-card-img">
-        <span>🏔️</span>
-        <img src="images/darjeeling-offbeat.jpg" alt="Darjeeling Offbeat" onerror="this.style.display='none'" />
-        <div class="pkg-badge">8 Packages</div>
-      </div>
-      <div class="pkg-card-body">
-        <div class="pkg-card-cat">🏔️ Darjeeling Offbeat</div>
-        <div class="pkg-card-name">Darjeeling's Hidden Trails</div>
-        <div class="pkg-card-desc">Misty ridges, tea garden villages, and forest hamlets far from the tourist trail — the real Darjeeling district awaits.</div>
-        <div class="pkg-card-price">From <strong>₹X,XXX</strong> / person</div>
-        <a href="packages.html#darjeeling" class="btn-pkg">Explore Packages →</a>
-      </div>
-    </div>
-    <!-- Kalimpong Offbeat -->
-    <div class="pkg-card">
-      <div class="pkg-card-img">
-        <span>🌸</span>
-        <img src="images/kalimpong-offbeat.jpg" alt="Kalimpong Offbeat" onerror="this.style.display='none'" />
-        <div class="pkg-badge">8 Packages</div>
-      </div>
-      <div class="pkg-card-body">
-        <div class="pkg-card-cat">🌸 Kalimpong Offbeat</div>
-        <div class="pkg-card-name">Kalimpong's Secret Villages</div>
-        <div class="pkg-card-desc">Ancient monasteries, orchid valleys, and hilltop hamlets with sweeping Himalayan views — Kalimpong off the beaten path.</div>
-        <div class="pkg-card-price">From <strong>₹X,XXX</strong> / person</div>
-        <a href="packages.html#kalimpong" class="btn-pkg">Explore Packages →</a>
-      </div>
-    </div>
-    <!-- Jungle Safari -->
-    <div class="pkg-card">
-      <div class="pkg-card-img">
-        <span>🐘</span>
-        <img src="images/jungle-safari.jpg" alt="Jungle Safari" onerror="this.style.display='none'" />
-        <div class="pkg-badge">7 Packages</div>
-      </div>
-      <div class="pkg-card-body">
-        <div class="pkg-card-cat">🐘 Jungle Safari</div>
-        <div class="pkg-card-name">Dooars Wildlife Safaris</div>
-        <div class="pkg-card-desc">Encounter elephants, rhinos and leopards in Gorumara, Jaldapara &amp; Chapramari — the wild heart of the Dooars forests.</div>
-        <div class="pkg-card-price">From <strong>₹X,XXX</strong> / person</div>
-        <a href="packages.html#jungle" class="btn-pkg">Explore Packages →</a>
+  <div class="sec-label">✦ Our Collections</div>
+  <h2 class="sec-title">Featured Travel Experiences</h2>
+  <p class="sec-sub">Hand-picked journeys through North Bengal's most beautiful corners.</p>
+  <div class="sl-outer" id="pkgOuter">
+    <button class="sl-btn prev" id="pkgPrev" aria-label="Prev">&#8249;</button>
+    <div class="sl-vp" id="pkgVP">
+      <div class="sl-track" id="pkgTrack">
+        <div class="pkg-card">
+          <div class="pkg-img"><span>🏔️</span><img src="images/darjeeling-offbeat.jpg" alt="" onerror="this.style.display='none'"/><div class="pkg-badge">8 Packages</div></div>
+          <div class="pkg-body"><div class="pkg-cat">🏔️ Darjeeling Offbeat</div><div class="pkg-name">Darjeeling's Hidden Trails</div><div class="pkg-desc">Misty ridges, tea garden villages, and forest hamlets far from the tourist trail — the real Darjeeling awaits.</div><div class="pkg-price">From <strong>₹X,XXX</strong> / person</div><a href="packages.html#darjeeling" class="btn-pkg">Explore Packages →</a></div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-img"><span>🌸</span><img src="images/kalimpong-offbeat.jpg" alt="" onerror="this.style.display='none'"/><div class="pkg-badge">8 Packages</div></div>
+          <div class="pkg-body"><div class="pkg-cat">🌸 Kalimpong Offbeat</div><div class="pkg-name">Kalimpong's Secret Villages</div><div class="pkg-desc">Ancient monasteries, orchid valleys, and hilltop hamlets with sweeping Himalayan views — Kalimpong off the beaten path.</div><div class="pkg-price">From <strong>₹X,XXX</strong> / person</div><a href="packages.html#kalimpong" class="btn-pkg">Explore Packages →</a></div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-img"><span>🐘</span><img src="images/jungle-safari.jpg" alt="" onerror="this.style.display='none'"/><div class="pkg-badge">7 Packages</div></div>
+          <div class="pkg-body"><div class="pkg-cat">🐘 Jungle Safari</div><div class="pkg-name">Dooars Wildlife Safaris</div><div class="pkg-desc">Encounter elephants, rhinos and leopards in Gorumara, Jaldapara &amp; Chapramari — the wild heart of the Dooars.</div><div class="pkg-price">From <strong>₹X,XXX</strong> / person</div><a href="packages.html#jungle" class="btn-pkg">Explore Packages →</a></div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-img"><span>🗺️</span><img src="images/mixed-circuit.jpg" alt="" onerror="this.style.display='none'"/><div class="pkg-badge">7 Packages</div></div>
+          <div class="pkg-body"><div class="pkg-cat">🗺️ Mixed Circuit</div><div class="pkg-name">The Best of Both Hills</div><div class="pkg-desc">Combine the charms of Darjeeling and Kalimpong in one seamless circuit — offbeat villages and viewpoints.</div><div class="pkg-price">From <strong>₹X,XXX</strong> / person</div><a href="packages.html#mixed" class="btn-pkg">Explore Packages →</a></div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-img"><span>🍵</span><img src="images/darjeeling-town.jpg" alt="" onerror="this.style.display='none'"/><div class="pkg-badge">7 Packages</div></div>
+          <div class="pkg-body"><div class="pkg-cat">🍵 With Darjeeling Town</div><div class="pkg-name">Offbeat + Toy Train Town</div><div class="pkg-desc">Offbeat hill villages plus iconic Darjeeling town — Tiger Hill sunrises, Batasia Loop &amp; the Toy Train.</div><div class="pkg-price">From <strong>₹X,XXX</strong> / person</div><a href="packages.html#darjtown" class="btn-pkg">Explore Packages →</a></div>
+        </div>
+        <div class="pkg-custom-card">
+          <div style="font-size:2.8rem">✨</div>
+          <h3>Design Your Dream Trip</h3>
+          <p>Any destination, any duration, any group size. We'll craft a bespoke Himalayan journey just for you.</p>
+          <a href="https://wa.me/919874740763?text=Hi!%20I%20want%20to%20plan%20a%20custom%20tour%20package." class="btn-custom" target="_blank" onclick="showToast()">💬 Chat with Us</a>
+        </div>
       </div>
     </div>
-    <!-- Mixed Circuit -->
-    <div class="pkg-card">
-      <div class="pkg-card-img">
-        <span>🗺️</span>
-        <img src="images/mixed-circuit.jpg" alt="Mixed Circuit" onerror="this.style.display='none'" />
-        <div class="pkg-badge">7 Packages</div>
-      </div>
-      <div class="pkg-card-body">
-        <div class="pkg-card-cat">🗺️ Mixed Circuit</div>
-        <div class="pkg-card-name">The Best of Both Hills</div>
-        <div class="pkg-card-desc">Combine the charms of Darjeeling and Kalimpong in one seamless circuit — offbeat villages, viewpoints and local life.</div>
-        <div class="pkg-card-price">From <strong>₹X,XXX</strong> / person</div>
-        <a href="packages.html#mixed" class="btn-pkg">Explore Packages →</a>
-      </div>
-    </div>
-    <!-- With Darjeeling Town -->
-    <div class="pkg-card">
-      <div class="pkg-card-img">
-        <span>🍵</span>
-        <img src="images/darjeeling-town.jpg" alt="With Darjeeling Town" onerror="this.style.display='none'" />
-        <div class="pkg-badge">7 Packages</div>
-      </div>
-      <div class="pkg-card-body">
-        <div class="pkg-card-cat">🍵 With Darjeeling Town</div>
-        <div class="pkg-card-name">Offbeat + Toy Train Town</div>
-        <div class="pkg-card-desc">Experience offbeat hill villages plus iconic Darjeeling town — Tiger Hill sunrises, Batasia Loop and the Darjeeling Himalayan Railway.</div>
-        <div class="pkg-card-price">From <strong>₹X,XXX</strong> / person</div>
-        <a href="packages.html#darjtown" class="btn-pkg">Explore Packages →</a>
-      </div>
-    </div>
-    <!-- Custom Package -->
-    <div class="pkg-card">
-      <div class="pkg-card-body pkg-custom">
-        <div style="font-size:2.5rem">✨</div>
-        <h3>Design Your Dream Trip</h3>
-        <p>Any destination, any duration, any group size. We'll craft a bespoke Himalayan journey just for you.</p>
-        <a href="https://wa.me/919874740763?text=Hi!%20I%20want%20to%20plan%20a%20custom%20tour%20package." class="btn-custom-chat" target="_blank" onclick="showWaToast()">💬 Chat with Us</a>
-      </div>
-    </div>
+    <button class="sl-btn next" id="pkgNext" aria-label="Next">&#8250;</button>
   </div>
-
-  <div class="section-cta-row">
-    <a href="packages.html" class="btn-outline-gold">View All Packages →</a>
-  </div>
+  <div class="sl-dots" id="pkgDots"></div>
+  <div class="sec-cta"><a href="packages.html" class="btn-outline-g">View All Packages →</a></div>
 </section>
 
 <!-- PROPERTIES SLIDER -->
 <section id="properties">
-  <div class="section-label">🏡 Curated Stays</div>
-  <h2 class="section-title">Your Best Possible Hill Stays</h2>
-  <p class="section-sub">Handpicked hotels and homestays that we personally recommend — from cosy village cottages to ridge-top retreats.</p>
-
-  <div class="slider-wrap" id="propSliderWrap">
-    <button class="slider-btn prev" id="propPrev" onclick="propSlide(-1)" aria-label="Previous">&#8249;</button>
-    <div class="slider-track" id="propTrack">
-      <!-- Slide 1 -->
-      <div class="slide">
-        <div class="slide-img">
-          <img src="images/property-1.jpg" alt="Property 1" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;gap:8px;color:#8a6800\'>🏡<div style=\'font-size:0.85rem\'>Property Photo</div></div>'" />
-        </div>
-        <div class="slide-body">
-          <div class="slide-name">Property 1 Name Homestay</div>
-          <div class="slide-loc">📍 Location 1, North Bengal</div>
-          <span class="slide-tag">Homestay</span>
-        </div>
-      </div>
-      <!-- Slide 2 -->
-      <div class="slide">
-        <div class="slide-img">
-          <img src="images/property-2.jpg" alt="Property 2" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;gap:8px;color:#8a6800\'>🌿<div style=\'font-size:0.85rem\'>Property Photo</div></div>'" />
-        </div>
-        <div class="slide-body">
-          <div class="slide-name">Property 2 Name Resort</div>
-          <div class="slide-loc">📍 Location 2, North Bengal</div>
-          <span class="slide-tag">Resort</span>
-        </div>
-      </div>
-      <!-- Slide 3 -->
-      <div class="slide">
-        <div class="slide-img">
-          <img src="images/property-3.jpg" alt="Property 3" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;gap:8px;color:#8a6800\'>⛰️<div style=\'font-size:0.85rem\'>Property Photo</div></div>'" />
-        </div>
-        <div class="slide-body">
-          <div class="slide-name">Property 3 Name Boutique Hotel</div>
-          <div class="slide-loc">📍 Location 3, North Bengal</div>
-          <span class="slide-tag">Boutique Hotel</span>
-        </div>
-      </div>
-      <!-- Slide 4 -->
-      <div class="slide">
-        <div class="slide-img">
-          <img src="images/property-4.jpg" alt="Property 4" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;gap:8px;color:#8a6800\'>🍵<div style=\'font-size:0.85rem\'>Property Photo</div></div>'" />
-        </div>
-        <div class="slide-body">
-          <div class="slide-name">Property 4 Name Tea Estate Stay</div>
-          <div class="slide-loc">📍 Location 4, North Bengal</div>
-          <span class="slide-tag">Tea Estate</span>
-        </div>
-      </div>
-      <!-- Slide 5 -->
-      <div class="slide">
-        <div class="slide-img">
-          <img src="images/property-5.jpg" alt="Property 5" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;gap:8px;color:#8a6800\'>🌄<div style=\'font-size:0.85rem\'>Property Photo</div></div>'" />
-        </div>
-        <div class="slide-body">
-          <div class="slide-name">Property 5 Name Eco Lodge</div>
-          <div class="slide-loc">📍 Location 5, North Bengal</div>
-          <span class="slide-tag">Eco Lodge</span>
-        </div>
-      </div>
-      <!-- Slide 6 -->
-      <div class="slide">
-        <div class="slide-img">
-          <img src="images/property-6.jpg" alt="Property 6" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;gap:8px;color:#8a6800\'>🏕️<div style=\'font-size:0.85rem\'>Property Photo</div></div>'" />
-        </div>
-        <div class="slide-body">
-          <div class="slide-name">Property 6 Name Forest Cottage</div>
-          <div class="slide-loc">📍 Location 6, North Bengal</div>
-          <span class="slide-tag">Forest Cottage</span>
-        </div>
-      </div>
-      <!-- Slide 7 -->
-      <div class="slide">
-        <div class="slide-img">
-          <img src="images/property-7.jpg" alt="Property 7" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;gap:8px;color:#8a6800\'>🌸<div style=\'font-size:0.85rem\'>Property Photo</div></div>'" />
-        </div>
-        <div class="slide-body">
-          <div class="slide-name">Property 7 Name Valley View</div>
-          <div class="slide-loc">📍 Location 7, North Bengal</div>
-          <span class="slide-tag">Valley View Stay</span>
-        </div>
+  <div class="sec-label">🏡 Curated Stays</div>
+  <h2 class="sec-title">Your Best Possible Hill Stays</h2>
+  <p class="sec-sub">Handpicked hotels and homestays we personally recommend — from cosy village cottages to ridge-top retreats.</p>
+  <div class="sl-outer" id="propOuter">
+    <button class="sl-btn prev" id="propPrev" aria-label="Prev">&#8249;</button>
+    <div class="sl-vp" id="propVP">
+      <div class="sl-track" id="propTrack">
+        <div class="prop-card"><div class="prop-img"><span>🏡</span><img src="images/property-1.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 1 Name Homestay</div><div class="prop-loc">📍 Location 1, North Bengal</div><span class="prop-tag">Homestay</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>🌿</span><img src="images/property-2.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 2 Name Resort</div><div class="prop-loc">📍 Location 2, North Bengal</div><span class="prop-tag">Resort</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>⛰️</span><img src="images/property-3.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 3 Name Boutique Hotel</div><div class="prop-loc">📍 Location 3, North Bengal</div><span class="prop-tag">Boutique Hotel</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>🍵</span><img src="images/property-4.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 4 Name Tea Estate Stay</div><div class="prop-loc">📍 Location 4, North Bengal</div><span class="prop-tag">Tea Estate</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>🌄</span><img src="images/property-5.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 5 Name Eco Lodge</div><div class="prop-loc">📍 Location 5, North Bengal</div><span class="prop-tag">Eco Lodge</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>🏕️</span><img src="images/property-6.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 6 Name Forest Cottage</div><div class="prop-loc">📍 Location 6, North Bengal</div><span class="prop-tag">Forest Cottage</span></div></div>
+        <div class="prop-card"><div class="prop-img"><span>🌸</span><img src="images/property-7.jpg" alt="" onerror="this.style.display='none'"/></div><div class="prop-body"><div class="prop-name">Property 7 Name Valley View</div><div class="prop-loc">📍 Location 7, North Bengal</div><span class="prop-tag">Valley View</span></div></div>
       </div>
     </div>
-    <button class="slider-btn next" id="propNext" onclick="propSlide(1)" aria-label="Next">&#8250;</button>
+    <button class="sl-btn next" id="propNext" aria-label="Next">&#8250;</button>
   </div>
-  <div class="slider-dots" id="propDots"></div>
-  <div class="section-cta-row">
-    <a href="properties.html" class="btn-outline-gold">Browse All Properties →</a>
-  </div>
+  <div class="sl-dots" id="propDots"></div>
+  <div class="sec-cta"><a href="properties.html" class="btn-outline-g">Browse All Properties →</a></div>
 </section>
 
 <!-- WHY US -->
 <section id="why-us">
-  <div class="section-label">✦ Why Travel with Us</div>
-  <h2 class="section-title">The Sana On The Go Difference</h2>
-  <p class="section-sub">Local experts who live and breathe the Himalayas — we know these hills like our backyard.</p>
+  <div class="sec-label">✦ Why Travel with Us</div>
+  <h2 class="sec-title">The Sana On The Go Difference</h2>
+  <p class="sec-sub">Local experts who live and breathe the Himalayas — we know these hills like our backyard.</p>
   <div class="why-grid">
     <div class="why-card"><div class="why-icon">🏔️</div><h4>Local Expertise</h4><p>We're based in Siliguri and know every offbeat corner</p></div>
     <div class="why-card"><div class="why-icon">✨</div><h4>Curated Experiences</h4><p>Handpicked stays, routes and hidden gems</p></div>
@@ -1076,99 +456,77 @@
   </div>
 </section>
 
-<!-- GALLERY SLIDER -->
+<!-- GALLERY -->
 <section id="gallery">
-  <div class="section-label">Gallery</div>
-  <h2 class="section-title">A Glimpse of the Himalayas</h2>
-  <p class="section-sub">Your adventures, waiting to happen</p>
-
-  <div class="gallery-slider-wrap" id="galleryWrap">
-    <button class="slider-btn prev" id="galPrev" onclick="galSlide(-1)" aria-label="Previous">&#8249;</button>
-    <div class="gallery-track" id="galTrack">
-      <div class="gallery-slide">
-        <img src="images/gallery-1.JPG" alt="The Sleeping Buddha from the Thakum Valley"
-          onerror="this.style.display='none'; this.nextElementSibling && (this.nextElementSibling.style.display='flex')" />
-        <div class="gallery-placeholder" style="display:none"><span>📷</span>gallery-1.JPG</div>
-        <div class="gallery-caption">The Sleeping Buddha from the Thakum Valley</div>
-      </div>
-      <div class="gallery-slide">
-        <img src="images/gallery-2.JPG" alt="The mountains, clouds and the rain"
-          onerror="this.style.display='none'" />
-        <div class="gallery-caption">The mountains, clouds and the rain</div>
-      </div>
-      <div class="gallery-slide">
-        <img src="images/gallery-3.JPG" alt="Mt. Pandim painted red"
-          onerror="this.style.display='none'" />
-        <div class="gallery-caption">Mt. Pandim painted red</div>
-      </div>
-      <div class="gallery-slide">
-        <img src="images/gallery-4.JPG" alt="Darjeeling tea"
-          onerror="this.style.display='none'" />
-        <div class="gallery-caption">Darjeeling, where the champagne of teas are made</div>
-      </div>
-      <div class="gallery-slide">
-        <img src="images/gallery-5.jpeg" alt="Gurudongmar Lake"
-          onerror="this.style.display='none'" />
-        <div class="gallery-caption">The breathtaking holy Gurudongmar Lake</div>
-      </div>
-      <div class="gallery-slide">
-        <img src="images/gallery-6.JPG" alt="Kahi door jab din dhal jaye"
-          onerror="this.style.display='none'" />
-        <div class="gallery-caption">Kahi door jab din dhal jaye</div>
+  <div class="sec-label">Gallery</div>
+  <h2 class="sec-title">A Glimpse of the Himalayas</h2>
+  <p class="sec-sub">Your adventures, waiting to happen</p>
+  <div class="sl-outer" id="galOuter">
+    <button class="sl-btn prev" id="galPrev" aria-label="Prev">&#8249;</button>
+    <div class="sl-vp" id="galVP">
+      <div class="sl-track" id="galTrack">
+        <div class="gal-slide"><img src="images/gallery-1.JPG" alt="Sleeping Buddha"/><div class="gal-cap">The Sleeping Buddha from the Thakum Valley</div></div>
+        <div class="gal-slide"><img src="images/gallery-2.JPG" alt="Mountains"/><div class="gal-cap">The mountains, clouds and the rain</div></div>
+        <div class="gal-slide"><img src="images/gallery-3.JPG" alt="Mt Pandim"/><div class="gal-cap">Mt. Pandim painted red</div></div>
+        <div class="gal-slide"><img src="images/gallery-4.JPG" alt="Darjeeling"/><div class="gal-cap">Darjeeling, where the champagne of teas are made</div></div>
+        <div class="gal-slide"><img src="images/gallery-5.jpeg" alt="Gurudongmar"/><div class="gal-cap">The breathtaking holy Gurudongmar Lake</div></div>
+        <div class="gal-slide"><img src="images/gallery-6.JPG" alt="Hills"/><div class="gal-cap">Kahi door jab din dhal jaye</div></div>
       </div>
     </div>
-    <button class="slider-btn next" id="galNext" onclick="galSlide(1)" aria-label="Next">&#8250;</button>
+    <button class="sl-btn next" id="galNext" aria-label="Next">&#8250;</button>
   </div>
-  <div class="slider-dots" id="galDots"></div>
+  <div class="sl-dots" id="galDots"></div>
 </section>
 
 <!-- REVIEWS -->
 <section id="reviews">
-  <div class="section-label">✦ Traveller Reviews</div>
-  <h2 class="section-title">What Our Guests Say</h2>
-  <p class="section-sub">Real 5‑star reviews from guests — straight from Google</p>
-  <div class="reviews-grid">
-    <div class="review-card">
-      <div class="review-avatar">A</div>
-      <div class="review-stars">★★★★★</div>
-      <div class="review-name">Anirban</div>
-      <div class="review-source">Google Review</div>
-      <div class="review-text">Amazing Experience with Sana On The Go! Traveling with Sana di was an amazing experience. I went on a North Bengal trip with Sana di and my homies, and it was honestly one of the best travel experiences I've had. This was actually my second trip with them, and once again everything was perfectly organized.</div>
+  <div class="reviews-wrap">
+    <div class="sec-label">✦ Traveller Reviews</div>
+    <h2 class="sec-title">What Our Guests Say</h2>
+    <p class="sec-sub">Real 5‑star reviews from guests — straight from Google</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-av">A</div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-name">Anirban</div>
+        <div class="review-src">Google Review</div>
+        <div class="review-text">Amazing Experience with Sana On The Go! Traveling with Sana di was an amazing experience. I went on a North Bengal trip with my homies and it was one of the best travel experiences I've had. This was my second trip with them, and once again everything was perfectly organized. Traveling with them feels more like going on a trip with friends. Highly recommended!</div>
+      </div>
+      <div class="review-card">
+        <div class="review-av">B</div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-name">Bipasha</div>
+        <div class="review-src">Google Review</div>
+        <div class="review-text">If you'd just want to lie down and relax don't come with her as she makes sure that you don't miss any surreal experience and view, despite saying you're sleepy! I loved those sleepless nights by the way!! Already on my second trip with her.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-av">P</div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-name">Pushpal</div>
+        <div class="review-src">Google Review</div>
+        <div class="review-text">Traveling to North Bengal with Sana di was truly an unforgettable experience. She plans and organizes every tour so beautifully that each trip feels like discovering the mountains in a completely new way. The hotels and homestays are always of premium quality. Highly recommended!</div>
+      </div>
     </div>
-    <div class="review-card">
-      <div class="review-avatar">B</div>
-      <div class="review-stars">★★★★★</div>
-      <div class="review-name">Bipasha</div>
-      <div class="review-source">Google Review</div>
-      <div class="review-text">If you'd just want to lie down and relax don't come with her as she makes sure that you don't miss any surreal experience and view, despite saying you're sleepy! I loved those sleepless nights by the way!! Already in a second trip with her.</div>
+    <div class="reviews-cta">
+      <a href="https://share.google/5dTWhISUrA2SqOOea" target="_blank" class="btn-outline-g">Read More Reviews on Google →</a>
     </div>
-    <div class="review-card">
-      <div class="review-avatar">P</div>
-      <div class="review-stars">★★★★★</div>
-      <div class="review-name">Pushpal</div>
-      <div class="review-source">Google Review</div>
-      <div class="review-text">Traveling to North Bengal with Sana di was truly an unforgettable experience. She plans and organizes every tour so beautifully that each trip feels like discovering the mountains in a completely new way. The hotels and homestays are always of premium quality.</div>
-    </div>
-  </div>
-  <div class="reviews-cta">
-    <a href="https://share.google/5dTWhISUrA2SqOOea" target="_blank" class="btn-outline-gold">Read More Reviews on Google ⭐</a>
+    <p class="reviews-note">⭐ 5.0 · All verified Google reviews</p>
   </div>
 </section>
 
-<!-- CONTACT / FOOTER -->
+<!-- FOOTER -->
 <footer id="contact">
   <div class="footer-grid">
     <div>
       <div class="footer-brand">🏔️ Sana <span>On The Go</span></div>
       <p class="footer-desc">Into The Wild Tour and Travels — your trusted local guide for offbeat Himalayan journeys, curated from the heart of North Bengal.</p>
-      <br />
-      <a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20your%20tour%20packages." class="footer-wa-btn" target="_blank" onclick="showWaToast()">💬 Chat on WhatsApp</a>
+      <a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20your%20tour%20packages." class="footer-wa" target="_blank" onclick="showToast()">💬 Chat on WhatsApp</a>
     </div>
     <div>
       <h4>Contact Us</h4>
-      <div class="footer-contact-item">📞 Phone / WhatsApp<br /><a href="tel:+919874740763">+91 98747 40763</a></div>
-      <div class="footer-contact-item">✉️ Email<br /><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div>
-      <div class="footer-contact-item">📍 Office<br />100/A/3/L Rabindra Nagar Main Road, Siliguri, West Bengal 734006</div>
+      <div class="footer-ci">📞 Phone / WhatsApp<br/><a href="tel:+919874740763">+91 98747 40763</a></div>
+      <div class="footer-ci">✉️ Email<br/><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div>
+      <div class="footer-ci">📍 Office<br/>100/A/3/L Rabindra Nagar Main Road, Siliguri, WB 734006<br/><small>Open Mon–Sun · 9 AM – 8 PM</small></div>
     </div>
     <div>
       <h4>Quick Links</h4>
@@ -1185,288 +543,121 @@
   </div>
   <div class="footer-bottom">
     <span>© 2025 Sana On The Go – Into The Wild Tour and Travels. All rights reserved.</span>
-    <span>Open Mon–Sun · 9:00 AM – 8:00 PM</span>
+    <div style="display:flex;gap:16px">
+      <a href="index.html">Home</a>
+      <a href="packages.html">Packages</a>
+      <a href="properties.html">Properties</a>
+      <a href="https://wa.me/919874740763" target="_blank">WhatsApp</a>
+    </div>
   </div>
 </footer>
 
-<!-- FLOATING WA BUTTON -->
-<a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20your%20tour%20packages." class="float-wa" target="_blank" title="Chat on WhatsApp" onclick="showWaToast()">💬</a>
+<a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20your%20tour%20packages." class="float-wa" target="_blank" onclick="showToast()">💬</a>
 
 <script>
-// ===== TOAST =====
-function showWaToast() {
+/* TOAST */
+function showToast() {
   const t = document.getElementById('waToast');
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-// ===== NAV HAMBURGER =====
-document.getElementById('hamburger').addEventListener('click', function () {
-  document.getElementById('mobileNav').classList.toggle('open');
-});
+/* NAV */
+document.getElementById('ham').addEventListener('click', () => document.getElementById('mobNav').classList.toggle('open'));
+document.querySelectorAll('.mob-nav a').forEach(a => a.addEventListener('click', () => document.getElementById('mobNav').classList.remove('open')));
 
-// ===== BOOKING FORM VALIDATION & WHATSAPP =====
-function submitBookingEnquiry() {
-  let valid = true;
+/* BOOKING VALIDATION */
+function submitEnquiry() {
+  const arr = document.getElementById('arrDate').value;
+  const dep = document.getElementById('depDate').value;
+  const per = document.getElementById('persons').value;
+  const rom = document.getElementById('rooms').value;
+  const dst = document.getElementById('dest').value;
+  let ok = true;
 
-  // Get values
-  const arrival = document.getElementById('arrivalDate').value;
-  const departure = document.getElementById('departureDate').value;
-  const persons = document.getElementById('persons').value;
-  const rooms = document.getElementById('rooms').value;
-  const destination = document.getElementById('destination').value;
+  ['arrDate','depDate','persons','rooms'].forEach(id => document.getElementById(id).classList.remove('err'));
+  ['eArr','eDep','ePer','eRom'].forEach(id => document.getElementById(id).classList.remove('show'));
 
-  // Reset errors
-  ['arrivalDate', 'departureDate', 'persons', 'rooms'].forEach(id => {
-    document.getElementById(id).classList.remove('error');
-  });
-  document.getElementById('arrivalErr').classList.remove('show');
-  document.getElementById('departureErr').classList.remove('show');
-  document.getElementById('personsErr').classList.remove('show');
-  document.getElementById('roomsErr').classList.remove('show');
+  if (!arr) { document.getElementById('arrDate').classList.add('err'); document.getElementById('eArr').textContent='Please select an arrival date.'; document.getElementById('eArr').classList.add('show'); ok=false; }
+  if (!dep) { document.getElementById('depDate').classList.add('err'); document.getElementById('eDep').textContent='Please select a departure date.'; document.getElementById('eDep').classList.add('show'); ok=false; }
+  else if (arr && dep <= arr) { document.getElementById('depDate').classList.add('err'); document.getElementById('eDep').textContent='Departure must be after arrival date.'; document.getElementById('eDep').classList.add('show'); ok=false; }
+  if (!per) { document.getElementById('persons').classList.add('err'); document.getElementById('ePer').classList.add('show'); ok=false; }
+  if (!rom) { document.getElementById('rooms').classList.add('err'); document.getElementById('eRom').classList.add('show'); ok=false; }
+  if (!ok) return;
 
-  // Validate arrival
-  if (!arrival) {
-    document.getElementById('arrivalDate').classList.add('error');
-    document.getElementById('arrivalErr').textContent = 'Please select an arrival date.';
-    document.getElementById('arrivalErr').classList.add('show');
-    valid = false;
-  }
-
-  // Validate departure
-  if (!departure) {
-    document.getElementById('departureDate').classList.add('error');
-    document.getElementById('departureErr').textContent = 'Please select a departure date.';
-    document.getElementById('departureErr').classList.add('show');
-    valid = false;
-  } else if (arrival && departure <= arrival) {
-    document.getElementById('departureDate').classList.add('error');
-    document.getElementById('departureErr').textContent = 'Departure must be after arrival date.';
-    document.getElementById('departureErr').classList.add('show');
-    valid = false;
-  }
-
-  // Validate persons
-  if (!persons) {
-    document.getElementById('persons').classList.add('error');
-    document.getElementById('personsErr').classList.add('show');
-    valid = false;
-  }
-
-  // Validate rooms
-  if (!rooms) {
-    document.getElementById('rooms').classList.add('error');
-    document.getElementById('roomsErr').classList.add('show');
-    valid = false;
-  }
-
-  if (!valid) return;
-
-  // Build WhatsApp message
-  const destText = destination ? destination : 'Any destination';
-  const msg = `Hi Sana On The Go! 🏔️ I'd like to enquire about a tour.
-
-📅 Arrival: ${arrival}
-📅 Departure: ${departure}
-👥 Persons: ${persons}
-🛏️ Rooms: ${rooms}
-📍 Destination/Package: ${destText}
-
-Please share your best packages for these dates!`;
-
-  showWaToast();
-  setTimeout(() => {
-    window.open('https://wa.me/919874740763?text=' + encodeURIComponent(msg), '_blank');
-  }, 300);
+  const msg = `Hi Sana On The Go! 🏔️ Tour enquiry:\n\n📅 Arrival: ${arr}\n📅 Departure: ${dep}\n👥 Persons: ${per}\n🛏️ Rooms: ${rom}\n📍 Destination: ${dst||'Any destination'}\n\nPlease share your best packages!`;
+  showToast();
+  setTimeout(() => window.open('https://wa.me/919874740763?text='+encodeURIComponent(msg),'_blank'), 300);
 }
 
-// Allow Enter key in form
-document.querySelectorAll('#booking input, #booking select').forEach(el => {
-  el.addEventListener('keydown', e => {
-    if (e.key === 'Enter') submitBookingEnquiry();
-  });
-});
+/* SLIDER ENGINE */
+function Slider(vpId, trackId, dotsId, itemSel, gap, auto) {
+  const vp    = document.getElementById(vpId);
+  const track = document.getElementById(trackId);
+  const dotsC = document.getElementById(dotsId);
+  const items = Array.from(track.querySelectorAll(itemSel));
+  let cur = 0;
 
+  const vis = () => { const w=vp.offsetWidth; return w<500?1:w<820?2:3; };
 
-// ===== PROPERTIES SLIDER =====
-(function () {
-  const track = document.getElementById('propTrack');
-  const dotsContainer = document.getElementById('propDots');
-  const slides = track.querySelectorAll('.slide');
-  const total = slides.length;
-  let current = 0;
-  let slideWidth = 340; // slide + margin
-
-  function getVisible() {
-    const w = track.parentElement.offsetWidth;
-    if (w < 400) return 1;
-    if (w < 720) return 2;
-    return 3;
-  }
-
-  function updateSlideWidth() {
-    const w = track.parentElement.offsetWidth;
-    const vis = getVisible();
-    const margin = 20;
-    slideWidth = (w - (vis - 1) * margin) / vis + margin;
-    slides.forEach(s => {
-      s.style.minWidth = (slideWidth - margin) + 'px';
-      s.style.maxWidth = (slideWidth - margin) + 'px';
-    });
-  }
-
-  function renderDots() {
-    dotsContainer.innerHTML = '';
-    const vis = getVisible();
-    const pages = Math.ceil(total / vis);
-    for (let i = 0; i < pages; i++) {
-      const d = document.createElement('button');
-      d.className = 'dot' + (i === 0 ? ' active' : '');
-      d.style.border = 'none';
-      d.style.background = i === 0 ? 'var(--gold)' : '#ddd';
-      d.style.cursor = 'pointer';
-      d.style.padding = '0';
-      d.setAttribute('aria-label', 'Slide ' + (i + 1));
-      d.addEventListener('click', () => goTo(i * vis));
-      dotsContainer.appendChild(d);
-    }
-  }
-
-  function updateDots() {
-    const vis = getVisible();
-    const pages = dotsContainer.querySelectorAll('.dot');
-    const pageIdx = Math.round(current / vis);
-    pages.forEach((d, i) => {
-      d.classList.toggle('active', i === pageIdx);
-      d.style.background = i === pageIdx ? 'var(--gold)' : '#ddd';
-    });
-  }
-
-  function goTo(idx) {
-    const vis = getVisible();
-    const max = Math.max(0, total - vis);
-    current = Math.max(0, Math.min(idx, max));
-    track.style.transform = `translateX(-${current * slideWidth}px)`;
-    updateDots();
-  }
-
-  window.propSlide = function (dir) {
-    const vis = getVisible();
-    goTo(current + dir * vis);
+  const resize = () => {
+    const v=vis(), sw=(vp.offsetWidth-(v-1)*gap)/v;
+    items.forEach(el=>{ el.style.minWidth=sw+'px'; el.style.marginRight=gap+'px'; });
+    buildDots(); go(cur);
   };
 
-  function init() {
-    updateSlideWidth();
-    renderDots();
-    goTo(0);
-  }
-
-  window.addEventListener('resize', () => { updateSlideWidth(); renderDots(); goTo(current); });
-  init();
-
-  // Auto-play
-  setInterval(() => propSlide(1), 4000);
-})();
-
-
-// ===== GALLERY SLIDER =====
-(function () {
-  const track = document.getElementById('galTrack');
-  const dotsContainer = document.getElementById('galDots');
-  const slides = track.querySelectorAll('.gallery-slide');
-  const total = slides.length;
-  let current = 0;
-
-  function getVisible() {
-    const w = track.parentElement.offsetWidth;
-    if (w < 480) return 1;
-    if (w < 768) return 2;
-    return 3;
-  }
-
-  function getSlideWidth() {
-    const vis = getVisible();
-    const gap = 14;
-    const w = track.parentElement.offsetWidth;
-    return (w - (vis - 1) * gap) / vis + gap;
-  }
-
-  function updateSlideWidths() {
-    const vis = getVisible();
-    const gap = 14;
-    const w = track.parentElement.offsetWidth;
-    const sw = (w - (vis - 1) * gap) / vis;
-    slides.forEach(s => {
-      s.style.minWidth = sw + 'px';
-    });
-  }
-
-  function renderDots() {
-    dotsContainer.innerHTML = '';
-    const vis = getVisible();
-    const pages = Math.ceil(total / vis);
-    for (let i = 0; i < pages; i++) {
-      const d = document.createElement('button');
-      d.className = 'dot' + (i === 0 ? ' active' : '');
-      d.style.border = 'none';
-      d.style.background = i === 0 ? 'var(--gold)' : '#ddd';
-      d.style.cursor = 'pointer';
-      d.style.padding = '0';
-      d.addEventListener('click', () => goTo(i * vis));
-      dotsContainer.appendChild(d);
+  const buildDots = () => {
+    dotsC.innerHTML='';
+    const pages=Math.ceil(items.length/vis());
+    for(let i=0;i<pages;i++){
+      const b=document.createElement('button');
+      b.setAttribute('aria-label','Page '+(i+1));
+      b.addEventListener('click',()=>go(i*vis()));
+      dotsC.appendChild(b);
     }
-  }
-
-  function updateDots() {
-    const vis = getVisible();
-    const pages = dotsContainer.querySelectorAll('.dot');
-    const pageIdx = Math.round(current / vis);
-    pages.forEach((d, i) => {
-      d.classList.toggle('active', i === pageIdx);
-      d.style.background = i === pageIdx ? 'var(--gold)' : '#ddd';
-    });
-  }
-
-  function goTo(idx) {
-    const vis = getVisible();
-    const max = Math.max(0, total - vis);
-    current = Math.max(0, Math.min(idx, max));
-    const sw = getSlideWidth();
-    track.style.transform = `translateX(-${current * sw}px)`;
-    updateDots();
-  }
-
-  window.galSlide = function (dir) {
-    const vis = getVisible();
-    goTo(current + dir);
+    markDot();
   };
 
-  function init() {
-    updateSlideWidths();
-    renderDots();
-    goTo(0);
-  }
+  const markDot = () => {
+    Array.from(dotsC.children).forEach((b,i)=>b.classList.toggle('on',i===Math.round(cur/vis())));
+  };
 
-  window.addEventListener('resize', () => { updateSlideWidths(); renderDots(); goTo(current); });
-  init();
+  const go = idx => {
+    const v=vis(), max=Math.max(0,items.length-v);
+    cur=Math.max(0,Math.min(idx,max));
+    const sw=parseFloat(items[0].style.minWidth||'300');
+    track.style.transform=`translateX(-${cur*(sw+gap)}px)`;
+    markDot();
+  };
 
-  // Auto-play
-  setInterval(() => galSlide(1), 5000);
-})();
+  const fwd = () => go(cur+vis()>=items.length?0:cur+1);
+  const bwd = () => go(cur===0?Math.max(0,items.length-vis()):cur-1);
 
-// Touch/swipe support for both sliders
-function addSwipe(wrapId, slideFn) {
-  const el = document.getElementById(wrapId);
-  if (!el) return;
-  let startX = 0;
-  el.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-  el.addEventListener('touchend', e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) slideFn(diff > 0 ? 1 : -1);
-  });
+  window.addEventListener('resize', resize);
+
+  // touch swipe
+  let tx=0;
+  vp.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+  vp.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){d>0?fwd():bwd();}});
+
+  resize();
+  if(auto) setInterval(fwd, auto);
+
+  return { fwd, bwd };
 }
-addSwipe('propSliderWrap', propSlide);
-addSwipe('galleryWrap', galSlide);
+
+window.addEventListener('DOMContentLoaded', () => {
+  const pkg  = Slider('pkgVP',  'pkgTrack',  'pkgDots',  '.pkg-card, .pkg-custom-card', 24, 5000);
+  const prop = Slider('propVP', 'propTrack', 'propDots', '.prop-card', 22, 4000);
+  const gal  = Slider('galVP',  'galTrack',  'galDots',  '.gal-slide', 14, 6000);
+
+  document.getElementById('pkgPrev') .addEventListener('click', pkg.bwd);
+  document.getElementById('pkgNext') .addEventListener('click', pkg.fwd);
+  document.getElementById('propPrev').addEventListener('click', prop.bwd);
+  document.getElementById('propNext').addEventListener('click', prop.fwd);
+  document.getElementById('galPrev') .addEventListener('click', gal.bwd);
+  document.getElementById('galNext') .addEventListener('click', gal.fwd);
+});
 </script>
 </body>
 </html>
