@@ -516,7 +516,8 @@
     <div class="hero-stats">
       <div class="hero-stat"><strong>500+</strong><span>Happy Travellers</span></div>
       <div class="hero-stat"><strong>37+</strong><span>Curated Packages</span></div>
-      <div class="hero-stat"><strong>5.0★</strong><span>Avg. Rating</span></div> 
+      <div class="hero-stat"><strong>5.0★</strong><span>Avg. Rating</span></div>
+      <div class="hero-stat"><strong>5+</strong><span>Years Experience</span></div>
     </div>
   </div>
 </section>
@@ -531,13 +532,13 @@
       <div class="form-grid">
         <div class="form-field">
           <label>Arrival at NJP / Bagdogra</label>
-          <!-- CHANGE 6: oninput sets departure min date -->
-          <input type="date" id="arrDate" oninput="onArrivalChange()" />
+          <!-- CHANGE 6: onchange sets departure min date and closes calendar -->
+          <input type="date" id="arrDate" onchange="onArrivalChange()" />
           <span class="ferr" id="eArr">Please select an arrival date.</span>
         </div>
         <div class="form-field">
           <label>Departure from NJP / Bagdogra</label>
-          <input type="date" id="depDate" />
+          <input type="date" id="depDate" onchange="this.blur()" />
           <span class="ferr" id="eDep">Departure must be after arrival date.</span>
         </div>
         <div class="form-field">
@@ -774,7 +775,7 @@
     <div>
       <h4>Contact Us</h4>
       <div class="footer-ci">📞 Phone / WhatsApp<br/><a href="tel:+919874740763">+91 98747 40763</a></div>
-      <div class="footer-ci">✉️ Email<br/><a href="mailto:sayantikaintothewild@gmail.com">sayantikaintothewild@gmail.com</a></div>
+      <div class="footer-ci">✉️ Email<br/><a href="/cdn-cgi/l/email-protection#5625372f3738223f3d373f382239223e33213f3a3216313b373f3a7835393b"><span class="__cf_email__" data-cfemail="b7c4d6ced6d9c3dedcd6ded9c3d8c3dfd2c0dedbd3f7d0dad6dedb99d4d8da">[email&#160;protected]</span></a></div>
       <div class="footer-ci">📍 Office<br/>100/A/3/L Rabindra Nagar Main Road, Siliguri, WB 734006<br/><small>Open Mon–Sun · 9 AM – 8 PM</small></div>
       <div class="footer-map">
         <iframe
@@ -812,7 +813,7 @@
 
 <a href="https://wa.me/919874740763?text=Hi%20Sana%20On%20The%20Go!%20I%20am%20interested%20in%20your%20tour%20packages." class="float-wa" target="_blank" onclick="showToast()">💬</a>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* TOAST */
 function showToast() {
   const t = document.getElementById('waToast');
@@ -829,6 +830,10 @@ function onArrivalChange() {
   const arrInput = document.getElementById('arrDate');
   const depInput = document.getElementById('depDate');
   const arrVal   = arrInput.value;
+
+  // Dismiss the calendar picker
+  arrInput.blur();
+
   if (!arrVal) { depInput.removeAttribute('min'); return; }
 
   // Set min for departure to day after arrival
@@ -940,11 +945,4 @@ window.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('pkgPrev') .addEventListener('click', pkg.bwd);
   document.getElementById('pkgNext') .addEventListener('click', pkg.fwd);
-  document.getElementById('propPrev').addEventListener('click', prop.bwd);
-  document.getElementById('propNext').addEventListener('click', prop.fwd);
-  document.getElementById('galPrev') .addEventListener('click', gal.bwd);
-  document.getElementById('galNext') .addEventListener('click', gal.fwd);
-});
-</script>
-</body>
-</html>
+  document.getElementById('propPrev').addEventListener('click',
