@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerary Builder — Sana On The Go</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root{
+    --forest:#1B4332;
+    --forest-dark:#122C21;
+    --gold:#C9A227;
+    --gold-light:#E7C766;
+    --cream:#FDFBF6;
+    --ink:#22322A;
+    --line:#DDD6C4;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family: 'Segoe UI', Arial, sans-serif;
+    background:var(--cream); color:var(--ink);
+  }
+  header{
+    background:linear-gradient(135deg,var(--forest),var(--forest-dark));
+    color:#fff; padding:22px 20px; text-align:center;
+    border-bottom:4px solid var(--gold);
+  }
+  header h1{margin:0; font-size:1.5rem; letter-spacing:1px;}
+  header p{margin:4px 0 0; color:var(--gold-light); font-size:.85rem; letter-spacing:2px; text-transform:uppercase;}
+  .wrap{max-width:900px; margin:0 auto; padding:18px;}
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:10px;
+    padding:18px; margin-bottom:18px; box-shadow:0 2px 6px rgba(0,0,0,.04);
+  }
+  .card h2{
+    margin:0 0 14px; font-size:1.05rem; color:var(--forest);
+    border-bottom:2px solid var(--gold-light); padding-bottom:8px;
+  }
+  label{display:block; font-size:.8rem; font-weight:600; margin-bottom:4px; color:var(--forest-dark);}
+  input[type=text], input[type=date], textarea{
+    width:100%; padding:9px 10px; border:1px solid var(--line); border-radius:6px;
+    font-size:.92rem; font-family:inherit; margin-bottom:12px; background:#fffefb;
+  }
+  textarea{resize:vertical; min-height:60px;}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:600px){.row2{grid-template-columns:1fr;}}
+  .day-block{
+    border:1px solid var(--line); border-radius:8px; padding:14px; margin-bottom:14px;
+    background:#FAF8F1; position:relative;
+  }
+  .day-block .day-tag{
+    display:inline-block; background:var(--forest); color:#fff; font-size:.75rem;
+    padding:3px 10px; border-radius:12px; margin-bottom:10px; font-weight:600;
+  }
+  .sight-toggle{display:flex; align-items:center; gap:8px; margin:8px 0; flex-wrap:wrap;}
+  .sight-toggle input[type=checkbox]{width:auto; margin:0;}
+  .sight-toggle label{margin:0; font-weight:500;}
+  .suggest-btn{
+    background:var(--gold-light); border:1px solid var(--gold); color:var(--forest-dark);
+    font-size:.78rem; font-weight:600; padding:5px 10px; border-radius:14px; cursor:pointer;
+    display:none;
+  }
+  .suggest-btn:hover{background:var(--gold);}
+  .suggest-note{font-size:.78rem; font-weight:600; color:#888; margin:-4px 0 10px; display:none;}
+  .remove-day{
+    position:absolute; top:12px; right:12px; background:none; border:none;
+    color:#A33; font-size:.85rem; cursor:pointer; font-weight:600;
+  }
+  .btn{
+    background:var(--forest); color:#fff; border:none; padding:10px 18px;
+    border-radius:6px; font-size:.9rem; font-weight:600; cursor:pointer; margin-right:10px;
+  }
+  .btn:hover{background:var(--forest-dark);}
+  .btn.gold{background:var(--gold); color:var(--forest-dark);}
+  .btn.gold:hover{background:var(--gold-light);}
+  .btn.outline{background:#fff; color:var(--forest); border:1.5px solid var(--forest);}
+  .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;}
+  #preview{
+    background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px;
+    white-space:pre-wrap; font-size:.92rem; line-height:1.55; min-height:80px;
+  }
+  #preview .ph{color:#999; font-style:italic;}
+  .hint{font-size:.75rem; color:#777; margin-top:-8px; margin-bottom:10px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SANA ON THE GO</h1>
+  <p>Into The Wild Tour &amp; Travels — Itinerary Builder</p>
+</header>
+
+<div class="wrap">
+
+  <div class="card">
+    <h2>Trip Details</h2>
+    <div class="row2">
+      <div>
+        <label>Client Name</label>
+        <input type="text" id="clientName" placeholder="e.g. Mr. Anirban Sen">
+      </div>
+      <div>
+        <label>Trip Title (optional)</label>
+        <input type="text" id="tripTitle" placeholder="e.g. Darjeeling – Gangtok – Lachung">
+      </div>
+    </div>
+    <div class="row2">
+      <div>
+        <label>Trip Start Date (optional)</label>
+        <input type="date" id="startDate">
+      </div>
+      <div>
+        <label>Reference No. (optional)</label>
+        <input type="text" id="refNo" placeholder="e.g. SOTG-ITIN-2609-001">
+      </div>
+    </div>
+    <div class="row2">
+      <div>
+        <label>Contact / WhatsApp for footer (optional — defaults to +91 98747 40763)</label>
+        <input type="text" id="contactNo" placeholder="+91 98747 40763">
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Pickup</h2>
+    <label>Pickup Point</label>
+    <input type="text" id="pickupPoint" list="presetPoints" placeholder="e.g. NJP Railway Station">
+  </div>
+
+  <div class="card">
+    <h2>Day-wise Stay Plan</h2>
+    <div class="hint">Add one row per overnight stay, in order. Tick "Include sightseeing" — points fill in automatically from the route database (or the destination's own attractions on a leisure day) the moment the location is set. Freely edit the list before generating the PDF, or tap "Refresh suggestions" any time you change a location.</div>
+    <div id="daysContainer"></div>
+    <button class="btn outline" onclick="addDay()">+ Add Day / Stay</button>
+  </div>
+
+  <div class="card">
+    <h2>Drop-off</h2>
+    <label>Dropping Point (on last day)</label>
+    <input type="text" id="dropPoint" list="presetPoints" placeholder="e.g. Bagdogra Airport" oninput="if(document.getElementById('lastDaySightseeing').checked) suggestLastDaySights();" onblur="if(document.getElementById('lastDaySightseeing').checked) suggestLastDaySights();">
+    <div class="sight-toggle">
+      <input type="checkbox" id="lastDaySightseeing" onchange="toggleLastSight()">
+      <label for="lastDaySightseeing">Include sightseeing before drop-off on the last day</label>
+      <button type="button" class="suggest-btn" id="lastSuggestBtn" onclick="suggestLastDaySights()">↻ Refresh suggestions</button>
+    </div>
+    <div class="suggest-note" id="lastSuggestNote">Points are auto-filled below as soon as you tick the box and the drop point is set — edit freely.</div>
+    <textarea id="lastSightText" style="display:none" placeholder="One activity per line"></textarea>
+  </div>
+
+  <datalist id="presetPoints">
+    <option value="NJP Railway Station">
+    <option value="Siliguri Station">
+    <option value="Bagdogra Airport">
+    <option value="New Mal Junction">
+  </datalist>
+  <datalist id="presetDestinations">
+    <option value="Darjeeling"><option value="Gangtok"><option value="Lachung">
+    <option value="Lachen"><option value="Pelling"><option value="Kalimpong">
+    <option value="Kurseong"><option value="Mirik"><option value="Lava">
+    <option value="Lolegaon"><option value="Ravangla"><option value="Namchi">
+    <option value="Tinchuley"><option value="Srikhola"><option value="Bijanbari">
+    <option value="Takdah"><option value="Lamahatta"><option value="Chatakpur">
+    <option value="Sittong"><option value="Lepchajagat"><option value="Manebhanjan">
+    <option value="Bara Mangwa"><option value="Latpanchar"><option value="Rimbik">
+    <option value="Dawaipani"><option value="Jorpokhri"><option value="Sukhiapokhri">
+    <option value="Dhotrey"><option value="Sandakphu"><option value="Rishop">
+    <option value="Icche Gaon"><option value="Ramdhura"><option value="Kolakham">
+    <option value="Sillery Gaon"><option value="Samthar"><option value="Algarah">
+    <option value="Pedong"><option value="Kaffer"><option value="Rikisum">
+    <option value="Rishikhola"><option value="Lataguri"><option value="Gorumara">
+    <option value="Jaldapara"><option value="Buxa"><option value="Chilapata">
+    <option value="Jhalong"><option value="Bindu"><option value="Samsing">
+    <option value="Suntalekhola"><option value="Cooch Behar">
+    <option value="Yuksom"><option value="Rumtek"><option value="Dzongu">
+    <option value="Zuluk"><option value="Aritar"><option value="Nathang Valley">
+    <option value="Rongli"><option value="Kewzing"><option value="Borong">
+    <option value="Nimbong"><option value="Daragaon"><option value="Charkhol">
+    <option value="Duka Valley"><option value="Panbu"><option value="Relli">
+    <option value="Burmaik"><option value="Sangser"><option value="Sherpa Gaon">
+    <option value="Rinchenpong"><option value="Kaluk"><option value="Hee Bermiok">
+    <option value="Chayatal"><option value="Okhrey"><option value="Uttarey">
+    <option value="Dentam"><option value="Varsey"><option value="Legship">
+    <option value="Hilley"><option value="Soreng"><option value="Chakung">
+  </datalist>
+
+  <div class="card actions">
+    <button class="btn" onclick="renderPreview()">Preview Itinerary</button>
+    <button class="btn gold" onclick="downloadPDF()">Download Branded PDF</button>
+  </div>
+
+  <div class="card">
+    <h2>Preview</h2>
+    <div id="preview"><span class="ph">Fill in the details above and click "Preview Itinerary".</span></div>
+  </div>
+
+</div>
+
+<script>
+/* ============ Regional sightseeing database (North Bengal + Sikkim circuit) ============ */
+
+// canonical destination keys, matched by substring against user input
+const KEY_PATTERNS = [
+  ['njp','gateway'],['new jalpaiguri','gateway'],['siliguri','gateway'],['bagdogra','gateway'],['new mal','gateway'],
+  // Darjeeling core + offbeats
+  ['darjeeling','darjeeling'],
+  ['kurseong','kurseong'],
+  ['mirik','mirik'],
+  ['tinchuley','tinchuley'],
+  ['takdah','takdah'],
+  ['lamahatta','lamahatta'],
+  ['chatakpur','chatakpur'],
+  ['sittong','sittong'],
+  ['lepchajagat','lepchajagat'],
+  ['manebhanjan','manebhanjan'],
+  ['bara mangwa','baramangwa'],['bara mangua','baramangwa'],['baramangwa','baramangwa'],
+  ['latpanchar','latpanchar'],
+  ['meghma','meghma'],
+  ['rimbik','rimbik'],
+  ['bijanbari','bijanbari'],
+  ['dawaipani','dawaipani'],
+  ['jorpokhri','jorpokhri'],['jorepokhri','jorpokhri'],
+  ['bunkulung','bunkulung'],
+  ['rongo','rongo'],
+  ['srikhola','srikhola'],['sirikhola','srikhola'],
+  ['sukhiapokhri','sukhiapokhri'],['sukhia','sukhiapokhri'],
+  ['dhotrey','dhotrey'],['dhotre','dhotrey'],
+  ['sandakphu','sandakphu'],
+  ['phalut','phalut'],
+  ['gorkhey','gorkhey'],
+  ['rammam','rammam'],
+  // Kalimpong core + offbeats
+  ['kalimpong','kalimpong'],
+  ['lava','lava'],
+  ['lolegaon','lolegaon'],['loleygaon','lolegaon'],
+  ['rishyap','rishop'],['rishop','rishop'],
+  ['icche gaon','icchegaon'],['ichhey gaon','icchegaon'],['icchey gaon','icchegaon'],['icche','icchegaon'],
+  ['ramdhura','ramdhura'],
+  ['kolakham','kolakham'],
+  ['sillery','sillerygaon'],
+  ['samthar','samthar'],
+  ['algarah','algarah'],
+  ['pedong','pedong'],
+  ['kaffer','kaffer'],['kafer','kaffer'],
+  ['bidhyang','bidhyang'],['bidyang','bidhyang'],
+  ['rikisum','rikisum'],
+  ['reshi khola','rishikhola'],['rishi khola','rishikhola'],['rishikhola','rishikhola'],['reshikhola','rishikhola'],
+  ['nimbong','nimbong'],
+  ['daragaon','daragaon'],['dara gaon','daragaon'],
+  ['charkhol','charkhol'],['charkhole','charkhol'],
+  ['duka valley','dukavalley'],['dukavalley','dukavalley'],
+  ['panbu','panbu'],
+  ['relli','relli'],
+  ['burmaik','burmaik'],
+  ['fikkalay','fikkalaygaon'],
+  ['dalapchand','dalapchand'],
+  ['tandrabong','tandrabong'],
+  ['thangulam','thangulam'],
+  ['yelbong','yelbong'],
+  ['nokdara','nokdara'],
+  ['pabong','pabong'],
+  ['sangser','sangser'],
+  ['sherpa gaon','sherpagaon'],
+  ['kashyem kaman','kashyemkaman'],
+  // Dooars
+  ['lataguri','gorumara'],['gorumara','gorumara'],['chalsa','gorumara'],['murti','gorumara'],['dhupjhora','gorumara'],
+  ['jaldapara','jaldapara'],
+  ['buxa','buxa'],['jayanti','buxa'],['rajabhatkhawa','buxa'],
+  ['chilapata','chilapata'],
+  ['jhalong','jhalong'],
+  ['bindu','bindu'],
+  ['samsing','samsing'],['suntalekhola','samsing'],['suntanekhola','samsing'],
+  ['cooch behar','coochbehar'],['coochbehar','coochbehar'],
+  ['dooars','gorumara'],
+  // Sikkim core
+  ['gangtok','gangtok'],
+  ['pelling','pelling'],
+  ['namchi','namchi'],
+  ['ravangla','ravangla'],
+  ['lachung','lachung'],
+  ['lachen','lachen'],
+  ['yuksom','yuksom'],
+  ['rumtek','rumtek'],
+  ['dzongu','dzongu'],
+  ['zuluk','zuluk'],['dzuluk','zuluk'],
+  ['aritar','aritar'],
+  ['nathang','nathangvalley'],['gnathang','nathangvalley'],
+  ['rongli','rongli'],
+  ['padamchen','padamchen'],
+  ['kewzing','kewzing'],
+  ['borong','borong'],
+  // West Sikkim offbeats
+  ['rinchenpong','rinchenpong'],
+  ['kaluk','kaluk'],
+  ['hee bermiok','heebermiok'],['bermiok','heebermiok'],
+  ['chayatal','chayatal'],['chaya taal','chayatal'],
+  ['okhrey','okhrey'],
+  ['uttarey','uttarey'],
+  ['dentam','dentam'],
+  ['varsey','varsey'],['barsey','varsey'],
+  ['legship','legship'],
+  ['hilley','hilley'],
+  ['soreng','soreng'],
+  ['chakung','chakung']
+];
+
+function canonical(raw){
+  if(!raw) return null;
+  const s = raw.toLowerCase();
+  for(const [pat,key] of KEY_PATTERNS){
+    if(s.includes(pat)) return key;
+  }
+  return null;
+}
+
+// Points found ALONG THE ROAD between two places (transfer day)
+const ROUTE_POINTS = {
+  // Gateway (NJP/Siliguri/Bagdogra) corridors
+  'darjeeling|gateway': ["Rock Garden & Ganga Maiya Park (Rohini)","Rohini Tea Garden viewpoint","Kurseong town & Eagle's Crag viewpoint","Paglajhora Falls, Shibkhola Tea Garden","Tindharia toy-train loop","Ghum Monastery (highest point on the route)","Batasia Loop & War Memorial"],
+  'gateway|kurseong': ["Rock Garden & Ganga Maiya Park (Rohini)","Rohini Tea Garden viewpoint","Eagle's Crag viewpoint","Paglajhora Falls, Shibkhola Tea Garden"],
+  'gateway|mirik': ["Pashupati Nagar border market","Thurbo Tea Estate","Sumendu Lake, Mirik"],
+  'gateway|gangtok': ["Coronation Bridge, Sevoke","Sevoke Kali Mandir","Teesta River viewpoint (Teesta Bazaar)","Rangpo (Sikkim border check-post)"],
+  'gateway|kalimpong': ["Coronation Bridge, Sevoke","Sevoke Kali Mandir","Teesta Bazaar viewpoint"],
+  'gateway|gorumara': ["Coronation Bridge, Sevoke","Gajoldoba","Chalsa tea gardens"],
+  'gateway|jaldapara': ["Coronation Bridge, Sevoke","Chalsa tea gardens","Binnaguri tea estates"],
+  'gateway|tinchuley': ["Coronation Bridge, Sevoke","Teesta Valley Tea Estate","Rungli Rungliot Tea Estate","Takdah Cantonment"],
+  'gateway|lava': ["Coronation Bridge, Sevoke","Teesta Bazaar viewpoint","Kalimpong town (brief halt)"],
+  'gateway|lolegaon': ["Coronation Bridge, Sevoke","Teesta Bazaar viewpoint","Kalimpong town (brief halt)"],
+  'gateway|icchegaon': ["Coronation Bridge, Sevoke","Teesta Bazaar viewpoint","Kalimpong town (brief halt)"],
+  // Darjeeling town connections
+  'darjeeling|kalimpong': ["Ghum Monastery","Batasia Loop & War Memorial","Peshok Tea Garden viewpoint","Lovers Meet Viewpoint (Teesta-Rangeet confluence)","Teesta River & Coronation Bridge area"],
+  'darjeeling|mirik': ["Ghum Monastery","Sukhiapokhri","Thurbo Tea Estate","Sumendu Lake, Mirik"],
+  'darjeeling|tinchuley': ["Ghum Monastery","Takdah Cantonment & Orchid Centre","Peshok Tea Garden & Lovers Meet Viewpoint","Lamahatta Eco Park"],
+  'darjeeling|gangtok': ["Ghum Monastery","Teesta River & Coronation Bridge area","Rangpo (Sikkim border check-post)"],
+  'darjeeling|kurseong': ["Ghum Monastery","Batasia Loop","Sonada tea garden viewpoint"],
+  'darjeeling|lamahatta': ["Ghum Monastery","Peshok Tea Garden viewpoint","Takdah"],
+  'darjeeling|takdah': ["Ghum Monastery","Peshok Tea Garden viewpoint","Lamahatta Eco Park"],
+  'darjeeling|chatakpur': ["Ghum Monastery","Senchal Wildlife Sanctuary gate"],
+  'darjeeling|lepchajagat': ["Ghum Monastery","Senchal Lake"],
+  'darjeeling|manebhanjan': ["Ghum Monastery","Sukhiapokhri"],
+  'darjeeling|sukhiapokhri': ["Ghum Monastery"],
+  'darjeeling|dhotrey': ["Ghum Monastery","Sukhiapokhri","Manebhanjan"],
+  'darjeeling|bijanbari': ["Ghum Monastery","Mariabong Tea Gardens"],
+  'darjeeling|srikhola': ["Ghum Monastery","Manebhanjan","Rimbik"],
+  'darjeeling|rimbik': ["Ghum Monastery","Manebhanjan","Sukhiapokhri"],
+  'darjeeling|jorpokhri': ["Ghum Monastery"],
+  'darjeeling|sittong': ["Ghum Monastery","Mungpoo Tea Garden & Cinchona plantation"],
+  'darjeeling|latpanchar': ["Ghum Monastery","Mungpoo Tea Garden & Cinchona plantation"],
+  'kurseong|mirik': ["Sonada tea garden viewpoint","Dilaram viewpoint"],
+  'kurseong|sittong': ["Mungpoo Tea Garden & Cinchona plantation"],
+  // Kalimpong belt
+  'gangtok|kalimpong': ["Teesta Bazaar viewpoint","Rangpo (Sikkim border check-post)","Teesta River rafting point"],
+  'kalimpong|lava': ["Algarah","Neora Valley National Park gate"],
+  'kalimpong|lolegaon': ["Algarah","Kaffer"],
+  'kalimpong|icchegaon': ["Ramdhura","Pine forest viewpoints"],
+  'kalimpong|ramdhura': ["Deolo Hill viewpoint (en route)"],
+  'kalimpong|kolakham': ["Algarah","Lava (Neora Valley gate)"],
+  'kalimpong|rishop': ["Algarah","Lava","Kolakham"],
+  'kalimpong|samthar': ["Relli River valley"],
+  'kalimpong|pedong': ["Deolo Hill viewpoint (en route)","Damsang Fort area"],
+  'kalimpong|sillerygaon': ["Algarah","Icche Gaon area"],
+  'lava|lolegaon': ["Neora Valley National Park edge","Kaffer village"],
+  'lava|kolakham': ["Neora Valley National Park gate"],
+  'lava|rishop': ["Kolakham","Neora Valley forest belt"],
+  'lolegaon|kaffer': ["Riyabari viewpoint"],
+  'pedong|rishikhola': ["Damsang Fort area","Silk Route foothill villages"],
+  // Dooars internal
+  'gorumara|jaldapara': ["Chalsa tea gardens","Binnaguri tea estates"],
+  'gorumara|jhalong': ["Chalsa","Damdim tea garden belt"],
+  'gorumara|bindu': ["Chalsa","Jhalong (Jaldhaka riverside)"],
+  'gorumara|samsing': ["Chalsa","Malbazar tea gardens"],
+  'gorumara|chilapata': ["Malbazar","Falakata"],
+  'gorumara|buxa': ["Malbazar","Hasimara"],
+  'jhalong|bindu': ["Jaldhaka River viewpoint"],
+  'jaldapara|chilapata': ["Madarihat forest belt"],
+  'jaldapara|buxa': ["Hasimara","Rajabhatkhawa forest gate"],
+  'chilapata|buxa': ["Rajabhatkhawa forest gate"],
+  'gateway|coochbehar': ["Jalpaiguri town","Falakata"],
+  // North / East / South / West Sikkim
+  'gangtok|lachung': ["Tsomgo (Changu) Lake (short detour)","Phodong","Mangan (cardamom fields)","Singhik Viewpoint","Chungthang (Teesta-Lachen-Lachung confluence)","Bheem Nala Falls"],
+  'gangtok|lachen': ["Phodong","Mangan (cardamom fields)","Naga Waterfalls","Chungthang confluence"],
+  'gangtok|dzongu': ["Phodong","Mangan","Teesta-Tholung Chu valley viewpoints"],
+  'gangtok|pelling': ["Temi Tea Estate","Namchi Char Dham & Samdruptse Statue","Ravangla Buddha Park"],
+  'gangtok|ravangla': ["Temi Tea Estate","Namchi Char Dham & Samdruptse Statue"],
+  'gangtok|namchi': ["Temi Tea Estate","Ralong Monastery & hot spring"],
+  'gangtok|yuksom': ["Namchi","Legship","Pelling"],
+  'gangtok|rumtek': ["Ranka Monastery (en route)"],
+  'gangtok|zuluk': ["Tsomgo (Changu) Lake","Nathula Pass area (permit)","Padamchen"],
+  'gangtok|aritar': ["Rongli","Lampokhari Lake"],
+  'gangtok|nathangvalley': ["Tsomgo (Changu) Lake","Zuluk hairpin loops","Kupup / Elephant Lake"],
+  'pelling|ravangla': ["Rimbi Falls & Rock Garden","Khecheopalri Lake (en route)"],
+  'namchi|pelling': ["Rimbi Falls & Rock Garden","Khecheopalri Lake (en route)"],
+  'pelling|yuksom': ["Khecheopalri Lake","Pemayangtse Monastery"],
+  'lachen|lachung': ["Chungthang confluence","Naga Waterfalls / Bheem Nala Falls"],
+  'lachen|dzongu': ["Chungthang confluence","Teesta valley viewpoints"],
+  'zuluk|aritar': ["Padamchen","Rongli"],
+  'zuluk|nathangvalley': ["Thambi View Point","Silk Route hairpin loops"],
+  'aritar|rongli': ["Lampokhari Lake"],
+  'ravangla|namchi': ["Ralong Monastery & hot spring"],
+  'ravangla|kewzing': ["Local monastery belt"],
+  'namchi|borong': ["Temi Tea Estate"],
+  // West Sikkim internal
+  'pelling|rinchenpong': ["Legship (Rangit River confluence)"],
+  'pelling|uttarey': ["Legship","Dentam"],
+  'pelling|varsey': ["Legship","Hilley (trailhead)"],
+  'pelling|dentam': ["Legship"],
+  'rinchenpong|kaluk': ["Local viewpoints"],
+  'rinchenpong|uttarey': ["Kaluk","Hee Bermiok","Dentam"],
+  'kaluk|heebermiok': ["Local cardamom-belt villages"],
+  'heebermiok|uttarey': ["Dentam"],
+  'dentam|uttarey': ["Singshore Bridge (second-highest gorge bridge in Asia)"],
+  'dentam|varsey': ["Hilley (trailhead)"],
+  'okhrey|varsey': ["Hilley"],
+  'okhrey|uttarey': ["Hilley","Dentam"],
+  'gangtok|rinchenpong': ["Namchi","Legship"],
+  // Kalimpong offbeat-belt internal
+  'kalimpong|charkhol': ["Algarah","Lava or Lolegaon"],
+  'kalimpong|daragaon': ["Icche Gaon area (Daragaon is locally called Upper Icchey)"],
+  'kalimpong|nimbong': ["Algarah"],
+  'lava|charkhol': ["Lolegaon"],
+  'lolegaon|charkhol': ["Kaffer"],
+  'icchegaon|daragaon': ["Local ridge-top villages"]
+};
+
+// Things to do IN a destination (leisure / halt day, same place as the day before)
+const DESTINATION_POINTS = {
+  gateway: ["Hong Kong Market, Siliguri","Sevoke Kali Mandir & Coronation Bridge (short trip)"],
+  // Darjeeling core + offbeats
+  darjeeling: ["Tiger Hill sunrise view","Ghum Monastery","Batasia Loop & War Memorial","Himalayan Mountaineering Institute & Zoo","Peace Pagoda","Darjeeling Ropeway","Happy Valley Tea Estate","Chowrasta & Mall Road"],
+  kurseong: ["Eagle's Crag viewpoint","Ambootia Tea Garden","Dow Hill & forest museum","Deer Park","Netaji Museum, Gidda Pahar"],
+  mirik: ["Sumendu Lake boating","Bokar Monastery","Thurbo Tea Estate","Sunrise viewpoint on Ghoom Line"],
+  tinchuley: ["Tinchuley View Point (sunrise)","Tinchuley Monastery","Orange orchards & nature trails","Peshok Tea Garden"],
+  takdah: ["Takdah Cantonment (colonial bungalows)","Takdah Orchid Centre","Old tea gardens walk"],
+  lamahatta: ["Lamahatta Eco Park","Forest nature trails","Viewpoint & hidden lakes"],
+  chatakpur: ["Senchal Wildlife Sanctuary birdwatching","Chatakpur viewpoint","Forest nature walks"],
+  sittong: ["Orange orchards","Rural village walk","Mahananda river valley views"],
+  lepchajagat: ["Forest nature trails","Birdwatching","Kanchenjunga viewpoint"],
+  manebhanjan: ["Sandakphu trek starting point","Sleeping Buddha (Kanchenjunga range) viewpoint"],
+  baramangwa: ["Organic farm walk","Riverside viewpoints"],
+  latpanchar: ["Birdwatching (Rufous-necked Hornbill belt)","Mahananda Wildlife Sanctuary edge"],
+  meghma: ["Cloud-forest viewpoint on the Sandakphu trail","Small monastery"],
+  rimbik: ["Singalila National Park gateway","Trekkers' base for Sandakphu/Phalut"],
+  bijanbari: ["Little Rangeet River valley walk","Bijanbari tea gardens","Ramam Hydro Project viewpoint","Jamuni Park, Pulbazar (nearby)"],
+  dawaipani: ["Kanchenjunga viewpoint","Quiet village walk"],
+  jorpokhri: ["Jorpokhri twin lake","Pine forest walk"],
+  bunkulung: ["Riverside valley walk","Terraced fields"],
+  rongo: ["Tea garden & forest walk","Himalayan range viewpoint (near Bhutan border)"],
+  srikhola: ["Srikhola riverside & trout hatchery","Gateway halt on the Rimbik-Srikhola-Sandakphu trek route","Rammam River confluence (nearby)"],
+  sukhiapokhri: ["Kanchenjunga viewpoint","Junction town for Mirik/Sandakphu routes"],
+  dhotrey: ["Gateway to Singalila National Park","Trekking base for Sandakphu/Phalut"],
+  sandakphu: ["Sleeping Buddha (Kanchenjunga-Everest-Makalu) panoramic sunrise view","Singalila ridge trek"],
+  phalut: ["Panoramic Himalayan viewpoint (Kanchenjunga to Everest)","Singalila National Park trek"],
+  gorkhey: ["Riverside trekkers' village on the Singalila trail"],
+  rammam: ["High trekking hamlet on the Singalila ridge"],
+  // Kalimpong core + offbeats
+  kalimpong: ["Deolo Hill","Durpin Dara Monastery & viewpoint","Pine View Nursery (cactus)","Dr. Graham's Homes","Thongsa Gompa","Mangal Dham"],
+  lava: ["Neora Valley National Park","Lava Monastery","Rishop viewpoint (nearby)"],
+  lolegaon: ["Lolegaon Canopy Walk","Riyabari viewpoint","Kaffer village walk"],
+  rishop: ["180-degree Himalayan viewpoint","Rhododendron & pine forest walks","Sunrise/sunset viewpoint"],
+  icchegaon: ["Kanchenjunga viewpoint","Village walk & homestay culture","Pine & rhododendron forest trails"],
+  ramdhura: ["Kanchenjunga & Teesta viewpoint","Orange orchard walks","Army golf course viewpoint"],
+  kolakham: ["Neora Valley forest trails","Birdwatching & hidden waterfalls","Base for Rishop/Lolegaon visits"],
+  sillerygaon: ["Kanchenjunga viewpoint (locally called New Darjeeling)","Tea garden walks","Sunrise viewpoint"],
+  samthar: ["Panoramic Himalayan range view (Kanchenjunga, Nathula, Chola Pass)","Rural plateau walks","Neora Valley excursion (nearby)"],
+  algarah: ["Junction village for the Kalimpong offbeat belt","Forest & valley viewpoints"],
+  pedong: ["Damsang Fort ruins","Hanuman Top viewpoint","Old Silk Route heritage sites","Cross Hill & Sangchen Dorjee Monastery"],
+  kaffer: ["Himalayan & Teesta valley viewpoint","Quiet forest walks"],
+  bidhyang: ["Riverside valley walk","Organic farm homestay culture"],
+  rikisum: ["Kanchenjunga panoramic viewpoint","Ruins of a 1902 British bungalow","Rhododendron forest trails"],
+  rishikhola: ["Riverside hamlet on the Sikkim-Bengal border","Angling & riverside relaxation","Gateway to the Silk Route foothill villages"],
+  nimbong: ["Quiet unexplored hamlet walk","Village homestay culture","Trekking trails"],
+  daragaon: ["Known as the Balcony of Kanchenjunga viewpoint","Birdwatching & orange orchard walks","Nearby: Ghaletar, Thamdara, Namthing Pokhri"],
+  charkhol: ["360-degree Kanchenjunga viewpoint from Charkhole Hill","Dense pine, oak & rhododendron forest walks","Known motor-rally / stargazing spot"],
+  dukavalley: ["Quiet valley homestay retreat","Nature walks & village life"],
+  panbu: ["Kanchenjunga & Dooars viewpoint","Quiet hamlet walk"],
+  relli: ["Relli River valley walk","Tea garden & forest surroundings"],
+  burmaik: ["Teesta River & Eastern Himalaya viewpoint","Orange orchard walks","Traditional Lepcha village life"],
+  fikkalaygaon: ["Forest walks & village life","Quiet offbeat retreat"],
+  dalapchand: ["Quiet hillside village near Lava/Algarah","Forest walks"],
+  tandrabong: ["Himalayan viewpoint hamlet","Village walk"],
+  thangulam: ["Hilltop viewpoint (5,000 ft)","Village walk near Kalimpong"],
+  yelbong: ["Forest-surrounded hilly settlement","Village walk"],
+  nokdara: ["Quiet hill terrain walk","Village homestay culture"],
+  pabong: ["Picturesque hamlet walk","Village life"],
+  sangser: ["Lush green village walk","Quiet countryside"],
+  sherpagaon: ["Calm village ambience","Homestay & local culture"],
+  kashyemkaman: ["Confluence viewpoint of Teesta & Rangpo rivers","Riverside walk"],
+  // Dooars
+  gorumara: ["Gorumara National Park jungle safari","Chapramari Wildlife Sanctuary","Murti riverbed","Samsing & Suntalekhola (day trip)"],
+  jaldapara: ["Jaldapara National Park elephant/jeep safari (one-horned rhino)","Hollong forest area","Torsa River viewpoint"],
+  buxa: ["Buxa Tiger Reserve","Buxa Fort ruins","Jayanti River & forest","Birdwatching (500+ species)"],
+  chilapata: ["Chilapata Forest jungle safari (rhino, elephant, leopard)","Nal Raja's Garh ruins","Birdwatching & angling"],
+  jhalong: ["Jaldhaka River & hydel project viewpoint","Bhutan hill views","Riverside walks"],
+  bindu: ["Jaldhaka River confluence viewpoint","Cardamom plantations","Bhutan border views"],
+  samsing: ["Suntalekhola riverside","Tea garden walks","Samsing forest trails"],
+  coochbehar: ["Cooch Behar Palace","Madan Mohan Temple","Sagardighi lake"],
+  // Sikkim core
+  gangtok: ["MG Marg","Tsomgo (Changu) Lake","Baba Mandir","Ganesh Tok & Hanuman Tok","Tashi Viewpoint","Gangtok Ropeway","Banjhakri Falls","Rumtek Monastery"],
+  pelling: ["Pemayangtse Monastery","Rabdantse Ruins","Khecheopalri Lake","Kanchenjunga Falls","Rimbi Falls & Rock Garden","Pelling Skywalk","Sangachoeling Monastery"],
+  namchi: ["Siddheshwar Dham (Char Dham)","Samdruptse Statue","Namchi Rock Garden","Tendong Hill viewpoint (nearby)"],
+  ravangla: ["Buddha Park","Ralong Monastery & hot spring","Temi Tea Estate","Ravangla Skywalk"],
+  lachung: ["Yumthang Valley (Valley of Flowers)","Yumesamdong / Zero Point","Lachung Monastery","Bheem Nala Falls","Hot spring at Yumthang"],
+  lachen: ["Gurudongmar Lake","Chopta Valley","Green Lake trek viewpoint","Thangu Valley (nearby)"],
+  yuksom: ["Dubdi Monastery (oldest in Sikkim)","Norbugang Coronation Throne","Karthok Lake","Gateway to Khangchendzonga National Park treks (Dzongri/Goecha La)"],
+  rumtek: ["Rumtek Monastery (Dharma Chakra Centre)","Views over the Gangtok valley"],
+  dzongu: ["Lepcha heritage villages","Teesta & Tholung Chu river valley views","Tholung Monastery (permit required)"],
+  zuluk: ["Thambi View Point sunrise over Kanchenjunga","32-hairpin-bend Silk Route loops (Zigzag road)","Old Silk Route trade-history viewpoints"],
+  aritar: ["Lampokhari Lake","Aritar Gumpa (monastery)","Changey Waterfalls","Aritar Dak Bungalow (heritage)"],
+  nathangvalley: ["High-altitude meadow sunrise/stargazing","Kupup Lake (Elephant Lake)","Old Baba Mandir (nearby)"],
+  rongli: ["Gateway town for Silk Route permits","Riverside walks"],
+  padamchen: ["Silk Route hamlet views","Army-camp belt scenery"],
+  kewzing: ["Traditional Sikkimese village culture","Bird Park & monastery walk"],
+  borong: ["Hot spring","Quiet valley homestay culture"],
+  rinchenpong: ["Rinchenpong Monastery & Poison Lake","Gurung Gompa (Meghi-Dara)","Rabindra Smriti Van viewpoint","Traditional Lepcha house"],
+  kaluk: ["Panoramic Kanchenjunga viewpoint","Gateway town for the Rinchenpong-Hee Bermiok belt"],
+  heebermiok: ["Srijunga Waterfall (short walk from the bazaar)","Cardamom-country village walks","Dhungay Estate farm-village culture"],
+  chayatal: ["Quiet cardamom-country village walk","Homestay culture"],
+  okhrey: ["Gateway to Barsey Rhododendron Sanctuary trek (via Hilley)","Rhododendron-season forest walks","Stargazing"],
+  uttarey: ["Trout Fish Breeding Centre","Tenzing-Hillary Park","Kagyu Gumpa monastery","Mainibas Falls hike","Starting point for Phoktey Dara / Singalila-La treks"],
+  dentam: ["Alpine Cheese Factory (Gouda)","Dentam viewpoint","Maney Bong Kagyu Chorten"],
+  varsey: ["Barsey/Varsey Rhododendron Sanctuary trek (peak bloom March-April)","Red Panda & Tibetan Serow habitat","Rambong Khola stream walk"],
+  legship: ["Confluence viewpoint on the Rangit River","Rest halt en route to Pelling/Rinchenpong"],
+  hilley: ["Trailhead for the Barsey Rhododendron Sanctuary trek","Forest rest stop"],
+  soreng: ["Gateway town for the Rinchenpong-Dentam offbeat belt"],
+  chakung: ["Quiet West Sikkim village walk","Homestay culture"]
+};
+
+function lookupSights(fromRaw, toRaw){
+  const fromKey = canonical(fromRaw);
+  const toKey = canonical(toRaw);
+  if(!toKey) return null;
+  if(fromKey && fromKey === toKey){
+    return DESTINATION_POINTS[toKey] || null;
+  }
+  if(!fromKey){
+    return DESTINATION_POINTS[toKey] || null;
+  }
+  const routeKey = [fromKey, toKey].sort().join('|');
+  return ROUTE_POINTS[routeKey] || DESTINATION_POINTS[toKey] || null;
+}
+
+/* ============ Day builder UI ============ */
+
+let dayCount = 0;
+
+function addDay(){
+  dayCount++;
+  const container = document.getElementById('daysContainer');
+  const block = document.createElement('div');
+  block.className = 'day-block';
+  block.dataset.id = dayCount;
+  block.innerHTML = `
+    <button class="remove-day" onclick="removeDay(this)">✕ Remove</button>
+    <span class="day-tag">Stay ${dayCount}</span>
+    <label>Overnight Stay Location</label>
+    <input type="text" class="stayLoc" list="presetDestinations" placeholder="e.g. Gangtok">
+    <div class="sight-toggle">
+      <input type="checkbox" class="sightCheck" onchange="toggleSight(this)">
+      <label>Include sightseeing on this day</label>
+      <button type="button" class="suggest-btn" onclick="suggestDaySights(this)">↻ Refresh suggestions</button>
+    </div>
+    <div class="suggest-note">Points are auto-filled below as soon as you tick the box and the location is set — edit freely.</div>
+    <textarea class="sightText" style="display:none" placeholder="One activity per line, e.g.&#10;Tsomgo Lake visit&#10;Baba Mandir&#10;Local market in the evening"></textarea>
+  `;
+  const stayInput = block.querySelector('.stayLoc');
+  const sightCheck = block.querySelector('.sightCheck');
+  // Auto-fill the moment the location is typed/changed, if sightseeing is already ticked
+  const autofillIfReady = () => {
+    if(sightCheck.checked){
+      suggestDaySights(block.querySelector('.suggest-btn'));
+    }
+  };
+  stayInput.addEventListener('input', autofillIfReady);
+  stayInput.addEventListener('change', autofillIfReady);
+  stayInput.addEventListener('blur', autofillIfReady);
+  container.appendChild(block);
+  renumberDays();
+}
+
+function removeDay(btn){
+  btn.closest('.day-block').remove();
+  renumberDays();
+}
+
+function renumberDays(){
+  const blocks = document.querySelectorAll('.day-block');
+  blocks.forEach((b,i)=>{
+    b.querySelector('.day-tag').textContent = 'Stay ' + (i+1);
+  });
+}
+
+function toggleSight(cb){
+  const block = cb.closest('.day-block');
+  const show = cb.checked;
+  block.querySelector('.sightText').style.display = show ? 'block' : 'none';
+  block.querySelector('.suggest-btn').style.display = show ? 'inline-block' : 'none';
+  block.querySelector('.suggest-note').style.display = show ? 'block' : 'none';
+  if(show){
+    suggestDaySights(block.querySelector('.suggest-btn'));
+  }
+}
+
+function toggleLastSight(){
+  const cb = document.getElementById('lastDaySightseeing');
+  const show = cb.checked;
+  document.getElementById('lastSightText').style.display = show ? 'block' : 'none';
+  document.getElementById('lastSuggestBtn').style.display = show ? 'inline-block' : 'none';
+  document.getElementById('lastSuggestNote').style.display = show ? 'block' : 'none';
+  if(show){
+    suggestLastDaySights();
+  }
+}
+
+function suggestDaySights(btn){
+  const block = btn.closest('.day-block');
+  const note = block.querySelector('.suggest-note');
+  const blocks = Array.from(document.querySelectorAll('.day-block'));
+  const idx = blocks.indexOf(block);
+  const fromRaw = idx === 0
+    ? document.getElementById('pickupPoint').value.trim()
+    : blocks[idx-1].querySelector('.stayLoc').value.trim();
+  const toRaw = block.querySelector('.stayLoc').value.trim();
+  const ta = block.querySelector('.sightText');
+  if(!toRaw){
+    note.textContent = '⚠ Enter this day\'s stay location above first, then tap Auto-suggest again.';
+    note.style.color = '#A33';
+    return;
+  }
+  const pts = lookupSights(fromRaw, toRaw);
+  if(pts && pts.length){
+    ta.value = pts.join('\n');
+    note.textContent = '✓ Suggested from the route database — edit freely before generating the PDF.';
+    note.style.color = '#2c6e3f';
+  } else {
+    ta.placeholder = 'No curated points yet for this route/destination — add them manually here.';
+    note.textContent = '⚠ No curated points for this one yet — type them in manually below.';
+    note.style.color = '#A33';
+  }
+}
+
+function suggestLastDaySights(){
+  const note = document.getElementById('lastSuggestNote');
+  const blocks = Array.from(document.querySelectorAll('.day-block'));
+  const fromRaw = blocks.length ? blocks[blocks.length-1].querySelector('.stayLoc').value.trim() : '';
+  const toRaw = document.getElementById('dropPoint').value.trim();
+  const ta = document.getElementById('lastSightText');
+  if(!toRaw){
+    note.textContent = '⚠ Enter the dropping point above first, then tap Auto-suggest again.';
+    note.style.color = '#A33';
+    return;
+  }
+  const pts = lookupSights(fromRaw, toRaw);
+  if(pts && pts.length){
+    ta.value = pts.join('\n');
+    note.textContent = '✓ Suggested from the route database — edit freely before generating the PDF.';
+    note.style.color = '#2c6e3f';
+  } else {
+    ta.placeholder = 'No curated points yet for this route — add them manually here.';
+    note.textContent = '⚠ No curated points for this one yet — type them in manually below.';
+    note.style.color = '#A33';
+  }
+}
+
+/* ============ Plan assembly ============ */
+
+function buildPlan(){
+  const pickup = document.getElementById('pickupPoint').value.trim() || '[Pickup Point]';
+  const drop = document.getElementById('dropPoint').value.trim() || '[Dropping Point]';
+  const startDateVal = document.getElementById('startDate').value;
+  const startDate = startDateVal ? new Date(startDateVal + 'T00:00:00') : null;
+
+  const stays = [];
+  document.querySelectorAll('.day-block').forEach(b=>{
+    const loc = b.querySelector('.stayLoc').value.trim();
+    const sightOn = b.querySelector('.sightCheck').checked;
+    const sightText = b.querySelector('.sightText').value.trim();
+    if(loc) stays.push({loc, sightOn, sightText});
+  });
+
+  const lastSightOn = document.getElementById('lastDaySightseeing').checked;
+  const lastSightText = document.getElementById('lastSightText').value.trim();
+
+  const days = [];
+  const fmtDate = (offset) => {
+    if(!startDate) return null;
+    const d = new Date(startDate);
+    d.setDate(d.getDate() + offset);
+    return d.toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'});
+  };
+
+  stays.forEach((s, i)=>{
+    let title, lines = [];
+    if(i === 0){
+      title = `Arrival & Check-in — ${s.loc}`;
+      lines.push(`Pickup from ${pickup}.`);
+      lines.push(`Transfer to ${s.loc} and check-in at your hotel.`);
+    } else if(s.loc.toLowerCase() === stays[i-1].loc.toLowerCase()){
+      title = `Leisure & Sightseeing — ${s.loc}`;
+      lines.push(`Full day at leisure in ${s.loc}. Overnight stay continues at the same property.`);
+    } else {
+      title = `${stays[i-1].loc} to ${s.loc}`;
+      lines.push(`Check-out from ${stays[i-1].loc} and transfer to ${s.loc}.`);
+      lines.push(`Check-in and overnight stay at ${s.loc}.`);
+    }
+    const bullets = [];
+    if(s.sightOn && s.sightText){
+      bullets.push(...s.sightText.split('\n').map(x=>x.trim()).filter(Boolean));
+    }
+    days.push({label:`Day ${i+1}`, date: fmtDate(i), title, lines, bullets});
+  });
+
+  const lastStay = stays.length ? stays[stays.length-1].loc : '[Stay Location]';
+  const depLines = [`Check-out from ${lastStay}.`, `Transfer to ${drop} for onward journey.`, `Tour concludes with wonderful memories!`];
+  const depBullets = [];
+  if(lastSightOn && lastSightText){
+    depBullets.push(...lastSightText.split('\n').map(x=>x.trim()).filter(Boolean));
+  }
+  days.push({label:`Day ${stays.length+1}`, date: fmtDate(stays.length), title:`Departure — ${lastStay} to ${drop}`, lines:depLines, bullets:depBullets});
+
+  return {
+    client: document.getElementById('clientName').value.trim(),
+    tripTitle: document.getElementById('tripTitle').value.trim(),
+    contact: document.getElementById('contactNo').value.trim(),
+    refNo: document.getElementById('refNo').value.trim(),
+    pickup, drop, days
+  };
+}
+
+function renderPreview(){
+  const plan = buildPlan();
+  let out = '';
+  if(plan.tripTitle) out += plan.tripTitle.toUpperCase() + '\n';
+  if(plan.client) out += 'Prepared for: ' + plan.client + '\n';
+  out += '\n';
+  plan.days.forEach(d=>{
+    out += `${d.label}${d.date ? ' — ' + d.date : ''}: ${d.title}\n`;
+    d.lines.forEach(l => out += '   ' + l + '\n');
+    if(d.bullets.length){
+      out += '   Sightseeing:\n';
+      d.bullets.forEach(b => out += '     • ' + b + '\n');
+    }
+    out += '\n';
+  });
+  document.getElementById('preview').textContent = out;
+}
+
+/* ============ PDF generation ============ */
+
+function ep(str){
+  if(!str) return '';
+  return str.replace(/→/g,'->').replace(/–/g,'-').replace(/[^\x00-\xFF]/g, '');
+}
+
+function downloadPDF(){
+  const plan = buildPlan();
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({unit:'mm', format:'a4'});
+  const pageW = 210, pageH = 297, margin = 16;
+  const FOOTER_H = 18;
+  const BRAND = {
+    name: 'SANA ON THE GO',
+    tagline: 'INTO THE WILD TOUR AND TRAVELS',
+    phone: '+91 98747 40763',
+    email: 'sayantikaintothewild@gmail.com',
+    handle: '@sana.onthe.go',
+    location: 'Siliguri, North Bengal, India'
+  };
+  const contactLine = plan.contact ? ep(plan.contact) : BRAND.phone;
+  const todayStr = new Date().toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'});
+  let y = 0;
+
+  function checkY(n){
+    if(y + n > pageH - FOOTER_H - 8){
+      doc.addPage();
+      drawCompactHeader();
+      y = 30;
+    }
+  }
+
+  function drawFullHeader(){
+    doc.setFillColor(27,67,50);
+    doc.rect(0,0,pageW,42,'F');
+    doc.setFillColor(201,162,39);
+    doc.rect(0,42,pageW,1.3,'F');
+
+    doc.setTextColor(255,255,255);
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(19);
+    doc.text(BRAND.name, margin, 14);
+
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(9.5);
+    doc.setTextColor(163,214,186);
+    doc.text(BRAND.tagline, margin, 21);
+
+    doc.setFontSize(9);
+    doc.text(ep(BRAND.phone + '   |   ' + BRAND.email + '   |   ' + BRAND.handle), margin, 29);
+    doc.text(BRAND.location, margin, 35);
+
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(15);
+    doc.setTextColor(201,162,39);
+    doc.text('ITINERARY', pageW - margin, 14, {align:'right'});
+
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(9.5);
+    doc.setTextColor(255,255,255);
+    if(plan.refNo){
+      doc.text(ep('Ref: ' + plan.refNo), pageW - margin, 22, {align:'right'});
+    }
+    doc.text('Date: ' + todayStr, pageW - margin, 29, {align:'right'});
+  }
+
+  function drawCompactHeader(){
+    doc.setFillColor(27,67,50);
+    doc.rect(0,0,pageW,22,'F');
+    doc.setFillColor(201,162,39);
+    doc.rect(0,22,pageW,1.3,'F');
+    doc.setTextColor(255,255,255);
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(13);
+    doc.text(BRAND.name, margin, 12);
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(163,214,186);
+    doc.text(BRAND.tagline, margin, 18);
+  }
+
+  function drawFooter(pageNum, totalPages){
+    const fy = pageH - FOOTER_H;
+    doc.setFillColor(27,67,50);
+    doc.rect(0, fy, pageW, FOOTER_H, 'F');
+    doc.setFillColor(201,162,39);
+    doc.rect(0, fy, pageW, 1, 'F');
+
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(9.5);
+    doc.setTextColor(255,255,255);
+    doc.text('Sana On The Go   |   Into The Wild Tour and Travels', margin, fy + 8);
+    doc.text('Page ' + pageNum + ' of ' + totalPages, pageW - margin, fy + 8, {align:'right'});
+
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(8);
+    doc.setTextColor(163,214,186);
+    doc.text(ep('WA: ' + contactLine + '   \u00b7   ' + BRAND.email + '   \u00b7   ' + BRAND.handle), margin, fy + 14);
+    doc.text(BRAND.location, pageW - margin, fy + 14, {align:'right'});
+  }
+
+  drawFullHeader();
+  y = 50;
+
+  doc.setTextColor(34,50,42);
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(14);
+  const title = ep(plan.tripTitle || 'Travel Itinerary');
+  doc.text(title, margin, y);
+  y += 8;
+
+  doc.setFont('helvetica','normal');
+  doc.setFontSize(10.5);
+  if(plan.client){ doc.text(ep('Prepared for: ' + plan.client), margin, y); y += 6; }
+  doc.text(ep('Pickup: ' + plan.pickup + '   |   Drop: ' + plan.drop), margin, y);
+  y += 4;
+  doc.setDrawColor(221,214,196);
+  doc.line(margin, y, pageW-margin, y);
+  y += 8;
+
+  plan.days.forEach(d=>{
+    checkY(20);
+    doc.setFillColor(27,67,50);
+    const badgeText = ep(d.label + (d.date ? ' (' + d.date + ')' : ''));
+    const badgeW = doc.getTextWidth(badgeText) + 8;
+    doc.roundedRect(margin, y-5, badgeW, 7, 1.5, 1.5, 'F');
+    doc.setTextColor(255,255,255);
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(9.5);
+    doc.text(badgeText, margin+4, y-0.3);
+    y += 6;
+
+    doc.setTextColor(27,67,50);
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(11.5);
+    const titleLines = doc.splitTextToSize(ep(d.title), pageW - margin*2);
+    checkY(titleLines.length*5.5 + 4);
+    doc.text(titleLines, margin, y);
+    y += titleLines.length*5.5 + 2;
+
+    doc.setTextColor(60,60,60);
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(10);
+    d.lines.forEach(line=>{
+      const wrapped = doc.splitTextToSize(ep(line), pageW - margin*2 - 4);
+      checkY(wrapped.length*5 + 1);
+      doc.text(wrapped, margin+4, y);
+      y += wrapped.length*5 + 1;
+    });
+
+    if(d.bullets.length){
+      checkY(6);
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(9.5);
+      doc.setTextColor(201,162,39);
+      doc.text('SIGHTSEEING', margin+4, y);
+      y += 5;
+      doc.setFont('helvetica','normal');
+      doc.setTextColor(60,60,60);
+      doc.setFontSize(10);
+      d.bullets.forEach(b=>{
+        const wrapped = doc.splitTextToSize(ep('• ' + b), pageW - margin*2 - 8);
+        checkY(wrapped.length*5 + 1);
+        doc.text(wrapped, margin+8, y);
+        y += wrapped.length*5 + 1;
+      });
+    }
+    y += 4;
+    doc.setDrawColor(230,230,220);
+    checkY(2);
+    doc.line(margin, y-2, pageW-margin, y-2);
+    y += 4;
+  });
+
+  checkY(10);
+  y += 4;
+  doc.setFont('helvetica','italic');
+  doc.setFontSize(9);
+  doc.setTextColor(120,120,120);
+  doc.text('Itinerary subject to weather, road, and permit conditions in hill areas.', margin, y);
+
+  const totalPages = doc.internal.getNumberOfPages();
+  for(let p = 1; p <= totalPages; p++){
+    doc.setPage(p);
+    drawFooter(p, totalPages);
+  }
+
+  const fileName = 'Itinerary_' + (plan.client ? plan.client.replace(/\s+/g,'_') : 'Client') + '.pdf';
+  doc.save(fileName);
+}
+
+addDay();
+</script>
+
+</body>
+</html>
